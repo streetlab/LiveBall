@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<dirinfo>
+<files>
+<item key='bg_game_02.png20150217161911' />
+<item key='bg_game_03.png20150217162044' />
+<item key='bg_game_04.png20150217162318' />
+<item key='bg_game_textbg.png20150217161515' />
+<item key='bg_game.png20150217161613' />
+<item key='btn_hexagon_off.png20150217170826' />
+<item key='btn_hexagon_on.png20150217171248' />
+<item key='ic_advance_on.png20150217142608' />
+<item key='ic_advance_001.png20150217142352' />
+<item key='ic_advance_002.png20150223105948' />
+<item key='ic_advance_003.png20150223110018' />
+<item key='ic_advance_004.png20150223110047' />
+<item key='ic_advance_005.png20150223110114' />
+<item key='ic_advance_006.png20150223110145' />
+<item key='ic_advance_007.png20150223110218' />
+<item key='ic_advance_008.png20150223110247' />
+<item key='ic_arrow_off.png20150217145743' />
+<item key='ic_arrow_on.png20150217145612' />
+<item key='ic_circle_off.png20150217160010' />
+<item key='ic_circle_on.png20150217160104' />
+<item key='bg_card.png20150223100350' />
+<item key='bg_goldtext.png20150223100937' />
+<item key='btn_game_close.png20150223101242' />
+<item key='ic_success_off.png20150217173014' />
+<item key='ic_success_on.png20150217173000' />
+<item key='img_card_001.png20150223100037' />
+<item key='img_card_002.png20150223100117' />
+<item key='img_card_003.png20150223100209' />
+<item key='img_card_text.png20150223101705' />
+<item key='img_hit_text.png20150223101511' />
+<item key='img_out_text.png20150223101549' />
+</files>
+</dirinfo>

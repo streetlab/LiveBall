@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<dirinfo>
+<files>
+<item key='btn_face001_press.png20150109165647' />
+<item key='btn_face001_release.png20150109165357' />
+<item key='btn_face002_press.png20150109165713' />
+<item key='btn_face002_release.png20150109165420' />
+<item key='btn_face003_press.png20150109165734' />
+<item key='btn_face003_release.png20150109165440' />
+<item key='btn_face004_press.png20150109165754' />
+<item key='btn_face004_release.png20150109165459' />
+<item key='btn_face005_press.png20150109165813' />
+<item key='btn_face005_release.png20150109165518' />
+<item key='btn_face006_press.png20150109165839' />
+<item key='btn_face006_release.png20150109165536' />
+<item key='btn_make_close_press.png20150109163832' />
+<item key='btn_make_close_release.png20150109163806' />
+<item key='btn_make_link_press.png20150109164340' />
+<item key='btn_make_link_release.png20150109164318' />
+<item key='btn_make_photo_press.png20150109164203' />
+<item key='btn_make_photo_release.png20150109164137' />
+<item key='btn_make_press.png20150109163610' />
+<item key='btn_make_release.png20150109163524' />
+<item key='btn_make_write_press.png20150109163957' />
+<item key='btn_make_write_release.png20150109163932' />
+<item key='ic_comment_color.png20150109171801' />
+<item key='ic_comment.png20150107123636' />
+<item key='ic_face.png20150107123531' />
+<item key='ic_face_color.png20150109171833' />
+</files>
+</dirinfo>

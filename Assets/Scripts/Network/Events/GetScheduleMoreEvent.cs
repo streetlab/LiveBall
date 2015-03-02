@@ -1,0 +1,25 @@
+﻿using UnityEngine;
+using System.Collections;
+
+public class GetScheduleMoreEvent : BaseEvent {
+
+	public GetScheduleMoreEvent(EventDelegate eventDelegate)
+	{
+		base.eventDelegate = eventDelegate;
+
+		InitEvent += InitResponse;
+	}
+
+	public void InitResponse(string data)
+	{
+		response = JsonFx.Json.JsonReader.Deserialize<GetScheduleMoreResponse>(data);
+
+		eventDelegate.Execute ();
+	}
+
+	public GetScheduleMoreResponse GetResponse()
+	{
+		return response as GetScheduleMoreResponse;
+	}
+
+}
