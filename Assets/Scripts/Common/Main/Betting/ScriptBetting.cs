@@ -55,7 +55,7 @@ public class ScriptBetting : MonoBehaviour {
 		}
 		else
 		{
-			mBtnCancel.gameObject.SetActive(false);
+			mBtnCancel.gameObject.SetActive(false);//
 			mBtnConfirm.gameObject.SetActive(false);
 			mBtnConfirm2.gameObject.SetActive(true);
 		}
