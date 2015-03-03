@@ -4,7 +4,7 @@ using System.Collections;
 public class AndroidMgr : MonoBehaviour
 {
 	#if(UNITY_ANDROID)
-	private AndroidJavaObject curActivity
+	private AndroidJavaObject curActivity;
 	public string strLog = "No Log";
 	public Texture2D texTmp;
 	static AndroidMgr _instance;
@@ -98,11 +98,13 @@ public class AndroidMgr : MonoBehaviour
 	public void SetGCMId(string GCMId)
 	{
 		Debug.Log ("Recieved GCMId : "+GCMId);
+		ScriptTitle receiver = mReceiver as ScriptTitle;
+		receiver.SetGCMId (GCMId);
 	}
 
 	public void GCMFailed(string msg)
 	{
-
+		Debug.Log ("Failed GCM : "+msg);
 	}
 #else
 	public static void CallJavaFunc( string strFuncName, string str){}

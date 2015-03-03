@@ -31,6 +31,7 @@ public class NetMgr : MonoBehaviour{
 		if(www.error == null)
 		{
 			Debug.Log(www.text);
+//			CommonDialogue.Show (www.text);
 			baseEvent.Init(www.text);
 		}
 		else
@@ -41,18 +42,19 @@ public class NetMgr : MonoBehaviour{
 
 	private void webAPIProcessEvent(BaseRequest request, BaseEvent baseEvent)
 	{
-		string reqParam = null;
+		string reqParam = "";
 		string httpUrl = "";
 		if (request != null) {
 			reqParam = request.ToRequestString();
-			httpUrl = (Constants.QUERY_SERVER_HOST + reqParam);
+//			httpUrl = (Constants.QUERY_SERVER_HOST + reqParam);
+//			httpUrl = reqParam;
 		} else {
-			httpUrl = Constants.QUERY_SERVER_HOST;
+//			httpUrl = Constants.QUERY_SERVER_HOST;
 		}
 
-		WWW www = new WWW (httpUrl);
+		WWW www = new WWW (Constants.QUERY_SERVER_HOST , System.Text.Encoding.UTF8.GetBytes(reqParam));
 
-		Debug.Log (httpUrl);
+		Debug.Log (reqParam);
 		StartCoroutine (webAPIProcess(www, baseEvent));
 	}
 

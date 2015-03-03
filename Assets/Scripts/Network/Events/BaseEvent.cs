@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BaseEvent : MonoBehaviour{
+public class BaseEvent {
 
 	BaseResponse _response;
 	EventDelegate _eventDelegate = null;

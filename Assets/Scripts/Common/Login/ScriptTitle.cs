@@ -4,6 +4,7 @@ using System.Collections;
 public class ScriptTitle : MonoBehaviour {
 
 	LoginEvent mLoginEvent;
+	LoginInfo mLoginInfo;
 
 	// Use this for initialization
 	void Start () {
@@ -21,23 +22,32 @@ public class ScriptTitle : MonoBehaviour {
 
 		//Load Scene Teamhome
 //		Application.LoadLevel ("SceneTeamHome");
-		LoginInfo loginInfo = new LoginInfo ();
-		loginInfo.memberEmail = "gunloves@.";
-		loginInfo.memUID = "gunloves";
-		loginInfo.memberPwd = "asdf";
+		mLoginInfo = new LoginInfo ();
+		mLoginInfo.memberEmail = "gunloves@.";
+		mLoginInfo.memberName = "gunloves";
+		mLoginInfo.memberPwd = "asdf";
 		mLoginEvent = new LoginEvent(new EventDelegate(this, "LoginComplete"));
-		NetMgr.DoLogin (loginInfo, mLoginEvent);
+//		NetMgr.DoLogin (loginInfo, mLoginEvent);
 
-		if(Application.platform == RuntimePlatform.Android)
-		{
-			AndroidMgr.CallJavaFunc ("RegisterGCM", "");
-		}
-		else
-		{
+		//Receive UID(Push Key) then do login
 
+		if (Application.platform == RuntimePlatform.Android) {
+						AndroidMgr.CallJavaFunc ("RegisterGCM", "", this);
+		} else if (Application.platform == RuntimePlatform.IPhonePlayer) {
+
+		} else if(RuntimePlatform.OSXEditor){
+			mLoginInfo.memUID = "";
+			NetMgr.DoLogin (mLoginInfo, mLoginEvent);
 		}
 
 	}
+
+	public void SetGCMId(string key)
+	{
+		mLoginInfo.memUID = key;
+		NetMgr.DoLogin (mLoginInfo, mLoginEvent);
+	}
+
 
 	void LoginComplete()
 	{

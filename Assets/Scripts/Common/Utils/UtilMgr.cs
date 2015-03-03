@@ -104,6 +104,27 @@ public class UtilMgr : MonoBehaviour {
 		return null;
 	}
 
+	public static string GetRoundString(int round)
+	{
+
+		if(round == 1)
+		{
+			return "ST";
+		}
+		else if(round == 2)
+		{
+			return "ND";
+		}
+		else if(round == 3)
+		{
+			return "RD";
+		}
+		else
+		{
+			return "TH";
+		}
+	}
+
 	/** 객체의 이름을 통하여 자식 요소를 찾아서 리턴하는 함수 */
 	public static GameObject GetChildObj( GameObject source, string strName) { 
 		Transform[] AllData = source.GetComponentsInChildren< Transform >(); 

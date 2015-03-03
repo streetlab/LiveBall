@@ -1208,8 +1208,8 @@ MonoBehaviour:
   scalingStyle: 2
   manualWidth: 720
   manualHeight: 1230
-  minimumHeight: 1280
-  maximumHeight: 720
+  minimumHeight: 1230
+  maximumHeight: 1230
   fitWidth: 1
   fitHeight: 0
   adjustByDPI: 0

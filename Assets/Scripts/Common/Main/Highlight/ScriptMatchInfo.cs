@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class ScriptMatchInfo : MonoBehaviour {
 
@@ -7,6 +8,7 @@ public class ScriptMatchInfo : MonoBehaviour {
 	static Color YELLOW = new Color (1f, 1f, 0f);
 	static Color GREEN = new Color (0f, 1f, 0f);
 	static Color RED = new Color (1f, 0f, 0f);
+	static Color DISABLE = new Color (114f/255f, 118f/255f, 133f/255f);
 
 	Transform mStrike;
 	Transform mRound;
@@ -21,11 +23,37 @@ public class ScriptMatchInfo : MonoBehaviour {
 		mOut = transform.FindChild ("Out");
 		mSprBases = transform.FindChild ("SprBases");
 		mRound = transform.FindChild ("Round");
+
+		Reset ();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+
+	public void Reset()
+	{
+		SetStrike (0);
+		SetBall (0);
+		SetOut (0);
+		SetBases (new List<int> ());
+		SetHalftime (0);
+		SetRound (1);
+	}
+
+	public void SetHalftime(int value)
+	{
+		UISprite up = mRound.FindChild ("Up").GetComponent<UISprite> ();
+		UISprite down = mRound.FindChild ("Down").GetComponent<UISprite> ();
+
+		up.color = DISABLE;
+		down.color = DISABLE;
+
+		if(value == 1)
+		{
+			up.color = YELLOW;
+		}
+		else if(value == 2)
+		{
+			down.color = YELLOW;
+		}
+
 	}
 
 	public void SetStrike(int cnt)
@@ -33,8 +61,8 @@ public class ScriptMatchInfo : MonoBehaviour {
 		UISprite sprite1 = mStrike.FindChild ("Sprite1").GetComponent<UISprite> ();
 		UISprite sprite2 = mStrike.FindChild ("Sprite2").GetComponent<UISprite> ();
 
-		sprite1.color = WHITE;
-		sprite2.color = WHITE;
+		sprite1.color = DISABLE;
+		sprite2.color = DISABLE;
 		
 		switch(cnt)
 		{
@@ -52,8 +80,8 @@ public class ScriptMatchInfo : MonoBehaviour {
 		UISprite sprite1 = mOut.FindChild ("Sprite1").GetComponent<UISprite> ();
 		UISprite sprite2 = mOut.FindChild ("Sprite2").GetComponent<UISprite> ();
 
-		sprite1.color = WHITE;
-		sprite2.color = WHITE;
+		sprite1.color = DISABLE;
+		sprite2.color = DISABLE;
 
 		switch(cnt)
 		{
@@ -72,9 +100,9 @@ public class ScriptMatchInfo : MonoBehaviour {
 		UISprite sprite2 = mBall.FindChild ("Sprite2").GetComponent<UISprite> ();
 		UISprite sprite3 = mBall.FindChild ("Sprite3").GetComponent<UISprite> ();
 
-		sprite1.color = WHITE;
-		sprite2.color = WHITE;
-		sprite3.color = WHITE;
+		sprite1.color = DISABLE;
+		sprite2.color = DISABLE;
+		sprite3.color = DISABLE;
 
 		switch(cnt)
 		{
@@ -90,51 +118,36 @@ public class ScriptMatchInfo : MonoBehaviour {
 		}
 	}
 
-	public void SetBases(int[] cnts)
+	public void SetBases(List<int> bases)
 	{
 		UISprite sprite1 = mSprBases.FindChild ("Sprite1").GetComponent<UISprite> ();
 		UISprite sprite2 = mSprBases.FindChild ("Sprite2").GetComponent<UISprite> ();
 		UISprite sprite3 = mSprBases.FindChild ("Sprite3").GetComponent<UISprite> ();
 
-		sprite1.color = WHITE;
-		sprite2.color = WHITE;
-		sprite3.color = WHITE;
+		sprite1.color = DISABLE;
+		sprite2.color = DISABLE;
+		sprite3.color = DISABLE;
 
-		for(int i = 0 ; i < cnts.Length; i++)
+		foreach(int value in bases)
 		{
-			if(cnts[i] == 1)
+			if(value == 1)
 			{
 				sprite1.color = GREEN;
 			}
-			else if(cnts[i] == 2)
+			else if(value == 2)
 			{
 				sprite2.color = GREEN;
 			}
-			else if(cnts[i] == 3)
+			else if(value == 3)
 			{
 				sprite3.color = GREEN;
 			}
 		}
 	}
 
-	public void SetRound(string round)
+	public void SetRound(int round)
 	{
-		mRound.GetComponent<UILabel> ().text = round;
-		if(round.Equals("1"))
-		{
-			mRound.FindChild ("Label").GetComponent<UILabel> ().text = "ST";
-		}
-		else if(round.Equals("2"))
-		{
-			mRound.FindChild ("Label").GetComponent<UILabel> ().text = "ND";
-		}
-		else if(round.Equals("3"))
-		{
-			mRound.FindChild ("Label").GetComponent<UILabel> ().text = "RD";
-		}
-		else
-		{
-			mRound.FindChild ("Label").GetComponent<UILabel> ().text = "TH";
-		}
+		mRound.GetComponent<UILabel> ().text = round.ToString ();
+		mRound.FindChild ("Label").GetComponent<UILabel> ().text = UtilMgr.GetRoundString (round);
 	}
 }

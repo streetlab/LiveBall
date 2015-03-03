@@ -3,6 +3,13 @@ using System.Collections;
 
 public class ScriptTimeline : MonoBehaviour {
 
+	public GameObject mSearch;
+	public GameObject mMatch;
+	public GameObject mWritten;
+	public GameObject mUpload;
+	public GameObject mSelection;
+	public GameObject mLink;
+
 	// Use this for initialization
 	void Start () {
 		CloseMenu ();
@@ -33,13 +40,13 @@ public class ScriptTimeline : MonoBehaviour {
 	
 	void OpenWriteWindow()
 	{
-		transform.parent.parent.FindChild("Search").gameObject.SetActive (false);
-		transform.parent.parent.FindChild("Match").gameObject.SetActive (false);
-		transform.parent.parent.FindChild("Timeline").gameObject.SetActive (false);
-		transform.parent.parent.FindChild("Upload").gameObject.SetActive (false);
+		mSearch.SetActive (false);
+		mMatch.SetActive (false);
+		gameObject.SetActive (false);
+		mUpload.SetActive (false);
 		
-		Transform transformWritten = transform.parent.parent.FindChild ("Written");
-		transformWritten.gameObject.SetActive (true);
+		Transform transformWritten = mWritten.transform;
+		mWritten.SetActive (true);
 		UIInput uiInputInputBody = transformWritten.FindChild ("InputBody").gameObject.GetComponent<UIInput> ();
 		//		BoxCollider2D colliderInputBody = uiInputInputBody.GetComponent<BoxCollider2D> ();
 		//		UISprite uiSpriteSprBG = uiInputInputBody.transform.FindChild ("SprBG").gameObject.GetComponent<UISprite> ();
