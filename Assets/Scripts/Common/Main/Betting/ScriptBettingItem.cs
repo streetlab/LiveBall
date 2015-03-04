@@ -90,5 +90,9 @@ public class ScriptBettingItem : MonoBehaviour {
 	{
 		mSprBetting.SetActive (true);
 		mSprBetting.GetComponent<ScriptBetting> ().Init (name);
+
+		UtilMgr.SetBackEvent(
+			new EventDelegate (mSprBetting.GetComponent<ScriptBetting> (),
+		                   "CloseWindow"));
 	}
 }

@@ -672,6 +672,7 @@
      <Compile Include="Assets\Scripts\Common\Main\Highlight\ScriptItemInfoHighlight.cs" />
      <Compile Include="Assets\Scripts\Common\Main\Highlight\ScriptMatchInfo.cs" />
      <Compile Include="Assets\Scripts\Common\Main\Highlight\ScriptMatchReady.cs" />
+     <Compile Include="Assets\Scripts\Common\Main\ScriptMainRoot.cs" />
      <Compile Include="Assets\Scripts\Common\Main\ScriptMainTop.cs" />
      <Compile Include="Assets\Scripts\Common\Models\ExtendInfo.cs" />
      <Compile Include="Assets\Scripts\Common\Models\LoginInfo.cs" />
@@ -692,6 +693,7 @@
      <Compile Include="Assets\Scripts\Common\TeamHome\ScriptSelection.cs" />
      <Compile Include="Assets\Scripts\Common\TeamHome\ScriptTF_Timeline.cs" />
      <Compile Include="Assets\Scripts\Common\TeamHome\ScriptTHTop.cs" />
+     <Compile Include="Assets\Scripts\Common\TeamHome\ScriptTeamHomeRoot.cs" />
      <Compile Include="Assets\Scripts\Common\TeamHome\ScriptUpload.cs" />
      <Compile Include="Assets\Scripts\Common\TeamHome\ScriptUploadList.cs" />
      <Compile Include="Assets\Scripts\Common\TeamHome\ScriptVerticalList.cs" />

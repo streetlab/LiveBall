@@ -1,10 +1,13 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class UtilMgr : MonoBehaviour {
 
 	static UtilMgr _instance;
+
+	static List<EventDelegate> mListBackEvent = new List<EventDelegate>();
 
 	static UtilMgr Instance
 	{
@@ -31,6 +34,40 @@ public class UtilMgr : MonoBehaviour {
 	void Awake()
 	{
 		DontDestroyOnLoad (this);
+	}
+
+	public static void SetBackEvent(EventDelegate eventDel)
+	{
+		mListBackEvent.Add (eventDel);
+	}
+
+	public static void RemoveBackEvent()
+	{
+		mListBackEvent.RemoveAt(mListBackEvent.Count-1);
+	}
+
+	public static void OnBackPressed()
+	{
+		if(mListBackEvent.Count > 0)
+		{
+			EventDelegate eventDel = mListBackEvent[mListBackEvent.Count-1];
+			RemoveBackEvent();
+			eventDel.Execute();
+		}
+		else
+		{
+			//Exit
+			Debug.Log("Quit");
+		}
+	}
+
+	public static float GetScaledPositionY()
+	{
+		float height = (float)Screen.height;
+		float width = (float)Screen.width;
+		float ratio = height / width;
+		float diff = Constants.DEFAULT_SCR_RATIO - ratio;
+		return 360f * diff;
 	}
 
 	public static string AddsThousandsSeparator(string number)

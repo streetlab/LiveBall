@@ -2,6 +2,8 @@
 using System.Collections;
 
 public class Constants {	
+	public static float DEFAULT_SCR_RATIO = 505f / 296f;
+
 	public static string APPTAG = "StreetLab_Tuby";
 	
 	public static bool IS_DEBUGGABLE = false;

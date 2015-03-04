@@ -19304,6 +19304,7 @@ GameObject:
   - 4: {fileID: 910644829}
   - 114: {fileID: 910644831}
   - 114: {fileID: 910644830}
+  - 114: {fileID: 910644832}
   m_Layer: 0
   m_Name: UI Root
   m_TagString: Untagged
@@ -19319,7 +19320,7 @@ Transform:
   m_GameObject: {fileID: 910644828}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: .00162866444, y: .00162866444, z: .00162866444}
+  m_LocalScale: {x: .00208550575, y: .00208550575, z: .00208550575}
   m_Children:
   - {fileID: 1509088879}
   - {fileID: 890755230}
@@ -19395,6 +19396,17 @@ MonoBehaviour:
   fitHeight: 0
   adjustByDPI: 0
   shrinkPortraitUI: 0
+--- !u!114 &910644832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 910644828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1e8986ff08c443c688704d12e7b8237, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &912234958
 GameObject:
   m_ObjectHideFlags: 0

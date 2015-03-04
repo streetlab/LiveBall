@@ -64,13 +64,15 @@ public class ScriptBetting : MonoBehaviour {
 	void SetConfirm()
 	{		 
 		mSbi.SetSelected ();
-		CloseWindow ();
+//		CloseWindow ();
+		UtilMgr.OnBackPressed ();
 	}
 
 	void SetCancel()
 	{
 		mSbi.SetUnselected ();
-		CloseWindow ();
+//		CloseWindow ();
+		UtilMgr.OnBackPressed ();
 	}
 
 	ScriptBettingItem GetBettingItem()
@@ -106,7 +108,7 @@ public class ScriptBetting : MonoBehaviour {
 		return null;
 	}
 
-	void CloseWindow()
+	public void CloseWindow()
 	{
 		gameObject.SetActive(false);
 	}
@@ -144,7 +146,8 @@ public class ScriptBetting : MonoBehaviour {
 		switch(name)
 		{
 		case "BtnClose":
-			CloseWindow();
+//			CloseWindow();
+			UtilMgr.OnBackPressed();
 			break;
 		case "BtnConfirm":
 			SetConfirm();

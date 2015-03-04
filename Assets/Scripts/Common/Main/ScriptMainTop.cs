@@ -104,13 +104,20 @@ public class ScriptMainTop : MonoBehaviour {
 		mState = STATE.Livetalk;
 	}
 
-	void OpenBetting()
+	public void OpenBetting()
 	{
 		mHighlight.SetActive (false);
 		mLineup.SetActive (false);
 		mBingo.SetActive (false);
 		mLivetalk.SetActive (false);
 		mBetting.SetActive (true);
+		UtilMgr.SetBackEvent(new EventDelegate(this, "GoPreState"));
+	}
+
+	void OnBackPressed()
+	{
+		UtilMgr.RemoveBackEvent ();
+		GoPreState ();
 	}
 
 	public void BtnClicked(string name)

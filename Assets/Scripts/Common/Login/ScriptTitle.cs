@@ -6,14 +6,9 @@ public class ScriptTitle : MonoBehaviour {
 	LoginEvent mLoginEvent;
 	LoginInfo mLoginInfo;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+	void Start()
+	{
+		transform.FindChild ("ContainerBtns").localPosition = new Vector3(0, UtilMgr.GetScaledPositionY()*2, 0);
 	}
 
 	void LoginFacebook()
@@ -35,7 +30,7 @@ public class ScriptTitle : MonoBehaviour {
 						AndroidMgr.CallJavaFunc ("RegisterGCM", "", this);
 		} else if (Application.platform == RuntimePlatform.IPhonePlayer) {
 
-		} else if(RuntimePlatform.OSXEditor){
+		} else if(Application.platform == RuntimePlatform.OSXEditor){
 			mLoginInfo.memUID = "";
 			NetMgr.DoLogin (mLoginInfo, mLoginEvent);
 		}

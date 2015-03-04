@@ -29,11 +29,11 @@ public class ScriptItemInfoHighlight : MonoBehaviour {
 	{
 		GameObject top = GameObject.Find ("Top");
 		ScriptMainTop smt = top.GetComponent<ScriptMainTop>();
-		smt.mHighlight.SetActive (false);
-		smt.mLineup.SetActive (false);
-		smt.mBingo.SetActive (false);
-		smt.mLivetalk.SetActive (false);
-		smt.mBetting.SetActive (true);
-
+//		smt.mHighlight.SetActive (false);
+//		smt.mLineup.SetActive (false);
+//		smt.mBingo.SetActive (false);
+//		smt.mLivetalk.SetActive (false);
+//		smt.mBetting.SetActive (true);
+		smt.OpenBetting ();
 	}
 }
