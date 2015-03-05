@@ -51,6 +51,18 @@ public class ScriptMatchItem : cUIScrollListBase {
 		sprLeftTeam.spriteName = UtilMgr.GetTeamEmblem (schedule.extend [0].teamSeq);
 		sprRightTeam.spriteName = UtilMgr.GetTeamEmblem (schedule.extend [1].teamSeq);
 
+		//temp
+		if(schedule.gameStatus == 0)
+		{
+
+		} else if(schedule.gameStatus == 1)
+		{
+			mBGMatch.GetComponent<UISprite>().color = new Color(0f, 1f, 0f, 0.5f);
+		} else
+		{
+			mBGMatch.GetComponent<UISprite>().color = new Color(0f, 0f, 1f, 0.5f);
+		}
+
 	}
 
 	public void DeactiveLeftBtn()
