@@ -48,10 +48,6 @@ public class ScriptTimeline : MonoBehaviour {
 		Transform transformWritten = mWritten.transform;
 		mWritten.SetActive (true);
 		UIInput uiInputInputBody = transformWritten.FindChild ("InputBody").gameObject.GetComponent<UIInput> ();
-		//		BoxCollider2D colliderInputBody = uiInputInputBody.GetComponent<BoxCollider2D> ();
-		//		UISprite uiSpriteSprBG = uiInputInputBody.transform.FindChild ("SprBG").gameObject.GetComponent<UISprite> ();
-		//		UILabel lblHint = 
-		//		uiSpriteSprBG.SetDimensions (720, 1090);
 		
 		TouchScreenKeyboard.hideInput = true;
 	}

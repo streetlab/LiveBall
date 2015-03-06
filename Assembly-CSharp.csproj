@@ -679,8 +679,10 @@
      <Compile Include="Assets\Scripts\Common\Models\ExtendInfo.cs" />
      <Compile Include="Assets\Scripts\Common\Models\HEBInfo.cs" />
      <Compile Include="Assets\Scripts\Common\Models\LoginInfo.cs" />
+     <Compile Include="Assets\Scripts\Common\Models\OrderInfo.cs" />
      <Compile Include="Assets\Scripts\Common\Models\PlayInfo.cs" />
      <Compile Include="Assets\Scripts\Common\Models\PlayerInfo.cs" />
+     <Compile Include="Assets\Scripts\Common\Models\QuizInfo.cs" />
      <Compile Include="Assets\Scripts\Common\Models\ScheduleInfo.cs" />
      <Compile Include="Assets\Scripts\Common\Models\ScoreInfo.cs" />
      <Compile Include="Assets\Scripts\Common\Models\SposDetailBoard.cs" />
