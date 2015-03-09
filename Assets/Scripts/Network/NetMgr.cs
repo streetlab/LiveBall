@@ -73,4 +73,13 @@ public class NetMgr : MonoBehaviour{
 		Instance.webAPIProcessEvent (new GetGameSposDetailBoardRequest (), baseEvent);
 	}
 
+	public static void GetCardInven(BaseEvent baseEvent)
+	{
+		Instance.webAPIProcessEvent (new GetCardInvenRequest (), baseEvent);
+	}
+
+	public static void GetPreparedQuiz(BaseEvent baseEvent)
+	{
+		Instance.webAPIProcessEvent (new GetPreparedQuizRequest (), baseEvent);
+	}
 }

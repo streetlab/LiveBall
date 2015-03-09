@@ -5,6 +5,8 @@ public class ScriptMatchReady : MonoBehaviour {
 	public GameObject itemInfo;
 	public GameObject itemPoll;
 
+	GetPreparedQuizEvent mEvent;
+
 	// Use this for initialization
 	void Start () {
 		Transform transformList = transform.FindChild ("List").GetComponent<UIScrollView> ().transform;
@@ -19,11 +21,16 @@ public class ScriptMatchReady : MonoBehaviour {
 		obj.transform.localScale = new Vector3(1f, 1f, 1f);
 		obj.transform.localPosition = new Vector3 (0f, -140f);
 
+		UtilMgr.ResizeList (transformList.gameObject);
+
 		transform.FindChild ("List").GetComponent<UIScrollView> ().ResetPosition ();
+
+		mEvent = new GetPreparedQuizEvent (new EventDelegate (this, "GotQuiz"));
+		NetMgr.GetPreparedQuiz (mEvent);
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+
+	public void GotQuiz()
+	{
+		Debug.Log ("GotQuiz : " + mEvent.GetResponse ().data.gameType.gameType);
 	}
 }
