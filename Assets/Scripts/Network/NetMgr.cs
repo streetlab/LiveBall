@@ -82,4 +82,9 @@ public class NetMgr : MonoBehaviour{
 	{
 		Instance.webAPIProcessEvent (new GetPreparedQuizRequest (), baseEvent);
 	}
+
+	public static void GetProgressQuiz(int quizListSeq, BaseEvent baseEvent)
+	{
+		Instance.webAPIProcessEvent (new GetProgressQuizRequest (quizListSeq), baseEvent);
+	}
 }

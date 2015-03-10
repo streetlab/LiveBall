@@ -155,6 +155,7 @@ GameObject:
   - 4: {fileID: 400018}
   - 114: {fileID: 11400018}
   - 61: {fileID: 6100000}
+  - 114: {fileID: 11400022}
   m_Layer: 0
   m_Name: ListHighlightItem_Hitter
   m_TagString: Untagged
@@ -300,7 +301,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Size: {x: 720, y: 122}
+  m_Size: {x: 720, y: 127}
   m_Center: {x: 0, y: 0}
 --- !u!114 &11400000
 MonoBehaviour:
@@ -598,13 +599,13 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3023
+  startingRenderQueue: 3011
   mClipTexture: {fileID: 2800000, guid: 66fa3c17449fd41689524fdcd6bd54c0, type: 3}
   mAlpha: 1
   mClipping: 1
   mClipRange: {x: 0, y: 0, z: 80, w: 90}
   mClipSoftness: {x: 4, y: 4}
-  mDepth: 3
+  mDepth: 1
   mSortingOrder: 0
   mClipOffset: {x: 0, y: 0}
 --- !u!114 &11400010
@@ -894,6 +895,19 @@ MonoBehaviour:
   mAtlas: {fileID: 11400000, guid: a804961df42fc4f7984d2394e4ec5f62, type: 2}
   mSpriteName: default_white
   mFillCenter: 1
+--- !u!114 &11400022
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f02842fa4878db54f9587ff4de7d9f2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollView: {fileID: 0}
+  draggablePanel: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

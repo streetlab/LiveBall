@@ -5,12 +5,61 @@ using System.Collections.Generic;
 public class ScriptMatchPlaying : MonoBehaviour {
 	public GameObject mScoreBoard;
 	public GameObject mList;
+	public GameObject itemHitter;
+	public GameObject itemRound;
+	public GameObject itemPoll;
+	public GameObject itemInfo;
 
-	GetGameSposDetailBoardEvent mEvent;
+	float mPosGuide;
+	bool mFirstLoading;
+
+	GetGameSposDetailBoardEvent mEventDetail;
+	GetQuizEvent mEventPreQuiz;
+	GetQuizEvent mEventProgQuiz;
+
 
 	// Use this for initialization
 	void Start () {
+		UtilMgr.ResizeList (mList);
+		mFirstLoading = true;
+		mPosGuide = 0f;
 		SetScoreBoard ();
+	}
+
+	void SetPreQuiz()
+	{
+//		for(int i = 0; i < mEventPreQuiz.GetResponse().data.quiz.Count; i++)
+//		{
+//			GameObject obj = Instantiate(itemPoll, new Vector3(0f, 0f, 0f), Quaternion.identity) as GameObject;
+//			obj.transform.parent = mList.transform;
+//			obj.transform.localScale = new Vector3(1f, 1f, 1f);		
+//			//			obj.GetComponent<ScriptItemInfoHighlight> ().Init ();
+//			obj.transform.localPosition = new Vector3(0f, -mPosGuide, 0f);
+//			mPosGuide += obj.GetComponent<BoxCollider2D> ().size.y;
+//			
+//		}
+	}
+
+	void SetProgQuiz(int quizListSeq)
+	{
+		mEventProgQuiz = new GetQuizEvent (new EventDelegate (this, "GotProgQuiz"));
+		NetMgr.GetProgressQuiz (quizListSeq, mEventProgQuiz);
+	}
+
+	public void GotProgQuiz()
+	{
+		for(int i = 0; i < mEventProgQuiz.GetResponse().data.quiz.Count; i++)
+		{
+			GameObject obj = Instantiate(itemHitter, new Vector3(0f, 0f, 0f), Quaternion.identity) as GameObject;
+			obj.transform.parent = mList.transform;
+			obj.transform.localScale = new Vector3(1f, 1f, 1f);		
+			obj.GetComponent<ScriptItemHitterHighlight> ().Init (mEventProgQuiz.GetResponse().data.quiz[i]);
+			obj.transform.localPosition = new Vector3(0f, -mPosGuide, 0f);
+			mPosGuide += obj.GetComponent<BoxCollider2D> ().size.y+10;
+			
+		}
+
+		mList.GetComponent<UIScrollView> ().ResetPosition ();
 	}
 
 	void SetScoreBoard()
@@ -19,8 +68,8 @@ public class ScriptMatchPlaying : MonoBehaviour {
 		mScoreBoard.transform.FindChild ("TeamTop").gameObject.SetActive (false);
 		mScoreBoard.transform.FindChild ("TeamBottom").gameObject.SetActive (false);
 		//Progressing
-		mEvent = new GetGameSposDetailBoardEvent (new EventDelegate (this, "GotDetailBoard"));
-		NetMgr.GetGameSposDetailBoard (mEvent);
+		mEventDetail = new GetGameSposDetailBoardEvent (new EventDelegate (this, "GotDetailBoard"));
+		NetMgr.GetGameSposDetailBoard (mEventDetail);
 	}
 
 	public void GotDetailBoard()
@@ -29,10 +78,13 @@ public class ScriptMatchPlaying : MonoBehaviour {
 		mScoreBoard.transform.FindChild ("TeamTop").gameObject.SetActive (true);
 		mScoreBoard.transform.FindChild ("TeamBottom").gameObject.SetActive (true);
 
-		SetAwayScore (mEvent.GetResponse().data.awayScore);
-		SetHomeScore (mEvent.GetResponse().data.homeScore);
-		SetAwayRHEB (mEvent.GetResponse().data.infoBoard[0]);
-		SetHomeRHEB (mEvent.GetResponse().data.infoBoard[1]);
+		SetAwayScore (mEventDetail.GetResponse().data.awayScore);
+		SetHomeScore (mEventDetail.GetResponse().data.homeScore);
+		SetAwayRHEB (mEventDetail.GetResponse().data.infoBoard[0]);
+		SetHomeRHEB (mEventDetail.GetResponse().data.infoBoard[1]);
+
+		if (mFirstLoading)
+			SetProgQuiz (0);
 	}
 
 	void SetAwayScore(List<ScoreInfo> listScore)

@@ -40,6 +40,7 @@ public class AndroidMgr : MonoBehaviour
 		///&lt; 현재 활성화된 액티비티 얻어와서 저장
 		AndroidJavaClass jc = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
 		curActivity = jc.GetStatic<AndroidJavaObject>("currentActivity");
+		DontDestroyOnLoad (this);
 	}
 	void Start ()
 	{
@@ -104,7 +105,19 @@ public class AndroidMgr : MonoBehaviour
 
 	public void GCMFailed(string msg)
 	{
-		Debug.Log ("Failed GCM : "+msg);
+		Debug.Log ("Failed GCM : "+msg);  
+	}
+
+	public void ReceivedMsg(string msg)
+	{
+		NotiMsgInfo msgInfo = JsonFx.Json.JsonReader.Deserialize<NotiMsgInfo> (msg);
+		Debug.Log ("push type : " + msgInfo.type);
+		if(msgInfo.type.Equals(Constants.POST_MSG)){
+
+		} else if(msgInfo.type.Equals(Constants.POST_GAME_START)){
+		
+		}
+
 	}
 #else
 	public static void CallJavaFunc( string strFuncName, string str){}

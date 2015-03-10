@@ -670,7 +670,9 @@
      <Compile Include="Assets\Scripts\Common\Main\Betting\ScriptBetting.cs" />
      <Compile Include="Assets\Scripts\Common\Main\Betting\ScriptBettingItem.cs" />
      <Compile Include="Assets\Scripts\Common\Main\Betting\ScriptTF_Betting.cs" />
+     <Compile Include="Assets\Scripts\Common\Main\Highlight\ScriptItemHitterHighlight.cs" />
      <Compile Include="Assets\Scripts\Common\Main\Highlight\ScriptItemInfoHighlight.cs" />
+     <Compile Include="Assets\Scripts\Common\Main\Highlight\ScriptItemPollHighlight.cs" />
      <Compile Include="Assets\Scripts\Common\Main\Highlight\ScriptMatchInfo.cs" />
      <Compile Include="Assets\Scripts\Common\Main\Highlight\ScriptMatchPlaying.cs" />
      <Compile Include="Assets\Scripts\Common\Main\Highlight\ScriptMatchReady.cs" />
@@ -684,6 +686,8 @@
      <Compile Include="Assets\Scripts\Common\Models\GameTypeInfo.cs" />
      <Compile Include="Assets\Scripts\Common\Models\HEBInfo.cs" />
      <Compile Include="Assets\Scripts\Common\Models\LoginInfo.cs" />
+     <Compile Include="Assets\Scripts\Common\Models\NotiGameInfo.cs" />
+     <Compile Include="Assets\Scripts\Common\Models\NotiMsgInfo.cs" />
      <Compile Include="Assets\Scripts\Common\Models\OrderInfo.cs" />
      <Compile Include="Assets\Scripts\Common\Models\PlayInfo.cs" />
      <Compile Include="Assets\Scripts\Common\Models\PlayerInfo.cs" />
@@ -730,7 +734,7 @@
      <Compile Include="Assets\Scripts\Network\Events\BaseEvent.cs" />
      <Compile Include="Assets\Scripts\Network\Events\GetCardInvenEvent.cs" />
      <Compile Include="Assets\Scripts\Network\Events\GetGameSposDetailBoardEvent.cs" />
-     <Compile Include="Assets\Scripts\Network\Events\GetPreparedQuizEvent.cs" />
+     <Compile Include="Assets\Scripts\Network\Events\GetQuizEvent.cs" />
      <Compile Include="Assets\Scripts\Network\Events\GetScheduleMoreEvent.cs" />
      <Compile Include="Assets\Scripts\Network\Events\LoginEvent.cs" />
      <Compile Include="Assets\Scripts\Network\NetMgr.cs" />
@@ -738,12 +742,13 @@
      <Compile Include="Assets\Scripts\Network\Requests\GetCardInvenRequest.cs" />
      <Compile Include="Assets\Scripts\Network\Requests\GetGameSposDetailBoardRequest.cs" />
      <Compile Include="Assets\Scripts\Network\Requests\GetPreparedQuizRequest.cs" />
+     <Compile Include="Assets\Scripts\Network\Requests\GetProgressQuizRequest.cs" />
      <Compile Include="Assets\Scripts\Network\Requests\GetScheduleMoreRequest.cs" />
      <Compile Include="Assets\Scripts\Network\Requests\LoginRequest.cs" />
      <Compile Include="Assets\Scripts\Network\Responses\BaseResponse.cs" />
      <Compile Include="Assets\Scripts\Network\Responses\GetCardInvenResponse.cs" />
      <Compile Include="Assets\Scripts\Network\Responses\GetGameSposDetailBoardResponse.cs" />
-     <Compile Include="Assets\Scripts\Network\Responses\GetPreparedQuizResponse.cs" />
+     <Compile Include="Assets\Scripts\Network\Responses\GetQuizResponse.cs" />
      <Compile Include="Assets\Scripts\Network\Responses\GetScheduleMoreResponse.cs" />
      <Compile Include="Assets\Scripts\Network\Responses\LoginResponse.cs" />
      <Compile Include="Assets\iTween\iTween.cs" />

@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class GetPreparedQuizResponse : BaseResponse {
+public class GetQuizResponse : BaseResponse {
 	QuizListInfo _data;
 
 	public QuizListInfo data

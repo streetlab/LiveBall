@@ -8,16 +8,6 @@ public class ScriptItemInfoHighlight : MonoBehaviour {
 	public GameObject mSpr;
 	public GameObject mLblBody;
 
-	// Use this for initialization
-	void Start () {
-
-	}
-	
-	// Update is called once per frame
-	void Update () {
-
-	}
-
 	public void Init()
 	{
 		UILabel lblBody = mLblBody.GetComponent<UILabel> ();

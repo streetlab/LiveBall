@@ -4,33 +4,48 @@ using System.Collections;
 public class ScriptMatchReady : MonoBehaviour {
 	public GameObject itemInfo;
 	public GameObject itemPoll;
+	public GameObject mList;
 
-	GetPreparedQuizEvent mEvent;
+	GetQuizEvent mEvent;
+	float mPosGuide;
 
 	// Use this for initialization
 	void Start () {
-		Transform transformList = transform.FindChild ("List").GetComponent<UIScrollView> ().transform;
+		UtilMgr.ResizeList (mList);
+		mEvent = new GetQuizEvent (new EventDelegate (this, "GotQuiz"));
+		NetMgr.GetPreparedQuiz (mEvent);
+	}
 
+	void SetMatchInfo()
+	{
 		GameObject obj = Instantiate(itemInfo, new Vector3(0f, 0f, 0f), Quaternion.identity) as GameObject;
-		obj.transform.parent = transformList;
+		obj.transform.parent = mList.transform;
 		obj.transform.localScale = new Vector3(1f, 1f, 1f);		
 		obj.GetComponent<ScriptItemInfoHighlight> ().Init ();
+		obj.transform.localPosition = new Vector3(0f, 0f, 0f);
+		mPosGuide += obj.GetComponent<BoxCollider2D> ().size.y+10f;
+		mPosGuide += (374f - 226f) / 2f;
+	}
 
-		obj = Instantiate(itemPoll, new Vector3(0f, 0f, 0f), Quaternion.identity) as GameObject;
-		obj.transform.parent = transformList;
-		obj.transform.localScale = new Vector3(1f, 1f, 1f);
-		obj.transform.localPosition = new Vector3 (0f, -140f);
+	void SetPreparedGames()
+	{
+		for(int i = 0; i < mEvent.GetResponse().data.quiz.Count; i++)
+		{
+			GameObject obj = Instantiate(itemPoll, new Vector3(0f, 0f, 0f), Quaternion.identity) as GameObject;
+			obj.GetComponent<ScriptItemPollHighlight> ().Init (mEvent.GetResponse().data.quiz[i]);
+			obj.transform.parent = mList.transform;
+			obj.transform.localScale = new Vector3(1f, 1f, 1f);
+			obj.transform.localPosition = new Vector3(0f, -mPosGuide, 0f);
+			mPosGuide += obj.GetComponent<BoxCollider2D> ().size.y+10f;
 
-		UtilMgr.ResizeList (transformList.gameObject);
-
-		transform.FindChild ("List").GetComponent<UIScrollView> ().ResetPosition ();
-
-		mEvent = new GetPreparedQuizEvent (new EventDelegate (this, "GotQuiz"));
-		NetMgr.GetPreparedQuiz (mEvent);
+		}
 	}
 
 	public void GotQuiz()
 	{
-		Debug.Log ("GotQuiz : " + mEvent.GetResponse ().data.gameType.gameType);
+		mPosGuide = 0f;
+		SetMatchInfo ();
+		SetPreparedGames ();
+		mList.GetComponent<UIScrollView> ().ResetPosition ();
 	}
 }

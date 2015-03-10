@@ -3696,13 +3696,13 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3018
+  startingRenderQueue: 3021
   mClipTexture: {fileID: 0}
   mAlpha: 1
-  mClipping: 4
+  mClipping: 3
   mClipRange: {x: 0, y: 0, z: 720, w: 670}
-  mClipSoftness: {x: 4, y: 4}
-  mDepth: 1
+  mClipSoftness: {x: 0, y: 0}
+  mDepth: 3
   mSortingOrder: 0
   mClipOffset: {x: 0, y: 0}
 --- !u!1 &180647249
@@ -3806,7 +3806,7 @@ Transform:
   m_GameObject: {fileID: 183414613}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: .99999994, y: .99999994, z: .99999994}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 878391850}
   - {fileID: 1311010031}
@@ -22346,7 +22346,7 @@ MonoBehaviour:
   mAlpha: 1
   mClipping: 3
   mClipRange: {x: 0, y: 0, z: 720, w: 820}
-  mClipSoftness: {x: 4, y: 4}
+  mClipSoftness: {x: 0, y: 0}
   mDepth: 1
   mSortingOrder: 0
   mClipOffset: {x: 0, y: 0}
@@ -22418,7 +22418,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3029
+  startingRenderQueue: 3018
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 0
@@ -36788,7 +36788,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3040
+  startingRenderQueue: 3021
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 0
@@ -37816,7 +37816,7 @@ Transform:
   m_GameObject: {fileID: 1465707728}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: .00208116556, y: .00208116556, z: .00208116556}
+  m_LocalScale: {x: .00208550575, y: .00208550575, z: .00208550575}
   m_Children:
   - {fileID: 1171594848}
   - {fileID: 654317284}
@@ -39600,7 +39600,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1523874852
 Transform:
   m_ObjectHideFlags: 0
@@ -39628,6 +39628,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemInfo: {fileID: 100002, guid: f58daeefb556149b09739f20efb8d8be, type: 2}
   itemPoll: {fileID: 100000, guid: 623c485b70de14ad697522d981d6fbe4, type: 2}
+  mList: {fileID: 876034891}
 --- !u!1 &1531223147
 GameObject:
   m_ObjectHideFlags: 0
@@ -39799,7 +39800,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1532797255
 Transform:
   m_ObjectHideFlags: 0
@@ -39808,7 +39809,7 @@ Transform:
   m_GameObject: {fileID: 1532797254}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.00031996, y: 1.00031996, z: 1.00031996}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1145536723}
   - {fileID: 1967113760}
@@ -45573,7 +45574,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1803103081
 Transform:
   m_ObjectHideFlags: 0
@@ -45602,6 +45603,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mScoreBoard: {fileID: 397105650}
   mList: {fileID: 179363051}
+  itemHitter: {fileID: 100018, guid: 102dc5c51a196458bb65c09873d9098b, type: 2}
+  itemRound: {fileID: 100008, guid: ac8820ab178754007b97ee10fafd0664, type: 2}
+  itemPoll: {fileID: 0}
+  itemInfo: {fileID: 0}
 --- !u!1 &1803194250
 GameObject:
   m_ObjectHideFlags: 0
