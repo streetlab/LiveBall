@@ -2,11 +2,11 @@
 using System.Collections;
 using System.Text;
 
-public class GetCardInvenRequest : BaseRequest {
+public class GetProfileRequest : BaseRequest {
 
-	public GetCardInvenRequest()
+	public GetProfileRequest(int memSeq)
 	{
-		Add ("memSeq", UserMgr.UserInfo.memSeq);
+		Add ("memSeq", memSeq);
 
 		mParams = JsonFx.Json.JsonWriter.Serialize (this);
 
@@ -19,7 +19,7 @@ public class GetCardInvenRequest : BaseRequest {
 
 	public override string GetQueryId()
 	{
-		return "tubyGetCardInven";
+		return "tubyGetProfileInfo";
 	}
 
 }

@@ -6,7 +6,7 @@ public class GetPreparedQuizRequest : BaseRequest {
 
 	public GetPreparedQuizRequest()
 	{
-		Add ("memSeq", UserMgr.GetUserInfo ().memSeq);
+		Add ("memSeq", UserMgr.UserInfo.memSeq);
 		Add ("gameSeq", UserMgr.Schedule.gameSeq);
 		Add ("quizListSeq", 0);
 

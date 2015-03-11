@@ -17,9 +17,9 @@ public class GetScheduleMoreEvent : BaseEvent {
 		eventDelegate.Execute ();
 	}
 
-	public GetScheduleMoreResponse GetResponse()
+	public GetScheduleMoreResponse Response
 	{
-		return response as GetScheduleMoreResponse;
+		get{ return response as GetScheduleMoreResponse;}
 	}
 
 }

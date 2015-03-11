@@ -17,9 +17,9 @@ public class GetCardInvenEvent : BaseEvent {
 		eventDelegate.Execute ();
 	}
 
-	public GetCardInvenResponse GetResponse()
+	public GetCardInvenResponse Response
 	{
-		return response as GetCardInvenResponse;
+		get{ return response as GetCardInvenResponse;}
 	}
 
 }

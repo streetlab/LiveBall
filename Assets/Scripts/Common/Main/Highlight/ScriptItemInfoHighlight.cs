@@ -24,6 +24,6 @@ public class ScriptItemInfoHighlight : MonoBehaviour {
 //		smt.mBingo.SetActive (false);
 //		smt.mLivetalk.SetActive (false);
 //		smt.mBetting.SetActive (true);
-		smt.OpenBetting ();
+//		smt.OpenBetting ();
 	}
 }

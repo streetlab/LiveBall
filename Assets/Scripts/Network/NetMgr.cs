@@ -73,6 +73,11 @@ public class NetMgr : MonoBehaviour{
 		Instance.webAPIProcessEvent (new GetGameSposDetailBoardRequest (), baseEvent);
 	}
 
+	public static void GetGameSposPlayBoard(BaseEvent baseEvent)
+	{
+		Instance.webAPIProcessEvent (new GetGameSposPlayBoardRequest (), baseEvent);
+	}
+
 	public static void GetCardInven(BaseEvent baseEvent)
 	{
 		Instance.webAPIProcessEvent (new GetCardInvenRequest (), baseEvent);
@@ -86,5 +91,10 @@ public class NetMgr : MonoBehaviour{
 	public static void GetProgressQuiz(int quizListSeq, BaseEvent baseEvent)
 	{
 		Instance.webAPIProcessEvent (new GetProgressQuizRequest (quizListSeq), baseEvent);
+	}
+
+	public static void GetProfile(int memSeq, BaseEvent baseEvent)
+	{
+		Instance.webAPIProcessEvent (new GetProfileRequest (memSeq), baseEvent);
 	}
 }

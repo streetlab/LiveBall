@@ -4,6 +4,8 @@ using System.Collections;
 public class ScriptTitle : MonoBehaviour {
 
 	LoginEvent mLoginEvent;
+	GetProfileEvent mProfileEvent;
+	GetCardInvenEvent mCardEvent;
 	LoginInfo mLoginInfo;
 
 	void Start()
@@ -47,11 +49,29 @@ public class ScriptTitle : MonoBehaviour {
 	void LoginComplete()
 	{
 //		Debug.Log (mLoginEvent.GetResponse().data.memberEmail);
-		LoginInfo loginInfo = mLoginEvent.GetResponse ().data;
-		UserMgr.GetUserInfo ().teamCode = loginInfo.teamCode;
-		UserMgr.GetUserInfo ().teamSeq = loginInfo.teamSeq;
-		UserMgr.GetUserInfo ().memSeq = loginInfo.memSeq;
+		mLoginInfo = mLoginEvent.Response.data;
+//		UserMgr.UserInfo.teamCode = loginInfo.teamCode;
+//		UserMgr.UserInfo.teamSeq = loginInfo.teamSeq;
+//		UserMgr.UserInfo.memSeq = loginInfo.memSeq;
 
+//		AutoFade.LoadLevel ("SceneTeamHome", 0f, 1f);
+		mProfileEvent = new GetProfileEvent (new EventDelegate (this, "GotProfile"));
+		NetMgr.GetProfile (mLoginInfo.memSeq, mProfileEvent);
+	}
+
+	public void GotProfile()
+	{
+		UserMgr.UserInfo = mProfileEvent.Response.data;
+		UserMgr.UserInfo.teamCode = mLoginInfo.teamCode;
+		UserMgr.UserInfo.teamSeq = mLoginInfo.teamSeq;
+		Debug.Log ("GotProfile");
+		mCardEvent = new GetCardInvenEvent (new EventDelegate (this, "GotCardInven"));
+		NetMgr.GetCardInven (mCardEvent);
+	}
+
+	public void GotCardInven()
+	{
+		Debug.Log ("GotCardInven");
 		AutoFade.LoadLevel ("SceneTeamHome", 0f, 1f);
 	}
 

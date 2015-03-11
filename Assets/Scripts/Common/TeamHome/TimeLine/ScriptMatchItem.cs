@@ -27,7 +27,7 @@ public class ScriptMatchItem : cUIScrollListBase {
 	public void GoLeft()
 	{
 		UIPanel panel = NGUITools.FindInParents<UIPanel>(gameObject);
-		Debug.Log("move prev");
+//		Debug.Log("move prev");
 		if(mIndex > 0){
 			NGUITools.FindInParents<ScriptMatch>(panel.gameObject).mListScriptMatchItem[mIndex-1].OnCenter();
 		}
@@ -42,7 +42,7 @@ public class ScriptMatchItem : cUIScrollListBase {
 	public void GoRight()
 	{
 		UIPanel panel = NGUITools.FindInParents<UIPanel>(gameObject);
-		Debug.Log("move next");
+//		Debug.Log("move next");
 		if(!mIsTail){
 			NGUITools.FindInParents<ScriptMatch>(panel.gameObject).mListScriptMatchItem[mIndex+1].OnCenter();
 		}
@@ -131,9 +131,9 @@ public class ScriptMatchItem : cUIScrollListBase {
 
 
 		float myX = panel.cachedTransform.localPosition.x - offset.x;
-		Debug.Log ("offset : " + offset.x);
-		Debug.Log ("panel.cachedTransform.localPosition.x : " + panel.cachedTransform.localPosition.x);
-		Debug.Log ("myX : " + myX);
+//		Debug.Log ("offset : " + offset.x);
+//		Debug.Log ("panel.cachedTransform.localPosition.x : " + panel.cachedTransform.localPosition.x);
+//		Debug.Log ("myX : " + myX);
 		if (myX < -360f) {
 			GoRight ();
 		} else 
@@ -142,7 +142,7 @@ public class ScriptMatchItem : cUIScrollListBase {
 //		} else if(Mathf.Abs(myX) > 180f){
 //			GoRight ();
 		} else{
-			Debug.Log("on Center");
+//			Debug.Log("on Center");
 
 			SpringPanel.Begin(panel.cachedGameObject, offset, 6f);
 		}

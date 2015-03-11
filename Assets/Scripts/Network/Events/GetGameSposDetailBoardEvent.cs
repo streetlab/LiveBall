@@ -17,9 +17,9 @@ public class GetGameSposDetailBoardEvent : BaseEvent {
 		eventDelegate.Execute ();
 	}
 
-	public GetGameSposDetailBoardResponse GetResponse()
+	public GetGameSposDetailBoardResponse Response
 	{
-		return response as GetGameSposDetailBoardResponse;
+		get{ return response as GetGameSposDetailBoardResponse;}
 	}
 
 }

@@ -17,9 +17,9 @@ public class GetQuizEvent : BaseEvent {
 		eventDelegate.Execute ();
 	}
 
-	public GetQuizResponse GetResponse()
+	public GetQuizResponse Response
 	{
-		return response as GetQuizResponse;
+		get{ return response as GetQuizResponse;}
 	}
 
 }

@@ -57,9 +57,9 @@ public class CardInfo {
 		}
 	}
 
-	int _memCardNo;
+	double _memCardNo;
 
-	public int memCardNo {
+	public double memCardNo {
 		get {
 			return _memCardNo;
 		}
@@ -233,9 +233,9 @@ public class CardInfo {
 		}
 	}
 
-	int _registKey;
+	double _registKey;
 
-	public int registKey {
+	public double registKey {
 		get {
 			return _registKey;
 		}

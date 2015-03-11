@@ -40,10 +40,10 @@ public class GetScheduleMoreRequest : BaseRequest {
 //		this.teamCode = UserMgr.GetUserInfo ().teamCode;
 //		this.teamSeq = UserMgr.GetUserInfo ().teamSeq;
 
-		Add ("memSeq", UserMgr.GetUserInfo ().memSeq);
+		Add ("memSeq", UserMgr.UserInfo.memSeq);
 		Add ("date", UtilMgr.GetDateTime ("yyyyMMdd"));
-		Add ("teamCode", UserMgr.GetUserInfo ().teamCode);
-		Add ("teamSeq", UserMgr.GetUserInfo ().teamSeq);
+		Add ("teamCode", UserMgr.UserInfo.teamCode);
+		Add ("teamSeq", UserMgr.UserInfo.teamSeq);
 
 		mParams = JsonFx.Json.JsonWriter.Serialize (this);
 

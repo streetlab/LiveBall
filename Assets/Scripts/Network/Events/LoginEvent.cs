@@ -17,9 +17,9 @@ public class LoginEvent : BaseEvent {
 		eventDelegate.Execute ();
 	}
 
-	public LoginResponse GetResponse()
+	public LoginResponse Response
 	{
-		return response as LoginResponse;
+		get{return response as LoginResponse;}
 	}
 
 }

@@ -2,9 +2,9 @@
 using System.Collections;
 using System.Text;
 
-public class GetGameSposDetailBoardRequest : BaseRequest {
+public class GetGameSposPlayBoardRequest : BaseRequest {
 
-	public GetGameSposDetailBoardRequest()
+	public GetGameSposPlayBoardRequest()
 	{
 		Add ("memSeq", UserMgr.UserInfo.memSeq);
 		Add ("gameSeq", UserMgr.Schedule.gameSeq);
@@ -20,7 +20,7 @@ public class GetGameSposDetailBoardRequest : BaseRequest {
 
 	public override string GetQueryId()
 	{
-		return "gameSposDetailBoard";
+		return "gameSposPlayBoard";
 	}
 
 }

@@ -29,10 +29,10 @@ public class ScriptMatchReady : MonoBehaviour {
 
 	void SetPreparedGames()
 	{
-		for(int i = 0; i < mEvent.GetResponse().data.quiz.Count; i++)
+		for(int i = 0; i < mEvent.Response.data.quiz.Count; i++)
 		{
 			GameObject obj = Instantiate(itemPoll, new Vector3(0f, 0f, 0f), Quaternion.identity) as GameObject;
-			obj.GetComponent<ScriptItemPollHighlight> ().Init (mEvent.GetResponse().data.quiz[i]);
+			obj.GetComponent<ScriptItemPollHighlight> ().Init (mEvent.Response.data.quiz[i]);
 			obj.transform.parent = mList.transform;
 			obj.transform.localScale = new Vector3(1f, 1f, 1f);
 			obj.transform.localPosition = new Vector3(0f, -mPosGuide, 0f);

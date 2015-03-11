@@ -84,7 +84,7 @@ public class UtilMgr : MonoBehaviour {
 
 	public static string AddsThousandsSeparator(string number)
 	{
-		return string.Format ("{n0}", number);
+		return AddsThousandsSeparator (double.Parse (number));
 	}
 
 	public static string AddsThousandsSeparator(int number)

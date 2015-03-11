@@ -46,9 +46,9 @@ public class NotiMsgInfo {
 		}
 	}
 
-	NotiGameInfo _info;
+	NotiQuizInfo _info;
 
-	public NotiGameInfo info {
+	public NotiQuizInfo info {
 		get {
 			return _info;
 		}

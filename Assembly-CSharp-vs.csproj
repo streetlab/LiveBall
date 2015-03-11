@@ -686,8 +686,8 @@
      <Compile Include="Assets\Scripts\Common\Models\GameTypeInfo.cs" />
      <Compile Include="Assets\Scripts\Common\Models\HEBInfo.cs" />
      <Compile Include="Assets\Scripts\Common\Models\LoginInfo.cs" />
-     <Compile Include="Assets\Scripts\Common\Models\NotiGameInfo.cs" />
      <Compile Include="Assets\Scripts\Common\Models\NotiMsgInfo.cs" />
+     <Compile Include="Assets\Scripts\Common\Models\NotiQuizInfo.cs" />
      <Compile Include="Assets\Scripts\Common\Models\OrderInfo.cs" />
      <Compile Include="Assets\Scripts\Common\Models\PlayInfo.cs" />
      <Compile Include="Assets\Scripts\Common\Models\PlayerInfo.cs" />
@@ -734,6 +734,7 @@
      <Compile Include="Assets\Scripts\Network\Events\BaseEvent.cs" />
      <Compile Include="Assets\Scripts\Network\Events\GetCardInvenEvent.cs" />
      <Compile Include="Assets\Scripts\Network\Events\GetGameSposDetailBoardEvent.cs" />
+     <Compile Include="Assets\Scripts\Network\Events\GetProfileEvent.cs" />
      <Compile Include="Assets\Scripts\Network\Events\GetQuizEvent.cs" />
      <Compile Include="Assets\Scripts\Network\Events\GetScheduleMoreEvent.cs" />
      <Compile Include="Assets\Scripts\Network\Events\LoginEvent.cs" />
@@ -741,13 +742,16 @@
      <Compile Include="Assets\Scripts\Network\Requests\BaseRequest.cs" />
      <Compile Include="Assets\Scripts\Network\Requests\GetCardInvenRequest.cs" />
      <Compile Include="Assets\Scripts\Network\Requests\GetGameSposDetailBoardRequest.cs" />
+     <Compile Include="Assets\Scripts\Network\Requests\GetGameSposPlayBoardRequest.cs" />
      <Compile Include="Assets\Scripts\Network\Requests\GetPreparedQuizRequest.cs" />
+     <Compile Include="Assets\Scripts\Network\Requests\GetProfileRequest.cs" />
      <Compile Include="Assets\Scripts\Network\Requests\GetProgressQuizRequest.cs" />
      <Compile Include="Assets\Scripts\Network\Requests\GetScheduleMoreRequest.cs" />
      <Compile Include="Assets\Scripts\Network\Requests\LoginRequest.cs" />
      <Compile Include="Assets\Scripts\Network\Responses\BaseResponse.cs" />
      <Compile Include="Assets\Scripts\Network\Responses\GetCardInvenResponse.cs" />
      <Compile Include="Assets\Scripts\Network\Responses\GetGameSposDetailBoardResponse.cs" />
+     <Compile Include="Assets\Scripts\Network\Responses\GetProfileResponse.cs" />
      <Compile Include="Assets\Scripts\Network\Responses\GetQuizResponse.cs" />
      <Compile Include="Assets\Scripts\Network\Responses\GetScheduleMoreResponse.cs" />
      <Compile Include="Assets\Scripts\Network\Responses\LoginResponse.cs" />

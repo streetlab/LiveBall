@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class NotiGameInfo {
+public class NotiQuizInfo {
 	string _gameSeq;
 	
 	public string gameSeq {

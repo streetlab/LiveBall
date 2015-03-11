@@ -11,6 +11,7 @@ public class ScriptMatchPlaying : MonoBehaviour {
 	public GameObject itemInfo;
 
 	float mPosGuide;
+//	int mSequenceQuiz;
 	bool mFirstLoading;
 
 	GetGameSposDetailBoardEvent mEventDetail;
@@ -40,6 +41,11 @@ public class ScriptMatchPlaying : MonoBehaviour {
 //		}
 	}
 
+//	public int GetSeqQuiz()
+//	{
+//		return mSequenceQuiz;
+//	}
+
 	void SetProgQuiz(int quizListSeq)
 	{
 		mEventProgQuiz = new GetQuizEvent (new EventDelegate (this, "GotProgQuiz"));
@@ -48,15 +54,17 @@ public class ScriptMatchPlaying : MonoBehaviour {
 
 	public void GotProgQuiz()
 	{
-		for(int i = 0; i < mEventProgQuiz.GetResponse().data.quiz.Count; i++)
+		for(int i = 0; i < mEventProgQuiz.Response.data.quiz.Count; i++)
 		{
+			QuizInfo quizInfo = mEventProgQuiz.Response.data.quiz[i];
 			GameObject obj = Instantiate(itemHitter, new Vector3(0f, 0f, 0f), Quaternion.identity) as GameObject;
 			obj.transform.parent = mList.transform;
 			obj.transform.localScale = new Vector3(1f, 1f, 1f);		
-			obj.GetComponent<ScriptItemHitterHighlight> ().Init (mEventProgQuiz.GetResponse().data.quiz[i]);
+			obj.GetComponent<ScriptItemHitterHighlight> ().Init (quizInfo);
 			obj.transform.localPosition = new Vector3(0f, -mPosGuide, 0f);
 			mPosGuide += obj.GetComponent<BoxCollider2D> ().size.y+10;
-			
+			if(ScriptMainTop.SequenceQuiz < quizInfo.quizListSeq)
+				ScriptMainTop.SequenceQuiz = quizInfo.quizListSeq;
 		}
 
 		mList.GetComponent<UIScrollView> ().ResetPosition ();
@@ -78,10 +86,12 @@ public class ScriptMatchPlaying : MonoBehaviour {
 		mScoreBoard.transform.FindChild ("TeamTop").gameObject.SetActive (true);
 		mScoreBoard.transform.FindChild ("TeamBottom").gameObject.SetActive (true);
 
-		SetAwayScore (mEventDetail.GetResponse().data.awayScore);
-		SetHomeScore (mEventDetail.GetResponse().data.homeScore);
-		SetAwayRHEB (mEventDetail.GetResponse().data.infoBoard[0]);
-		SetHomeRHEB (mEventDetail.GetResponse().data.infoBoard[1]);
+		ScriptMainTop.DetailBoard = mEventDetail.Response.data;
+
+		SetAwayScore (ScriptMainTop.DetailBoard.awayScore);
+		SetHomeScore (ScriptMainTop.DetailBoard.homeScore);
+		SetAwayRHEB (ScriptMainTop.DetailBoard.infoBoard[0]);
+		SetHomeRHEB (ScriptMainTop.DetailBoard.infoBoard[1]);
 
 		if (mFirstLoading)
 			SetProgQuiz (0);

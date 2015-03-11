@@ -5,8 +5,10 @@ public class UserMgr : MonoBehaviour {
 
 	static UserMgr _instance;
 
-	UserInfo _userInfo = new UserInfo ();
+	UserInfo _userInfo;
+	CardInvenInfo _cardInvenInfo;
 	ScheduleInfo _schedule;
+
 	
 	static UserMgr Instance
 	{
@@ -44,9 +46,16 @@ public class UserMgr : MonoBehaviour {
 	
 	}
 
-	public static UserInfo GetUserInfo()
+	public static UserInfo UserInfo
 	{
-		return Instance._userInfo;
+		get{ return Instance._userInfo;}
+		set{Instance._userInfo = value;}
+	}
+
+	public static CardInvenInfo CardInvenInfo
+	{
+		get{ return Instance._cardInvenInfo;}
+		set{Instance._cardInvenInfo = value;}
 	}
 
 	public static ScheduleInfo Schedule

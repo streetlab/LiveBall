@@ -12,6 +12,6 @@ public class ScriptCardsMiddle : MonoBehaviour {
 
 	public void GotCardsInven()
 	{
-		Debug.Log ("GotCardsInven : "+mEvent.GetResponse ().data.cardClass.Count);
+		Debug.Log ("GotCardsInven : "+mEvent.Response.data.cardClass.Count);
 	}
 }

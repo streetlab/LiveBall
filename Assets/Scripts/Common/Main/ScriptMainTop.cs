@@ -14,6 +14,26 @@ public class ScriptMainTop : MonoBehaviour {
 	public GameObject mBtnBingo;
 	public GameObject mBtnLivetalk;
 
+	public GameObject mLblGold;
+	public GameObject mLblRuby;
+	public GameObject mLblDia;
+
+	static int sequenceQuiz = 0;
+	public static int SequenceQuiz {
+		get {	return sequenceQuiz;}
+		set {	sequenceQuiz = value;}
+	}
+
+	static SposDetailBoard detailBoard;
+	public static SposDetailBoard DetailBoard{
+		get{return detailBoard;}
+		set{detailBoard = value;}
+	}
+
+	bool mHasQuiz;
+	GetQuizEvent mEventQuiz;
+	GetGameSposDetailBoardEvent mBoardEvent;
+
 	enum STATE{
 		Highlight,
 		Lineup,
@@ -24,24 +44,26 @@ public class ScriptMainTop : MonoBehaviour {
 
 	STATE mState = STATE.Highlight;
 
-	// Use this for initialization
 	void Start () {
-//		mHighlight = transform.parent.FindChild ("TF_Highlight").gameObject;
-//		mLineup = transform.parent.FindChild ("TF_Lineup").gameObject;
-//		mStatistic = transform.parent.FindChild ("TF_Statistic").gameObject;
-//		mLivetalk = transform.parent.FindChild ("TF_Livetalk").gameObject;
-//		mBetting = transform.parent.FindChild ("TF_Betting").gameObject;
-
 		mHighlight.SetActive (true);
 		mLineup.SetActive (false);
 		mBingo.SetActive (false);
 		mLivetalk.SetActive (false);
 		mBetting.SetActive (false);
+
+		#if(UNITY_ANDROID)
+		AndroidMgr.SetMainTop(this);
+		#else
+		#endif
+
+		SetTopInfo ();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+
+	void SetTopInfo()
+	{
+		mLblDia.GetComponent<UILabel> ().text = UtilMgr.AddsThousandsSeparator(UserMgr.UserInfo.userDiamond);
+		mLblGold.GetComponent<UILabel> ().text = UtilMgr.AddsThousandsSeparator(UserMgr.UserInfo.userGoldenBall);
+		mLblRuby.GetComponent<UILabel> ().text = UtilMgr.AddsThousandsSeparator(UserMgr.UserInfo.userRuby);
 	}
 
 	public void GoPreState()
@@ -104,14 +126,47 @@ public class ScriptMainTop : MonoBehaviour {
 		mState = STATE.Livetalk;
 	}
 
-	public void OpenBetting()
+	public void OpenBetting(QuizInfo quizInfo)
 	{
 		mHighlight.SetActive (false);
 		mLineup.SetActive (false);
 		mBingo.SetActive (false);
 		mLivetalk.SetActive (false);
 		mBetting.SetActive (true);
+		mBetting.GetComponent<ScriptTF_Betting> ().Init (quizInfo);
 		UtilMgr.SetBackEvent(new EventDelegate(this, "GoPreState"));
+	}
+
+	public void RequestBoardInfo(bool hasQuiz)
+	{
+		if (hasQuiz)
+						mHasQuiz = true;
+
+		mBoardEvent = new  GetGameSposDetailBoardEvent(new EventDelegate (this, "GotBoard"));
+		NetMgr.GetGameSposPlayBoard(mBoardEvent);
+	}
+
+	public void RequestQuiz()
+	{
+		mEventQuiz = new GetQuizEvent (new EventDelegate (this, "GotQuiz"));
+		NetMgr.GetProgressQuiz (SequenceQuiz, mEventQuiz);
+	}
+
+	public void GotBoard()
+	{
+		Debug.Log("GotBoard");
+		ScriptMainTop.DetailBoard.play = mBoardEvent.Response.data.play;
+		ScriptMainTop.DetailBoard.player = mBoardEvent.Response.data.player;
+
+		if(mHasQuiz){
+			RequestQuiz();
+		}
+	}
+
+	public void GotQuiz()
+	{
+		Debug.Log("GotQuiz");
+		OpenBetting (mEventQuiz.Response.data.quiz[0]);
 	}
 
 	void OnBackPressed()
