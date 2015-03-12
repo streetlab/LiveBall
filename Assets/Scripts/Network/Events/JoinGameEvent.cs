@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class LoginEvent : BaseEvent {
+public class JoinGameEvent : BaseEvent {
 
-	public LoginEvent(EventDelegate eventDelegate)
+	public JoinGameEvent(EventDelegate eventDelegate)
 	{
 		base.eventDelegate = eventDelegate;
 
@@ -12,17 +12,12 @@ public class LoginEvent : BaseEvent {
 
 	public void InitResponse(string data)
 	{
-		response = JsonFx.Json.JsonReader.Deserialize<LoginResponse>(data);
+		response = JsonFx.Json.JsonReader.Deserialize<BaseResponse>(data);
 
 		if (checkError ())
 			return;
 
 		eventDelegate.Execute ();
-	}
-
-	public LoginResponse Response
-	{
-		get{return response as LoginResponse;}
 	}
 
 }

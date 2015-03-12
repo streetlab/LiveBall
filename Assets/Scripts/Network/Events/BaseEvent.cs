@@ -9,6 +9,15 @@ public class BaseEvent {
 	protected delegate void InitDelegate (string data);
 	protected event InitDelegate InitEvent;
 
+	protected bool checkError()
+	{
+		if (response.code > 0) {
+			Debug.Log("Response Error : " + response.message);
+			return true;
+		}
+		return false;
+	}
+
 	protected EventDelegate eventDelegate
 	{
 		get{return _eventDelegate;}
@@ -25,20 +34,5 @@ public class BaseEvent {
 	{
 		InitEvent (data);
 	}
-
-//
-//	public Object data;
-//	public string message;
-//	public int code;
-//	public int result;
-//
-//	public void Init(string data)
-//	{
-//		//do Parsing
-//
-//		//call Event
-//		if (_eventDelegate != null)
-//				_eventDelegate.Execute ();
-//	}
 
 }

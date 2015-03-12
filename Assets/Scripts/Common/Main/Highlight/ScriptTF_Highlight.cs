@@ -7,6 +7,10 @@ public class ScriptTF_Highlight : MonoBehaviour {
 	public GameObject mMatchPlaying;
 	public GameObject mMatchEnded;
 
+	void Update(){
+		Debug.Log ("" + System.DateTime.Now.Second);
+		}
+
 	void Start()
 	{
 		if(UserMgr.Schedule.gameStatus == 0)

@@ -1,32 +1,13 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Network/Events/GetCardInvenEvent.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Common/Utils/UtilMgr.cs">
     <Files>
-      <File FileName="Assets/Scripts/Common/Main/Highlight/ScriptItemPollHighlight.cs" Line="13" Column="37" />
-      <File FileName="Assets/Scripts/Common/Main/Highlight/ScriptMatchReady.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Common/Main/Highlight/ScriptMatchPlaying.cs" Line="98" Column="3" />
-      <File FileName="Assets/Scripts/Common/TeamHome/TimeLine/ScriptMatch.cs" Line="57" Column="78" />
-      <File FileName="Assets/Scripts/Common/Main/ScriptMainRoot.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Common/Main/Betting/ScriptTF_Betting.cs" Line="54" Column="113" />
-      <File FileName="Assets/Scripts/Network/NetMgr.cs" Line="83" Column="55" />
-      <File FileName="Assets/Scripts/Common/Main/Highlight/ScriptTF_Highlight.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Common/Models/QuizInfo.cs" Line="381" Column="2" />
-      <File FileName="Assets/Scripts/Common/Utils/Constants.cs" Line="44" Column="2" />
-      <File FileName="Assets/Scripts/Common/Cards/ScriptCardsMiddle.cs" Line="6" Column="19" />
-      <File FileName="Assets/Scripts/Common/Models/NotiQuizInfo.cs" Line="4" Column="1" />
-      <File FileName="Assets/Scripts/Common/Models/SposDetailBoard.cs" Line="41" Column="2" />
-      <File FileName="Assets/Scripts/Common/Main/ScriptMainTop.cs" Line="59" Column="3" />
-      <File FileName="Assets/Scripts/Network/Requests/GetCardInvenRequest.cs" Line="9" Column="34" />
-      <File FileName="Assets/Scripts/Network/Responses/GetCardInvenResponse.cs" Line="6" Column="15" />
-      <File FileName="Assets/Scripts/Common/Models/CardInvenInfo.cs" Line="5" Column="1" />
-      <File FileName="Assets/Scripts/Common/Login/ScriptTitle.cs" Line="8" Column="19" />
-      <File FileName="Assets/Scripts/Network/Requests/GetProfileRequest.cs" Line="22" Column="29" />
-      <File FileName="Assets/Scripts/Network/Events/LoginEvent.cs" Line="20" Column="23" />
-      <File FileName="Assets/Scripts/Network/Events/GetScheduleMoreEvent.cs" Line="22" Column="52" />
-      <File FileName="Assets/Scripts/Network/Events/GetProfileEvent.cs" Line="22" Column="47" />
-      <File FileName="Assets/Scripts/Network/Events/GetGameSposDetailBoardEvent.cs" Line="22" Column="59" />
-      <File FileName="Assets/Scripts/Network/Events/GetCardInvenEvent.cs" Line="22" Column="49" />
-      <File FileName="Assets/Scripts/Network/Events/BaseEvent.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Common/Login/ScriptTitle.cs" Line="66" Column="49" />
+      <File FileName="Assets/Scripts/Common/Utils/AndroidMgr.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Common/Main/ScriptMainTop.cs" Line="137" Column="31" />
+      <File FileName="Assets/Scripts/Common/Utils/UtilMgr.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Common/Main/Highlight/ScriptMatchPlaying.cs" Line="74" Column="65" />
+      <File FileName="Assets/Scripts/Common/Main/Betting/ScriptTF_Betting.cs" Line="122" Column="7" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

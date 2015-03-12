@@ -14,6 +14,9 @@ public class GetGameSposDetailBoardEvent : BaseEvent {
 	{
 		response = JsonFx.Json.JsonReader.Deserialize<GetGameSposDetailBoardResponse>(data);
 
+		if (checkError ())
+			return;
+
 		eventDelegate.Execute ();
 	}
 

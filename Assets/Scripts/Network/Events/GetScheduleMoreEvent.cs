@@ -14,6 +14,9 @@ public class GetScheduleMoreEvent : BaseEvent {
 	{
 		response = JsonFx.Json.JsonReader.Deserialize<GetScheduleMoreResponse>(data);
 
+		if (checkError ())
+			return;
+
 		eventDelegate.Execute ();
 	}
 

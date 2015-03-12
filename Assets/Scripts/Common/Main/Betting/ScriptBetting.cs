@@ -27,9 +27,10 @@ public class ScriptBetting : MonoBehaviour {
 	UILabel mLblUse;
 	UILabel mLblExpect;
 
-	double mAmountUse;
+	double mAmountUse = 1000d;
 
-	// Use this for initialization
+	JoinQuizEvent mJoinQuizEvent;
+
 	void Start () {
 		gameObject.SetActive (false);
 		Transform panel = transform.FindChild ("Panel").transform;
@@ -39,8 +40,13 @@ public class ScriptBetting : MonoBehaviour {
 		mLblGot = panel.FindChild ("SprBack1").FindChild("LblAmount").GetComponent<UILabel> ();
 		mLblUse = panel.FindChild ("SprBack2").FindChild("LblAmount").GetComponent<UILabel> ();
 		mLblExpect = panel.FindChild ("SprBack3").FindChild("LblAmount").GetComponent<UILabel> ();
+	}
 
-		mAmountUse = 1000;
+	void OnEnable()
+	{
+		mLblGot.text = UtilMgr.AddsThousandsSeparator (UserMgr.UserInfo.userGoldenBall);
+		mLblUse.text = UtilMgr.AddsThousandsSeparator (mAmountUse);
+		mLblExpect.text = UtilMgr.AddsThousandsSeparator (mAmountUse * float.Parse(GetOrder().ratio));
 	}
 
 	public void Init(string name)
@@ -62,10 +68,56 @@ public class ScriptBetting : MonoBehaviour {
 	}
 
 	void SetConfirm()
-	{		 
+	{	
+		//send to server
+		//param={%22memSeq%22:423%20,%22gameSeq%22:1216%20,%22quizListSeq%22:9%20,%22qzType%22:1%20,%22useCardNo%22:140300988901%20,%22betPoint%22:%22100%22%20,%22item%22:1000%20,%22selectValue%22:%221%22%20,%22extendValue%22:%220%22%20}&type=spos&id=gameSposQuizJoin
+		JoinQuizInfo joinInfo = new JoinQuizInfo ();
+		joinInfo.GameSeq = UserMgr.Schedule.gameSeq;
+		joinInfo.MemSeq = UserMgr.UserInfo.memSeq;
+		joinInfo.QuizListSeq = ScriptMainTop.SequenceQuiz;
+		joinInfo.QzType = GetOrder ().quizType;
+		joinInfo.UseCardNo = 0;
+		joinInfo.BetPoint = string.Format ("{0}", double.Parse (mLblUse.text));
+		joinInfo.Item = 1000;
+		joinInfo.SelectValue = string.Format("{0}", GetOrder ().orderSeq);
+		joinInfo.ExtendValue = "0";
+		mJoinQuizEvent = new JoinQuizEvent(new EventDelegate(this, "CompleteSending"));
+		NetMgr.JoinQuiz (joinInfo, mJoinQuizEvent);
+	}
+
+	public void CompleteSending()
+	{
 		mSbi.SetSelected ();
-//		CloseWindow ();
+		SetBtnsDisable ();
 		UtilMgr.OnBackPressed ();
+		ScriptTF_Betting.QuizCount++;
+	}
+
+	void SetBtnsDisable()
+	{
+		switch(mSelectedName)
+		{
+		case "BtnHit1":
+		case "BtnHit2":
+		case "BtnHit3":
+		case "BtnHit4":
+			mBtnHit1.GetComponent<BoxCollider2D>().enabled = false;
+			mBtnHit2.GetComponent<BoxCollider2D>().enabled = false;
+			mBtnHit3.GetComponent<BoxCollider2D>().enabled = false;
+			mBtnHit4.GetComponent<BoxCollider2D>().enabled = false;
+			Debug.Log("Hit Disabled");
+			break;
+		case "BtnOut1":
+		case "BtnOut2":
+		case "BtnOut3":
+		case "BtnOut4":
+			mBtnOut1.GetComponent<BoxCollider2D>().enabled = false;
+			mBtnOut2.GetComponent<BoxCollider2D>().enabled = false;
+			mBtnOut3.GetComponent<BoxCollider2D>().enabled = false;
+			mBtnOut4.GetComponent<BoxCollider2D>().enabled = false;
+			Debug.Log("Out Disabled");
+			break;
+		}
 	}
 
 	void SetCancel()
@@ -73,6 +125,37 @@ public class ScriptBetting : MonoBehaviour {
 		mSbi.SetUnselected ();
 //		CloseWindow ();
 		UtilMgr.OnBackPressed ();
+	}
+
+	OrderInfo GetOrder()
+	{
+		switch (mSelectedName) {
+		case "BtnHit1":
+			return UserMgr.QuizInfo.order [0];
+		case "BtnHit2":
+			return UserMgr.QuizInfo.order [1];
+		case "BtnHit3":
+			return UserMgr.QuizInfo.order [2];
+		case "BtnHit4":
+			return UserMgr.QuizInfo.order [3];
+		case "BtnOut1":
+			return UserMgr.QuizInfo.order [4];
+		case "BtnOut2":
+			return UserMgr.QuizInfo.order [5];
+		case "BtnOut3":
+			return UserMgr.QuizInfo.order [6];
+		case "BtnOut4":
+			return UserMgr.QuizInfo.order [7];
+		case "BtnLoaded1":
+			return UserMgr.QuizInfo.order [0];
+		case "BtnLoaded2":
+			return UserMgr.QuizInfo.order [1];
+		case "BtnLoaded3":
+			return UserMgr.QuizInfo.order [2];
+		case "BtnLoaded4":
+			return UserMgr.QuizInfo.order [3];
+		}
+		return null;
 	}
 
 	ScriptBettingItem GetBettingItem()
@@ -117,9 +200,9 @@ public class ScriptBetting : MonoBehaviour {
 	{
 		mAmountUse += amount;
 		//if the Amount over the Max then process under
-		if(mAmountUse >= 123123123123000)
+		if(mAmountUse >= double.Parse(UserMgr.UserInfo.userGoldenBall))
 		{
-			mAmountUse = 123123123123000;
+			mAmountUse = double.Parse(UserMgr.UserInfo.userGoldenBall);
 		}
 
 		mLblUse.text = UtilMgr.AddsThousandsSeparator (mAmountUse);
@@ -129,16 +212,16 @@ public class ScriptBetting : MonoBehaviour {
 
 	void BetMax()
 	{
-		mAmountUse = 123123123123000;
+		mAmountUse = double.Parse (UserMgr.UserInfo.userGoldenBall);
 		mLblUse.text = UtilMgr.AddsThousandsSeparator (mAmountUse);
-		mLblExpect.text = UtilMgr.AddsThousandsSeparator (mAmountUse*2);
+		mLblExpect.text = UtilMgr.AddsThousandsSeparator (mAmountUse * float.Parse(GetOrder().ratio));
 	}
 
 	void BetMin()
 	{
 		mAmountUse = 1000;
 		mLblUse.text = UtilMgr.AddsThousandsSeparator (mAmountUse);
-		mLblExpect.text = UtilMgr.AddsThousandsSeparator (mAmountUse*2);
+		mLblExpect.text = UtilMgr.AddsThousandsSeparator (mAmountUse * float.Parse(GetOrder().ratio));
 	}
 
 	public void BtnClicked(string name)

@@ -12,23 +12,37 @@ public class ScriptTF_Betting : MonoBehaviour {
 	public GameObject mSprLoaded;
 
 	QuizInfo mQuizInfo;
+	int mStartSec;
+	int mStartMilSec;
 
 	static Color YELLOW = new Color(1f, 1f, 0f);
 	static Color WHITE = new Color(1f, 1f, 1f);
 	static Color RED = new Color(1f, 0f, 0f);
 
-	// Use this for initialization
-	void Start () {
-	
+	static int quizCount;
+	public static int QuizCount{
+		get{return quizCount;}
+		set{quizCount = value;}
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		if(Input.touchCount > 0)
-		{
-			Touch touch = Input.GetTouch(0);
-			Debug.Log("Touched");
+
+	void Update()
+	{
+		int sec = mStartSec - System.DateTime.Now.Second;
+		if (sec > 0)
+			sec = sec - 60;
+
+//		int milSec = mStartMilSec - System.DateTime.Now.Millisecond;
+//		if (milSec > -1)
+//			milSec = milSec - 1000;
+//		milSec = milSec / 10;
+
+		if (sec <= -15) {
+			UtilMgr.OnBackPressed();
+			return;
 		}
+
+		mSprComb.transform.FindChild ("LblTimer").GetComponent<UILabel> ().text
+			= string.Format ("{0}", (15 + sec));// + " : " + (99+milSec);
 	}
 
 	public void Init(QuizInfo quizInfo)
@@ -39,7 +53,8 @@ public class ScriptTF_Betting : MonoBehaviour {
 		SetBases ();
 		SetBtns ();
 
-		
+		mStartSec = System.DateTime.Now.Second;
+		mStartMilSec = System.DateTime.Now.Millisecond;
 	}
 
 	void SetBtns()
@@ -52,6 +67,15 @@ public class ScriptTF_Betting : MonoBehaviour {
 		mSprOut.transform.FindChild ("BtnOut2").FindChild ("LblGP").GetComponent<UILabel> ().text = mQuizInfo.order [5].ratio;
 		mSprOut.transform.FindChild ("BtnOut3").FindChild ("LblGP").GetComponent<UILabel> ().text = mQuizInfo.order [6].ratio;
 		mSprOut.transform.FindChild ("BtnOut4").FindChild ("LblGP").GetComponent<UILabel> ().text = mQuizInfo.order [7].ratio;
+
+		mSprHit.transform.FindChild ("BtnHit1").GetComponent<BoxCollider2D> ().enabled = true;
+		mSprHit.transform.FindChild ("BtnHit2").GetComponent<BoxCollider2D> ().enabled = true;
+		mSprHit.transform.FindChild ("BtnHit3").GetComponent<BoxCollider2D> ().enabled = true;
+		mSprHit.transform.FindChild ("BtnHit4").GetComponent<BoxCollider2D> ().enabled = true;
+		mSprOut.transform.FindChild ("BtnOut1").GetComponent<BoxCollider2D> ().enabled = true;
+		mSprOut.transform.FindChild ("BtnOut2").GetComponent<BoxCollider2D> ().enabled = true;
+		mSprOut.transform.FindChild ("BtnOut3").GetComponent<BoxCollider2D> ().enabled = true;
+		mSprOut.transform.FindChild ("BtnOut4").GetComponent<BoxCollider2D> ().enabled = true;
 	}
 
 	void SetBases()

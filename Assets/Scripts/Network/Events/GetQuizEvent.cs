@@ -14,6 +14,9 @@ public class GetQuizEvent : BaseEvent {
 	{
 		response = JsonFx.Json.JsonReader.Deserialize<GetQuizResponse>(data);
 
+		if (checkError ())
+			return;
+
 		eventDelegate.Execute ();
 	}
 

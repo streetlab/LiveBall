@@ -134,6 +134,8 @@ public class ScriptMainTop : MonoBehaviour {
 		mLivetalk.SetActive (false);
 		mBetting.SetActive (true);
 		mBetting.GetComponent<ScriptTF_Betting> ().Init (quizInfo);
+
+		UserMgr.QuizInfo = quizInfo;
 		UtilMgr.SetBackEvent(new EventDelegate(this, "GoPreState"));
 	}
 

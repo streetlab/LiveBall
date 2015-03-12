@@ -14,6 +14,9 @@ public class GetProfileEvent : BaseEvent {
 	{
 		response = JsonFx.Json.JsonReader.Deserialize<GetProfileResponse>(data);
 
+		if (checkError ())
+			return;
+
 		eventDelegate.Execute ();
 	}
 

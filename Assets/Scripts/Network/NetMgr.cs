@@ -97,4 +97,14 @@ public class NetMgr : MonoBehaviour{
 	{
 		Instance.webAPIProcessEvent (new GetProfileRequest (memSeq), baseEvent);
 	}
+
+	public static void JoinGame(BaseEvent baseEvent)
+	{
+		Instance.webAPIProcessEvent (new JoinGameRequest (), baseEvent);
+	}
+
+	public static void JoinQuiz(JoinQuizInfo joinInfo, BaseEvent baseEvent)
+	{
+		Instance.webAPIProcessEvent (new JoinQuizRequest (joinInfo), baseEvent);
+	}
 }

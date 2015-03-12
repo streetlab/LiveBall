@@ -14,6 +14,9 @@ public class GetCardInvenEvent : BaseEvent {
 	{
 		response = JsonFx.Json.JsonReader.Deserialize<GetCardInvenResponse>(data);
 
+		if (checkError ())
+						return;
+
 		eventDelegate.Execute ();
 	}
 

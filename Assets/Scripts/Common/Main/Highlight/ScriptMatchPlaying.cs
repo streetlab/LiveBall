@@ -24,6 +24,17 @@ public class ScriptMatchPlaying : MonoBehaviour {
 		UtilMgr.ResizeList (mList);
 		mFirstLoading = true;
 		mPosGuide = 0f;
+		JoinGame ();
+	}
+
+	void JoinGame()
+	{
+		NetMgr.JoinGame (new JoinGameEvent (new EventDelegate (this, "CompleteJoin")));
+	}
+
+	public void CompleteJoin()
+	{
+		Debug.Log("CompleteJoin");
 		SetScoreBoard ();
 	}
 
