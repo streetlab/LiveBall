@@ -90,7 +90,7 @@ public class ScriptBetting : MonoBehaviour {
 		mSbi.SetSelected ();
 		SetBtnsDisable ();
 		UtilMgr.OnBackPressed ();
-		ScriptTF_Betting.QuizCount++;
+		ScriptTF_Betting.CheckToClose ();
 	}
 
 	void SetBtnsDisable()

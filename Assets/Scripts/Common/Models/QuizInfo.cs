@@ -3,6 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class QuizInfo {
+	List<QuizRespInfo> _resp;
+
+	public List<QuizRespInfo> resp {
+		get {
+			return _resp;
+		}
+		set {
+			_resp = value;
+		}
+	}
+
 	int _gameSeq;
 
 	public int gameSeq {

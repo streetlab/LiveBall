@@ -3697,7 +3697,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3011
+  startingRenderQueue: 3016
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 3
@@ -9206,7 +9206,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3018
+  startingRenderQueue: 3030
   mClipTexture: {fileID: 2800000, guid: 66fa3c17449fd41689524fdcd6bd54c0, type: 3}
   mAlpha: 1
   mClipping: 1
@@ -9284,11 +9284,11 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3011
+  startingRenderQueue: 3016
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 3
-  mClipRange: {x: 0, y: 0, z: 720, w: 172}
+  mClipRange: {x: 0, y: 0, z: 720, w: 174}
   mClipSoftness: {x: 0, y: 0}
   mDepth: 4
   mSortingOrder: 0
@@ -17064,7 +17064,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &677433927
 Transform:
   m_ObjectHideFlags: 0
@@ -22513,7 +22513,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3020
+  startingRenderQueue: 3019
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 0
@@ -33280,7 +33280,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3019
+  startingRenderQueue: 3031
   mClipTexture: {fileID: 2800000, guid: 66fa3c17449fd41689524fdcd6bd54c0, type: 3}
   mAlpha: 1
   mClipping: 1
@@ -37039,7 +37039,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3023
+  startingRenderQueue: 3022
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 0
@@ -40051,7 +40051,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1532797255
 Transform:
   m_ObjectHideFlags: 0
@@ -45954,7 +45954,7 @@ MonoBehaviour:
   mScoreBoard: {fileID: 397105650}
   mList: {fileID: 179363051}
   itemHitter: {fileID: 100018, guid: 102dc5c51a196458bb65c09873d9098b, type: 2}
-  itemRound: {fileID: 100008, guid: ac8820ab178754007b97ee10fafd0664, type: 2}
+  itemRound: {fileID: 100014, guid: ac8820ab178754007b97ee10fafd0664, type: 2}
   itemPoll: {fileID: 0}
   itemInfo: {fileID: 0}
 --- !u!1 &1803194250
@@ -49806,7 +49806,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1932773506
 Transform:
   m_ObjectHideFlags: 0
@@ -53462,7 +53462,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3029
+  startingRenderQueue: 3032
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 0

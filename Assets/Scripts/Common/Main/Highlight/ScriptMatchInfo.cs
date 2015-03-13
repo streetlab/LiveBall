@@ -24,10 +24,38 @@ public class ScriptMatchInfo : MonoBehaviour {
 		mSprBases = transform.FindChild ("SprBases");
 		mRound = transform.FindChild ("Round");
 
-		Reset ();
+		ClearBoard ();
 	}
 
-	public void Reset()
+	public void SetBoard()
+	{
+		PlayInfo play = ScriptMainTop.DetailBoard.play;
+		SetStrike (play.strikeCount);
+		SetBall (play.ballCount);
+		SetOut (play.outCount);
+		SetRound (play.playRound);
+		SetHalftime (play.playInningType);
+		List<int> bases = new List<int> ();
+		if (play.base1st > 0)
+			bases.Add (1);
+		if (play.base2nd > 0)
+			bases.Add (2);
+		if (play.base3rd > 0)
+			bases.Add (3);
+		SetBases (bases);
+	}
+
+	public void SetBoard(int strike, int ball, int outCnt, int half, int round, List<int> bases)
+	{
+		SetStrike (strike);
+		SetBall (ball);
+		SetOut (outCnt);
+		SetBases (bases);
+		SetHalftime (half);
+		SetRound (round);
+	}
+
+	public void ClearBoard()
 	{
 		SetStrike (0);
 		SetBall (0);
@@ -45,11 +73,11 @@ public class ScriptMatchInfo : MonoBehaviour {
 		up.color = DISABLE;
 		down.color = DISABLE;
 
-		if(value == 1)
+		if(value == 0)
 		{
 			up.color = YELLOW;
 		}
-		else if(value == 2)
+		else if(value == 1)
 		{
 			down.color = YELLOW;
 		}
@@ -127,6 +155,9 @@ public class ScriptMatchInfo : MonoBehaviour {
 		sprite1.color = DISABLE;
 		sprite2.color = DISABLE;
 		sprite3.color = DISABLE;
+
+		if (bases == null || bases.Count < 1)
+						return;
 
 		foreach(int value in bases)
 		{

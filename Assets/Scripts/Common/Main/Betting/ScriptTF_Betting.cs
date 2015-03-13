@@ -19,11 +19,7 @@ public class ScriptTF_Betting : MonoBehaviour {
 	static Color WHITE = new Color(1f, 1f, 1f);
 	static Color RED = new Color(1f, 0f, 0f);
 
-	static int quizCount;
-	public static int QuizCount{
-		get{return quizCount;}
-		set{quizCount = value;}
-	}
+	static int mQuizCount;
 
 	void Update()
 	{
@@ -55,6 +51,11 @@ public class ScriptTF_Betting : MonoBehaviour {
 
 		mStartSec = System.DateTime.Now.Second;
 		mStartMilSec = System.DateTime.Now.Millisecond;
+	}
+
+	public static void CheckToClose()
+	{
+		mQuizCount++;
 	}
 
 	void SetBtns()

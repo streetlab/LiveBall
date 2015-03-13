@@ -94,6 +94,7 @@ public class ScriptMainTop : MonoBehaviour {
 		mLivetalk.SetActive (false);
 		mBetting.SetActive (false);
 		mState = STATE.Highlight;
+		SetBoardInfo ();
 	}
 
 	void OpenLineup()
@@ -142,7 +143,7 @@ public class ScriptMainTop : MonoBehaviour {
 	public void RequestBoardInfo(bool hasQuiz)
 	{
 		if (hasQuiz)
-						mHasQuiz = true;
+				mHasQuiz = true;
 
 		mBoardEvent = new  GetGameSposDetailBoardEvent(new EventDelegate (this, "GotBoard"));
 		NetMgr.GetGameSposPlayBoard(mBoardEvent);
@@ -157,8 +158,9 @@ public class ScriptMainTop : MonoBehaviour {
 	public void GotBoard()
 	{
 		Debug.Log("GotBoard");
-		ScriptMainTop.DetailBoard.play = mBoardEvent.Response.data.play;
-		ScriptMainTop.DetailBoard.player = mBoardEvent.Response.data.player;
+		DetailBoard.play = mBoardEvent.Response.data.play;
+		DetailBoard.player = mBoardEvent.Response.data.player;
+		SetBoardInfo ();
 
 		if(mHasQuiz){
 			RequestQuiz();
@@ -169,6 +171,11 @@ public class ScriptMainTop : MonoBehaviour {
 	{
 		Debug.Log("GotQuiz");
 		OpenBetting (mEventQuiz.Response.data.quiz[0]);
+	}
+
+	void SetBoardInfo()
+	{
+		mHighlight.transform.FindChild ("MatchInfoTop").GetComponent<ScriptMatchInfo> ().SetBoard ();
 	}
 
 	void OnBackPressed()

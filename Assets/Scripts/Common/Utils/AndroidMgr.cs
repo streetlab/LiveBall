@@ -128,7 +128,8 @@ public class AndroidMgr : MonoBehaviour
 		} else if(msgInfo.type.Equals(Constants.POST_GAME_STATUS)){
 			if(Instance.mMainTop != null){
 				bool hasQuiz = false;
-				if(msgInfo.info.quiz.Equals("1"))
+				if(msgInfo.info.quiz != null
+				   && msgInfo.info.quiz.Equals("1"))
 					hasQuiz = true;
 
 				Instance.mMainTop.RequestBoardInfo(hasQuiz);
