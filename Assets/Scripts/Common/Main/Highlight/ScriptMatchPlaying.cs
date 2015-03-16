@@ -11,6 +11,7 @@ public class ScriptMatchPlaying : MonoBehaviour {
 	public GameObject itemInfo;
 
 	float mPosGuide;
+	float mAccumulatedY;
 //	int mSequenceQuiz;
 	bool mFirstLoading;
 
@@ -22,6 +23,7 @@ public class ScriptMatchPlaying : MonoBehaviour {
 		UtilMgr.ResizeList (mList);
 		mFirstLoading = true;
 		mPosGuide = 0f;
+		mAccumulatedY = 0f;
 		JoinGame ();
 	}
 
@@ -79,6 +81,7 @@ public class ScriptMatchPlaying : MonoBehaviour {
 				gameRound = 20;
 
 				GameObject obj = Instantiate(itemRound, new Vector3(0f, 0f, 0f), Quaternion.identity) as GameObject;
+				mAccumulatedY += obj.GetComponent<BoxCollider2D> ().size.y;
 				obj.transform.parent = mList.transform;
 				obj.transform.localScale = new Vector3(1f, 1f, 1f);
 				obj.transform.FindChild("LblHead").gameObject.SetActive(false);
@@ -97,13 +100,15 @@ public class ScriptMatchPlaying : MonoBehaviour {
 					inningType = quizInfo.inningType;
 
 					GameObject obj = Instantiate(itemRound, new Vector3(0f, 0f, 0f), Quaternion.identity) as GameObject;
+					mAccumulatedY += obj.GetComponent<BoxCollider2D> ().size.y;
 					obj.transform.parent = mList.transform;
 					obj.transform.localScale = new Vector3(1f, 1f, 1f);
 					if(inningType == 0)
 						obj.transform.FindChild("LblTail").gameObject.SetActive(false);
 					else
 						obj.transform.FindChild("LblHead").gameObject.SetActive(false);
-					
+
+					Debug.Log(i+", mPosGuide : "+mPosGuide);
 					obj.transform.FindChild("LblRound").GetComponent<UILabel>().text = gameRound + "";
 					obj.transform.localPosition = new Vector3(0f, -mPosGuide, 0f);
 					mPosGuide += obj.GetComponent<BoxCollider2D> ().size.y;
@@ -113,6 +118,7 @@ public class ScriptMatchPlaying : MonoBehaviour {
 					mPosGuide -= (122 - 30f) / 2f;
 
 					GameObject obj = Instantiate(itemRound, new Vector3(0f, 0f, 0f), Quaternion.identity) as GameObject;
+					mAccumulatedY += obj.GetComponent<BoxCollider2D> ().size.y;
 					obj.transform.parent = mList.transform;
 					obj.transform.localScale = new Vector3(1f, 1f, 1f);
 					if(inningType == 0)
@@ -120,6 +126,7 @@ public class ScriptMatchPlaying : MonoBehaviour {
 					else
 						obj.transform.FindChild("LblHead").gameObject.SetActive(false);
 
+					Debug.Log(i+", mPosGuide : "+mPosGuide);
 					obj.transform.FindChild("LblRound").GetComponent<UILabel>().text = gameRound + "";
 					obj.transform.localPosition = new Vector3(0f, -mPosGuide, 0f);
 					mPosGuide += obj.GetComponent<BoxCollider2D> ().size.y;
@@ -130,13 +137,21 @@ public class ScriptMatchPlaying : MonoBehaviour {
 
 
 			GameObject go = Instantiate(itemHitter, new Vector3(0f, 0f, 0f), Quaternion.identity) as GameObject;
+
+			go.GetComponent<ScriptItemHitterHighlight>().MPositionY = mAccumulatedY;
+			mAccumulatedY += go.GetComponent<BoxCollider2D> ().size.y;
+
 			go.transform.parent = mList.transform;
 			go.transform.localScale = new Vector3(1f, 1f, 1f);		
-			go.GetComponent<ScriptItemHitterHighlight> ().Init (quizInfo);
+			go.GetComponent<ScriptItemHitterHighlight> ().Init (quizInfo,
+				transform.FindChild("ItemDetail").gameObject);
+			Debug.Log(i+", mPosGuide : "+mPosGuide);
 			go.transform.localPosition = new Vector3(0f, -mPosGuide, 0f);
 			mPosGuide += go.GetComponent<BoxCollider2D> ().size.y;
 			if(ScriptMainTop.SequenceQuiz < quizInfo.quizListSeq)
 				ScriptMainTop.SequenceQuiz = quizInfo.quizListSeq;
+
+//			Debug.Log("mPosGuide : "+mPosGuide);
 		}
 
 		mList.GetComponent<UIScrollView> ().ResetPosition ();

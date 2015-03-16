@@ -670,6 +670,7 @@
      <Compile Include="Assets\Scripts\Common\Main\Betting\ScriptBetting.cs" />
      <Compile Include="Assets\Scripts\Common\Main\Betting\ScriptBettingItem.cs" />
      <Compile Include="Assets\Scripts\Common\Main\Betting\ScriptTF_Betting.cs" />
+     <Compile Include="Assets\Scripts\Common\Main\Highlight\ScriptDetailHighlight.cs" />
      <Compile Include="Assets\Scripts\Common\Main\Highlight\ScriptItemHitterHighlight.cs" />
      <Compile Include="Assets\Scripts\Common\Main\Highlight\ScriptItemInfoHighlight.cs" />
      <Compile Include="Assets\Scripts\Common\Main\Highlight\ScriptItemPollHighlight.cs" />
@@ -695,6 +696,8 @@
      <Compile Include="Assets\Scripts\Common\Models\QuizInfo.cs" />
      <Compile Include="Assets\Scripts\Common\Models\QuizListInfo.cs" />
      <Compile Include="Assets\Scripts\Common\Models\QuizRespInfo.cs" />
+     <Compile Include="Assets\Scripts\Common\Models\QuizResultGlobal.cs" />
+     <Compile Include="Assets\Scripts\Common\Models\QuizResultInfo.cs" />
      <Compile Include="Assets\Scripts\Common\Models\ScheduleInfo.cs" />
      <Compile Include="Assets\Scripts\Common\Models\ScoreInfo.cs" />
      <Compile Include="Assets\Scripts\Common\Models\SposDetailBoard.cs" />
@@ -738,6 +741,7 @@
      <Compile Include="Assets\Scripts\Network\Events\GetGameSposDetailBoardEvent.cs" />
      <Compile Include="Assets\Scripts\Network\Events\GetProfileEvent.cs" />
      <Compile Include="Assets\Scripts\Network\Events\GetQuizEvent.cs" />
+     <Compile Include="Assets\Scripts\Network\Events\GetQuizResultEvent.cs" />
      <Compile Include="Assets\Scripts\Network\Events\GetScheduleMoreEvent.cs" />
      <Compile Include="Assets\Scripts\Network\Events\JoinGameEvent.cs" />
      <Compile Include="Assets\Scripts\Network\Events\JoinQuizEvent.cs" />
@@ -750,6 +754,7 @@
      <Compile Include="Assets\Scripts\Network\Requests\GetPreparedQuizRequest.cs" />
      <Compile Include="Assets\Scripts\Network\Requests\GetProfileRequest.cs" />
      <Compile Include="Assets\Scripts\Network\Requests\GetProgressQuizRequest.cs" />
+     <Compile Include="Assets\Scripts\Network\Requests\GetQuizResultRequest.cs" />
      <Compile Include="Assets\Scripts\Network\Requests\GetScheduleMoreRequest.cs" />
      <Compile Include="Assets\Scripts\Network\Requests\JoinGameRequest.cs" />
      <Compile Include="Assets\Scripts\Network\Requests\JoinQuizRequest.cs" />
@@ -759,6 +764,7 @@
      <Compile Include="Assets\Scripts\Network\Responses\GetGameSposDetailBoardResponse.cs" />
      <Compile Include="Assets\Scripts\Network\Responses\GetProfileResponse.cs" />
      <Compile Include="Assets\Scripts\Network\Responses\GetQuizResponse.cs" />
+     <Compile Include="Assets\Scripts\Network\Responses\GetQuizResultResponse.cs" />
      <Compile Include="Assets\Scripts\Network\Responses\GetScheduleMoreResponse.cs" />
      <Compile Include="Assets\Scripts\Network\Responses\LoginResponse.cs" />
      <Compile Include="Assets\iTween\iTween.cs" />

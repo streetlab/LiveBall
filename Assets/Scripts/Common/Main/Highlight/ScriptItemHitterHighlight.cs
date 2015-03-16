@@ -13,15 +13,33 @@ public class ScriptItemHitterHighlight : MonoBehaviour {
 	public GameObject mLblSelect2_1;
 	public GameObject mLblSelect2_2;
 
-	public void Init(QuizInfo quizInfo)
+	QuizInfo mQuizInfo;
+	GetQuizResultEvent mEvent;
+	GameObject mDetailView;
+
+	float mPositionY;
+	bool isOpened;
+
+	public float MPositionY {
+		get {
+			return mPositionY;
+		}
+		set {
+			mPositionY = value;
+		}
+	}
+
+	public void Init(QuizInfo quizInfo, GameObject detailView)
 	{
+		mDetailView = detailView;
+		mQuizInfo = quizInfo;
 		mLblName.transform.GetComponent<UILabel> ().text = quizInfo.playerName;
 		mLblNumber.transform.GetComponent<UILabel> ().text = "No."+quizInfo.playerNumber;
 		mLblReward.transform.GetComponent<UILabel> ().text = quizInfo.rewardDividend;
 		WWW www = new WWW (Constants.IMAGE_SERVER_HOST + quizInfo.imageName);
 		StartCoroutine(GetImage (www));
 		SetQuizResult (quizInfo);
-		
+		isOpened = false;
 	}
 
 	void SetQuizResult(QuizInfo quizInfo)
@@ -82,8 +100,22 @@ public class ScriptItemHitterHighlight : MonoBehaviour {
 
 	public void OnClicked()
 	{
-		transform.parent.GetComponent<SpringPanel> ().enabled = false;
-		transform.parent.transform.localPosition = new Vector3 (0f, 1395f, 0f);
-		NGUITools.FindInParents<UIPanel>(gameObject).clipOffset = new Vector2(0f, -1531f);
+		if (isOpened) {
+			isOpened = false;
+			mDetailView.GetComponent<UIPanel> ().depth = 0;
+		} else{
+			mEvent = new GetQuizResultEvent (new EventDelegate (this, "GotResult"));
+			NetMgr.GetQuizResult (mQuizInfo.quizListSeq, mEvent);
+		}
+	}
+
+	public void GotResult()
+	{
+		isOpened = true;
+		mDetailView.GetComponent<UIPanel> ().depth = 2;
+		if(transform.parent.GetComponent<SpringPanel> () != null)
+			transform.parent.GetComponent<SpringPanel> ().enabled = false;
+		transform.parent.transform.localPosition = new Vector3 (0f, 54f+mPositionY, 0f);
+		NGUITools.FindInParents<UIPanel>(gameObject).clipOffset = new Vector2(0f, -326f-mPositionY);//191
 	}
 }

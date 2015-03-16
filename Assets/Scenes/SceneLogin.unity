@@ -1824,8 +1824,8 @@ MonoBehaviour:
   disabledSprite2D: {fileID: 0}
   pixelSnap: 0
   onClick:
-  - mTarget: {fileID: 834288443}
-    mMethodName: 
+  - mTarget: {fileID: 834288444}
+    mMethodName: OnClicked
     mParameters: []
     oneShot: 0
 --- !u!114 &834288444

@@ -2,15 +2,7 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Common/Main/Highlight/ScriptItemHitterHighlight.cs">
     <Files>
-      <File FileName="Assets/Scripts/Common/Login/ScriptTitle.cs" Line="66" Column="49" />
-      <File FileName="Assets/Scripts/Common/Utils/AndroidMgr.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Common/Main/ScriptMainTop.cs" Line="136" Column="50" />
-      <File FileName="Assets/Scripts/Common/Utils/UtilMgr.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Common/Main/Highlight/ScriptMatchPlaying.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Common/Main/Betting/ScriptTF_Betting.cs" Line="20" Column="8" />
-      <File FileName="Assets/Scripts/Common/Main/Betting/ScriptBetting.cs" Line="93" Column="36" />
-      <File FileName="Assets/Scripts/Common/Main/Highlight/ScriptTF_Highlight.cs" Line="11" Column="47" />
-      <File FileName="Assets/Scripts/Common/Main/Highlight/ScriptItemHitterHighlight.cs" Line="53" Column="87" />
+      <File FileName="Assets/Scripts/Common/Main/Highlight/ScriptItemHitterHighlight.cs" Line="95" Column="20" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
