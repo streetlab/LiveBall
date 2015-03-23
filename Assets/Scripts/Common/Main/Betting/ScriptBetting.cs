@@ -49,6 +49,12 @@ public class ScriptBetting : MonoBehaviour {
 		mLblExpect.text = UtilMgr.AddsThousandsSeparator (mAmountUse * float.Parse(GetOrder().ratio));
 	}
 
+	void OnDisable()
+	{
+		Debug.Log("Betting Disable");
+		QuizMgr.IsBettingOpended = false;
+	}
+
 	public void Init(string name)
 	{
 		mSelectedName = name;
@@ -74,7 +80,7 @@ public class ScriptBetting : MonoBehaviour {
 		JoinQuizInfo joinInfo = new JoinQuizInfo ();
 		joinInfo.GameSeq = UserMgr.Schedule.gameSeq;
 		joinInfo.MemSeq = UserMgr.UserInfo.memSeq;
-		joinInfo.QuizListSeq = ScriptMainTop.SequenceQuiz;
+		joinInfo.QuizListSeq = QuizMgr.SequenceQuiz;
 		joinInfo.QzType = GetOrder ().quizType;
 		joinInfo.UseCardNo = 0;
 		joinInfo.BetPoint = string.Format ("{0}", double.Parse (mLblUse.text));
@@ -89,8 +95,20 @@ public class ScriptBetting : MonoBehaviour {
 	{
 		mSbi.SetSelected ();
 		SetBtnsDisable ();
+		CheckToClose ();
 		UtilMgr.OnBackPressed ();
-		ScriptTF_Betting.CheckToClose ();
+
+	}
+
+	void CheckToClose()
+	{
+		QuizMgr.JoinCount += 1;
+		if (transform.parent.GetComponent<ScriptTF_Betting>().QuizInfo.typeCode.Contains ("_QZD_")) {
+			if(QuizMgr.JoinCount > 1)
+				UtilMgr.OnBackPressed();
+		} else{
+			UtilMgr.OnBackPressed();
+		}
 	}
 
 	void SetBtnsDisable()

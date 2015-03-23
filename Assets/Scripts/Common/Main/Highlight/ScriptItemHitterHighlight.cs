@@ -14,11 +14,15 @@ public class ScriptItemHitterHighlight : MonoBehaviour {
 	public GameObject mLblSelect2_2;
 
 	QuizInfo mQuizInfo;
+	public QuizInfo QuizInfo{
+		get{return mQuizInfo;}
+	}
 	GetQuizResultEvent mEvent;
 	GameObject mDetailView;
 
 	float mPositionY;
 	bool isOpened;
+	bool isImgLoaded;
 
 	public float MPositionY {
 		get {
@@ -31,16 +35,22 @@ public class ScriptItemHitterHighlight : MonoBehaviour {
 
 	public void Init(QuizInfo quizInfo, GameObject detailView)
 	{
+		isImgLoaded = false;
 		mDetailView = detailView;
 		mQuizInfo = quizInfo;
-		mLblName.transform.GetComponent<UILabel> ().text = quizInfo.playerName;
-		mLblNumber.transform.GetComponent<UILabel> ().text = "No."+quizInfo.playerNumber;
-		mLblReward.transform.GetComponent<UILabel> ().text = quizInfo.rewardDividend;
-		WWW www = new WWW (Constants.IMAGE_SERVER_HOST + quizInfo.imageName);
+		mLblName.transform.GetComponent<UILabel> ().text = mQuizInfo.playerName;
+		mLblNumber.transform.GetComponent<UILabel> ().text = "No."+mQuizInfo.playerNumber;
+		mLblReward.transform.GetComponent<UILabel> ().text = mQuizInfo.rewardDividend;
+		WWW www = new WWW (Constants.IMAGE_SERVER_HOST + mQuizInfo.imageName);
 		StartCoroutine(GetImage (www));
-		SetQuizResult (quizInfo);
+		SetQuizResult (mQuizInfo);
 		isOpened = false;
 	}
+
+//	public void RefreshDatas()
+//	{
+//		SetQuizResult (mQuizInfo);
+//	}
 
 	void SetQuizResult(QuizInfo quizInfo)
 	{
@@ -93,9 +103,21 @@ public class ScriptItemHitterHighlight : MonoBehaviour {
 	IEnumerator GetImage(WWW www)
 	{
 		yield return www;
+		isImgLoaded = true;
 		Texture2D temp = new Texture2D (0, 0);
 		www.LoadImageIntoTexture (temp);
 		mPhoto.transform.FindChild("Panel").FindChild("Texture").GetComponent<UITexture>().mainTexture = temp;
+	}
+
+	void OnEnable()
+	{
+		if(!isImgLoaded && mQuizInfo != null){
+			WWW www = new WWW (Constants.IMAGE_SERVER_HOST + mQuizInfo.imageName);
+			StartCoroutine(GetImage (www));
+		}
+
+		if (mQuizInfo != null)
+			SetQuizResult (mQuizInfo);
 	}
 
 	public void OnClicked()
@@ -103,9 +125,15 @@ public class ScriptItemHitterHighlight : MonoBehaviour {
 		if (isOpened) {
 			isOpened = false;
 			mDetailView.GetComponent<UIPanel> ().depth = 0;
+			mDetailView.transform.FindChild("ListDetail").GetComponent<UIPanel>().depth = 0;
+			transform.GetComponent<UIDragScrollView>().enabled = true;
+//			if(transform.parent.GetComponent<SpringPanel> () != null)
+//				transform.parent.GetComponent<SpringPanel> ().enabled = true;
+			mDetailView.GetComponent<ScriptDetailHighlight> ().ClearList();
 		} else{
 			mEvent = new GetQuizResultEvent (new EventDelegate (this, "GotResult"));
 			NetMgr.GetQuizResult (mQuizInfo.quizListSeq, mEvent);
+			transform.GetComponent<UIDragScrollView>().enabled = false;
 		}
 	}
 
@@ -113,9 +141,18 @@ public class ScriptItemHitterHighlight : MonoBehaviour {
 	{
 		isOpened = true;
 		mDetailView.GetComponent<UIPanel> ().depth = 2;
+		mDetailView.transform.FindChild("ListDetail").GetComponent<UIPanel>().depth = 3;
+		mDetailView.GetComponent<ScriptDetailHighlight> ().Init (mEvent.Response);
+
 		if(transform.parent.GetComponent<SpringPanel> () != null)
 			transform.parent.GetComponent<SpringPanel> ().enabled = false;
-		transform.parent.transform.localPosition = new Vector3 (0f, 54f+mPositionY, 0f);
+		transform.parent.localPosition = new Vector3 (0f, 54f+mPositionY, 0f);
+//		TweenPosition.Begin(transform.parent.gameObject, 1f, new Vector3(0f, 54f+mPositionY, 0f));
+
+		//move after 1f
 		NGUITools.FindInParents<UIPanel>(gameObject).clipOffset = new Vector2(0f, -326f-mPositionY);//191
 	}
+
+//	IEnumerator moveOffset(){
+//	}
 }

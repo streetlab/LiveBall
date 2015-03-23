@@ -671,8 +671,10 @@
      <Compile Include="Assets\Scripts\Common\Main\Betting\ScriptBettingItem.cs" />
      <Compile Include="Assets\Scripts\Common\Main\Betting\ScriptTF_Betting.cs" />
      <Compile Include="Assets\Scripts\Common\Main\Highlight\ScriptDetailHighlight.cs" />
+     <Compile Include="Assets\Scripts\Common\Main\Highlight\ScriptItemDetailGraph.cs" />
      <Compile Include="Assets\Scripts\Common\Main\Highlight\ScriptItemHitterHighlight.cs" />
      <Compile Include="Assets\Scripts\Common\Main\Highlight\ScriptItemInfoHighlight.cs" />
+     <Compile Include="Assets\Scripts\Common\Main\Highlight\ScriptItemListFriends.cs" />
      <Compile Include="Assets\Scripts\Common\Main\Highlight\ScriptItemPollHighlight.cs" />
      <Compile Include="Assets\Scripts\Common\Main\Highlight\ScriptMatchInfo.cs" />
      <Compile Include="Assets\Scripts\Common\Main\Highlight\ScriptMatchPlaying.cs" />
@@ -698,6 +700,7 @@
      <Compile Include="Assets\Scripts\Common\Models\QuizRespInfo.cs" />
      <Compile Include="Assets\Scripts\Common\Models\QuizResultGlobal.cs" />
      <Compile Include="Assets\Scripts\Common\Models\QuizResultInfo.cs" />
+     <Compile Include="Assets\Scripts\Common\Models\QuizResultResults.cs" />
      <Compile Include="Assets\Scripts\Common\Models\ScheduleInfo.cs" />
      <Compile Include="Assets\Scripts\Common\Models\ScoreInfo.cs" />
      <Compile Include="Assets\Scripts\Common\Models\SposDetailBoard.cs" />
@@ -733,7 +736,9 @@
      <Compile Include="Assets\Scripts\Common\Utils\CommonDialogue.cs" />
      <Compile Include="Assets\Scripts\Common\Utils\Communication.cs" />
      <Compile Include="Assets\Scripts\Common\Utils\Constants.cs" />
+     <Compile Include="Assets\Scripts\Common\Utils\QuizMgr.cs" />
      <Compile Include="Assets\Scripts\Common\Utils\ShowDialogue.cs" />
+     <Compile Include="Assets\Scripts\Common\Utils\UIScrollView2.cs" />
      <Compile Include="Assets\Scripts\Common\Utils\UtilMgr.cs" />
      <Compile Include="Assets\Scripts\Common\Utils\WWWHelper.cs" />
      <Compile Include="Assets\Scripts\Network\Events\BaseEvent.cs" />

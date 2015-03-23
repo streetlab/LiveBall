@@ -120,6 +120,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400014}
+  - 114: {fileID: 11400014}
   m_Layer: 0
   m_Name: ItemListFriends
   m_TagString: Untagged
@@ -461,7 +462,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3018
+  startingRenderQueue: 3017
   mClipTexture: {fileID: 2800000, guid: 66fa3c17449fd41689524fdcd6bd54c0, type: 3}
   mAlpha: 1
   mClipping: 1
@@ -628,6 +629,21 @@ MonoBehaviour:
   mAtlas: {fileID: 11400000, guid: a804961df42fc4f7984d2394e4ec5f62, type: 2}
   mSpriteName: default_white
   mFillCenter: 1
+--- !u!114 &11400014
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c04eb16d139741e1bdf2895447a06d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mLblname: {fileID: 100004}
+  mLblChoice: {fileID: 100002}
+  mLblGold: {fileID: 100000}
+  mPhoto: {fileID: 100006}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

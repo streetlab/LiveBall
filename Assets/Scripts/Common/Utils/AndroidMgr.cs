@@ -10,8 +10,6 @@ public class AndroidMgr : MonoBehaviour
 	static AndroidMgr _instance;
 	Object mReceiver;
 
-	ScriptMainTop mMainTop;
-
 	int callNum = 0;
 
 	private static AndroidMgr Instance
@@ -110,34 +108,9 @@ public class AndroidMgr : MonoBehaviour
 		Debug.Log ("Failed GCM : "+msg);  
 	}
 
-	public static void SetMainTop(ScriptMainTop mainTop)
-	{
-		Instance.mMainTop = mainTop;
-	}
-
 	public void ReceivedMsg(string msg)
 	{
-		Debug.Log ("ReceivedMsg : " + msg);
-		NotiMsgInfo msgInfo = JsonFx.Json.JsonReader.Deserialize<NotiMsgInfo> (msg);
-		Debug.Log ("push type : " + msgInfo.type);
-
-		if(msgInfo.type.Equals(Constants.POST_MSG)){
-
-		} else if(msgInfo.type.Equals(Constants.POST_GAME_START)){
-		
-		} else if(msgInfo.type.Equals(Constants.POST_GAME_STATUS)){
-			if(Instance.mMainTop != null){
-				bool hasQuiz = false;
-				if(msgInfo.info.quiz != null
-				   && msgInfo.info.quiz.Equals("1"))
-					hasQuiz = true;
-
-				Instance.mMainTop.RequestBoardInfo(hasQuiz);
-			}
-		} else if(msgInfo.type.Equals(Constants.POST_QUIZ_RESULT)){
-
-		}
-
+		QuizMgr.NotiReceived (msg);
 	}
 #else
 	public static void CallJavaFunc( string strFuncName, string str){}

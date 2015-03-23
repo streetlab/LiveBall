@@ -3,36 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class GetQuizResultResponse : BaseResponse {
-	List<QuizResultGlobal> _global;
+	QuizResultInfo _data;
 
-	public List<QuizResultGlobal> global {
+	public QuizResultInfo data {
 		get {
-			return _global;
+			return _data;
 		}
 		set {
-			_global = value;
-		}
-	}
-
-	List<QuizResultGlobal> _friend;
-
-	public List<QuizResultGlobal> friend {
-		get {
-			return _friend;
-		}
-		set {
-			_friend = value;
-		}
-	}
-
-	List<QuizResultInfo> _result;
-
-	public List<QuizResultInfo> result {
-		get {
-			return _result;
-		}
-		set {
-			_result = value;
+			_data = value;
 		}
 	}
 }

@@ -9,26 +9,33 @@ public class ScriptMatchPlaying : MonoBehaviour {
 	public GameObject itemRound;
 	public GameObject itemPoll;
 	public GameObject itemInfo;
+	public GameObject mTop;
 
+	float mPreItemSize;
 	float mPosGuide;
 	float mAccumulatedY;
 //	int mSequenceQuiz;
+	bool mPreGame;
 	bool mFirstLoading;
+	int mGameRoundCounter;
+	int mGameRound;
+	int mInningType;
+	int mInningCounter;
 
 	GetGameSposDetailBoardEvent mEventDetail;
-	GetQuizEvent mEventPreQuiz;
+//	GetQuizEvent mEventPreQuiz;
 	GetQuizEvent mEventProgQuiz;
 
+	List<GameObject> mQuizListItems = new List<GameObject>();
 	void Start () {
 		UtilMgr.ResizeList (mList);
 		mFirstLoading = true;
-		mPosGuide = 0f;
-		mAccumulatedY = 0f;
+//		mPosGuide = 0f;
+		mPreGame = true;
+		mGameRoundCounter = 20;
+		mInningCounter = 0;
 		JoinGame ();
-	}
 
-	void Update(){
-//		Debug.Log ("panel y : " + mList.GetComponent<UIPanel> ().transform.localPosition.y);
 	}
 
 	void JoinGame()
@@ -42,121 +49,6 @@ public class ScriptMatchPlaying : MonoBehaviour {
 		SetScoreBoard ();
 	}
 
-	void SetPreQuiz()
-	{
-//		for(int i = 0; i < mEventPreQuiz.GetResponse().data.quiz.Count; i++)
-//		{
-//			GameObject obj = Instantiate(itemPoll, new Vector3(0f, 0f, 0f), Quaternion.identity) as GameObject;
-//			obj.transform.parent = mList.transform;
-//			obj.transform.localScale = new Vector3(1f, 1f, 1f);		
-//			//			obj.GetComponent<ScriptItemInfoHighlight> ().Init ();
-//			obj.transform.localPosition = new Vector3(0f, -mPosGuide, 0f);
-//			mPosGuide += obj.GetComponent<BoxCollider2D> ().size.y;
-//			
-//		}
-	}
-
-//	public int GetSeqQuiz()
-//	{
-//		return mSequenceQuiz;
-//	}
-
-	void SetProgQuiz(int quizListSeq)
-	{
-		mEventProgQuiz = new GetQuizEvent (new EventDelegate (this, "GotProgQuiz"));
-		NetMgr.GetProgressQuiz (quizListSeq, mEventProgQuiz);
-	}
-
-	public void GotProgQuiz()
-	{
-		int gameRound = 20;
-		int inningType = 0;
-		for(int i = 0; i < mEventProgQuiz.Response.data.quiz.Count; i++)
-		{
-			QuizInfo quizInfo = mEventProgQuiz.Response.data.quiz[i];
-
-			if(quizInfo.typeCode.Contains("_QZA_")
-			   && gameRound == 1){
-				mPosGuide -= (122 - 30f) / 2f;
-				gameRound = 20;
-
-				GameObject obj = Instantiate(itemRound, new Vector3(0f, 0f, 0f), Quaternion.identity) as GameObject;
-				mAccumulatedY += obj.GetComponent<BoxCollider2D> ().size.y;
-				obj.transform.parent = mList.transform;
-				obj.transform.localScale = new Vector3(1f, 1f, 1f);
-				obj.transform.FindChild("LblHead").gameObject.SetActive(false);
-				obj.transform.FindChild("LblTail").gameObject.SetActive(false);
-				obj.transform.FindChild("LblRound").gameObject.SetActive(false);
-				obj.transform.FindChild("LblPrepared").gameObject.SetActive(true);
-				obj.transform.localPosition = new Vector3(0f, -mPosGuide, 0f);
-				mPosGuide += obj.GetComponent<BoxCollider2D> ().size.y;
-				mPosGuide += (122 - 30f) / 2f;
-			} else if(quizInfo.typeCode.Contains("_QZD_")){
-				if(gameRound > quizInfo.gameRound){
-					if(gameRound < 20)
-						mPosGuide -= (122 - 30f) / 2f;
-
-					gameRound = quizInfo.gameRound;
-					inningType = quizInfo.inningType;
-
-					GameObject obj = Instantiate(itemRound, new Vector3(0f, 0f, 0f), Quaternion.identity) as GameObject;
-					mAccumulatedY += obj.GetComponent<BoxCollider2D> ().size.y;
-					obj.transform.parent = mList.transform;
-					obj.transform.localScale = new Vector3(1f, 1f, 1f);
-					if(inningType == 0)
-						obj.transform.FindChild("LblTail").gameObject.SetActive(false);
-					else
-						obj.transform.FindChild("LblHead").gameObject.SetActive(false);
-
-					Debug.Log(i+", mPosGuide : "+mPosGuide);
-					obj.transform.FindChild("LblRound").GetComponent<UILabel>().text = gameRound + "";
-					obj.transform.localPosition = new Vector3(0f, -mPosGuide, 0f);
-					mPosGuide += obj.GetComponent<BoxCollider2D> ().size.y;
-					mPosGuide += (122 - 30f) / 2f;
-				} else if(inningType != quizInfo.inningType){
-					inningType = quizInfo.inningType;
-					mPosGuide -= (122 - 30f) / 2f;
-
-					GameObject obj = Instantiate(itemRound, new Vector3(0f, 0f, 0f), Quaternion.identity) as GameObject;
-					mAccumulatedY += obj.GetComponent<BoxCollider2D> ().size.y;
-					obj.transform.parent = mList.transform;
-					obj.transform.localScale = new Vector3(1f, 1f, 1f);
-					if(inningType == 0)
-						obj.transform.FindChild("LblTail").gameObject.SetActive(false);
-					else
-						obj.transform.FindChild("LblHead").gameObject.SetActive(false);
-
-					Debug.Log(i+", mPosGuide : "+mPosGuide);
-					obj.transform.FindChild("LblRound").GetComponent<UILabel>().text = gameRound + "";
-					obj.transform.localPosition = new Vector3(0f, -mPosGuide, 0f);
-					mPosGuide += obj.GetComponent<BoxCollider2D> ().size.y;
-					mPosGuide += (122 - 30f) / 2f;
-				}
-			}
-
-
-
-			GameObject go = Instantiate(itemHitter, new Vector3(0f, 0f, 0f), Quaternion.identity) as GameObject;
-
-			go.GetComponent<ScriptItemHitterHighlight>().MPositionY = mAccumulatedY;
-			mAccumulatedY += go.GetComponent<BoxCollider2D> ().size.y;
-
-			go.transform.parent = mList.transform;
-			go.transform.localScale = new Vector3(1f, 1f, 1f);		
-			go.GetComponent<ScriptItemHitterHighlight> ().Init (quizInfo,
-				transform.FindChild("ItemDetail").gameObject);
-			Debug.Log(i+", mPosGuide : "+mPosGuide);
-			go.transform.localPosition = new Vector3(0f, -mPosGuide, 0f);
-			mPosGuide += go.GetComponent<BoxCollider2D> ().size.y;
-			if(ScriptMainTop.SequenceQuiz < quizInfo.quizListSeq)
-				ScriptMainTop.SequenceQuiz = quizInfo.quizListSeq;
-
-//			Debug.Log("mPosGuide : "+mPosGuide);
-		}
-
-		mList.GetComponent<UIScrollView> ().ResetPosition ();
-	}
-
 	void SetScoreBoard()
 	{
 		mScoreBoard.transform.FindChild ("Const").gameObject.SetActive (false);
@@ -166,22 +58,263 @@ public class ScriptMatchPlaying : MonoBehaviour {
 		mEventDetail = new GetGameSposDetailBoardEvent (new EventDelegate (this, "GotDetailBoard"));
 		NetMgr.GetGameSposDetailBoard (mEventDetail);
 	}
-
+	
 	public void GotDetailBoard()
 	{
 		mScoreBoard.transform.FindChild ("Const").gameObject.SetActive (true);
 		mScoreBoard.transform.FindChild ("TeamTop").gameObject.SetActive (true);
 		mScoreBoard.transform.FindChild ("TeamBottom").gameObject.SetActive (true);
-
+		
 		ScriptMainTop.DetailBoard = mEventDetail.Response.data;
-
+		
 		SetAwayScore (ScriptMainTop.DetailBoard.awayScore);
 		SetHomeScore (ScriptMainTop.DetailBoard.homeScore);
 		SetAwayRHEB (ScriptMainTop.DetailBoard.infoBoard[0]);
 		SetHomeRHEB (ScriptMainTop.DetailBoard.infoBoard[1]);
-
+		
 		if (mFirstLoading)
 			SetProgQuiz (0);
+
+		mTop.GetComponent<ScriptMainTop> ().SetBoardInfo ();
+	}
+
+	void SetProgQuiz(int quizListSeq)
+	{
+		mEventProgQuiz = new GetQuizEvent (new EventDelegate (this, "InitQuizFirst"));
+		NetMgr.GetProgressQuiz (quizListSeq, mEventProgQuiz);
+	}
+
+	void AddQuizIntoList(QuizInfo quizInfo)
+	{
+		GameObject obj = null;
+
+		if(quizInfo.typeCode.Contains("_QZA_")
+		   && mPreGame){
+			mPreGame = false;
+//			mPosGuide -= (122 - 30f) / 2f;
+			
+			obj = Instantiate(itemRound, new Vector3(0f, 0f, 0f), Quaternion.identity) as GameObject;
+			mAccumulatedY += obj.GetComponent<BoxCollider2D> ().size.y;
+			mQuizListItems.Add(obj);
+
+			obj.transform.parent = mList.transform;//.FindChild("Grid");
+			obj.transform.localScale = new Vector3(1f, 1f, 1f);
+			obj.transform.FindChild("LblHead").gameObject.SetActive(false);
+			obj.transform.FindChild("LblTail").gameObject.SetActive(false);
+			obj.transform.FindChild("LblRound").gameObject.SetActive(false);
+			obj.transform.FindChild("LblPrepared").gameObject.SetActive(true);
+
+			mPosGuide += (obj.GetComponent<BoxCollider2D> ().size.y - mPreItemSize) / 2f;
+			obj.transform.localPosition = new Vector3(0f, -mPosGuide, 0f);
+			mPosGuide += obj.GetComponent<BoxCollider2D> ().size.y;
+			mPreItemSize = obj.GetComponent<BoxCollider2D> ().size.y;
+//			mPosGuide += (122 - 30f) / 2f;
+		} else if(quizInfo.typeCode.Contains("_QZD_") && mFirstLoading){
+			if(mGameRoundCounter > quizInfo.gameRound){
+				if(mGameRoundCounter < 20){
+//					mPosGuide -= (122 - 30f) / 2f;
+				} else{
+					mGameRound = quizInfo.gameRound;
+					mInningType = quizInfo.inningType;
+				}
+				
+				mGameRoundCounter = quizInfo.gameRound;
+				mInningCounter = quizInfo.inningType;
+				
+				obj = Instantiate(itemRound, new Vector3(0f, 0f, 0f), Quaternion.identity) as GameObject;
+				mQuizListItems.Add(obj);
+				mAccumulatedY += obj.GetComponent<BoxCollider2D> ().size.y;
+				obj.transform.parent = mList.transform;//.FindChild("Grid");
+				obj.transform.localScale = new Vector3(1f, 1f, 1f);
+				if(mInningCounter == 0)
+					obj.transform.FindChild("LblTail").gameObject.SetActive(false);
+				else
+					obj.transform.FindChild("LblHead").gameObject.SetActive(false);
+				
+//				Debug.Log(i+", mPosGuide : "+mPosGuide);
+				obj.transform.FindChild("LblRound").GetComponent<UILabel>().text = mGameRoundCounter + "";
+
+				mPosGuide += (obj.GetComponent<BoxCollider2D> ().size.y - mPreItemSize) / 2f;
+				obj.transform.localPosition = new Vector3(0f, -mPosGuide, 0f);
+				mPosGuide += obj.GetComponent<BoxCollider2D> ().size.y;
+				mPreItemSize = obj.GetComponent<BoxCollider2D>().size.y;
+//				mPosGuide += (122 - 30f) / 2f;
+			} else if(mInningCounter != quizInfo.inningType){
+				mInningCounter = quizInfo.inningType;
+//				mPosGuide -= (122 - 30f) / 2f;
+				
+				obj = Instantiate(itemRound, new Vector3(0f, 0f, 0f), Quaternion.identity) as GameObject;
+				mQuizListItems.Add(obj);
+				mAccumulatedY += obj.GetComponent<BoxCollider2D> ().size.y;
+				obj.transform.parent = mList.transform;//.FindChild("Grid");
+				obj.transform.localScale = new Vector3(1f, 1f, 1f);
+				if(mInningCounter == 0)
+					obj.transform.FindChild("LblTail").gameObject.SetActive(false);
+				else
+					obj.transform.FindChild("LblHead").gameObject.SetActive(false);
+
+				obj.transform.FindChild("LblRound").GetComponent<UILabel>().text = mGameRoundCounter + "";
+
+				mPosGuide += (obj.GetComponent<BoxCollider2D> ().size.y - mPreItemSize) / 2f;
+				obj.transform.localPosition = new Vector3(0f, -mPosGuide, 0f);
+				mPosGuide += obj.GetComponent<BoxCollider2D> ().size.y;
+				mPreItemSize = obj.GetComponent<BoxCollider2D>().size.y;
+//				mPosGuide += (122 - 30f) / 2f;
+
+			}
+		}
+		
+		
+
+
+		if(quizInfo.typeCode.Contains("_QZD_")){
+			obj = Instantiate(itemHitter, new Vector3(0f, 0f, 0f), Quaternion.identity) as GameObject;
+			if (!mFirstLoading) {
+				RepositionItems (obj.GetComponent<BoxCollider2D> ().size.y);
+				mQuizListItems.Insert(0, obj);
+			} else
+				mQuizListItems.Add(obj);
+
+			obj.GetComponent<ScriptItemHitterHighlight>().MPositionY = mAccumulatedY;
+			mAccumulatedY += obj.GetComponent<BoxCollider2D> ().size.y;
+			
+			obj.transform.parent = mList.transform;//.FindChild("Grid");
+			obj.transform.localScale = new Vector3(1f, 1f, 1f);		
+			obj.GetComponent<ScriptItemHitterHighlight> ().Init (quizInfo,
+			                                                    transform.FindChild("ItemDetail").gameObject);
+
+			mPosGuide += (obj.GetComponent<BoxCollider2D> ().size.y - mPreItemSize) / 2f;
+			obj.transform.localPosition = new Vector3(0f, -mPosGuide, 0f);
+			mPosGuide += obj.GetComponent<BoxCollider2D> ().size.y;
+			mPreItemSize = obj.GetComponent<BoxCollider2D>().size.y;
+//			mPosGuide += (122 - 30f) / 2f;
+
+			if(QuizMgr.SequenceQuiz < quizInfo.quizListSeq)
+				QuizMgr.SequenceQuiz = quizInfo.quizListSeq;
+
+		} else if(quizInfo.typeCode.Contains("_QZA_")){
+//			if (!mFirstLoading) {
+//				RepositionItems (obj.GetComponent<BoxCollider2D> ().size.y);
+//				mQuizListItems.Insert(0, obj);
+//			} else
+				mQuizListItems.Add(obj);
+			mAccumulatedY += obj.GetComponent<BoxCollider2D> ().size.y;
+
+			obj = Instantiate(itemPoll, new Vector3(0f, 0f, 0f), Quaternion.identity) as GameObject;
+			obj.GetComponent<ScriptItemPollHighlight> ().Init (quizInfo);
+			obj.transform.parent = mList.transform;
+			obj.transform.localScale = new Vector3(1f, 1f, 1f);
+
+			mPosGuide += (obj.GetComponent<BoxCollider2D> ().size.y - mPreItemSize) / 2f;
+			obj.transform.localPosition = new Vector3(0f, -mPosGuide, 0f);
+			mPosGuide += obj.GetComponent<BoxCollider2D> ().size.y;
+			mPreItemSize = obj.GetComponent<BoxCollider2D>().size.y;
+
+			if(QuizMgr.SequenceQuiz < quizInfo.quizListSeq)
+				QuizMgr.SequenceQuiz = quizInfo.quizListSeq;
+
+		}
+
+
+	}
+
+	public void InitQuizFirst()
+	{
+		InitQuizList (null);
+	}
+
+	public void InitQuizList(GetQuizEvent quizEvent)
+	{
+//		if (quizEvent != null) {
+//			foreach(QuizInfo quizInfo in quizEvent.Response.data.quiz){
+//				mEventProgQuiz.Response.data.quiz.Insert(0, quizInfo);
+//			}
+//		}
+
+		QuizMgr.SetQuizList (mEventProgQuiz.Response.data.quiz);
+
+		foreach (GameObject go in mQuizListItems) {
+			go.transform.parent = null;
+			NGUITools.DestroyImmediate(go);		
+		}
+		mQuizListItems.Clear ();
+		mFirstLoading = true;
+		mAccumulatedY = 0f;
+		mPosGuide = 0f;
+		mPreItemSize = 30f;
+
+		for(int i = 0; i < mEventProgQuiz.Response.data.quiz.Count; i++)
+		{
+			QuizInfo quizInfo = mEventProgQuiz.Response.data.quiz[i];
+			AddQuizIntoList(quizInfo);
+		}
+		
+		mList.GetComponent<UIScrollView> ().ResetPosition ();
+		mFirstLoading = false;
+//		mPosGuide = -122f;
+//		mList.transform.FindChild ("Grid").GetComponent<UIGrid> ().Reposition ();
+	}
+
+	public void AddQuizList(GetQuizEvent quizEvent)
+	{
+
+
+		mAccumulatedY = 0f;
+//		mPosGuide = 0f;
+		mPosGuide = (122 - 30f) / 2f;
+		mPreItemSize = 122f;
+
+		QuizMgr.AddQuizList (quizEvent.Response.data.quiz [quizEvent.Response.data.quiz.Count - 1]);
+		QuizInfo quizInfo = quizEvent.Response.data.quiz[quizEvent.Response.data.quiz.Count-1];
+		if(quizInfo.gameRound == mGameRound
+		   && quizInfo.inningType == mInningType){
+			GameObject go = mQuizListItems [0];
+			RepositionItems(-go.GetComponent<BoxCollider2D> ().size.y);
+			mQuizListItems.RemoveAt (0);
+			NGUITools.Destroy (go);
+		}
+		Debug.Log ("quizInfo.gameRound : " + quizInfo.gameRound + ", mGameRound : " + mGameRound);
+		Debug.Log ("quizInfo.inningType : " + quizInfo.inningType + ", mInningType : " + mInningType);
+
+		AddQuizIntoList(quizInfo);
+
+		mGameRound = quizInfo.gameRound;
+		mInningType = quizInfo.inningType;
+		
+		GameObject obj = Instantiate(itemRound, new Vector3(0f, 0f, 0f), Quaternion.identity) as GameObject;
+		mQuizListItems.Insert(0, obj);
+		RepositionItems(obj.GetComponent<BoxCollider2D> ().size.y);
+
+		obj.transform.parent = mList.transform;//.FindChild("Grid");
+		obj.transform.localScale = new Vector3(1f, 1f, 1f);
+		if(mInningType == 0)
+			obj.transform.FindChild("LblTail").gameObject.SetActive(false);
+		else
+			obj.transform.FindChild("LblHead").gameObject.SetActive(false);
+
+		obj.transform.FindChild("LblRound").GetComponent<UILabel>().text = mGameRound + "";
+		obj.transform.localPosition = new Vector3(0f, 0f, 0f);
+
+		mList.GetComponent<UIScrollView> ().ResetPosition ();
+	}
+
+	void RefreshQuizListDatas()
+	{
+		for(int i = 0; i < QuizMgr.QuizList.Count; i++)
+		{
+			QuizInfo quizInfo = QuizMgr.QuizList[i];
+		}
+	}
+
+	void RepositionItems(float size)
+	{
+		foreach(GameObject tmp in mQuizListItems){
+			Vector3 vector = tmp.transform.localPosition;
+			vector.y -= size;
+			tmp.transform.localPosition = vector;
+			if(tmp.GetComponent<ScriptItemHitterHighlight>() != null)		
+				tmp.GetComponent<ScriptItemHitterHighlight>().MPositionY += size;
+		}
 	}
 
 	void SetAwayScore(List<ScoreInfo> listScore)

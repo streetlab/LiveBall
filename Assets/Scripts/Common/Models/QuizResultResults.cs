@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class QuizResultInfo {
+public class QuizResultResults {
 	int _gameSeq;
 	public int gameSeq {
 		get {
@@ -234,7 +234,7 @@ public class QuizResultInfo {
 
 // "SCORE_HI",
 	string _expectReward;
-	public string ㄷxpectReward {
+	public string expectReward {
 		get {
 			return _expectReward;
 		}
