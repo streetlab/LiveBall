@@ -64,6 +64,8 @@ public class ScriptMainTop : MonoBehaviour {
 
 	public void GoPreState()
 	{
+		QuizMgr.IsBettingOpended = false;
+
 		if (QuizMgr.MoreQuiz) {
 			RequestQuiz();
 			QuizMgr.MoreQuiz = false;
@@ -141,17 +143,15 @@ public class ScriptMainTop : MonoBehaviour {
 
 	public void OpenBetting(QuizInfo quizInfo)
 	{
+		QuizMgr.QuizInfo = quizInfo;
 		QuizMgr.IsBettingOpended = true;
 		mHighlight.SetActive (false);
 		mLineup.SetActive (false);
 		mBingo.SetActive (false);
 		mLivetalk.SetActive (false);
 		mBetting.SetActive (true);
-		mBetting.GetComponent<ScriptTF_Betting> ().Init (quizInfo);
-
-		UserMgr.QuizInfo = quizInfo;
 		UtilMgr.SetBackEvent(new EventDelegate(this, "GoPreState"));
-
+		mBetting.GetComponent<ScriptTF_Betting> ().Init (quizInfo);
 	}
 
 	public void RequestBoardInfo(bool hasQuiz)
@@ -178,6 +178,7 @@ public class ScriptMainTop : MonoBehaviour {
 	public void RequestQuiz()
 	{
 		mEventQuiz = new GetQuizEvent (new EventDelegate (this, "GotQuiz"));
+		Debug.Log ("QuizMgr.SequenceQuiz : " + QuizMgr.SequenceQuiz);
 		NetMgr.GetProgressQuiz (QuizMgr.SequenceQuiz, mEventQuiz);
 	}
 
@@ -185,8 +186,10 @@ public class ScriptMainTop : MonoBehaviour {
 	{
 		Debug.Log("GotQuiz");
 		if (mEventQuiz.Response.data.quiz == null
-						|| mEventQuiz.Response.data.quiz.Count < 1)
-						return;
+						|| mEventQuiz.Response.data.quiz.Count < 1) {
+			Debug.Log("NoQuiz");
+			return;
+		}
 
 		if (mEventQuiz.Response.data.quiz.Count > 1) {
 			QuizMgr.MoreQuiz = true;

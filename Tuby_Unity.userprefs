@@ -2,11 +2,16 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Common/Main/ScriptMainTop.cs">
     <Files>
-      <File FileName="Assets/Scripts/Common/Main/ScriptMainTop.cs" Line="137" Column="48" />
-      <File FileName="Assets/Scripts/Common/Utils/QuizMgr.cs" Line="33" Column="19" />
-      <File FileName="Assets/Scripts/Common/Main/Betting/ScriptTF_Betting.cs" Line="17" Column="23" />
-      <File FileName="Assets/Scripts/Common/Main/Highlight/ScriptMatchPlaying.cs" Line="172" Column="55" />
-      <File FileName="Assets/Scripts/Common/Main/Highlight/ScriptItemHitterHighlight.cs" Line="117" Column="4" />
+      <File FileName="Assets/Scripts/Common/Main/ScriptMainTop.cs" Line="68" Column="3" />
+      <File FileName="Assets/Scripts/Common/Main/Betting/ScriptTF_Betting.cs" Line="38" Column="25" />
+      <File FileName="Assets/Scripts/Common/Main/Betting/ScriptBetting.cs" Line="57" Column="11" />
+      <File FileName="Assets/Scripts/Common/Main/Highlight/ScriptItemHitterHighlight.cs" Line="113" Column="30" />
+      <File FileName="Assets/Scripts/Common/Main/Highlight/ScriptMatchPlaying.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Network/NetMgr.cs" Line="118" Column="71" />
+      <File FileName="Assets/Scripts/Network/Requests/GetSimpleResultRequest.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Common/Models/QuizRespInfo.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Network/Events/GetSimpleResultEvent.cs" Line="6" Column="9" />
+      <File FileName="Assets/Scripts/Common/Utils/QuizMgr.cs" Line="17" Column="20" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -20,13 +25,6 @@
                   <Node name="ScriptMainTop.cs" selected="True" />
                 </Node>
                 <Node name="Utils" expanded="True" />
-              </Node>
-            </Node>
-          </Node>
-          <Node name="Assembly-CSharp-firstpass" expanded="True">
-            <Node name="Plugins" expanded="True">
-              <Node name="NGUI" expanded="True">
-                <Node name="Interaction" expanded="True" />
               </Node>
             </Node>
           </Node>

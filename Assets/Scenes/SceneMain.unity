@@ -50090,6 +50090,7 @@ MonoBehaviour:
   itemPoll: {fileID: 100000, guid: 623c485b70de14ad697522d981d6fbe4, type: 2}
   itemInfo: {fileID: 100002, guid: f58daeefb556149b09739f20efb8d8be, type: 2}
   mTop: {fileID: 654317283}
+  mQuizListItems: []
 --- !u!1 &1803194250
 GameObject:
   m_ObjectHideFlags: 0
@@ -54119,6 +54120,7 @@ MonoBehaviour:
   mBtnLoaded2: {fileID: 1912051532}
   mBtnLoaded3: {fileID: 2060515931}
   mBtnLoaded4: {fileID: 1472988111}
+  mMatchPlaying: {fileID: 1803103080}
 --- !u!1 &1932802567
 GameObject:
   m_ObjectHideFlags: 0

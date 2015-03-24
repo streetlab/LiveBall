@@ -48,6 +48,22 @@
   <ItemGroup>
      <Compile Include="Assets\Elementals\Scripts\OrbitCamera.cs" />
      <Compile Include="Assets\Elementals\Scripts\TestParticles.cs" />
+     <Compile Include="Assets\Examples\Scripts\ConsoleBase.cs" />
+     <Compile Include="Assets\Examples\Scripts\GameGroupsConsole.cs" />
+     <Compile Include="Assets\Examples\Scripts\InteractiveConsole.cs" />
+     <Compile Include="Assets\Facebook\Scripts\AndroidFacebook.cs" />
+     <Compile Include="Assets\Facebook\Scripts\AndroidFacebookLoader.cs" />
+     <Compile Include="Assets\Facebook\Scripts\CanvasFacebookLoader.cs" />
+     <Compile Include="Assets\Facebook\Scripts\EditorFacebook.cs" />
+     <Compile Include="Assets\Facebook\Scripts\EditorFacebookAccessToken.cs" />
+     <Compile Include="Assets\Facebook\Scripts\EditorFacebookLoader.cs" />
+     <Compile Include="Assets\Facebook\Scripts\FB.cs" />
+     <Compile Include="Assets\Facebook\Scripts\FBAppRequestsFilterGroup.cs" />
+     <Compile Include="Assets\Facebook\Scripts\FBScreen.cs" />
+     <Compile Include="Assets\Facebook\Scripts\FBSettings.cs" />
+     <Compile Include="Assets\Facebook\Scripts\IOSFacebook.cs" />
+     <Compile Include="Assets\Facebook\Scripts\IOSFacebookLoader.cs" />
+     <Compile Include="Assets\Facebook\Scripts\NativeDialogModes.cs" />
      <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\EquipItems.cs" />
      <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\EquipRandomItem.cs" />
      <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\UICursor.cs" />
@@ -703,6 +719,7 @@
      <Compile Include="Assets\Scripts\Common\Models\QuizResultResults.cs" />
      <Compile Include="Assets\Scripts\Common\Models\ScheduleInfo.cs" />
      <Compile Include="Assets\Scripts\Common\Models\ScoreInfo.cs" />
+     <Compile Include="Assets\Scripts\Common\Models\SimpleResultInfo.cs" />
      <Compile Include="Assets\Scripts\Common\Models\SposDetailBoard.cs" />
      <Compile Include="Assets\Scripts\Common\Models\TeamInfo.cs" />
      <Compile Include="Assets\Scripts\Common\Models\UserInfo.cs" />
@@ -748,6 +765,7 @@
      <Compile Include="Assets\Scripts\Network\Events\GetQuizEvent.cs" />
      <Compile Include="Assets\Scripts\Network\Events\GetQuizResultEvent.cs" />
      <Compile Include="Assets\Scripts\Network\Events\GetScheduleMoreEvent.cs" />
+     <Compile Include="Assets\Scripts\Network\Events\GetSimpleResultEvent.cs" />
      <Compile Include="Assets\Scripts\Network\Events\JoinGameEvent.cs" />
      <Compile Include="Assets\Scripts\Network\Events\JoinQuizEvent.cs" />
      <Compile Include="Assets\Scripts\Network\Events\LoginEvent.cs" />
@@ -761,6 +779,7 @@
      <Compile Include="Assets\Scripts\Network\Requests\GetProgressQuizRequest.cs" />
      <Compile Include="Assets\Scripts\Network\Requests\GetQuizResultRequest.cs" />
      <Compile Include="Assets\Scripts\Network\Requests\GetScheduleMoreRequest.cs" />
+     <Compile Include="Assets\Scripts\Network\Requests\GetSimpleResultRequest.cs" />
      <Compile Include="Assets\Scripts\Network\Requests\JoinGameRequest.cs" />
      <Compile Include="Assets\Scripts\Network\Requests\JoinQuizRequest.cs" />
      <Compile Include="Assets\Scripts\Network\Requests\LoginRequest.cs" />
@@ -771,6 +790,7 @@
      <Compile Include="Assets\Scripts\Network\Responses\GetQuizResponse.cs" />
      <Compile Include="Assets\Scripts\Network\Responses\GetQuizResultResponse.cs" />
      <Compile Include="Assets\Scripts\Network\Responses\GetScheduleMoreResponse.cs" />
+     <Compile Include="Assets\Scripts\Network\Responses\GetSimpleResultResponse.cs" />
      <Compile Include="Assets\Scripts\Network\Responses\LoginResponse.cs" />
      <Compile Include="Assets\iTween\iTween.cs" />
      <None Include="Assets\NGUI\Examples\Shaders\Unlit - Depth Cutout.shader" />
@@ -824,6 +844,9 @@
      <None Include="Assets\NGUI\Examples\Models\Orc Armor\Orc Armor.shader" />
      <None Include="Assets\PlayMaker\Versions\readme.txt" />
      <None Include="Assets\NGUI\Examples\Resources\Localization.txt" />
+ <Reference Include="IFacebook">
+ <HintPath>/Users/sunken/projects/Tuby_Unity/Assets/Facebook/Scripts/IFacebook.dll</HintPath>
+ </Reference>
  <Reference Include="PlayMaker">
  <HintPath>/Users/sunken/projects/Tuby_Unity/Assets/PlayMaker/PlayMaker.dll</HintPath>
  </Reference>

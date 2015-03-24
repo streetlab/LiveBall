@@ -112,4 +112,9 @@ public class NetMgr : MonoBehaviour{
 	{
 		Instance.webAPIProcessEvent (new GetQuizResultRequest (quizListSeq), baseEvent);
 	}
+
+	public static void GetSimpleResult(int quizListSeq, BaseEvent baseEvent)
+	{
+		Instance.webAPIProcessEvent (new GetSimpleResultRequest (quizListSeq), baseEvent);
+	}
 }

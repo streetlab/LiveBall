@@ -26,7 +26,8 @@ public class ScriptMatchPlaying : MonoBehaviour {
 //	GetQuizEvent mEventPreQuiz;
 	GetQuizEvent mEventProgQuiz;
 
-	List<GameObject> mQuizListItems = new List<GameObject>();
+	public List<GameObject> mQuizListItems = new List<GameObject>();
+
 	void Start () {
 		UtilMgr.ResizeList (mList);
 		mFirstLoading = true;
@@ -175,7 +176,7 @@ public class ScriptMatchPlaying : MonoBehaviour {
 			} else
 				mQuizListItems.Add(obj);
 
-			obj.GetComponent<ScriptItemHitterHighlight>().MPositionY = mAccumulatedY;
+			obj.GetComponent<ScriptItemHitterHighlight>().mPositionY = mAccumulatedY;
 			mAccumulatedY += obj.GetComponent<BoxCollider2D> ().size.y;
 			
 			obj.transform.parent = mList.transform;//.FindChild("Grid");
@@ -197,10 +198,12 @@ public class ScriptMatchPlaying : MonoBehaviour {
 //				RepositionItems (obj.GetComponent<BoxCollider2D> ().size.y);
 //				mQuizListItems.Insert(0, obj);
 //			} else
-				mQuizListItems.Add(obj);
-			mAccumulatedY += obj.GetComponent<BoxCollider2D> ().size.y;
 
 			obj = Instantiate(itemPoll, new Vector3(0f, 0f, 0f), Quaternion.identity) as GameObject;
+
+			mQuizListItems.Add(obj);
+			mAccumulatedY += obj.GetComponent<BoxCollider2D> ().size.y;
+
 			obj.GetComponent<ScriptItemPollHighlight> ().Init (quizInfo);
 			obj.transform.parent = mList.transform;
 			obj.transform.localScale = new Vector3(1f, 1f, 1f);
@@ -313,7 +316,7 @@ public class ScriptMatchPlaying : MonoBehaviour {
 			vector.y -= size;
 			tmp.transform.localPosition = vector;
 			if(tmp.GetComponent<ScriptItemHitterHighlight>() != null)		
-				tmp.GetComponent<ScriptItemHitterHighlight>().MPositionY += size;
+				tmp.GetComponent<ScriptItemHitterHighlight>().mPositionY += size;
 		}
 	}
 

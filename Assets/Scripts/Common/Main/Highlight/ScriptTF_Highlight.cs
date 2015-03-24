@@ -9,16 +9,16 @@ public class ScriptTF_Highlight : MonoBehaviour {
 
 	void Start()
 	{
-		if(UserMgr.Schedule.gameStatus == 0)
-		{
-			OpenMatchReady();
-		} else if(UserMgr.Schedule.gameStatus == 1)
-		{
+//		if(UserMgr.Schedule.gameStatus == 0)
+//		{
+//			OpenMatchReady();
+//		} else if(UserMgr.Schedule.gameStatus == 1)
+//		{
 			OpenMatchPlaying();
-		} else
-		{
-			OpenMatchEnded();
-		}
+//		} else
+//		{
+//			OpenMatchEnded();
+//		}
 	}
 
 	void OpenMatchReady()

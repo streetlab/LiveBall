@@ -20,6 +20,8 @@ public class ScriptBetting : MonoBehaviour {
 	public GameObject mBtnLoaded3;
 	public GameObject mBtnLoaded4;
 
+	public GameObject mMatchPlaying;
+
 	UIButton mBtnCancel;
 	UIButton mBtnConfirm;
 	UIButton mBtnConfirm2;
@@ -80,8 +82,8 @@ public class ScriptBetting : MonoBehaviour {
 		JoinQuizInfo joinInfo = new JoinQuizInfo ();
 		joinInfo.GameSeq = UserMgr.Schedule.gameSeq;
 		joinInfo.MemSeq = UserMgr.UserInfo.memSeq;
-		joinInfo.QuizListSeq = QuizMgr.SequenceQuiz;
-		joinInfo.QzType = GetOrder ().quizType;
+		joinInfo.QuizListSeq = QuizMgr.QuizInfo.quizListSeq;
+		joinInfo.QzType = GetQzType ();
 		joinInfo.UseCardNo = 0;
 		joinInfo.BetPoint = string.Format ("{0}", double.Parse (mLblUse.text));
 		joinInfo.Item = 1000;
@@ -94,21 +96,37 @@ public class ScriptBetting : MonoBehaviour {
 	public void CompleteSending()
 	{
 		mSbi.SetSelected ();
+		UpdateHitterItem ();
 		SetBtnsDisable ();
 		CheckToClose ();
 		UtilMgr.OnBackPressed ();
 
 	}
 
+	void UpdateHitterItem()
+	{
+		List<GameObject>list = mMatchPlaying.GetComponent<ScriptMatchPlaying>().mQuizListItems;
+		foreach (GameObject item in list) {
+			ScriptItemHitterHighlight hitterItem = item.GetComponent<ScriptItemHitterHighlight>();
+			if(hitterItem != null
+			   && hitterItem.mQuizInfo.quizListSeq == QuizMgr.QuizInfo.quizListSeq){
+				hitterItem.needSimpleResult = true;
+				break;
+			}
+		}
+	}
+
 	void CheckToClose()
 	{
 		QuizMgr.JoinCount += 1;
-		if (transform.parent.GetComponent<ScriptTF_Betting>().QuizInfo.typeCode.Contains ("_QZD_")) {
-			if(QuizMgr.JoinCount > 1)
-				UtilMgr.OnBackPressed();
-		} else{
-			UtilMgr.OnBackPressed();
-		}
+		if (QuizMgr.QuizInfo.typeCode.Contains ("_QZD_")) {
+			if(QuizMgr.JoinCount < 2)
+				return;
+		} 
+
+		UtilMgr.OnBackPressed();
+
+
 	}
 
 	void SetBtnsDisable()
@@ -145,33 +163,50 @@ public class ScriptBetting : MonoBehaviour {
 		UtilMgr.OnBackPressed ();
 	}
 
+	int GetQzType()
+	{
+		switch (mSelectedName) {
+		case "BtnOut1":
+			return 2;
+		case "BtnOut2":
+			return 2;
+		case "BtnOut3":
+			return 2;
+		case "BtnOut4":
+			return 2;
+		default:
+			return 1;
+		}
+		return 1;
+	}
+
 	OrderInfo GetOrder()
 	{
 		switch (mSelectedName) {
 		case "BtnHit1":
-			return UserMgr.QuizInfo.order [0];
+			return QuizMgr.QuizInfo.order [0];
 		case "BtnHit2":
-			return UserMgr.QuizInfo.order [1];
+			return QuizMgr.QuizInfo.order [1];
 		case "BtnHit3":
-			return UserMgr.QuizInfo.order [2];
+			return QuizMgr.QuizInfo.order [2];
 		case "BtnHit4":
-			return UserMgr.QuizInfo.order [3];
+			return QuizMgr.QuizInfo.order [3];
 		case "BtnOut1":
-			return UserMgr.QuizInfo.order [4];
+			return QuizMgr.QuizInfo.order [4];
 		case "BtnOut2":
-			return UserMgr.QuizInfo.order [5];
+			return QuizMgr.QuizInfo.order [5];
 		case "BtnOut3":
-			return UserMgr.QuizInfo.order [6];
+			return QuizMgr.QuizInfo.order [6];
 		case "BtnOut4":
-			return UserMgr.QuizInfo.order [7];
+			return QuizMgr.QuizInfo.order [7];
 		case "BtnLoaded1":
-			return UserMgr.QuizInfo.order [0];
+			return QuizMgr.QuizInfo.order [0];
 		case "BtnLoaded2":
-			return UserMgr.QuizInfo.order [1];
+			return QuizMgr.QuizInfo.order [1];
 		case "BtnLoaded3":
-			return UserMgr.QuizInfo.order [2];
+			return QuizMgr.QuizInfo.order [2];
 		case "BtnLoaded4":
-			return UserMgr.QuizInfo.order [3];
+			return QuizMgr.QuizInfo.order [3];
 		}
 		return null;
 	}

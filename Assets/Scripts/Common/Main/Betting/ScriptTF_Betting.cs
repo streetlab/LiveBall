@@ -11,11 +11,11 @@ public class ScriptTF_Betting : MonoBehaviour {
 	public GameObject mSprBetting;
 	public GameObject mSprLoaded;
 
-	QuizInfo quizInfo;
-	public QuizInfo QuizInfo
-	{
-		get{return quizInfo;}
-	}
+//	QuizInfo quizInfo;
+//	public QuizInfo QuizInfo
+//	{
+//		get{return quizInfo;}
+//	}
 	int mStartSec;
 	int mStartMilSec;
 
@@ -45,7 +45,7 @@ public class ScriptTF_Betting : MonoBehaviour {
 
 	public void Init(QuizInfo quizInfo)
 	{
-		quizInfo = quizInfo;
+//		quizInfo = quizInfo;
 		SetHitter ();
 		SetPitcher ();
 		SetBases ();
@@ -57,19 +57,19 @@ public class ScriptTF_Betting : MonoBehaviour {
 
 	void SetBtns()
 	{
-		if (quizInfo.typeCode.Contains ("_QZD_")) {
+		if (QuizMgr.QuizInfo.typeCode.Contains ("_QZD_")) {
 			mSprHit.SetActive(true);
 			mSprOut.SetActive(true);
 			mSprLoaded.SetActive(false);
 
-			mSprHit.transform.FindChild ("BtnHit1").FindChild ("LblGP").GetComponent<UILabel> ().text = quizInfo.order [0].ratio;
-			mSprHit.transform.FindChild ("BtnHit2").FindChild ("LblGP").GetComponent<UILabel> ().text = quizInfo.order [1].ratio;
-			mSprHit.transform.FindChild ("BtnHit3").FindChild ("LblGP").GetComponent<UILabel> ().text = quizInfo.order [2].ratio;
-			mSprHit.transform.FindChild ("BtnHit4").FindChild ("LblGP").GetComponent<UILabel> ().text = quizInfo.order [3].ratio;
-			mSprOut.transform.FindChild ("BtnOut1").FindChild ("LblGP").GetComponent<UILabel> ().text = quizInfo.order [4].ratio;
-			mSprOut.transform.FindChild ("BtnOut2").FindChild ("LblGP").GetComponent<UILabel> ().text = quizInfo.order [5].ratio;
-			mSprOut.transform.FindChild ("BtnOut3").FindChild ("LblGP").GetComponent<UILabel> ().text = quizInfo.order [6].ratio;
-			mSprOut.transform.FindChild ("BtnOut4").FindChild ("LblGP").GetComponent<UILabel> ().text = quizInfo.order [7].ratio;
+			mSprHit.transform.FindChild ("BtnHit1").FindChild ("LblGP").GetComponent<UILabel> ().text = QuizMgr.QuizInfo.order [0].ratio;
+			mSprHit.transform.FindChild ("BtnHit2").FindChild ("LblGP").GetComponent<UILabel> ().text = QuizMgr.QuizInfo.order [1].ratio;
+			mSprHit.transform.FindChild ("BtnHit3").FindChild ("LblGP").GetComponent<UILabel> ().text = QuizMgr.QuizInfo.order [2].ratio;
+			mSprHit.transform.FindChild ("BtnHit4").FindChild ("LblGP").GetComponent<UILabel> ().text = QuizMgr.QuizInfo.order [3].ratio;
+			mSprOut.transform.FindChild ("BtnOut1").FindChild ("LblGP").GetComponent<UILabel> ().text = QuizMgr.QuizInfo.order [4].ratio;
+			mSprOut.transform.FindChild ("BtnOut2").FindChild ("LblGP").GetComponent<UILabel> ().text = QuizMgr.QuizInfo.order [5].ratio;
+			mSprOut.transform.FindChild ("BtnOut3").FindChild ("LblGP").GetComponent<UILabel> ().text = QuizMgr.QuizInfo.order [6].ratio;
+			mSprOut.transform.FindChild ("BtnOut4").FindChild ("LblGP").GetComponent<UILabel> ().text = QuizMgr.QuizInfo.order [7].ratio;
 
 			mSprHit.transform.FindChild ("BtnHit1").GetComponent<BoxCollider2D> ().enabled = true;
 			mSprHit.transform.FindChild ("BtnHit2").GetComponent<BoxCollider2D> ().enabled = true;
@@ -79,13 +79,13 @@ public class ScriptTF_Betting : MonoBehaviour {
 			mSprOut.transform.FindChild ("BtnOut2").GetComponent<BoxCollider2D> ().enabled = true;
 			mSprOut.transform.FindChild ("BtnOut3").GetComponent<BoxCollider2D> ().enabled = true;
 			mSprOut.transform.FindChild ("BtnOut4").GetComponent<BoxCollider2D> ().enabled = true;
-		} else if (quizInfo.typeCode.Contains ("_QZC_")) {
-				mSprHit.SetActive(false);
-				mSprOut.SetActive(false);
-				mSprLoaded.SetActive(true);
+		} else if (QuizMgr.QuizInfo.typeCode.Contains ("_QZC_")) {
+			mSprHit.SetActive(false);
+			mSprOut.SetActive(false);
+			mSprLoaded.SetActive(true);
 
-			mSprLoaded.transform.FindChild ("BtnLoaded1").FindChild ("LblGP").GetComponent<UILabel> ().text = quizInfo.order [0].ratio;
-			mSprLoaded.transform.FindChild ("BtnLoaded2").FindChild ("LblGP").GetComponent<UILabel> ().text = quizInfo.order [1].ratio;
+			mSprLoaded.transform.FindChild ("BtnLoaded1").FindChild ("LblGP").GetComponent<UILabel> ().text = QuizMgr.QuizInfo.order [0].ratio;
+			mSprLoaded.transform.FindChild ("BtnLoaded2").FindChild ("LblGP").GetComponent<UILabel> ().text = QuizMgr.QuizInfo.order [1].ratio;
 //			mSprLoaded.transform.FindChild ("BtnLoaded3").FindChild ("LblGP").GetComponent<UILabel> ().text = mQuizInfo.order [2].ratio;
 //			mSprLoaded.transform.FindChild ("BtnLoaded4").FindChild ("LblGP").GetComponent<UILabel> ().text = mQuizInfo.order [3].ratio;
 
@@ -140,12 +140,12 @@ public class ScriptTF_Betting : MonoBehaviour {
 	void SetHitter()
 	{ 
 		Transform tfHitter = mSprComb.transform.FindChild ("SprHitter");
-		string playerInfo = quizInfo.playerName + " No." + quizInfo.playerNumber;
+		string playerInfo = QuizMgr.QuizInfo.playerName + " No." + QuizMgr.QuizInfo.playerNumber;
 		tfHitter.FindChild ("LblName").GetComponent<UILabel> ().text = playerInfo;
 		string playerAVG = ScriptMainTop.DetailBoard.player [1].AVG;
 		tfHitter.FindChild("LblHit").GetComponent<UILabel>().text = playerAVG;
-		tfHitter.FindChild ("LblTeam").GetComponent<UILabel> ().text = quizInfo.teamName;
-		WWW www = new WWW (Constants.IMAGE_SERVER_HOST + quizInfo.imageName);
+		tfHitter.FindChild ("LblTeam").GetComponent<UILabel> ().text = QuizMgr.QuizInfo.teamName;
+		WWW www = new WWW (Constants.IMAGE_SERVER_HOST + QuizMgr.QuizInfo.imageName);
 		StartCoroutine (GetImage(www, tfHitter.FindChild ("Panel").FindChild ("Texture").GetComponent<UITexture> ()));
 	}
 

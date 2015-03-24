@@ -8,7 +8,6 @@ public class UserMgr : MonoBehaviour {
 	UserInfo _userInfo;
 	CardInvenInfo _cardInvenInfo;
 	ScheduleInfo _schedule;
-	QuizInfo _quizInfo;
 
 	
 	static UserMgr Instance
@@ -65,9 +64,5 @@ public class UserMgr : MonoBehaviour {
 		set{Instance._schedule = value;}
 	}
 
-	public static QuizInfo QuizInfo
-	{
-		get{return Instance._quizInfo;}
-		set{Instance._quizInfo = value;}
-	}
+
 }

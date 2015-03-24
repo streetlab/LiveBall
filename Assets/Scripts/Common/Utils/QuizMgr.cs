@@ -40,6 +40,12 @@ public class QuizMgr : MonoBehaviour {
 		get{return Instance.quizList;}
 		set{Instance.quizList = value;}
 	}
+	QuizInfo quizInfo;
+	public static QuizInfo QuizInfo
+	{
+		get{return Instance.quizInfo;}
+		set{Instance.quizInfo = value;}
+	}
 
 	static QuizMgr _instance;
 

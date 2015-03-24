@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class ScriptItemHitterHighlight : MonoBehaviour {
 
@@ -13,25 +14,15 @@ public class ScriptItemHitterHighlight : MonoBehaviour {
 	public GameObject mLblSelect2_1;
 	public GameObject mLblSelect2_2;
 
-	QuizInfo mQuizInfo;
-	public QuizInfo QuizInfo{
-		get{return mQuizInfo;}
-	}
+	public QuizInfo mQuizInfo;
 	GetQuizResultEvent mEvent;
 	GameObject mDetailView;
 
-	float mPositionY;
+	public float mPositionY;
 	bool isOpened;
 	bool isImgLoaded;
-
-	public float MPositionY {
-		get {
-			return mPositionY;
-		}
-		set {
-			mPositionY = value;
-		}
-	}
+	public bool needSimpleResult;
+	GetSimpleResultEvent mSimpleEvent;
 
 	public void Init(QuizInfo quizInfo, GameObject detailView)
 	{
@@ -116,8 +107,34 @@ public class ScriptItemHitterHighlight : MonoBehaviour {
 			StartCoroutine(GetImage (www));
 		}
 
-		if (mQuizInfo != null)
-			SetQuizResult (mQuizInfo);
+//		if (mQuizInfo != null)
+//			SetQuizResult (mQuizInfo);
+		if (needSimpleResult) {
+			mSimpleEvent = new GetSimpleResultEvent(new EventDelegate(this, "GotSimpleResult"));
+			NetMgr.GetSimpleResult (mQuizInfo.quizListSeq, mSimpleEvent);
+		}
+	}
+
+	public void GotSimpleResult(){
+		if (mSimpleEvent.Response.data == null
+		    || mSimpleEvent.Response.data.Count < 1)
+						return;
+
+		mQuizInfo.quizValue = mSimpleEvent.Response.data [0].quizValue;
+
+		mQuizInfo.resp = new List<QuizRespInfo> ();
+		QuizRespInfo tmpInfo;
+		if (mSimpleEvent.Response.data.Count > 1) {
+			tmpInfo = new QuizRespInfo();
+			tmpInfo.respValue = mSimpleEvent.Response.data[1].respValue;
+			mQuizInfo.resp.Add(tmpInfo);
+		} 
+
+		tmpInfo = new QuizRespInfo();
+		tmpInfo.respValue = mSimpleEvent.Response.data[0].respValue;
+		mQuizInfo.resp.Insert(0, tmpInfo);
+
+		SetQuizResult (mQuizInfo);
 	}
 
 	public void OnClicked()
