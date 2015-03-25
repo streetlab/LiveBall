@@ -44,19 +44,6 @@ public class ScriptBetting : MonoBehaviour {
 		mLblExpect = panel.FindChild ("SprBack3").FindChild("LblAmount").GetComponent<UILabel> ();
 	}
 
-	void OnEnable()
-	{
-		mLblGot.text = UtilMgr.AddsThousandsSeparator (UserMgr.UserInfo.userGoldenBall);
-		mLblUse.text = UtilMgr.AddsThousandsSeparator (mAmountUse);
-		mLblExpect.text = UtilMgr.AddsThousandsSeparator (mAmountUse * float.Parse(GetOrder().ratio));
-	}
-
-	void OnDisable()
-	{
-		Debug.Log("Betting Disable");
-		QuizMgr.IsBettingOpended = false;
-	}
-
 	public void Init(string name)
 	{
 		mSelectedName = name;
@@ -73,6 +60,10 @@ public class ScriptBetting : MonoBehaviour {
 			mBtnConfirm.gameObject.SetActive(false);
 			mBtnConfirm2.gameObject.SetActive(true);
 		}
+
+		mLblGot.text = UtilMgr.AddsThousandsSeparator (UserMgr.UserInfo.userGoldenBall);
+		mLblUse.text = UtilMgr.AddsThousandsSeparator (mAmountUse);
+		mLblExpect.text = UtilMgr.AddsThousandsSeparator (mAmountUse * float.Parse(GetOrder().ratio));
 	}
 
 	void SetConfirm()
@@ -259,7 +250,7 @@ public class ScriptBetting : MonoBehaviour {
 		}
 
 		mLblUse.text = UtilMgr.AddsThousandsSeparator (mAmountUse);
-		mLblExpect.text = UtilMgr.AddsThousandsSeparator (mAmountUse*2);
+		mLblExpect.text = UtilMgr.AddsThousandsSeparator (mAmountUse * float.Parse(GetOrder().ratio));
 
 	}
 

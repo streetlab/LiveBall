@@ -115,8 +115,12 @@ public class QuizMgr : MonoBehaviour {
 			if(Instance.mMainTop != null){
 				bool hasQuiz = false;
 				if(msgInfo.info.quiz != null
-				   && msgInfo.info.quiz.Equals("1"))
-					hasQuiz = true;
+				   && msgInfo.info.quiz.Equals("1")){
+					if(QuizMgr.IsBettingOpended)
+						MoreQuiz = true;
+					else
+						HasQuiz = true;
+				}
 				
 				Instance.mMainTop.RequestBoardInfo(hasQuiz);
 			}

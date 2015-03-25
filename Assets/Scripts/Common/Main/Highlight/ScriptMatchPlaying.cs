@@ -164,59 +164,45 @@ public class ScriptMatchPlaying : MonoBehaviour {
 
 			}
 		}
-		
-		
 
+		if (quizInfo.typeCode.Contains ("_QZA_")) {
+			obj = Instantiate (itemPoll, new Vector3 (0f, 0f, 0f), Quaternion.identity) as GameObject;
 
-		if(quizInfo.typeCode.Contains("_QZD_")){
-			obj = Instantiate(itemHitter, new Vector3(0f, 0f, 0f), Quaternion.identity) as GameObject;
-			if (!mFirstLoading) {
-				RepositionItems (obj.GetComponent<BoxCollider2D> ().size.y);
-				mQuizListItems.Insert(0, obj);
-			} else
-				mQuizListItems.Add(obj);
-
-			obj.GetComponent<ScriptItemHitterHighlight>().mPositionY = mAccumulatedY;
-			mAccumulatedY += obj.GetComponent<BoxCollider2D> ().size.y;
-			
-			obj.transform.parent = mList.transform;//.FindChild("Grid");
-			obj.transform.localScale = new Vector3(1f, 1f, 1f);		
-			obj.GetComponent<ScriptItemHitterHighlight> ().Init (quizInfo,
-			                                                    transform.FindChild("ItemDetail").gameObject);
-
-			mPosGuide += (obj.GetComponent<BoxCollider2D> ().size.y - mPreItemSize) / 2f;
-			obj.transform.localPosition = new Vector3(0f, -mPosGuide, 0f);
-			mPosGuide += obj.GetComponent<BoxCollider2D> ().size.y;
-			mPreItemSize = obj.GetComponent<BoxCollider2D>().size.y;
-//			mPosGuide += (122 - 30f) / 2f;
-
-			if(QuizMgr.SequenceQuiz < quizInfo.quizListSeq)
-				QuizMgr.SequenceQuiz = quizInfo.quizListSeq;
-
-		} else if(quizInfo.typeCode.Contains("_QZA_")){
-//			if (!mFirstLoading) {
-//				RepositionItems (obj.GetComponent<BoxCollider2D> ().size.y);
-//				mQuizListItems.Insert(0, obj);
-//			} else
-
-			obj = Instantiate(itemPoll, new Vector3(0f, 0f, 0f), Quaternion.identity) as GameObject;
-
-			mQuizListItems.Add(obj);
+			mQuizListItems.Add (obj);
 			mAccumulatedY += obj.GetComponent<BoxCollider2D> ().size.y;
 
 			obj.GetComponent<ScriptItemPollHighlight> ().Init (quizInfo);
 			obj.transform.parent = mList.transform;
-			obj.transform.localScale = new Vector3(1f, 1f, 1f);
+			obj.transform.localScale = new Vector3 (1f, 1f, 1f);
 
 			mPosGuide += (obj.GetComponent<BoxCollider2D> ().size.y - mPreItemSize) / 2f;
-			obj.transform.localPosition = new Vector3(0f, -mPosGuide, 0f);
+			obj.transform.localPosition = new Vector3 (0f, -mPosGuide, 0f);
 			mPosGuide += obj.GetComponent<BoxCollider2D> ().size.y;
-			mPreItemSize = obj.GetComponent<BoxCollider2D>().size.y;
+			mPreItemSize = obj.GetComponent<BoxCollider2D> ().size.y;
+		} else {
+			obj = Instantiate (itemHitter, new Vector3 (0f, 0f, 0f), Quaternion.identity) as GameObject;
+			if (!mFirstLoading) {
+					RepositionItems (obj.GetComponent<BoxCollider2D> ().size.y);
+					mQuizListItems.Insert (0, obj);
+			} else
+					mQuizListItems.Add (obj);
 
-			if(QuizMgr.SequenceQuiz < quizInfo.quizListSeq)
-				QuizMgr.SequenceQuiz = quizInfo.quizListSeq;
+			obj.GetComponent<ScriptItemHitterHighlight> ().mPositionY = mAccumulatedY;
+			mAccumulatedY += obj.GetComponent<BoxCollider2D> ().size.y;
 
+			obj.transform.parent = mList.transform;//.FindChild("Grid");
+			obj.transform.localScale = new Vector3 (1f, 1f, 1f);		
+			obj.GetComponent<ScriptItemHitterHighlight> ().Init (quizInfo,
+                                                     transform.FindChild ("ItemDetail").gameObject);
+
+			mPosGuide += (obj.GetComponent<BoxCollider2D> ().size.y - mPreItemSize) / 2f;
+			obj.transform.localPosition = new Vector3 (0f, -mPosGuide, 0f);
+			mPosGuide += obj.GetComponent<BoxCollider2D> ().size.y;
+			mPreItemSize = obj.GetComponent<BoxCollider2D> ().size.y;
 		}
+
+		if(QuizMgr.SequenceQuiz < quizInfo.quizListSeq)
+			QuizMgr.SequenceQuiz = quizInfo.quizListSeq;
 
 
 	}

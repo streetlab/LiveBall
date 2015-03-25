@@ -79,16 +79,32 @@ public class ScriptTF_Betting : MonoBehaviour {
 			mSprOut.transform.FindChild ("BtnOut2").GetComponent<BoxCollider2D> ().enabled = true;
 			mSprOut.transform.FindChild ("BtnOut3").GetComponent<BoxCollider2D> ().enabled = true;
 			mSprOut.transform.FindChild ("BtnOut4").GetComponent<BoxCollider2D> ().enabled = true;
+
+			mSprHit.transform.FindChild ("BtnHit1").GetComponent<ScriptBettingItem>().Reset();
+			mSprHit.transform.FindChild ("BtnHit2").GetComponent<ScriptBettingItem>().Reset();
+			mSprHit.transform.FindChild ("BtnHit3").GetComponent<ScriptBettingItem>().Reset();
+			mSprHit.transform.FindChild ("BtnHit4").GetComponent<ScriptBettingItem>().Reset();
+			mSprOut.transform.FindChild ("BtnOut1").GetComponent<ScriptBettingItem>().Reset();
+			mSprOut.transform.FindChild ("BtnOut2").GetComponent<ScriptBettingItem>().Reset();
+			mSprOut.transform.FindChild ("BtnOut3").GetComponent<ScriptBettingItem>().Reset();
+			mSprOut.transform.FindChild ("BtnOut4").GetComponent<ScriptBettingItem>().Reset();
 		} else if (QuizMgr.QuizInfo.typeCode.Contains ("_QZC_")) {
 			mSprHit.SetActive(false);
 			mSprOut.SetActive(false);
 			mSprLoaded.SetActive(true);
+
+			mSprLoaded.transform.FindChild("SprQuestionBack").FindChild("Label").GetComponent<UILabel>().text
+				= QuizMgr.QuizInfo.quizTitle;
 
 			mSprLoaded.transform.FindChild ("BtnLoaded1").FindChild ("LblGP").GetComponent<UILabel> ().text = QuizMgr.QuizInfo.order [0].ratio;
 			mSprLoaded.transform.FindChild ("BtnLoaded2").FindChild ("LblGP").GetComponent<UILabel> ().text = QuizMgr.QuizInfo.order [1].ratio;
 //			mSprLoaded.transform.FindChild ("BtnLoaded3").FindChild ("LblGP").GetComponent<UILabel> ().text = mQuizInfo.order [2].ratio;
 //			mSprLoaded.transform.FindChild ("BtnLoaded4").FindChild ("LblGP").GetComponent<UILabel> ().text = mQuizInfo.order [3].ratio;
 
+			mSprLoaded.transform.FindChild ("BtnLoaded1").GetComponent<ScriptBettingItem>().Reset();
+			mSprLoaded.transform.FindChild ("BtnLoaded2").GetComponent<ScriptBettingItem>().Reset();
+			mSprLoaded.transform.FindChild ("BtnLoaded3").GetComponent<ScriptBettingItem>().Reset();
+			mSprLoaded.transform.FindChild ("BtnLoaded4").GetComponent<ScriptBettingItem>().Reset();
 		}
 	}
 

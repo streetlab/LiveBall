@@ -24,13 +24,34 @@ public class ScriptItemHitterHighlight : MonoBehaviour {
 	public bool needSimpleResult;
 	GetSimpleResultEvent mSimpleEvent;
 
+	Vector3 mLocalPosList;
+	Vector2 mClipOffsetPanel;
+
 	public void Init(QuizInfo quizInfo, GameObject detailView)
 	{
 		isImgLoaded = false;
 		mDetailView = detailView;
 		mQuizInfo = quizInfo;
-		mLblName.transform.GetComponent<UILabel> ().text = mQuizInfo.playerName;
-		mLblNumber.transform.GetComponent<UILabel> ().text = "No."+mQuizInfo.playerNumber;
+		string ddd;
+
+
+		if (mQuizInfo.typeCode.Contains ("_QZC_")) {
+			mLblName.transform.GetComponent<UILabel> ().text = mQuizInfo.subTitle;
+			mLblNumber.SetActive(false);
+		} else {
+			mLblName.transform.GetComponent<UILabel> ().text = mQuizInfo.playerName;
+//			int width = mLblName.transform.GetComponent<UILabel> ().width;
+			float width = mQuizInfo.playerName.Length * 25;
+			mLblNumber.transform.GetComponent<UILabel> ().text = "No."+mQuizInfo.playerNumber;
+//			Vector3 pos = new Vector3(mLblName.transform.localPosition.x,
+//			                          mLblName.transform.localPosition.y,
+//			                          mLblName.transform.localPosition.z);
+//			pos.x += width;
+			Vector3 pos = mLblNumber.transform.localPosition;
+			pos.x += width;
+			mLblNumber.transform.localPosition = pos;
+		}
+
 		mLblReward.transform.GetComponent<UILabel> ().text = mQuizInfo.rewardDividend;
 		WWW www = new WWW (Constants.IMAGE_SERVER_HOST + mQuizInfo.imageName);
 		StartCoroutine(GetImage (www));
@@ -147,6 +168,9 @@ public class ScriptItemHitterHighlight : MonoBehaviour {
 //			if(transform.parent.GetComponent<SpringPanel> () != null)
 //				transform.parent.GetComponent<SpringPanel> ().enabled = true;
 			mDetailView.GetComponent<ScriptDetailHighlight> ().ClearList();
+
+			transform.parent.localPosition = mLocalPosList;
+			NGUITools.FindInParents<UIPanel> (gameObject).clipOffset = mClipOffsetPanel;
 		} else{
 			mEvent = new GetQuizResultEvent (new EventDelegate (this, "GotResult"));
 			NetMgr.GetQuizResult (mQuizInfo.quizListSeq, mEvent);
@@ -163,10 +187,12 @@ public class ScriptItemHitterHighlight : MonoBehaviour {
 
 		if(transform.parent.GetComponent<SpringPanel> () != null)
 			transform.parent.GetComponent<SpringPanel> ().enabled = false;
+		mLocalPosList = transform.parent.localPosition;
 		transform.parent.localPosition = new Vector3 (0f, 54f+mPositionY, 0f);
 //		TweenPosition.Begin(transform.parent.gameObject, 1f, new Vector3(0f, 54f+mPositionY, 0f));
 
 		//move after 1f
+		mClipOffsetPanel = NGUITools.FindInParents<UIPanel> (gameObject).clipOffset;
 		NGUITools.FindInParents<UIPanel>(gameObject).clipOffset = new Vector2(0f, -326f-mPositionY);//191
 	}
 

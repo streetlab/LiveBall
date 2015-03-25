@@ -246,7 +246,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 54, y: 0, z: 0}
+  m_LocalPosition: {x: -55, y: -20, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400018}
@@ -258,7 +258,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100004}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -130, y: -18, z: 0}
+  m_LocalPosition: {x: -110, y: 20, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400018}
@@ -270,7 +270,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100006}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -130, y: 18, z: 0}
+  m_LocalPosition: {x: 46, y: 20, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400018}
@@ -644,13 +644,13 @@ MonoBehaviour:
   updateAnchors: 1
   mColor: {r: .180392161, g: .180392161, b: .180392161, a: 1}
   mPivot: 4
-  mWidth: 150
+  mWidth: 500
   mHeight: 30
   mDepth: 9
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 5
+  aspectRatio: 16.666666
   keepCrispWhenShrunk: 1
   mTrueTypeFont: {fileID: 12800000, guid: e72b476f4cb2a462d91d0093b0767656, type: 3}
   mFont: {fileID: 0}
@@ -1044,6 +1044,8 @@ MonoBehaviour:
   mLblSelect1: {fileID: 100000}
   mLblSelect2_1: {fileID: 100024}
   mLblSelect2_2: {fileID: 100022}
+  mPositionY: 0
+  needSimpleResult: 0
 --- !u!114 &11400026
 MonoBehaviour:
   m_ObjectHideFlags: 1
