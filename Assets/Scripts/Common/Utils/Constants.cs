@@ -90,8 +90,9 @@ public class Constants {
 	public const string PrefMy_temp_golden_ball = "my_temp_golden_ball";
 	public const string PrefMy_total_ruby = "my_total_ruby";
 	public const string PrefMy_total_diamond = "my_total_diamond";
-	public const string PrefEmail = "emain";
+	public const string PrefEmail = "email";
 	public const string PrefPwd = "pwd";
+	public const string PrefRegistType = "RegistType";
 	public const string PrefServerTest = "serverTest";
 	public const string PrefSetting_vibrate_on_off = "setting_vibrate_on_off";
 	public const string PrefSetting_watching_method = "setting_system_watching_method";

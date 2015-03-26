@@ -1,28 +1,32 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Common/Main/ScriptMainTop.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Common/Login/ScriptWindowEmail.cs">
     <Files>
-      <File FileName="Assets/Scripts/Common/Main/ScriptMainTop.cs" Line="68" Column="3" />
-      <File FileName="Assets/Scripts/Common/Main/Betting/ScriptTF_Betting.cs" Line="38" Column="25" />
-      <File FileName="Assets/Scripts/Common/Main/Betting/ScriptBetting.cs" Line="57" Column="11" />
-      <File FileName="Assets/Scripts/Common/Main/Highlight/ScriptItemHitterHighlight.cs" Line="113" Column="30" />
+      <File FileName="Assets/Scripts/Common/Main/ScriptMainTop.cs" Line="161" Column="21" />
+      <File FileName="Assets/Scripts/Common/Main/Betting/ScriptBettingItem.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Common/Utils/QuizMgr.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Common/Main/Betting/ScriptBetting.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Common/Main/Betting/ScriptTF_Betting.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Common/Main/Highlight/ScriptMatchPlaying.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Network/NetMgr.cs" Line="118" Column="71" />
-      <File FileName="Assets/Scripts/Network/Requests/GetSimpleResultRequest.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Common/Models/QuizRespInfo.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Network/Events/GetSimpleResultEvent.cs" Line="6" Column="9" />
-      <File FileName="Assets/Scripts/Common/Utils/QuizMgr.cs" Line="17" Column="20" />
+      <File FileName="Assets/Scripts/Common/Main/Highlight/ScriptItemHitterHighlight.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Common/Login/ScriptWindowEmail.cs" Line="68" Column="32" />
+      <File FileName="Assets/Scripts/Common/Login/ScriptTitle.cs" Line="18" Column="3" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Assembly-CSharp" expanded="True">
+            <Node name="Facebook" expanded="True">
+              <Node name="Scripts" expanded="True" />
+            </Node>
             <Node name="Scripts" expanded="True">
               <Node name="Common" expanded="True">
+                <Node name="Login" expanded="True">
+                  <Node name="ScriptWindowEmail.cs" selected="True" />
+                </Node>
                 <Node name="Main" expanded="True">
                   <Node name="Betting" expanded="True" />
                   <Node name="Highlight" expanded="True" />
-                  <Node name="ScriptMainTop.cs" selected="True" />
                 </Node>
                 <Node name="Utils" expanded="True" />
               </Node>

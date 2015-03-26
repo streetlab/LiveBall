@@ -11,31 +11,85 @@ public class ScriptTitle : MonoBehaviour {
 	void Start()
 	{
 		transform.FindChild ("ContainerBtns").localPosition = new Vector3(0, UtilMgr.GetScaledPositionY()*2, 0);
+
+		transform.FindChild ("ContainerBtns").gameObject.SetActive (false);
+		transform.FindChild ("WindowEmail").gameObject.SetActive (false);
+		transform.FindChild ("FormJoin").gameObject.SetActive (false);
+
+		CheckPreference ();
 	}
 
-	void LoginFacebook()
+	void CheckPreference()
+	{
+		string email = PlayerPrefs.GetString (Constants.PrefEmail);
+		if (email == null || email.Length < 1) {
+			StopLogin();
+		}
+		else{
+			DoLogin();
+		}
+	}
+
+	void StopLogin()
+	{
+		transform.FindChild ("ContainerBtns").gameObject.SetActive (true);
+	}
+
+	void DoLogin()
 	{
 		//Get info from server
-
+		
 		//Load Scene Teamhome
-//		Application.LoadLevel ("SceneTeamHome");
+		//		Application.LoadLevel ("SceneTeamHome");
 		mLoginInfo = new LoginInfo ();
 		mLoginInfo.memberEmail = "gunloves@.";
 		mLoginInfo.memberName = "gunloves";
 		mLoginInfo.memberPwd = "asdf";
 		mLoginEvent = new LoginEvent(new EventDelegate(this, "LoginComplete"));
-//		NetMgr.DoLogin (loginInfo, mLoginEvent);
-
+		//		NetMgr.DoLogin (loginInfo, mLoginEvent);
+		
 		//Receive UID(Push Key) then do login
-
+		
 		if (Application.platform == RuntimePlatform.Android) {
-						AndroidMgr.CallJavaFunc ("RegisterGCM", "", this);
+			AndroidMgr.CallJavaFunc ("RegisterGCM", "", this);
 		} else if (Application.platform == RuntimePlatform.IPhonePlayer) {
-
+			
 		} else if(Application.platform == RuntimePlatform.OSXEditor){
 			mLoginInfo.memUID = "";
 			NetMgr.DoLogin (mLoginInfo, mLoginEvent);
 		}
+	}
+
+	public void OpenFacebook()
+	{
+		if(FB.IsLoggedIn)
+		{
+			InitComplete();
+		}
+		else
+		{
+			FB.Init (InitComplete, "saffsg324345ddvd");
+			Debug.Log("FB.Login");
+			FB.Login ();
+		}
+	}
+
+	public void InitComplete()
+	{
+		Debug.Log("InitComplete");
+	}
+
+	public void OpenKakao()
+	{
+
+	}
+
+	public void OpenEmail()
+	{
+		transform.FindChild ("ContainerBtns").gameObject.SetActive (false);
+		transform.FindChild ("SprLogo").gameObject.SetActive (false);
+
+		transform.FindChild ("WindowEmail").gameObject.SetActive (true);
 
 	}
 
@@ -80,14 +134,14 @@ public class ScriptTitle : MonoBehaviour {
 	{
 		switch(name)
 		{
-		case "Facebook":
-			LoginFacebook();
+		case "BtnFacebook":
+			OpenFacebook();
 			break;
-		case "Cacao":
-
+		case "BtnKakao":
+			OpenKakao();
 			break;
-		case "Email":
-
+		case "BtnEmail":
+			OpenEmail();
 			break;
 
 		

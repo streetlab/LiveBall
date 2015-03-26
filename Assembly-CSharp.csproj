@@ -681,8 +681,11 @@
      <Compile Include="Assets\Scripts\Common\Chat\ScriptChatRoot.cs" />
      <Compile Include="Assets\Scripts\Common\Chat\ScriptInput.cs" />
      <Compile Include="Assets\Scripts\Common\Chat\ScriptUIMgr.cs" />
+     <Compile Include="Assets\Scripts\Common\Login\ScriptBtnJoinItem.cs" />
+     <Compile Include="Assets\Scripts\Common\Login\ScriptJoinForm.cs" />
      <Compile Include="Assets\Scripts\Common\Login\ScriptLoginRoot.cs" />
      <Compile Include="Assets\Scripts\Common\Login\ScriptTitle.cs" />
+     <Compile Include="Assets\Scripts\Common\Login\ScriptWindowEmail.cs" />
      <Compile Include="Assets\Scripts\Common\Main\Betting\ScriptBetting.cs" />
      <Compile Include="Assets\Scripts\Common\Main\Betting\ScriptBettingItem.cs" />
      <Compile Include="Assets\Scripts\Common\Main\Betting\ScriptTF_Betting.cs" />
