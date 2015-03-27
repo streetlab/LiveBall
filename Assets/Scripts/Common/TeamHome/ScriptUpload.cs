@@ -16,7 +16,7 @@ public class ScriptUpload : ScriptImgMgr {
 	{
 		if(Application.platform == RuntimePlatform.Android)
 		{
-			AndroidMgr.CallJavaFunc("GetGalleryImages", "", this);
+			AndroidMgr.GetGalleryImages(this);
 		}
 		else
 		{

@@ -51,7 +51,7 @@ public class ScriptTitle : MonoBehaviour {
 		//Receive UID(Push Key) then do login
 		
 		if (Application.platform == RuntimePlatform.Android) {
-			AndroidMgr.CallJavaFunc ("RegisterGCM", "", this);
+			AndroidMgr.RegistGCM(new EventDelegate(this, "SetGCMId"));
 		} else if (Application.platform == RuntimePlatform.IPhonePlayer) {
 			
 		} else if(Application.platform == RuntimePlatform.OSXEditor){
@@ -93,9 +93,9 @@ public class ScriptTitle : MonoBehaviour {
 
 	}
 
-	public void SetGCMId(string key)
+	public void SetGCMId()
 	{
-		mLoginInfo.memUID = key;
+		mLoginInfo.memUID = AndroidMgr.GetMsg();
 		NetMgr.DoLogin (mLoginInfo, mLoginEvent);
 	}
 

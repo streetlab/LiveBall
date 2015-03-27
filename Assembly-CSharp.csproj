@@ -707,6 +707,7 @@
      <Compile Include="Assets\Scripts\Common\Models\ExtendInfo.cs" />
      <Compile Include="Assets\Scripts\Common\Models\GameTypeInfo.cs" />
      <Compile Include="Assets\Scripts\Common\Models\HEBInfo.cs" />
+     <Compile Include="Assets\Scripts\Common\Models\JoinMemberInfo.cs" />
      <Compile Include="Assets\Scripts\Common\Models\JoinQuizInfo.cs" />
      <Compile Include="Assets\Scripts\Common\Models\LoginInfo.cs" />
      <Compile Include="Assets\Scripts\Common\Models\NotiMsgInfo.cs" />
@@ -774,6 +775,7 @@
      <Compile Include="Assets\Scripts\Network\Events\LoginEvent.cs" />
      <Compile Include="Assets\Scripts\Network\NetMgr.cs" />
      <Compile Include="Assets\Scripts\Network\Requests\BaseRequest.cs" />
+     <Compile Include="Assets\Scripts\Network\Requests\BaseUploadRequest.cs" />
      <Compile Include="Assets\Scripts\Network\Requests\GetCardInvenRequest.cs" />
      <Compile Include="Assets\Scripts\Network\Requests\GetGameSposDetailBoardRequest.cs" />
      <Compile Include="Assets\Scripts\Network\Requests\GetGameSposPlayBoardRequest.cs" />
@@ -784,6 +786,7 @@
      <Compile Include="Assets\Scripts\Network\Requests\GetScheduleMoreRequest.cs" />
      <Compile Include="Assets\Scripts\Network\Requests\GetSimpleResultRequest.cs" />
      <Compile Include="Assets\Scripts\Network\Requests\JoinGameRequest.cs" />
+     <Compile Include="Assets\Scripts\Network\Requests\JoinMemberRequest.cs" />
      <Compile Include="Assets\Scripts\Network\Requests\JoinQuizRequest.cs" />
      <Compile Include="Assets\Scripts\Network\Requests\LoginRequest.cs" />
      <Compile Include="Assets\Scripts\Network\Responses\BaseResponse.cs" />

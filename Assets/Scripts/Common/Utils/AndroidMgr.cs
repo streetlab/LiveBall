@@ -3,64 +3,25 @@ using System.Collections;
 
 public class AndroidMgr : MonoBehaviour
 {
+	EventDelegate mEventDelegate;
+	static AndroidMgr _instance;
+	string mMsg;
+
 	#if(UNITY_ANDROID)
 	private AndroidJavaObject curActivity;
-	public string strLog = "No Log";
-	public Texture2D texTmp;
-	static AndroidMgr _instance;
-	Object mReceiver;
-
-	int callNum = 0;
-
-	private static AndroidMgr Instance
-	{
-		get
-		{
-			if (_instance == null)
-			{
-				_instance = FindObjectOfType(typeof(AndroidMgr)) as AndroidMgr;
-				Debug.Log("AndroidMgr is null");
-				if (_instance == null)
-				{
-					GameObject container = new GameObject();  
-					container.name = "AndroidMgr";  
-					_instance = container.AddComponent(typeof(AndroidMgr)) as AndroidMgr;
-					Debug.Log("and makes new one");
-					
-				}
-			}
-			
-			return _instance;
-		}
-	}
 
 	void Awake()
 	{
-
-		///&lt; 현재 활성화된 액티비티 얻어와서 저장
 		AndroidJavaClass jc = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
 		curActivity = jc.GetStatic<AndroidJavaObject>("currentActivity");
 		DontDestroyOnLoad (this);
 	}
-	void Start ()
-	{
-//		texTmp = new Texture2D (1024, 1024, TextureFormat.DXT1, false);
-	}
 
-	public static void CallJavaFunc( string strFuncName, string str)
+	public static void CallJavaFunc( string strFuncName, string str,)
 	{
 		if( Instance.curActivity == null )
 			return;
-		///&lt; 액티비티안의 자바 메소드 호출
-		Instance.curActivity.Call( strFuncName, str);
-	}
 
-	public static void CallJavaFunc( string strFuncName, string str, Object receiver)
-	{
-		if( Instance.curActivity == null )
-			return;
-		///&lt; 액티비티안의 자바 메소드 호출
-		Instance.SetReceiver(receiver);
 		Instance.curActivity.Call( strFuncName, str);
 	}
 
@@ -85,36 +46,73 @@ public class AndroidMgr : MonoBehaviour
 
 	}
 
-	public void SetReceiver(Object receiver)
+#else
+	public static void CallJavaFunc( string strFuncName, string str){}
+
+#endif
+	private static AndroidMgr Instance
 	{
-		mReceiver = receiver;
+		get
+		{
+			if (_instance == null)
+			{
+				_instance = FindObjectOfType(typeof(AndroidMgr)) as AndroidMgr;
+				Debug.Log("AndroidMgr is null");
+				if (_instance == null)
+				{
+					GameObject container = new GameObject();  
+					container.name = "AndroidMgr";  
+					_instance = container.AddComponent(typeof(AndroidMgr)) as AndroidMgr;
+					Debug.Log("and makes new one");
+					
+				}
+			}
+			
+			return _instance;
+		}
 	}
 
-	public void SetKeyboardHeight(string height)
+	public string GetMsg()
 	{
-		ScriptInputBody sib = mReceiver as ScriptInputBody;
-		sib.SetKeyboardHeight (int.Parse (height));
+		return Instance.mMsg;
 	}
 
-	public void SetGCMId(string GCMId)
+	public void MsgReceived(string msg)
 	{
-		Debug.Log ("Recieved GCMId : "+GCMId);
-		ScriptTitle receiver = mReceiver as ScriptTitle;
-		receiver.SetGCMId (GCMId);
+		mMsg = msg;
+		mEventDelegate.Execute ();
 	}
 
-	public void GCMFailed(string msg)
+	public void ErrorReceived(string msg)
 	{
-		Debug.Log ("Failed GCM : "+msg);  
+		Debug.Log (msg);
 	}
 
-	public void ReceivedMsg(string msg)
+	public void NotiReceived(string msg)
 	{
 		QuizMgr.NotiReceived (msg);
 	}
-#else
-	public static void CallJavaFunc( string strFuncName, string str){}
-	public static void CallJavaFunc( string strFuncName, string str, Object receiver){}
 
-#endif
+	public void OpenCamera(EventDelegate eventDelegate){
+		mEventDelegate = eventDelegate;
+		string timeStr = UtilMgr.GetDateTime ("yyyy-MM-dd HH:mm:ss");
+		timeStr += " by lb.jpg";
+		Instance.CallJavaFunc("OpenCamera", timeStr);
+	}
+
+	public void OpenGallery(EventDelegate eventDelegate){
+		mEventDelegate = eventDelegate;
+		Instance.CallJavaFunc("OpenGallery", "");
+	}
+
+	public void GetGalleryImages(EventDelegate eventDelegate){
+		mEventDelegate = eventDelegate;
+		Instance.CallJavaFunc("GetGalleryImages", "");
+	}
+
+	public void RegistGCM(EventDelegate eventDelegate){
+		mEventDelegate = eventDelegate;
+		Instance.CallJavaFunc("RegisterGCM", "");
+	}
+
 }

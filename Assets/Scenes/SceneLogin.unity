@@ -912,7 +912,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3008
+  startingRenderQueue: 3009
   mClipTexture: {fileID: 2800000, guid: a4f76ec8da3c74f3faf3c8c15b9545a5, type: 3}
   mAlpha: 1
   mClipping: 0
@@ -1202,7 +1202,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3007
+  startingRenderQueue: 3008
   mClipTexture: {fileID: 2800000, guid: a4f76ec8da3c74f3faf3c8c15b9545a5, type: 3}
   mAlpha: 1
   mClipping: 1
@@ -1915,7 +1915,11 @@ MonoBehaviour:
   pressedSprite2D: {fileID: 0}
   disabledSprite2D: {fileID: 0}
   pixelSnap: 0
-  onClick: []
+  onClick:
+  - mTarget: {fileID: 2010813459}
+    mMethodName: NextClicked
+    mParameters: []
+    oneShot: 0
 --- !u!65 &463452407
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3159,7 +3163,7 @@ MonoBehaviour:
   disabledSprite2D: {fileID: 0}
   pixelSnap: 0
   onClick:
-  - mTarget: {fileID: 1116499171}
+  - mTarget: {fileID: 0}
     mMethodName: BackClicked
     mParameters: []
     oneShot: 0
@@ -3751,7 +3755,11 @@ MonoBehaviour:
   pressedSprite2D: {fileID: 0}
   disabledSprite2D: {fileID: 0}
   pixelSnap: 0
-  onClick: []
+  onClick:
+  - mTarget: {fileID: 1116499172}
+    mMethodName: NextClicked
+    mParameters: []
+    oneShot: 0
 --- !u!65 &1030316249
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3865,9 +3873,10 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1116499170}
+  - 114: {fileID: 1116499172}
   - 114: {fileID: 1116499171}
   m_Layer: 0
-  m_Name: JoinForm
+  m_Name: FormJoin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3903,11 +3912,112 @@ MonoBehaviour:
   m_GameObject: {fileID: 1116499169}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da629076a719d4ef290d78fa79fef266, type: 3}
+  m_Script: {fileID: 1384774831, guid: e743331561ef77147ae48cda9bcb8209, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mBtnJoin: {fileID: 0}
-  mBtnLogin: {fileID: 0}
+  fsm:
+    usedInTemplate: {fileID: 0}
+    name: FSM
+    startState: State 1
+    states:
+    - name: State 1
+      description: 
+      colorIndex: 0
+      position:
+        serializedVersion: 2
+        x: 50
+        y: 100
+        width: 100
+        height: 16
+      isBreakpoint: 0
+      isSequence: 0
+      hideUnused: 0
+      transitions: []
+      actionData:
+        actionNames: []
+        customNames: []
+        actionEnabled: 
+        actionIsOpen: 
+        actionStartIndex: 
+        actionHashCodes: 
+        unityObjectParams: []
+        fsmGameObjectParams: []
+        fsmOwnerDefaultParams: []
+        animationCurveParams: []
+        functionCallParams: []
+        fsmTemplateControlParams: []
+        fsmEventTargetParams: []
+        fsmPropertyParams: []
+        layoutOptionParams: []
+        fsmStringParams: []
+        fsmObjectParams: []
+        fsmVarParams: []
+        byteData: 
+        arrayParamSizes: 
+        arrayParamTypes: []
+        customTypeSizes: 
+        customTypeNames: []
+        paramDataType: 
+        paramName: []
+        paramDataPos: 
+        paramByteDataSize: 
+    events: []
+    globalTransitions: []
+    variables:
+      floatVariables: []
+      intVariables: []
+      boolVariables: []
+      stringVariables:
+      - useVariable: 1
+        name: StrEmailError
+        tooltip: 
+        showInInspector: 0
+        networkSync: 0
+        value: "\uC774\uBA54\uC77C\uC744 \uC815\uD655\uD558\uAC8C \uC785\uB825\uD574\uC8FC\uC138\uC694."
+      - useVariable: 1
+        name: StrNickError
+        tooltip: 
+        showInInspector: 0
+        networkSync: 0
+        value: "\uB2C9\uB124\uC784\uC740 2\uAE00\uC790 \uC774\uC0C1 \uC785\uB825\uD574\uC8FC\uC138\uC694."
+      - useVariable: 1
+        name: StrPwdError
+        tooltip: 
+        showInInspector: 0
+        networkSync: 0
+        value: "\uBE44\uBC00\uBC88\uD638\uB294 4\uC790\uB9AC \uC774\uC0C1 \uC785\uB825\uD574\uC8FC\uC138\uC694."
+      vector2Variables: []
+      vector3Variables: []
+      colorVariables: []
+      rectVariables: []
+      quaternionVariables: []
+      gameObjectVariables: []
+      objectVariables: []
+      materialVariables: []
+      textureVariables: []
+    description: 
+    docUrl: 
+    showStateLabel: 1
+    maxLoopCount: 0
+    watermark: 
+    version: 0
+    ExposedEvents: []
+    RestartOnEnable: 1
+    EnableDebugFlow: 0
+    StepFrame: 0
+    activeStateName: 
+  fsmTemplate: {fileID: 0}
+--- !u!114 &1116499172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1116499169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4980acbd8f8c456199a3d1e7b41e104, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1118103224
 GameObject:
   m_ObjectHideFlags: 0

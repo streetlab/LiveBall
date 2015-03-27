@@ -58,14 +58,12 @@ public class ScriptOnKeyTop : MonoBehaviour {
 
 	void OpenCamera()
 	{
-		string timeStr = UtilMgr.GetDateTime ("yyyy-MM-dd HH:mm:ss");
-		timeStr += " by tuby.jpg";
 		ScriptItemPhoto sip = GetCurrentItemPhoto ();
 		if (sip == null)
 						return;
 		if(Application.platform == RuntimePlatform.Android)
 		{
-			AndroidMgr.CallJavaFunc("OpenCamera", timeStr, sip);
+			AndroidMgr.OpenCamera(sip);
 		}
 		else
 		{
@@ -82,7 +80,7 @@ public class ScriptOnKeyTop : MonoBehaviour {
 
 		if(Application.platform == RuntimePlatform.Android)
 		{
-			AndroidMgr.CallJavaFunc("OpenGallery", "", sip);
+			AndroidMgr.OpenGallery(sip);
 		}
 		else
 		{

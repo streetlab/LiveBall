@@ -69,6 +69,7 @@ public class ScriptWindowEmail : MonoBehaviour {
 		transform.parent.FindChild ("FormJoin").gameObject.SetActive (true);
 //		WWWForm form = new WWWForm ();
 
+
 	}
 
 	public void FindPwdClicked()

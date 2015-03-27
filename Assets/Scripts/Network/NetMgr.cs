@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 
@@ -38,6 +38,13 @@ public class NetMgr : MonoBehaviour{
 		{
 			Debug.Log(www.error);
 		}
+	}
+
+	private void webAPIUploadProcessEvent(BaseUploadRequest request, BaseEvent baseEvent)
+	{		
+		WWW www = new WWW (Constants.QUERY_SERVER_HOST , request.GetRequestWWWForm);
+
+		StartCoroutine (webAPIProcess(www, baseEvent));
 	}
 
 	private void webAPIProcessEvent(BaseRequest request, BaseEvent baseEvent)
@@ -116,5 +123,10 @@ public class NetMgr : MonoBehaviour{
 	public static void GetSimpleResult(int quizListSeq, BaseEvent baseEvent)
 	{
 		Instance.webAPIProcessEvent (new GetSimpleResultRequest (quizListSeq), baseEvent);
+	}
+
+	public static void JoinMember(JoinMemberInfo memInfo, BaseEvent baseEvent)
+	{
+		Instance.webAPIUploadProcessEvent (new JoinMemberRequest (memInfo), baseEvent);
 	}
 }
