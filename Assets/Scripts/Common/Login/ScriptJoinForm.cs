@@ -54,7 +54,7 @@ public class ScriptJoinForm : MonoBehaviour {
 
 	public void JoinComplete()
 	{
-
+		Debug.Log (mEvent.Response.data.memberEmail);
 	}
 
 	string CheckValidation()

@@ -22,11 +22,12 @@ public class ScriptTitle : MonoBehaviour {
 	void CheckPreference()
 	{
 		string email = PlayerPrefs.GetString (Constants.PrefEmail);
+		string pwd = PlayerPrefs.GetString (Constants.PrefPwd);
 		if (email == null || email.Length < 1) {
 			StopLogin();
 		}
 		else{
-			DoLogin();
+			DoLogin(email, pwd);
 		}
 	}
 
@@ -35,16 +36,16 @@ public class ScriptTitle : MonoBehaviour {
 		transform.FindChild ("ContainerBtns").gameObject.SetActive (true);
 	}
 
-	void DoLogin()
+	public void DoLogin(string eMail, string pwd)
 	{
 		//Get info from server
 		
 		//Load Scene Teamhome
 		//		Application.LoadLevel ("SceneTeamHome");
 		mLoginInfo = new LoginInfo ();
-		mLoginInfo.memberEmail = "gunloves@.";
-		mLoginInfo.memberName = "gunloves";
-		mLoginInfo.memberPwd = "asdf";
+		mLoginInfo.memberEmail = eMail;
+		mLoginInfo.memberName = "";
+		mLoginInfo.memberPwd = pwd;
 		mLoginEvent = new LoginEvent(new EventDelegate(this, "LoginComplete"));
 		//		NetMgr.DoLogin (loginInfo, mLoginEvent);
 		

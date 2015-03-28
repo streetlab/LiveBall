@@ -65,10 +65,14 @@ public class ScriptWindowEmail : MonoBehaviour {
 
 	public void NextClicked()
 	{
-		gameObject.SetActive (false);
-		transform.parent.FindChild ("FormJoin").gameObject.SetActive (true);
-//		WWWForm form = new WWWForm ();
-
+		string eMail = transform.FindChild ("InputEmail").GetComponent<UIInput> ().value;
+		string pwd = transform.FindChild ("InputPwd").GetComponent<UIInput> ().value;
+		if (mState == SELECTION_STATE.LOGIN) {
+			GetComponentInParent<ScriptTitle>().DoLogin(eMail, pwd);
+		} else {
+			gameObject.SetActive (false);
+			transform.parent.FindChild ("FormJoin").gameObject.SetActive (true);
+		}
 
 	}
 
@@ -76,5 +80,4 @@ public class ScriptWindowEmail : MonoBehaviour {
 	{
 
 	}
-
 }

@@ -41,8 +41,8 @@ public class NetMgr : MonoBehaviour{
 	}
 
 	private void webAPIUploadProcessEvent(BaseUploadRequest request, BaseEvent baseEvent)
-	{		
-		WWW www = new WWW (Constants.QUERY_SERVER_HOST , request.GetRequestWWWForm);
+	{	
+		WWW www = new WWW (Constants.QUERY_SERVER_HOST , request.GetRequestWWWForm());
 
 		StartCoroutine (webAPIProcess(www, baseEvent));
 	}

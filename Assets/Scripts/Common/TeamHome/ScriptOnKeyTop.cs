@@ -63,13 +63,18 @@ public class ScriptOnKeyTop : MonoBehaviour {
 						return;
 		if(Application.platform == RuntimePlatform.Android)
 		{
-			AndroidMgr.OpenCamera(sip);
+			AndroidMgr.OpenCamera(new EventDelegate(this, "GotPhoto"));
 		}
 		else
 		{
 			
 		}
 
+	}
+
+	public void GotPhoto()
+	{
+		string msg = AndroidMgr.GetMsg ();
 	}
 
 	void OpenPhoto()
@@ -80,7 +85,7 @@ public class ScriptOnKeyTop : MonoBehaviour {
 
 		if(Application.platform == RuntimePlatform.Android)
 		{
-			AndroidMgr.OpenGallery(sip);
+			AndroidMgr.OpenGallery(new EventDelegate(this, "GotPhoto"));
 		}
 		else
 		{

@@ -1,16 +1,22 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Common/Login/ScriptWindowEmail.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Network/NetMgr.cs">
     <Files>
-      <File FileName="Assets/Scripts/Common/Main/ScriptMainTop.cs" Line="161" Column="21" />
+      <File FileName="Assets/Scripts/Common/Main/ScriptMainTop.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Common/Main/Betting/ScriptBettingItem.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Common/Utils/QuizMgr.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Common/Main/Betting/ScriptBetting.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Common/Main/Betting/ScriptTF_Betting.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Common/Main/Highlight/ScriptMatchPlaying.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Common/Main/Highlight/ScriptItemHitterHighlight.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Common/Login/ScriptWindowEmail.cs" Line="68" Column="32" />
-      <File FileName="Assets/Scripts/Common/Login/ScriptTitle.cs" Line="18" Column="3" />
+      <File FileName="Assets/Scripts/Common/Login/ScriptWindowEmail.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Common/Login/ScriptJoinForm.cs" Line="12" Column="17" />
+      <File FileName="Assets/Scripts/Common/Utils/AndroidMgr.cs" Line="115" Column="13" />
+      <File FileName="Assets/Scripts/Network/Requests/BaseUploadRequest.cs" Line="7" Column="7" />
+      <File FileName="Assets/Scripts/Common/TeamHome/ScriptOnKeyTop.cs" Line="88" Column="63" />
+      <File FileName="Assets/Scripts/Common/TeamHome/ScriptUpload.cs" Line="19" Column="33" />
+      <File FileName="Assets/Scripts/Network/Requests/JoinMemberRequest.cs" Line="21" Column="16" />
+      <File FileName="Assets/Scripts/Network/NetMgr.cs" Line="42" Column="2" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -21,14 +27,19 @@
             </Node>
             <Node name="Scripts" expanded="True">
               <Node name="Common" expanded="True">
-                <Node name="Login" expanded="True">
-                  <Node name="ScriptWindowEmail.cs" selected="True" />
-                </Node>
+                <Node name="Login" expanded="True" />
                 <Node name="Main" expanded="True">
                   <Node name="Betting" expanded="True" />
                   <Node name="Highlight" expanded="True" />
                 </Node>
+                <Node name="TeamHome" expanded="True" />
                 <Node name="Utils" expanded="True" />
+              </Node>
+              <Node name="Network" expanded="True">
+                <Node name="Events" expanded="True" />
+                <Node name="Requests" expanded="True" />
+                <Node name="Responses" expanded="True" />
+                <Node name="NetMgr.cs" selected="True" />
               </Node>
             </Node>
           </Node>

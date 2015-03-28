@@ -17,7 +17,7 @@ public class AndroidMgr : MonoBehaviour
 		DontDestroyOnLoad (this);
 	}
 
-	public static void CallJavaFunc( string strFuncName, string str,)
+	public static void CallJavaFunc( string strFuncName, string str)
 	{
 		if( Instance.curActivity == null )
 			return;
@@ -25,11 +25,11 @@ public class AndroidMgr : MonoBehaviour
 		Instance.curActivity.Call( strFuncName, str);
 	}
 
-	public void SetGalleryImage(string image)
-	{
-		ScriptItemPhoto sip = mReceiver as ScriptItemPhoto;
-		sip.SetImgData (image);
-	}
+//	public void SetGalleryImage(string image)
+//	{
+//		ScriptItemPhoto sip = mReceiver as ScriptItemPhoto;
+//		sip.SetImgData (image);
+//	}
 
 	public void SetGalleryImages(string images)
 	{
@@ -72,7 +72,7 @@ public class AndroidMgr : MonoBehaviour
 		}
 	}
 
-	public string GetMsg()
+	public static string GetMsg()
 	{
 		return Instance.mMsg;
 	}
@@ -93,26 +93,26 @@ public class AndroidMgr : MonoBehaviour
 		QuizMgr.NotiReceived (msg);
 	}
 
-	public void OpenCamera(EventDelegate eventDelegate){
-		mEventDelegate = eventDelegate;
+	public static void OpenCamera(EventDelegate eventDelegate){
+		Instance.mEventDelegate = eventDelegate;
 		string timeStr = UtilMgr.GetDateTime ("yyyy-MM-dd HH:mm:ss");
 		timeStr += " by lb.jpg";
-		Instance.CallJavaFunc("OpenCamera", timeStr);
+		AndroidMgr.CallJavaFunc("OpenCamera", timeStr);
 	}
 
-	public void OpenGallery(EventDelegate eventDelegate){
-		mEventDelegate = eventDelegate;
-		Instance.CallJavaFunc("OpenGallery", "");
+	public static void OpenGallery(EventDelegate eventDelegate){
+		Instance.mEventDelegate = eventDelegate;
+		AndroidMgr.CallJavaFunc("OpenGallery", "");
 	}
 
-	public void GetGalleryImages(EventDelegate eventDelegate){
-		mEventDelegate = eventDelegate;
-		Instance.CallJavaFunc("GetGalleryImages", "");
+	public static void GetGalleryImages(EventDelegate eventDelegate){
+		Instance.mEventDelegate = eventDelegate;
+		AndroidMgr.CallJavaFunc("GetGalleryImages", "");
 	}
 
-	public void RegistGCM(EventDelegate eventDelegate){
-		mEventDelegate = eventDelegate;
-		Instance.CallJavaFunc("RegisterGCM", "");
+	public static void RegistGCM(EventDelegate eventDelegate){
+		Instance.mEventDelegate = eventDelegate;
+		AndroidMgr.CallJavaFunc("RegisterGCM", "");
 	}
 
 }

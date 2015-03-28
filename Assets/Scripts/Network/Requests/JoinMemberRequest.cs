@@ -31,7 +31,7 @@ public class JoinMemberRequest : BaseUploadRequest {
 
 	public override string GetQueryId()
 	{
-		return "tubyGetCardInven";
+		return "tubyJoinMember";
 	}
 
 }
