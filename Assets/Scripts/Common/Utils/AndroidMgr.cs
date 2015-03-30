@@ -79,6 +79,7 @@ public class AndroidMgr : MonoBehaviour
 
 	public void MsgReceived(string msg)
 	{
+		Debug.Log ("Android Msg Received : " + msg);
 		mMsg = msg;
 		mEventDelegate.Execute ();
 	}

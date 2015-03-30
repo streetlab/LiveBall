@@ -149,8 +149,13 @@ public class ScriptTF_Betting : MonoBehaviour {
 		tfPitcher.FindChild ("LblName").GetComponent<UILabel> ().text = playerInfo;
 		string playerAVG = ScriptMainTop.DetailBoard.player [0].ERA;
 		tfPitcher.FindChild ("LblSave").GetComponent<UILabel> ().text = playerAVG;
-		//		WWW www = new WWW (Constants.IMAGE_SERVER_HOST + quizInfo.imageName);
-		//		StartCoroutine (GetImage(www, tfHitter.FindChild ("Panel").FindChild ("Texture").GetComponent<UITexture> ()));
+		string strImage = ScriptMainTop.DetailBoard.player [0].imageName;
+		if (ScriptMainTop.DetailBoard.player [0].imagePath != null 
+		    && ScriptMainTop.DetailBoard.player [0].imagePath.Length > 0)
+			strImage = ScriptMainTop.DetailBoard.player [0].imagePath
+				+ ScriptMainTop.DetailBoard.player [0].imageName;
+		WWW www = new WWW (Constants.IMAGE_SERVER_HOST + strImage);
+		StartCoroutine (GetImage(www, tfPitcher.FindChild ("Panel").FindChild ("Texture").GetComponent<UITexture> ()));
 	}
 
 	void SetHitter()
@@ -161,7 +166,10 @@ public class ScriptTF_Betting : MonoBehaviour {
 		string playerAVG = ScriptMainTop.DetailBoard.player [1].AVG;
 		tfHitter.FindChild("LblHit").GetComponent<UILabel>().text = playerAVG;
 		tfHitter.FindChild ("LblTeam").GetComponent<UILabel> ().text = QuizMgr.QuizInfo.teamName;
-		WWW www = new WWW (Constants.IMAGE_SERVER_HOST + QuizMgr.QuizInfo.imageName);
+		string strImage = QuizMgr.QuizInfo.imageName;
+		if (QuizMgr.QuizInfo.imagePath != null && QuizMgr.QuizInfo.imagePath.Length > 0)
+			strImage = QuizMgr.QuizInfo.imagePath + QuizMgr.QuizInfo.imageName;
+		WWW www = new WWW (Constants.IMAGE_SERVER_HOST + strImage);
 		StartCoroutine (GetImage(www, tfHitter.FindChild ("Panel").FindChild ("Texture").GetComponent<UITexture> ()));
 	}
 

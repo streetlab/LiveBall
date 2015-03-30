@@ -79,6 +79,17 @@ public class TeamInfo {
 		}
 	}
 
+	private string _imagePath;
+	
+	public string imagePath {
+		get {
+			return _imagePath;
+		}
+		set {
+			_imagePath = value;
+		}
+	}
+
 	string _imageName;
 
 	public string imageName {

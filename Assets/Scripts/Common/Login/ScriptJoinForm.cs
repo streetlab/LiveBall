@@ -3,7 +3,16 @@ using System.Collections;
 
 public class ScriptJoinForm : MonoBehaviour {
 
-	GetProfileEvent mEvent;
+//	GetProfileEvent mEvent;
+	JoinMemberInfo mMemInfo;
+	string mImgPath;
+
+	public void Init(string eMail, string pwd, bool pwdEnable)
+	{
+		transform.FindChild ("InputEmail").GetComponent<UIInput> ().value = eMail;
+		transform.FindChild ("InputPwd").GetComponent<UIInput> ().value = pwd;
+		transform.FindChild ("InputPwd").GetComponent<UIInput> ().enabled = pwdEnable;
+	}
 
 	public void CameraClicked()
 	{
@@ -23,7 +32,7 @@ public class ScriptJoinForm : MonoBehaviour {
 
 	public void BackClicked()
 	{
-
+		UtilMgr.OnBackPressed ();
 	}
 
 	public void NextClicked()
@@ -32,30 +41,45 @@ public class ScriptJoinForm : MonoBehaviour {
 //		transform.FindChild("InputEmail").GetComponent<UILabel>().text
 		string value = CheckValidation ();
 		if (value == null) {
-			JoinMemberInfo memInfo = new JoinMemberInfo();
-			memInfo.MemberEmail = transform.FindChild ("InputEmail").GetComponent<UIInput> ().value;
-			memInfo.MemberName = transform.FindChild ("InputNick").GetComponent<UIInput> ().value;
-			memInfo.MemberPwd = transform.FindChild ("InputPwd").GetComponent<UIInput> ().value;
-#if(UNITY_ANDROID)
-			memInfo.OsType = 1;
-#else
+			mMemInfo = new JoinMemberInfo();
+			mMemInfo.MemberEmail = transform.FindChild ("InputEmail").GetComponent<UIInput> ().value;
+			mMemInfo.MemberName = transform.FindChild ("InputNick").GetComponent<UIInput> ().value;
+			mMemInfo.MemberPwd = transform.FindChild ("InputPwd").GetComponent<UIInput> ().value;
+			mMemInfo.MemImage = "";//preprocess
+			mMemInfo.Photo = mImgPath;
+			#if(UNITY_ANDROID)
+			mMemInfo.OsType = 1;
+			AndroidMgr.RegistGCM(new EventDelegate(this, "CompleteGCM"));
+			#else
 			memInfo.OsType = 2;
-#endif
-			memInfo.MemUID = "";//coroutine
-			memInfo.MemImage = "";//preprocess
+			#endif
 
-			mEvent = new GetProfileEvent(new EventDelegate(this, "JoinComplete"));
-			NetMgr.JoinMember(memInfo, mEvent);
+
 		} else
 		{
 			Debug.Log(value);
 		}
 	}
 
-	public void JoinComplete()
+	public void CompleteGCM()
 	{
-		Debug.Log (mEvent.Response.data.memberEmail);
+		Debug.Log ("CompleteGCM");
+		string memUID = "";
+		#if(UNITY_ANDROID)
+		memUID = AndroidMgr.GetMsg();
+		#else
+		#endif
+		mMemInfo.MemUID = memUID;
+		GetComponentInParent<ScriptTitle>().mProfileEvent = 
+			new GetProfileEvent(new EventDelegate(GetComponentInParent<ScriptTitle>(), "GotProfile"));
+
+		NetMgr.JoinMember(mMemInfo, GetComponentInParent<ScriptTitle>().mProfileEvent);
 	}
+
+//	public void JoinComplete()
+//	{
+//		Debug.Log (mEvent.Response.data.memberEmail);
+//	}
 
 	string CheckValidation()
 	{
@@ -79,5 +103,36 @@ public class ScriptJoinForm : MonoBehaviour {
 
 		return null;
 
+	}
+
+	public void OpenCamera()
+	{
+		//need commonPopup
+		#if(UNITY_ANDROID)
+		AndroidMgr.OpenGallery(new EventDelegate(this, "GotImage"));
+		#else
+
+		#endif
+	}
+
+	public void GotImage()
+	{
+		#if(UNITY_ANDROID)
+		mImgPath = AndroidMgr.GetMsg();
+		#else
+		
+		#endif
+
+		WWW www = new WWW ("file://"+mImgPath);
+		StartCoroutine (LoadImage (www));
+
+	}
+
+	IEnumerator LoadImage(WWW www)
+	{
+		yield return www;
+		Texture2D tmpTex = new Texture2D(0,0);
+		www.LoadImageIntoTexture (tmpTex);
+		transform.FindChild ("PanelPhoto").FindChild ("TexPhoto").GetComponent<UITexture> ().mainTexture = tmpTex;
 	}
 }

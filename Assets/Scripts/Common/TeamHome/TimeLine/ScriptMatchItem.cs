@@ -77,8 +77,8 @@ public class ScriptMatchItem : cUIScrollListBase {
 		lblLeftTeam.text = schedule.extend [0].teamName;
 		lblRightTeam.text = schedule.extend [1].teamName;
 		lblScore.text = schedule.extend [0].score + " : " + schedule.extend [1].score;
-		sprLeftTeam.spriteName = UtilMgr.GetTeamEmblem (schedule.extend [0].teamSeq);
-		sprRightTeam.spriteName = UtilMgr.GetTeamEmblem (schedule.extend [1].teamSeq);
+		sprLeftTeam.spriteName = UtilMgr.GetTeamEmblem (schedule.extend [0].imageName);
+		sprRightTeam.spriteName = UtilMgr.GetTeamEmblem (schedule.extend [1].imageName);
 
 		//temp
 		if(schedule.gameStatus == 0)

@@ -442,6 +442,17 @@ public class QuizInfo {
 		}
 	}
 
+	private string _imagePath;
+	
+	public string imagePath {
+		get {
+			return _imagePath;
+		}
+		set {
+			_imagePath = value;
+		}
+	}
+
 // "#2c3256",		// 팀 컬러
 	string _imageName;
 	public string imageName {

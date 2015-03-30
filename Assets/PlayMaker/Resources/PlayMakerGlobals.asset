@@ -28,3 +28,4 @@ MonoBehaviour:
   events:
   - NGUI / ON SELECT - PRESSED
   - NGUI / ON CLICK
+  - Close Menu

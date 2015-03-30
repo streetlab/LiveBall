@@ -26,7 +26,7 @@ public class Constants {
 	/*/
 	// Real
 	public static string QUERY_SERVER_HOST 	= 	"http://" + HOST + ":5002/webTuby/query.frz";
-	public static string IMAGE_SERVER_HOST 	= 	"http://" + HOST + ":5002/tubyfiles/";
+	public static string IMAGE_SERVER_HOST 	= 	"http://" + HOST + ":5002/tuby_file/";
 	
 	public static string WITHDRAW_URL 				= 	"http://auth.friize.com/m/withdraw.php";
 	public static string EVENT_URL 					= 	"http://tuby10.friize.com/events";
@@ -41,7 +41,7 @@ public class Constants {
 //	public const string QUERY_SERVER_HOST 				= 	"http://" + TEST_HOST + ":5002/gameServer/query.frz";
 	// Test
 	public static string QUERY_SERVER_HOST 				= 	"http://" + HOST + ":6002/webTuby/query.frz";
-	public static string IMAGE_SERVER_HOST 				= 	"http://" + HOST + ":6002/tubyfiles/";
+	public static string IMAGE_SERVER_HOST 				= 	"http://" + HOST + ":6002/tuby_file/";
 
 	public static string WITHDRAW_URL 				= 	"http://auth.friize.com/m/withdraw.php";
 	public static string EVENT_URL 						= 	"http://test.streetlab.co.kr/events";

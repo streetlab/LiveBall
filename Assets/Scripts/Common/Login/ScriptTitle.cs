@@ -4,18 +4,26 @@ using System.Collections;
 public class ScriptTitle : MonoBehaviour {
 
 	LoginEvent mLoginEvent;
-	GetProfileEvent mProfileEvent;
+	public GetProfileEvent mProfileEvent;
 	GetCardInvenEvent mCardEvent;
-	LoginInfo mLoginInfo;
+	public LoginInfo mLoginInfo;
 
 	void Start()
 	{
-		transform.FindChild ("ContainerBtns").localPosition = new Vector3(0, UtilMgr.GetScaledPositionY()*2, 0);
+		Init ();
+	}
 
+	public void Init()
+	{
+		transform.FindChild ("ContainerBtns").localPosition = new Vector3(0, UtilMgr.GetScaledPositionY()*2, 0);
+		
 		transform.FindChild ("ContainerBtns").gameObject.SetActive (false);
 		transform.FindChild ("WindowEmail").gameObject.SetActive (false);
 		transform.FindChild ("FormJoin").gameObject.SetActive (false);
+		transform.FindChild ("ContainerBtns").gameObject.SetActive (false);
 
+		transform.FindChild ("SprLogo").gameObject.SetActive (true);
+		
 		CheckPreference ();
 	}
 
@@ -38,18 +46,14 @@ public class ScriptTitle : MonoBehaviour {
 
 	public void DoLogin(string eMail, string pwd)
 	{
-		//Get info from server
-		
-		//Load Scene Teamhome
-		//		Application.LoadLevel ("SceneTeamHome");
 		mLoginInfo = new LoginInfo ();
 		mLoginInfo.memberEmail = eMail;
 		mLoginInfo.memberName = "";
 		mLoginInfo.memberPwd = pwd;
 		mLoginEvent = new LoginEvent(new EventDelegate(this, "LoginComplete"));
-		//		NetMgr.DoLogin (loginInfo, mLoginEvent);
-		
-		//Receive UID(Push Key) then do login
+
+		PlayerPrefs.SetString (Constants.PrefEmail, eMail);
+		PlayerPrefs.SetString (Constants.PrefPwd, pwd);
 		
 		if (Application.platform == RuntimePlatform.Android) {
 			AndroidMgr.RegistGCM(new EventDelegate(this, "SetGCMId"));
@@ -103,22 +107,30 @@ public class ScriptTitle : MonoBehaviour {
 
 	void LoginComplete()
 	{
-//		Debug.Log (mLoginEvent.GetResponse().data.memberEmail);
-		mLoginInfo = mLoginEvent.Response.data;
-//		UserMgr.UserInfo.teamCode = loginInfo.teamCode;
-//		UserMgr.UserInfo.teamSeq = loginInfo.teamSeq;
-//		UserMgr.UserInfo.memSeq = loginInfo.memSeq;
+		if (mLoginEvent.Response.code > 0) {
+			Debug.Log("error : "+mLoginEvent.Response.message);
+			if(mLoginEvent.Response.code == 100){
+				PlayerPrefs.DeleteKey(Constants.PrefEmail);
+				PlayerPrefs.DeleteKey(Constants.PrefPwd);
+				UtilMgr.RemoveAllBackEvents();
+				Init ();
+			}
 
-//		AutoFade.LoadLevel ("SceneTeamHome", 0f, 1f);
+			return;
+		}
+		mLoginInfo = mLoginEvent.Response.data;
 		mProfileEvent = new GetProfileEvent (new EventDelegate (this, "GotProfile"));
+
 		NetMgr.GetProfile (mLoginInfo.memSeq, mProfileEvent);
 	}
 
 	public void GotProfile()
 	{
 		UserMgr.UserInfo = mProfileEvent.Response.data;
-		UserMgr.UserInfo.teamCode = mLoginInfo.teamCode;
-		UserMgr.UserInfo.teamSeq = mLoginInfo.teamSeq;
+		if (mLoginInfo != null) {
+			UserMgr.UserInfo.teamCode = mLoginInfo.teamCode;
+			UserMgr.UserInfo.teamSeq = mLoginInfo.teamSeq;
+		}
 		Debug.Log ("GotProfile");
 		mCardEvent = new GetCardInvenEvent (new EventDelegate (this, "GotCardInven"));
 		NetMgr.GetCardInven (mCardEvent);
@@ -127,12 +139,15 @@ public class ScriptTitle : MonoBehaviour {
 	public void GotCardInven()
 	{
 		Debug.Log ("GotCardInven");
+
+		UtilMgr.RemoveAllBackEvents ();
 		AutoFade.LoadLevel ("SceneTeamHome", 0f, 1f);
 	}
 
 
 	public void BtnClicked(string name)
 	{
+		UtilMgr.SetBackEvent (new EventDelegate (this, "Init"));
 		switch(name)
 		{
 		case "BtnFacebook":

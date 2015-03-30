@@ -24,6 +24,17 @@ public class ExtendInfo {
 		}
 	}
 
+	private string _imagePath;
+
+	public string imagePath {
+		get {
+			return _imagePath;
+		}
+		set {
+			_imagePath = value;
+		}
+	}
+
 	private string _imageName;
 
 	public string imageName {

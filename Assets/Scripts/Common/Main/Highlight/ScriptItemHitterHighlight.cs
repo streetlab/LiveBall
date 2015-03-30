@@ -53,7 +53,10 @@ public class ScriptItemHitterHighlight : MonoBehaviour {
 		}
 
 		mLblReward.transform.GetComponent<UILabel> ().text = mQuizInfo.rewardDividend;
-		WWW www = new WWW (Constants.IMAGE_SERVER_HOST + mQuizInfo.imageName);
+		string strImage = mQuizInfo.imageName;
+		if (mQuizInfo.imagePath != null && mQuizInfo.imagePath.Length > 0)
+			strImage = mQuizInfo.imagePath + mQuizInfo.imageName;
+		WWW www = new WWW (Constants.IMAGE_SERVER_HOST + strImage);
 		StartCoroutine(GetImage (www));
 		SetQuizResult (mQuizInfo);
 		isOpened = false;
@@ -124,7 +127,10 @@ public class ScriptItemHitterHighlight : MonoBehaviour {
 	void OnEnable()
 	{
 		if(!isImgLoaded && mQuizInfo != null){
-			WWW www = new WWW (Constants.IMAGE_SERVER_HOST + mQuizInfo.imageName);
+			string strImage = mQuizInfo.imageName;
+			if (mQuizInfo.imagePath != null && mQuizInfo.imagePath.Length > 0)
+				strImage = mQuizInfo.imagePath + mQuizInfo.imageName;
+			WWW www = new WWW (Constants.IMAGE_SERVER_HOST + strImage);
 			StartCoroutine(GetImage (www));
 		}
 

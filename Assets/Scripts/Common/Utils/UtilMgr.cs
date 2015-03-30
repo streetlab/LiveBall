@@ -41,6 +41,11 @@ public class UtilMgr : MonoBehaviour {
 		mListBackEvent.Add (eventDel);
 	}
 
+	public static void RemoveAllBackEvents()
+	{
+		mListBackEvent.Clear ();
+	}
+
 	public static void RemoveBackEvent()
 	{
 		mListBackEvent.RemoveAt(mListBackEvent.Count-1);
@@ -129,29 +134,45 @@ public class UtilMgr : MonoBehaviour {
 		return final;
 	}
 
-	public static string GetTeamEmblem(int teamSeq)
+	public static string GetTeamEmblem(string imgName)
 	{
-		switch(teamSeq)
+		switch(imgName)
 		{
-		case 10:
+		case "sports_team_baseball_lg.png":
+			return "ic_lg";
+		case "sports_team_baseball_lt.png":
+			return "ic_lotte";
+		case "sports_team_baseball_hh.png":
+			return "ic_hanhwa";
+		case "sports_team_baseball_ob.png":
+			return "ic_doosan";
+		case "sports_team_baseball_ht.png":
+			return "ic_kia";
+		case "sports_team_baseball_ss.png":
 			return "ic_samsung";
-		case 11:
+		case "sports_team_baseball_wo.png":
 			return "ic_nexen";
+		case "sports_team_baseball_sk.png":
+			return "ic_sk";
+		case "sports_team_baseball_nc.png":
+			return "ic_nc";
+		case "sports_team_baseball_kt.png":
+			return "ic_kt";
 		}
 		return null;
 	}
 
-	public static string GetTeamEmblem(string teamCode)
-	{
-		switch(teamCode)
-		{
-		case "SS":
-			return "ic_samsung";
-		case "WO":
-			return "ic_nexen";
-		}
-		return null;
-	}
+//	public static string GetTeamEmblem(string teamCode)
+//	{
+//		switch(teamCode)
+//		{
+//		case "SS":
+//			return "ic_samsung";
+//		case "WO":
+//			return "ic_nexen";
+//		}
+//		return null;
+//	}
 
 	public static string GetRoundString(int round)
 	{

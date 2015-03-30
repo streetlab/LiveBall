@@ -60,7 +60,7 @@ public class ScriptWindowEmail : MonoBehaviour {
 
 	public void BackClicked()
 	{
-
+		UtilMgr.OnBackPressed ();
 	}
 
 	public void NextClicked()
@@ -72,6 +72,7 @@ public class ScriptWindowEmail : MonoBehaviour {
 		} else {
 			gameObject.SetActive (false);
 			transform.parent.FindChild ("FormJoin").gameObject.SetActive (true);
+			transform.parent.FindChild ("FormJoin").GetComponent<ScriptJoinForm>().Init(eMail, pwd, true);
 		}
 
 	}

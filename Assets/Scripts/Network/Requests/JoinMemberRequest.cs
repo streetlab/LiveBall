@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using System.Text;
 using System.IO;
 
@@ -7,20 +8,31 @@ public class JoinMemberRequest : BaseUploadRequest {
 
 	public JoinMemberRequest(JoinMemberInfo memInfo)
 	{
-		AddField ("memberEmail", memInfo.MemberEmail);
-//		Add ("memberEmail", memInfo.MemberID);
-		AddField ("memberName", memInfo.MemberName);
-		AddField ("osType", memInfo.OsType);
-		AddField ("registType", memInfo.RegistType);
-		AddField ("memberPwd", memInfo.MemberPwd);
-		AddField ("memUID", memInfo.MemUID);
-		AddField ("memImage", memInfo.MemImage);
+		Dictionary<string, object> dic = new Dictionary<string, object> ();
+		dic.Add("memberEmail", memInfo.MemberEmail);
+		//		dic.Add ("memberEmail", memInfo.MemberID);
+		dic.Add ("memberName", memInfo.MemberName);
+		dic.Add ("osType", memInfo.OsType);
+		dic.Add ("registType", memInfo.RegistType);
+		dic.Add ("memberPwd", memInfo.MemberPwd);
+		dic.Add ("memUID", memInfo.MemUID);
+		dic.Add ("memImage", memInfo.MemImage);
+
+
+		AddField ("param", JsonFx.Json.JsonWriter.Serialize (dic));
 
 		if (memInfo.Photo != null && memInfo.Photo.Length > 0) {
-			byte[] bytes = File.ReadAllBytes(memInfo.Photo);
-			AddBinaryData("file", bytes, "profile.png", "image/png");
+			if(File.Exists(memInfo.Photo)){
+				Debug.Log("a file exists : "+memInfo.Photo);
+				byte[] bytes = File.ReadAllBytes(memInfo.Photo);
+				AddBinaryData("file", bytes, "profile.png", "image/png");
+			} else{
+				Debug.Log("a file not found : "+memInfo.Photo);
+			}
+
 		}
 
+//		Debug.Log ("memberPwd : " + memInfo.MemberPwd);
 
 	}
 

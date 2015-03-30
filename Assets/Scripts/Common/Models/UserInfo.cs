@@ -56,6 +56,17 @@ public class UserInfo {
 		}
 	}
 
+	private string _imagePath;
+	
+	public string imagePath {
+		get {
+			return _imagePath;
+		}
+		set {
+			_imagePath = value;
+		}
+	}
+
 // 3,
 	string _imageName;
 	public string imageName {
