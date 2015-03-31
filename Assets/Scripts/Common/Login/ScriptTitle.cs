@@ -51,6 +51,7 @@ public class ScriptTitle : MonoBehaviour {
 		mLoginInfo.memberName = "";
 		mLoginInfo.memberPwd = pwd;
 		mLoginEvent = new LoginEvent(new EventDelegate(this, "LoginComplete"));
+		UtilMgr.ShowLoading (true);
 
 		PlayerPrefs.SetString (Constants.PrefEmail, eMail);
 		PlayerPrefs.SetString (Constants.PrefPwd, pwd);
@@ -115,7 +116,7 @@ public class ScriptTitle : MonoBehaviour {
 				UtilMgr.RemoveAllBackEvents();
 				Init ();
 			}
-
+			UtilMgr.DismissLoading ();
 			return;
 		}
 		mLoginInfo = mLoginEvent.Response.data;

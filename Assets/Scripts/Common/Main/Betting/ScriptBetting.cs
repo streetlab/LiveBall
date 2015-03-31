@@ -29,7 +29,11 @@ public class ScriptBetting : MonoBehaviour {
 	UILabel mLblUse;
 	UILabel mLblExpect;
 
-	double mAmountUse = 1000d;
+	const double BET_MIN = 100d;
+	const double BET_MAX = 100000d;
+	double mAmountUse = BET_MIN;
+
+
 
 	JoinQuizEvent mJoinQuizEvent;
 
@@ -87,20 +91,20 @@ public class ScriptBetting : MonoBehaviour {
 	public void CompleteSending()
 	{
 		mSbi.SetSelected ();
-		UpdateHitterItem ();
+		UpdateHitterItem (QuizMgr.QuizInfo.quizListSeq);
 		SetBtnsDisable ();
 		CheckToClose ();
 		UtilMgr.OnBackPressed ();
 
 	}
 
-	void UpdateHitterItem()
+	public void UpdateHitterItem(int quizListSeq)
 	{
 		List<GameObject>list = mMatchPlaying.GetComponent<ScriptMatchPlaying>().mQuizListItems;
 		foreach (GameObject item in list) {
 			ScriptItemHitterHighlight hitterItem = item.GetComponent<ScriptItemHitterHighlight>();
 			if(hitterItem != null
-			   && hitterItem.mQuizInfo.quizListSeq == QuizMgr.QuizInfo.quizListSeq){
+			   && hitterItem.mQuizInfo.quizListSeq == quizListSeq){
 				hitterItem.needSimpleResult = true;
 				break;
 			}
@@ -249,6 +253,12 @@ public class ScriptBetting : MonoBehaviour {
 			mAmountUse = double.Parse(UserMgr.UserInfo.userGoldenBall);
 		}
 
+		if(mAmountUse > BET_MAX)
+		{
+			mAmountUse = BET_MAX;
+		}
+
+
 		mLblUse.text = UtilMgr.AddsThousandsSeparator (mAmountUse);
 		mLblExpect.text = UtilMgr.AddsThousandsSeparator (mAmountUse * float.Parse(GetOrder().ratio));
 
@@ -256,14 +266,20 @@ public class ScriptBetting : MonoBehaviour {
 
 	void BetMax()
 	{
-		mAmountUse = double.Parse (UserMgr.UserInfo.userGoldenBall);
+		mAmountUse = BET_MAX;
+
+		if(mAmountUse >= double.Parse(UserMgr.UserInfo.userGoldenBall))
+		{
+			mAmountUse = double.Parse(UserMgr.UserInfo.userGoldenBall);
+		}
+
 		mLblUse.text = UtilMgr.AddsThousandsSeparator (mAmountUse);
 		mLblExpect.text = UtilMgr.AddsThousandsSeparator (mAmountUse * float.Parse(GetOrder().ratio));
 	}
 
 	void BetMin()
 	{
-		mAmountUse = 1000;
+		mAmountUse = BET_MIN;
 		mLblUse.text = UtilMgr.AddsThousandsSeparator (mAmountUse);
 		mLblExpect.text = UtilMgr.AddsThousandsSeparator (mAmountUse * float.Parse(GetOrder().ratio));
 	}

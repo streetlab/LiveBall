@@ -26,10 +26,12 @@ public class ScriptMatch : MonoBehaviour {
 	{
 		mScheduleEvent = new GetScheduleMoreEvent (new EventDelegate (this, "GotSchedule"));
 		NetMgr.GetScheduleMore (mScheduleEvent);
+		UtilMgr.ShowLoading (true);
 	}
 
 	void GotSchedule()
 	{
+		UtilMgr.DismissLoading ();
 		mScheduleList = mScheduleEvent.Response.data;
 
 		for (int i = 0; i < mScheduleList.Count; i++) {

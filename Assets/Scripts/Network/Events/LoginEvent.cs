@@ -14,8 +14,8 @@ public class LoginEvent : BaseEvent {
 	{
 		response = JsonFx.Json.JsonReader.Deserialize<LoginResponse>(data);
 
-		if (checkError ())
-			return;
+//		if (checkError ())
+//			return;
 
 		eventDelegate.Execute ();
 	}

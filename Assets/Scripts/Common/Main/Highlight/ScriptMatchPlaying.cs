@@ -62,21 +62,28 @@ public class ScriptMatchPlaying : MonoBehaviour {
 	
 	public void GotDetailBoard()
 	{
+		InitScoreBoard (mEventDetail);
+		
+		if (mFirstLoading) {
+			SetProgQuiz (0);
+			UtilMgr.ShowLoading (true);
+		}
+
+		mTop.GetComponent<ScriptMainTop> ().SetBoardInfo ();
+	}
+
+	public void InitScoreBoard(GetGameSposDetailBoardEvent eventDetail)
+	{
 		mScoreBoard.transform.FindChild ("Const").gameObject.SetActive (true);
 		mScoreBoard.transform.FindChild ("TeamTop").gameObject.SetActive (true);
 		mScoreBoard.transform.FindChild ("TeamBottom").gameObject.SetActive (true);
 		
-		ScriptMainTop.DetailBoard = mEventDetail.Response.data;
+		ScriptMainTop.DetailBoard = eventDetail.Response.data;
 		
 		SetAwayScore (ScriptMainTop.DetailBoard.awayScore);
 		SetHomeScore (ScriptMainTop.DetailBoard.homeScore);
 		SetAwayRHEB (ScriptMainTop.DetailBoard.infoBoard[0]);
 		SetHomeRHEB (ScriptMainTop.DetailBoard.infoBoard[1]);
-		
-		if (mFirstLoading)
-			SetProgQuiz (0);
-
-		mTop.GetComponent<ScriptMainTop> ().SetBoardInfo ();
 	}
 
 	void SetProgQuiz(int quizListSeq)
@@ -209,6 +216,7 @@ public class ScriptMatchPlaying : MonoBehaviour {
 
 	public void InitQuizFirst()
 	{
+		UtilMgr.DismissLoading ();
 		InitQuizList (null);
 	}
 

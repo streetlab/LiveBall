@@ -229,6 +229,7 @@
      <None Include="Assets\NGUI\Examples\Models\Orc Armor\Orc Armor.shader" />
      <None Include="Assets\PlayMaker\Versions\readme.txt" />
      <None Include="Assets\NGUI\Examples\Resources\Localization.txt" />
+     <None Include="Assets\Activity Indicators\ReadMe_txt.txt" />
  <Reference Include="IFacebook">
  <HintPath>/Users/sunken/projects/Tuby_Unity/Assets/Facebook/Scripts/IFacebook.dll</HintPath>
  </Reference>

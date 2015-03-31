@@ -8,6 +8,7 @@ public class UtilMgr : MonoBehaviour {
 	static UtilMgr _instance;
 
 	static List<EventDelegate> mListBackEvent = new List<EventDelegate>();
+	GameObject mProgressCircle;
 
 	static UtilMgr Instance
 	{
@@ -49,6 +50,25 @@ public class UtilMgr : MonoBehaviour {
 	public static void RemoveBackEvent()
 	{
 		mListBackEvent.RemoveAt(mListBackEvent.Count-1);
+	}
+
+	public static bool HasBackEvent()
+	{
+		if (mListBackEvent.Count > 0)
+						return true;
+		return false;
+	}
+
+	public static void RunAllBackEvents()
+	{
+		if (mListBackEvent.Count < 1)
+						return;
+
+		for(int i = mListBackEvent.Count-1; i > -1; i = mListBackEvent.Count-1){
+			EventDelegate eventDel = mListBackEvent[i];
+			RemoveBackEvent();
+			eventDel.Execute();
+		}
 	}
 
 	public static void OnBackPressed()
@@ -225,5 +245,24 @@ public class UtilMgr : MonoBehaviour {
 		Destroy (source);
 //		System.GC.Collect ();
 		return result;
+	}
+
+	public static void ShowLoading(bool unTouchable)
+	{
+		if (Instance.mProgressCircle == null) {
+			GameObject prefab = Resources.Load ("ProgressCircle1") as GameObject;
+			Instance.mProgressCircle = Instantiate (prefab, new Vector3 (0f, 0f, 0f), Quaternion.identity) as GameObject;
+			Instance.mProgressCircle.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+			Instance.mProgressCircle.transform.localPosition = new Vector3(0, 0, 0);
+		}
+
+		Instance.mProgressCircle.transform.parent = GameObject.Find ("UI Root").transform;
+		Instance.mProgressCircle.SetActive (true);
+	}
+
+	public static void DismissLoading()
+	{
+		if(Instance.mProgressCircle != null)
+			Instance.mProgressCircle.SetActive (false);
 	}
 }

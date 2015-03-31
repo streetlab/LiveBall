@@ -143,6 +143,9 @@ public class ScriptMainTop : MonoBehaviour {
 
 	public void OpenBetting(QuizInfo quizInfo)
 	{
+		if (UtilMgr.HasBackEvent ()) {
+			UtilMgr.RunAllBackEvents();
+		}
 		QuizMgr.QuizInfo = quizInfo;
 		QuizMgr.IsBettingOpended = true;
 		QuizMgr.JoinCount = 0;
@@ -158,13 +161,15 @@ public class ScriptMainTop : MonoBehaviour {
 		mBetting.GetComponent<ScriptTF_Betting> ().Init (quizInfo);
 	}
 
-	public void RequestBoardInfo(bool hasQuiz)
+	public void RequestBoardInfo()
 	{
-		if (hasQuiz)
-			QuizMgr.HasQuiz = true;
-
 		mBoardEvent = new  GetGameSposDetailBoardEvent(new EventDelegate (this, "GotBoard"));
-		NetMgr.GetGameSposPlayBoard(mBoardEvent);
+
+		if (QuizMgr.NeedsDetailInfo) {
+			NetMgr.GetGameSposDetailBoard (mBoardEvent);
+			QuizMgr.NeedsDetailInfo = false;
+		}	else
+			NetMgr.GetGameSposPlayBoard(mBoardEvent);
 	}
 
 	public void GotBoard()
@@ -216,7 +221,14 @@ public class ScriptMainTop : MonoBehaviour {
 
 	public void SetBoardInfo()
 	{
+//		Debug.Log("SetBoardInfo");
 		mHighlight.transform.FindChild ("MatchInfoTop").GetComponent<ScriptMatchInfo> ().SetBoard ();
+		if(mBoardEvent != null
+			&& mBoardEvent.Response.data.awayScore != null
+		   && mBoardEvent.Response.data.awayScore.Count > 0){
+//			Debug.Log("NeedsDetailInfo!!!!");
+			mHighlight.transform.FindChild ("MatchPlaying").GetComponent<ScriptMatchPlaying> ().InitScoreBoard(mBoardEvent);
+		}
 	}
 
 	void OnBackPressed()

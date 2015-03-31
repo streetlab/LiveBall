@@ -1,12 +1,18 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Network/Requests/JoinMemberRequest.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Common/Main/ScriptMainTop.cs">
     <Files>
-      <File FileName="Assets/Scripts/Common/Login/ScriptTitle.cs" Line="23" Column="3" />
-      <File FileName="Assets/Scripts/Common/Login/ScriptWindowEmail.cs" Line="70" Column="41" />
-      <File FileName="Assets/Scripts/Common/Login/ScriptJoinForm.cs" Line="48" Column="19" />
-      <File FileName="Assets/Scripts/Network/NetMgr.cs" Line="130" Column="49" />
-      <File FileName="Assets/Scripts/Network/Requests/JoinMemberRequest.cs" Line="34" Column="25" />
+      <File FileName="Assets/Scripts/Common/Main/Highlight/ScriptItemHitterHighlight.cs" Line="103" Column="102" />
+      <File FileName="Assets/Scripts/Common/Main/Highlight/ScriptItemListFriends.cs" Line="15" Column="94" />
+      <File FileName="Assets/Scripts/Common/Main/Highlight/ScriptItemDetailGraph.cs" Line="20" Column="76" />
+      <File FileName="Assets/Scripts/Common/Main/Highlight/ScriptDetailHighlight.cs" Line="44" Column="74" />
+      <File FileName="Assets/Scripts/Common/Main/ScriptMainTop.cs" Line="157" Column="8" />
+      <File FileName="Assets/Scripts/Common/Main/Highlight/ScriptMatchInfo.cs" Line="30" Column="2" />
+      <File FileName="Assets/Scripts/Common/Main/Highlight/ScriptMatchPlaying.cs" Line="73" Column="2" />
+      <File FileName="Assets/Scripts/Common/Models/PlayInfo.cs" Line="106" Column="2" />
+      <File FileName="Assets/Scripts/Common/Utils/QuizMgr.cs" Line="142" Column="34" />
+      <File FileName="Assets/Scripts/Network/Events/GetGameSposDetailBoardEvent.cs" Line="6" Column="2" />
+      <File FileName="Assets/Scripts/Network/NetMgr.cs" Line="84" Column="2" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -15,11 +21,19 @@
             <Node name="Scripts" expanded="True">
               <Node name="Common" expanded="True">
                 <Node name="Login" expanded="True" />
+                <Node name="Main" expanded="True">
+                  <Node name="Betting" expanded="True" />
+                  <Node name="Highlight" expanded="True" />
+                  <Node name="ScriptMainTop.cs" selected="True" />
+                </Node>
+                <Node name="Models" expanded="True" />
+                <Node name="TeamHome" expanded="True" />
+                <Node name="Utils" expanded="True" />
               </Node>
               <Node name="Network" expanded="True">
-                <Node name="Requests" expanded="True">
-                  <Node name="JoinMemberRequest.cs" selected="True" />
-                </Node>
+                <Node name="Events" expanded="True" />
+                <Node name="Requests" expanded="True" />
+                <Node name="Responses" expanded="True" />
               </Node>
             </Node>
           </Node>

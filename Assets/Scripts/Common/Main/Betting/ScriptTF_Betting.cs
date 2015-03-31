@@ -50,6 +50,7 @@ public class ScriptTF_Betting : MonoBehaviour {
 		SetPitcher ();
 		SetBases ();
 		SetBtns ();
+		mSprBetting.SetActive (false);
 
 		mStartSec = System.DateTime.Now.Second;
 		mStartMilSec = System.DateTime.Now.Millisecond;
@@ -96,16 +97,45 @@ public class ScriptTF_Betting : MonoBehaviour {
 			mSprLoaded.transform.FindChild("SprQuestionBack").FindChild("Label").GetComponent<UILabel>().text
 				= QuizMgr.QuizInfo.quizTitle;
 
-			mSprLoaded.transform.FindChild ("BtnLoaded1").FindChild ("LblGP").GetComponent<UILabel> ().text = QuizMgr.QuizInfo.order [0].ratio;
-			mSprLoaded.transform.FindChild ("BtnLoaded2").FindChild ("LblGP").GetComponent<UILabel> ().text = QuizMgr.QuizInfo.order [1].ratio;
-//			mSprLoaded.transform.FindChild ("BtnLoaded3").FindChild ("LblGP").GetComponent<UILabel> ().text = mQuizInfo.order [2].ratio;
-//			mSprLoaded.transform.FindChild ("BtnLoaded4").FindChild ("LblGP").GetComponent<UILabel> ().text = mQuizInfo.order [3].ratio;
-
 			mSprLoaded.transform.FindChild ("BtnLoaded1").GetComponent<ScriptBettingItem>().Reset();
 			mSprLoaded.transform.FindChild ("BtnLoaded2").GetComponent<ScriptBettingItem>().Reset();
 			mSprLoaded.transform.FindChild ("BtnLoaded3").GetComponent<ScriptBettingItem>().Reset();
 			mSprLoaded.transform.FindChild ("BtnLoaded4").GetComponent<ScriptBettingItem>().Reset();
+
+			if(QuizMgr.QuizInfo.typeCode.Equals("BB_QZC_FULL")){
+				Set4Btns();
+			} else if(QuizMgr.QuizInfo.typeCode.Equals("BB_QZC_LOS")){
+				Set2Btns();
+			} else if(QuizMgr.QuizInfo.typeCode.Equals("BB_QZC_EOH")){
+				Set2Btns();
+			} else if(QuizMgr.QuizInfo.typeCode.Equals("BB_QZC_EOS")){
+				Set2Btns();
+			}
 		}
+	}
+
+	void Set4Btns()
+	{
+		mSprLoaded.transform.FindChild ("BtnLoaded1").localPosition = new Vector3 (-260f, -210f, 0);
+		mSprLoaded.transform.FindChild ("BtnLoaded2").localPosition = new Vector3 (-86f, -210f, 0);
+		mSprLoaded.transform.FindChild ("BtnLoaded3").localPosition = new Vector3 (86f, -210f, 0);
+		mSprLoaded.transform.FindChild ("BtnLoaded4").localPosition = new Vector3 (260f, -210f, 0);
+
+		mSprLoaded.transform.FindChild ("BtnLoaded1").FindChild ("LblGP").GetComponent<UILabel> ().text = QuizMgr.QuizInfo.order [0].ratio;
+		mSprLoaded.transform.FindChild ("BtnLoaded2").FindChild ("LblGP").GetComponent<UILabel> ().text = QuizMgr.QuizInfo.order [1].ratio;
+		mSprLoaded.transform.FindChild ("BtnLoaded3").FindChild ("LblGP").GetComponent<UILabel> ().text = QuizMgr.QuizInfo.order [2].ratio;
+		mSprLoaded.transform.FindChild ("BtnLoaded4").FindChild ("LblGP").GetComponent<UILabel> ().text = QuizMgr.QuizInfo.order [3].ratio;
+	}
+
+	void Set2Btns()
+	{
+		mSprLoaded.transform.FindChild ("BtnLoaded1").localPosition = new Vector3 (-164f, -210f, 0);
+		mSprLoaded.transform.FindChild ("BtnLoaded2").localPosition = new Vector3 (164f, -210f, 0);
+		mSprLoaded.transform.FindChild ("BtnLoaded3").gameObject.SetActive (false);
+		mSprLoaded.transform.FindChild ("BtnLoaded4").gameObject.SetActive (false);
+
+		mSprLoaded.transform.FindChild ("BtnLoaded1").FindChild ("LblGP").GetComponent<UILabel> ().text = QuizMgr.QuizInfo.order [0].ratio;
+		mSprLoaded.transform.FindChild ("BtnLoaded2").FindChild ("LblGP").GetComponent<UILabel> ().text = QuizMgr.QuizInfo.order [1].ratio;
 	}
 
 	void SetBases()

@@ -18,7 +18,11 @@ public class QuizMgr : MonoBehaviour {
 		get{return Instance.isBettingOpended;}
 		set{Instance.isBettingOpended = value;}
 	}
-	
+	bool needsDetailInfo;
+	public static bool NeedsDetailInfo{
+		get{return Instance.needsDetailInfo;}
+		set{Instance.needsDetailInfo = value;}
+	}
 	bool hasQuiz;
 	public static bool HasQuiz{
 		get{return Instance.hasQuiz;}
@@ -106,6 +110,9 @@ public class QuizMgr : MonoBehaviour {
 		Debug.Log ("ReceivedMsg : " + msg);
 		NotiMsgInfo msgInfo = JsonFx.Json.JsonReader.Deserialize<NotiMsgInfo> (msg);
 		Debug.Log ("push type : " + msgInfo.type);
+//		Debug.Log ("msgInfo.info.gameSeq : " + msgInfo.info.gameSeq);
+//		Debug.Log ("msgInfo.info.scheduleSeq : " + msgInfo.info.scheduleSeq);
+//		Debug.Log ("msgInfo.info.quizListSeq : " + msgInfo.info.quizListSeq);
 		
 		if(msgInfo.type.Equals(Constants.POST_MSG)){
 			
@@ -121,11 +128,24 @@ public class QuizMgr : MonoBehaviour {
 					else
 						HasQuiz = true;
 				}
+
+				if(msgInfo.info.inning != null
+				   && msgInfo.info.inning.Equals("1")){
+					NeedsDetailInfo = true;
+				} else if(msgInfo.info.score != null
+				          && msgInfo.info.score.Equals("1")){
+					NeedsDetailInfo = true;
+				} else{
+					NeedsDetailInfo = false;
+				}
 				
-				Instance.mMainTop.RequestBoardInfo(hasQuiz);
+				Instance.mMainTop.RequestBoardInfo();
 			}
 		} else if(msgInfo.type.Equals(Constants.POST_QUIZ_RESULT)){
-			
+			if(Instance.mMainTop != null){
+				Instance.mMainTop.mBetting.transform.FindChild("SprBetting")
+					.GetComponent<ScriptBetting>().UpdateHitterItem(int.Parse(msgInfo.info.quizListSeq));
+			}
 		}
 	}
 }

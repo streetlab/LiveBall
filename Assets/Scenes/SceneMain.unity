@@ -854,7 +854,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tweenTarget: {fileID: 229530249}
-  hover: {r: .882352948, g: .784313738, b: .588235319, a: 1}
+  hover: {r: 1, g: 1, b: 1, a: 1}
   pressed: {r: .501960814, g: .501960814, b: .501960814, a: 1}
   disabledColor: {r: .5, g: .5, b: .5, a: 1}
   duration: .200000003
@@ -3606,7 +3606,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3027
+  startingRenderQueue: 3019
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 0
@@ -3638,6 +3638,7 @@ MonoBehaviour:
   - {fileID: 663146313}
   mListFriends: {fileID: 1040796651}
   mItemFriend: {fileID: 100014, guid: 58f573cb40dc248e586c7a4ce4a55d81, type: 2}
+  mSprJoinBar: {fileID: 208274730}
 --- !u!1 &165283079
 GameObject:
   m_ObjectHideFlags: 0
@@ -4019,7 +4020,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3028
+  startingRenderQueue: 3020
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 3
@@ -4403,7 +4404,7 @@ GameObject:
   - 4: {fileID: 208274731}
   - 114: {fileID: 208274732}
   m_Layer: 0
-  m_Name: Sprite
+  m_Name: SprJoinBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6368,7 +6369,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tweenTarget: {fileID: 1920215820}
-  hover: {r: .882352948, g: .784313738, b: .588235319, a: 1}
+  hover: {r: 1, g: 1, b: 1, a: 1}
   pressed: {r: .501960814, g: .501960814, b: .501960814, a: 1}
   disabledColor: {r: .5, g: .5, b: .5, a: 1}
   duration: .200000003
@@ -7027,7 +7028,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tweenTarget: {fileID: 1776714302}
-  hover: {r: .882352948, g: .784313738, b: .588235319, a: 1}
+  hover: {r: 1, g: 1, b: 1, a: 1}
   pressed: {r: .501960814, g: .501960814, b: .501960814, a: 1}
   disabledColor: {r: .5, g: .5, b: .5, a: 1}
   duration: .200000003
@@ -9957,7 +9958,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3030
+  startingRenderQueue: 3020
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 3
@@ -15759,7 +15760,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tweenTarget: {fileID: 401152683}
-  hover: {r: .882352948, g: .784313738, b: .588235319, a: 1}
+  hover: {r: 1, g: 1, b: 1, a: 1}
   pressed: {r: .501960814, g: .501960814, b: .501960814, a: 1}
   disabledColor: {r: .5, g: .5, b: .5, a: 1}
   duration: .200000003
@@ -16168,7 +16169,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 597624013}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -300, y: 0, z: 0}
+  m_LocalPosition: {x: -284, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 647046086}
@@ -19075,7 +19076,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &677433927
 Transform:
   m_ObjectHideFlags: 0
@@ -24810,7 +24811,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3018
+  startingRenderQueue: 3023
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 0
@@ -28956,7 +28957,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tweenTarget: {fileID: 1292280634}
-  hover: {r: .882352948, g: .784313738, b: .588235319, a: 1}
+  hover: {r: 1, g: 1, b: 1, a: 1}
   pressed: {r: .501960814, g: .501960814, b: .501960814, a: 1}
   disabledColor: {r: .5, g: .5, b: .5, a: 1}
   duration: .200000003
@@ -30307,7 +30308,7 @@ MonoBehaviour:
   movement: 1
   dragEffect: 2
   restrictWithinPanel: 1
-  disableDragIfFits: 0
+  disableDragIfFits: 1
   smoothDragStart: 1
   iOSDragEmulation: 1
   scrollWheelFactor: .25
@@ -36545,7 +36546,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tweenTarget: {fileID: 840902657}
-  hover: {r: .882352948, g: .784313738, b: .588235319, a: 1}
+  hover: {r: 1, g: 1, b: 1, a: 1}
   pressed: {r: .501960814, g: .501960814, b: .501960814, a: 1}
   disabledColor: {r: .5, g: .5, b: .5, a: 1}
   duration: .200000003
@@ -40238,7 +40239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tweenTarget: {fileID: 118597723}
-  hover: {r: .882352948, g: .784313738, b: .588235319, a: 1}
+  hover: {r: 1, g: 1, b: 1, a: 1}
   pressed: {r: .501960814, g: .501960814, b: .501960814, a: 1}
   disabledColor: {r: .5, g: .5, b: .5, a: 1}
   duration: .200000003
@@ -40676,7 +40677,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3021
+  startingRenderQueue: 3026
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 0
@@ -41861,7 +41862,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3000
+  startingRenderQueue: 3003
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 0
@@ -42992,7 +42993,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tweenTarget: {fileID: 981273789}
-  hover: {r: .882352948, g: .784313738, b: .588235319, a: 1}
+  hover: {r: 1, g: 1, b: 1, a: 1}
   pressed: {r: .501960814, g: .501960814, b: .501960814, a: 1}
   disabledColor: {r: .5, g: .5, b: .5, a: 1}
   duration: .200000003
@@ -43955,7 +43956,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1532797255
 Transform:
   m_ObjectHideFlags: 0
@@ -43990,7 +43991,7 @@ MonoBehaviour:
   mSprHit: {fileID: 1967113759}
   mSprOut: {fileID: 69877668}
   mSprCard: {fileID: 885431355}
-  mSprBetting: {fileID: 1532797254}
+  mSprBetting: {fileID: 1932773505}
   mSprLoaded: {fileID: 437141653}
 --- !u!1 &1533004375
 GameObject:
@@ -51061,7 +51062,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tweenTarget: {fileID: 1007021179}
-  hover: {r: .882352948, g: .784313738, b: .588235319, a: 1}
+  hover: {r: 1, g: 1, b: 1, a: 1}
   pressed: {r: .501960814, g: .501960814, b: .501960814, a: 1}
   disabledColor: {r: .5, g: .5, b: .5, a: 1}
   duration: .200000003
@@ -58329,7 +58330,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3033
+  startingRenderQueue: 3018
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 0

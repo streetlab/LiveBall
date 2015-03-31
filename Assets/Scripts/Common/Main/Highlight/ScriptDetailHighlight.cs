@@ -7,13 +7,16 @@ public class ScriptDetailHighlight : MonoBehaviour {
 	public GameObject[] Items;
 	public GameObject mListFriends;
 	public GameObject mItemFriend;
+	public GameObject mSprJoinBar;
 
 	GetQuizResultResponse mResponse;
 	float mPosGuide;
+	float mPosJoinBar;
 	static List<GameObject> mListFriendItems = new List<GameObject>();
 
 	public void Init(GetQuizResultResponse response)
 	{
+		mPosJoinBar = 85;
 		mPosGuide = 175f;
 		mResponse = response;
 		SetResultGraph ();
@@ -26,10 +29,19 @@ public class ScriptDetailHighlight : MonoBehaviour {
 	}
 
 	void SetResultGraph(){
-		for (int i = 0; i < mResponse.data.global.Count; i++) {
+		int i = 0;
+		for (; i < mResponse.data.global.Count; i++) {
 			Items[i].GetComponent<ScriptItemDetailGraph>().Init(
 				mResponse.data.global[i], mResponse.data.friend[i]);
 		}
+
+		for(; i < 8; i++){
+			Items[i].GetComponent<ScriptItemDetailGraph>().gameObject.SetActive(false);
+			mPosJoinBar -= 30;
+			mPosGuide -= 30;
+		}
+
+		mSprJoinBar.transform.localPosition = new Vector3 (0, -mPosJoinBar, 0);
 	}
 
 	void SetResultFriends(){
