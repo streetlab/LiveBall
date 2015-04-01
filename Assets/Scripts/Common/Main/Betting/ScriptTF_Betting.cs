@@ -16,31 +16,82 @@ public class ScriptTF_Betting : MonoBehaviour {
 //	{
 //		get{return quizInfo;}
 //	}
-	int mStartSec;
-	int mStartMilSec;
+//	int mStartSec;
+//	int mStartMilSec;
+	long mStartTime;
+	bool mTimeOut;
 
 	static Color YELLOW = new Color(1f, 1f, 0f);
 	static Color WHITE = new Color(1f, 1f, 1f);
 	static Color RED = new Color(1f, 0f, 0f);
 
+	const float MAX_TIME = 1600f;
+	const float BAR_WIDTH = 132f;
+
 	void Update()
 	{
-		int sec = mStartSec - System.DateTime.Now.Second;
-		if (sec > 0)
-			sec = sec - 60;
+		CalcTime ();
+	}
 
-//		int milSec = mStartMilSec - System.DateTime.Now.Millisecond;
-//		if (milSec > -1)
-//			milSec = milSec - 1000;
-//		milSec = milSec / 10;
+	void CalcTime()
+	{
+		long diff = mStartTime - System.DateTime.Now.ToFileTime();
 
-		if (sec <= -15) {
+		int sec = (int)(diff / 10000000L);
+		int milSec = (int)(diff % 10000000L);
+		
+		if (sec < -15 && !mTimeOut) {
 			UtilMgr.OnBackPressed();
-			return;
+			mTimeOut = true;
+//			return;
+		} else if(mTimeOut){
+			sec = 0;
+			milSec = 0;
+		} else{
+			sec = (15 + sec);
+
+			milSec = milSec / 100000;//
+			milSec = (99 + milSec);
+		}
+		
+
+		SetTimer (sec, milSec);
+	}
+
+	void SetTimer(int sec, int milSec)
+	{
+		string strSec = "" + sec;
+		if (sec < 10)
+			strSec = "0" + sec;
+
+		string strMilSec = "" + milSec;
+		if (milSec < 10)
+			strMilSec = "0" + milSec;
+				
+		mSprComb.transform.FindChild("Timer").FindChild ("LblTimer").GetComponent<UILabel> ().text
+			= strSec + " : " + strMilSec;
+
+		float now = float.Parse (strSec + strMilSec);
+		float width = BAR_WIDTH * (now / MAX_TIME);
+//		Debug.Log ("now : " + now);
+//		Debug.Log ("width : " + width);
+//		Debug.Log ("width to int : " + (int)width); 
+
+		if (sec < 6) {
+			mSprComb.transform.FindChild("Timer").FindChild ("LblTimer").GetComponent<UILabel> ().color = RED;
+			mSprComb.transform.FindChild ("Timer").FindChild ("Progress").FindChild ("SprBar")
+				.GetComponent<UISprite> ().color = RED;
+		} else {
+			mSprComb.transform.FindChild("Timer").FindChild ("LblTimer").GetComponent<UILabel> ().color = YELLOW;
+			mSprComb.transform.FindChild ("Timer").FindChild ("Progress").FindChild ("SprBar")
+				.GetComponent<UISprite> ().color = YELLOW;
 		}
 
-		mSprComb.transform.FindChild ("LblTimer").GetComponent<UILabel> ().text
-			= string.Format ("{0}", (15 + sec));// + " : " + (99+milSec);
+		mSprComb.transform.FindChild ("Timer").FindChild ("Progress").FindChild ("SprBar")
+			.GetComponent<UISprite> ().width = (int)width;
+
+
+
 	}
 
 	public void Init(QuizInfo quizInfo)
@@ -52,8 +103,13 @@ public class ScriptTF_Betting : MonoBehaviour {
 		SetBtns ();
 		mSprBetting.SetActive (false);
 
-		mStartSec = System.DateTime.Now.Second;
-		mStartMilSec = System.DateTime.Now.Millisecond;
+		mStartTime = System.DateTime.Now.ToFileTime ();
+		mTimeOut = false;
+//		mStartSec = System.DateTime.Now.Second;
+//		mStartMilSec = System.DateTime.Now.Millisecond / 10;
+		TweenAlpha.Begin (mSprComb, 0f, 0f);
+		TweenAlpha.Begin (mSprComb, 1f, 1.0f);
+
 	}
 
 	void SetBtns()
@@ -141,7 +197,7 @@ public class ScriptTF_Betting : MonoBehaviour {
 	void SetBases()
 	{
 		PlayInfo playInfo = ScriptMainTop.DetailBoard.play;
-		Transform tfStatus = mSprComb.transform.FindChild ("SprStatus");
+		Transform tfStatus = mSprComb.transform.FindChild("SprPitcher").FindChild ("StatusInfo");
 		tfStatus.FindChild ("LblNum").GetComponent<UILabel> ().text = string.Format("{0}",playInfo.playRound);
 		tfStatus.FindChild ("LblRound").GetComponent<UILabel> ().text = UtilMgr.GetRoundString (playInfo.playRound);
 		tfStatus.FindChild ("SprUp").GetComponent<UISprite> ().color = WHITE;
@@ -229,8 +285,28 @@ public class ScriptTF_Betting : MonoBehaviour {
 		smt.mBtnBingo.SetActive (true);
 	}
 
-	public void CloseBetting()
+	public void AnimateVS()
 	{
+		StartCoroutine ("VSAnimation");
+	}
+
+	IEnumerator VSAnimation(){
+		yield return new WaitForSeconds (1f);
+
+		GameObject go = transform.FindChild("SprComb").FindChild("Panel").FindChild("SprVS").gameObject;
+		TweenAlpha.Begin (go, 0f, 0f);
+		TweenScale.Begin (go, 0f, new Vector3(1f, 1f, 1f));
+		TweenAlpha.Begin (go, 0.5f, 1f);
+
+		yield return new WaitForSeconds (1f);
+
+		TweenAlpha.Begin (go, 0.5f, 0f);
+		TweenScale.Begin(go, 0.5f, new Vector3(1.5f, 1.5f, 1.5f));
 
 	}
+
+//	public void CloseBetting()
+//	{
+//		Debug.Log ("CloseBetting");
+//	}
 }

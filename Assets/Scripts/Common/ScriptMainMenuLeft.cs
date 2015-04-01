@@ -21,8 +21,8 @@ public class ScriptMainMenuLeft : MonoBehaviour {
 				AutoFade.LoadLevel("SceneTeamHome", 0f, 1f);
 			break;
 		case "BtnGameHome":
-			if(!Application.loadedLevelName.Equals("SceneGame"))
-				AutoFade.LoadLevel("SceneGame", 0f, 1f);
+//			if(!Application.loadedLevelName.Equals("SceneGame"))
+//				AutoFade.LoadLevel("SceneGame", 0f, 1f);
 			break;
 		case "BtnCards":
 

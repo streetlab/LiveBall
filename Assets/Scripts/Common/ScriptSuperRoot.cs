@@ -8,7 +8,7 @@ public class ScriptSuperRoot : MonoBehaviour {
 		
 		#if(UNITY_ANDROID)
 		Screen.sleepTimeout = SleepTimeout.NeverSleep;
-		#else		
+		#else
 		iPhoneSettings.screenCanDarken = false;
 		#endif
 	}

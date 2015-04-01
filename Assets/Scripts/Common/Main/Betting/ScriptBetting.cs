@@ -113,13 +113,13 @@ public class ScriptBetting : MonoBehaviour {
 
 	void CheckToClose()
 	{
-		QuizMgr.JoinCount += 1;
-		if (QuizMgr.QuizInfo.typeCode.Contains ("_QZD_")) {
-			if(QuizMgr.JoinCount < 2)
-				return;
-		} 
-
-		UtilMgr.OnBackPressed();
+//		QuizMgr.JoinCount += 1;
+//		if (QuizMgr.QuizInfo.typeCode.Contains ("_QZD_")) {
+//			if(QuizMgr.JoinCount < 2)
+//				return;
+//		} 
+//
+//		UtilMgr.OnBackPressed();
 
 
 	}

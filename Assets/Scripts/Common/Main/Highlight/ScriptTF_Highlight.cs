@@ -21,6 +21,10 @@ public class ScriptTF_Highlight : MonoBehaviour {
 //		}
 	}
 
+//	void Update(){
+//		Debug.Log ("mil sec : " + System.DateTime.Now.Millisecond);
+//	}
+
 	void OpenMatchReady()
 	{
 		mMatchReady.SetActive (true);

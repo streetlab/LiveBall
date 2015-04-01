@@ -99,7 +99,6 @@ public class ScriptMatchPlaying : MonoBehaviour {
 		if(quizInfo.typeCode.Contains("_QZA_")
 		   && mPreGame){
 			mPreGame = false;
-//			mPosGuide -= (122 - 30f) / 2f;
 			
 			obj = Instantiate(itemRound, new Vector3(0f, 0f, 0f), Quaternion.identity) as GameObject;
 			mAccumulatedY += obj.GetComponent<BoxCollider2D> ().size.y;
@@ -114,8 +113,8 @@ public class ScriptMatchPlaying : MonoBehaviour {
 
 			mPosGuide += (obj.GetComponent<BoxCollider2D> ().size.y - mPreItemSize) / 2f;
 			obj.transform.localPosition = new Vector3(0f, -mPosGuide, 0f);
-			mPosGuide += obj.GetComponent<BoxCollider2D> ().size.y;
-			mPreItemSize = obj.GetComponent<BoxCollider2D> ().size.y;
+			mPosGuide += obj.GetComponent<BoxCollider2D> ().size.y-1;
+			mPreItemSize = obj.GetComponent<BoxCollider2D> ().size.y-1;
 //			mPosGuide += (122 - 30f) / 2f;
 		} else if(quizInfo.typeCode.Contains("_QZD_") && mFirstLoading){
 			if(mGameRoundCounter > quizInfo.gameRound){
@@ -144,8 +143,8 @@ public class ScriptMatchPlaying : MonoBehaviour {
 
 				mPosGuide += (obj.GetComponent<BoxCollider2D> ().size.y - mPreItemSize) / 2f;
 				obj.transform.localPosition = new Vector3(0f, -mPosGuide, 0f);
-				mPosGuide += obj.GetComponent<BoxCollider2D> ().size.y;
-				mPreItemSize = obj.GetComponent<BoxCollider2D>().size.y;
+				mPosGuide += obj.GetComponent<BoxCollider2D> ().size.y-1;
+				mPreItemSize = obj.GetComponent<BoxCollider2D>().size.y-1;
 //				mPosGuide += (122 - 30f) / 2f;
 			} else if(mInningCounter != quizInfo.inningType){
 				mInningCounter = quizInfo.inningType;
@@ -165,8 +164,8 @@ public class ScriptMatchPlaying : MonoBehaviour {
 
 				mPosGuide += (obj.GetComponent<BoxCollider2D> ().size.y - mPreItemSize) / 2f;
 				obj.transform.localPosition = new Vector3(0f, -mPosGuide, 0f);
-				mPosGuide += obj.GetComponent<BoxCollider2D> ().size.y;
-				mPreItemSize = obj.GetComponent<BoxCollider2D>().size.y;
+				mPosGuide += obj.GetComponent<BoxCollider2D> ().size.y-1;
+				mPreItemSize = obj.GetComponent<BoxCollider2D>().size.y-1;
 //				mPosGuide += (122 - 30f) / 2f;
 
 			}
@@ -222,12 +221,6 @@ public class ScriptMatchPlaying : MonoBehaviour {
 
 	public void InitQuizList(GetQuizEvent quizEvent)
 	{
-//		if (quizEvent != null) {
-//			foreach(QuizInfo quizInfo in quizEvent.Response.data.quiz){
-//				mEventProgQuiz.Response.data.quiz.Insert(0, quizInfo);
-//			}
-//		}
-
 		QuizMgr.SetQuizList (mEventProgQuiz.Response.data.quiz);
 
 		foreach (GameObject go in mQuizListItems) {
@@ -248,8 +241,6 @@ public class ScriptMatchPlaying : MonoBehaviour {
 		
 		mList.GetComponent<UIScrollView> ().ResetPosition ();
 		mFirstLoading = false;
-//		mPosGuide = -122f;
-//		mList.transform.FindChild ("Grid").GetComponent<UIGrid> ().Reposition ();
 	}
 
 	public void AddQuizList(GetQuizEvent quizEvent)

@@ -41,6 +41,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: ed9cd0ffcadd249ea97cea6561e45925, type: 2}
   mSprites:
+  - name: bg_game_001
+    x: 0
+    y: 184
+    width: 360
+    height: 368
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: bg_game_002
+    x: 647
+    y: 817
+    width: 360
+    height: 207
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: bg_game_bg
+    x: 653
+    y: 679
+    width: 88
+    height: 90
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
   - name: bg_main_list_bb
     x: 0
     y: 770
@@ -68,8 +107,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: btn_game_bot_go_betting
-    x: 647
-    y: 936
+    x: 653
+    y: 590
     width: 88
     height: 88
     borderLeft: 0

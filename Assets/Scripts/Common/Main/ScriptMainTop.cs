@@ -62,7 +62,13 @@ public class ScriptMainTop : MonoBehaviour {
 		mLblRuby.GetComponent<UILabel> ().text = UtilMgr.AddsThousandsSeparator(UserMgr.UserInfo.userRuby);
 	}
 
-	public void GoPreState()
+	public void AnimateClosing()
+	{
+		transform.GetComponent<PlayMakerFSM> ().SendEvent ("CloseBetting");
+		TweenAlpha.Begin (mBetting.transform.FindChild("SprComb").gameObject, 1f, 0f);
+	}
+
+	void GoPreState()
 	{
 		QuizMgr.IsBettingOpended = false;
 
@@ -156,15 +162,18 @@ public class ScriptMainTop : MonoBehaviour {
 		QuizMgr.IsBettingOpended = true;
 		QuizMgr.JoinCount = 0;
 
-		UtilMgr.SetBackEvent(new EventDelegate(this, "GoPreState"));
+		UtilMgr.SetBackEvent(new EventDelegate(this, "AnimateClosing"));
 
-		mHighlight.SetActive (false);
-		mLineup.SetActive (false);
-		mBingo.SetActive (false);
-		mLivetalk.SetActive (false);
+//		mHighlight.SetActive (false);
+//		mLineup.SetActive (false);
+//		mBingo.SetActive (false);
+//		mLivetalk.SetActive (false);
 
 		mBetting.SetActive (true);
 		mBetting.GetComponent<ScriptTF_Betting> ().Init (quizInfo);
+
+		transform.GetComponent<PlayMakerFSM> ().SendEvent ("OpenBetting");
+
 	}
 
 	public void RequestBoardInfo()
@@ -240,7 +249,8 @@ public class ScriptMainTop : MonoBehaviour {
 	void OnBackPressed()
 	{
 		UtilMgr.RemoveBackEvent ();
-		GoPreState ();
+//		GoPreState ();
+		AnimateClosing ();
 	}
 
 	public void BtnClicked(string name)
@@ -260,5 +270,21 @@ public class ScriptMainTop : MonoBehaviour {
 			OpenLivetalk();
 			break;
 		}
+	}
+
+	public void Test()
+	{
+//		Debug.Log("favorite Clicked");
+
+		Vector3 pos = transform.FindChild ("Panel").FindChild ("BtnFavorite").localPosition;
+		pos.x += 100f;
+		iTween.MoveTo (transform.FindChild ("Panel").FindChild ("BtnFavorite").gameObject
+		              , iTween.Hash ("position", pos,
+		               "time", 3f,
+		               "easetype", "easeincubic",
+		               "islocal", true
+		               ));
+
+
 	}
 }

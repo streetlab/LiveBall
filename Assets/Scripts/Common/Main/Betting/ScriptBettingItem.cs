@@ -66,6 +66,7 @@ public class ScriptBettingItem : MonoBehaviour {
 		}
 
 		mSprSilhouette.color = ColorSilhouetteEnable;
+		SetCombo (3);
 	}
 
 	public void SetUnselected()
@@ -95,4 +96,60 @@ public class ScriptBettingItem : MonoBehaviour {
 			new EventDelegate (mSprBetting.GetComponent<ScriptBetting> (),
 		                   "CloseWindow"));
 	}
+
+	public void ClearCombos()
+	{
+		transform.FindChild("SprCombo3").GetComponent<UISprite>().color = ColorComboDisable;
+		transform.FindChild("SprCombo2").GetComponent<UISprite>().color = ColorComboDisable;
+		transform.FindChild("SprCombo1").GetComponent<UISprite>().color = ColorComboDisable;
+	}
+
+	public void SetCombo(int count)
+	{
+		Vector3 pos;
+		switch(count){
+		case 3:
+			pos = transform.FindChild("SprCombo3").localPosition;
+			pos.x -= 46f;
+			pos.y += 20f;
+			transform.FindChild("SprCombo3").GetComponent<UISprite>().color = ColorComboEnable;
+			iTween.MoveFrom(transform.FindChild("SprCombo3").gameObject, iTween.Hash(
+				"easetype", "easeOutCirc",
+				"islocal", true,
+				"time", 0.5f,
+				"position", pos
+				));
+			iTween.ScaleFrom(transform.FindChild("SprCombo3").gameObject, new Vector3(2f, 2f, 2f), 0.5f);
+
+			goto case 2;
+		case 2:
+			pos = transform.FindChild("SprCombo2").localPosition;
+			pos.y -= 46f;
+			transform.FindChild("SprCombo2").GetComponent<UISprite>().color = ColorComboEnable;
+			iTween.MoveFrom(transform.FindChild("SprCombo2").gameObject, iTween.Hash(
+				"easetype", "easeOutCirc",
+				"islocal", true,
+				"time", 0.5f,
+				"position", pos
+				));
+			iTween.ScaleFrom(transform.FindChild("SprCombo2").gameObject, new Vector3(2f, 2f, 2f), 0.5f);
+
+			goto case 1;
+		case 1:
+			pos = transform.FindChild("SprCombo1").localPosition;
+			pos.x += 46f;
+			pos.y += 20f;
+			transform.FindChild("SprCombo1").GetComponent<UISprite>().color = ColorComboEnable;
+			iTween.MoveFrom(transform.FindChild("SprCombo1").gameObject, iTween.Hash(
+				"easetype", "easeOutCirc",
+				"islocal", true,
+				"time", 0.5f,
+				"position", pos
+				));
+			iTween.ScaleFrom(transform.FindChild("SprCombo1").gameObject, new Vector3(2f, 2f, 2f), 0.5f);
+
+			break;
+		}
+	}
+
 }

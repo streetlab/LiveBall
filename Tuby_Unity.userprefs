@@ -1,12 +1,17 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Common/Login/ScriptTitle.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Common/Main/Betting/ScriptTF_Betting.cs">
     <Files>
-      <File FileName="Assets/Scripts/Common/Login/ScriptTitle.cs" Line="136" Column="90" />
-      <File FileName="Assets/Scripts/Common/Utils/DialogueMgr.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Common/Utils/UtilMgr.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Common/Login/ScriptLoginRoot.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Common/Main/ScriptMainRoot.cs" Line="17" Column="3" />
+      <File FileName="Assets/Scripts/Common/Main/Highlight/ScriptMatchPlaying.cs" Line="168" Column="62" />
+      <File FileName="Assets/Scripts/Common/Login/ScriptLoginRoot.cs" Line="8" Column="22" />
+      <File FileName="Assets/Scripts/Common/Main/Highlight/ScriptItemDetailGraph.cs" Line="14" Column="3" />
+      <File FileName="Assets/Scripts/Common/Main/Highlight/ScriptTF_Highlight.cs" Line="26" Column="5" />
+      <File FileName="Assets/Plugins/NGUI/UI/UIDraggablePanel2.cs" Line="404" Column="1" />
+      <File FileName="Assets/Scripts/Common/Main/ScriptMainTop.cs" Line="65" Column="18" />
+      <File FileName="Assets/Scripts/Common/Main/Betting/ScriptBetting.cs" Line="108" Column="25" />
+      <File FileName="Assets/Scripts/Common/Main/Betting/ScriptTF_Betting.cs" Line="300" Column="3" />
+      <File FileName="Assets/Plugins/NGUI/Tweening/AnimatedAlpha.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Common/Utils/AutoFade.cs" Line="4" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -14,15 +19,12 @@
           <Node name="Assembly-CSharp" expanded="True">
             <Node name="Scripts" expanded="True">
               <Node name="Common" expanded="True">
-                <Node name="Login" expanded="True">
-                  <Node name="ScriptTitle.cs" selected="True" />
-                </Node>
+                <Node name="Login" expanded="True" />
                 <Node name="Main" expanded="True">
+                  <Node name="Betting" expanded="True">
+                    <Node name="ScriptTF_Betting.cs" selected="True" />
+                  </Node>
                   <Node name="Highlight" expanded="True" />
-                </Node>
-                <Node name="Models" expanded="True" />
-                <Node name="TeamHome" expanded="True">
-                  <Node name="TimeLine" expanded="True" />
                 </Node>
                 <Node name="Utils" expanded="True" />
               </Node>
@@ -36,6 +38,7 @@
             <Node name="Plugins" expanded="True">
               <Node name="NGUI" expanded="True">
                 <Node name="Internal" expanded="True" />
+                <Node name="Tweening" expanded="True" />
                 <Node name="UI" expanded="True" />
               </Node>
             </Node>
