@@ -10,6 +10,8 @@ public class ScriptTitle : MonoBehaviour {
 
 	void Start()
 	{
+//		PlayerPrefs.SetString (Constants.PrefEmail, "");
+//		PlayerPrefs.SetString (Constants.PrefPwd, "");
 		Init ();
 	}
 
@@ -105,16 +107,13 @@ public class ScriptTitle : MonoBehaviour {
 		NetMgr.DoLogin (mLoginInfo, mLoginEvent);
 	}
 
-
 	void LoginComplete()
 	{
+		UtilMgr.DismissLoading ();
 		if (mLoginEvent.Response.code > 0) {
 			Debug.Log("error : "+mLoginEvent.Response.message);
 			if(mLoginEvent.Response.code == 100){
-				PlayerPrefs.DeleteKey(Constants.PrefEmail);
-				PlayerPrefs.DeleteKey(Constants.PrefPwd);
-				UtilMgr.RemoveAllBackEvents();
-				Init ();
+				LoginFailed();
 			}
 			UtilMgr.DismissLoading ();
 			return;
@@ -123,6 +122,18 @@ public class ScriptTitle : MonoBehaviour {
 		mProfileEvent = new GetProfileEvent (new EventDelegate (this, "GotProfile"));
 
 		NetMgr.GetProfile (mLoginInfo.memSeq, mProfileEvent);
+	}
+
+	void LoginFailed()
+	{
+		PlayerPrefs.SetString(Constants.PrefEmail, "");
+		PlayerPrefs.SetString(Constants.PrefPwd, "");
+		UtilMgr.RemoveAllBackEvents();
+		Init ();
+		string title = gameObject.GetComponent<PlayMakerFSM>().FsmVariables.FindFsmString("loginFailedTitle").Value;
+		string body = gameObject.GetComponent<PlayMakerFSM>().FsmVariables.FindFsmString("loginFailedBody").Value;
+		DialogueMgr.ShowDialogue(title, body, DialogueMgr.DIALOGUE_TYPE.Alert, "", "", "");
+		UtilMgr.SetBackEvent (new EventDelegate (transform.root.GetComponent<ScriptLoginRoot>(), "DismissDialogue"));
 	}
 
 	public void GotProfile()

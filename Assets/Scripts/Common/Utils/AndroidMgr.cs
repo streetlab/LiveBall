@@ -116,4 +116,9 @@ public class AndroidMgr : MonoBehaviour
 		AndroidMgr.CallJavaFunc("RegisterGCM", "");
 	}
 
+	public static void ViberateDevice(long millSec){
+		AndroidMgr.CallJavaFunc("ViberateDevice", string.Format("{0}", millSec));
+	}
+
+
 }

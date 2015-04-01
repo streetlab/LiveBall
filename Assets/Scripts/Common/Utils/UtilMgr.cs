@@ -71,18 +71,19 @@ public class UtilMgr : MonoBehaviour {
 		}
 	}
 
-	public static void OnBackPressed()
+	public static bool OnBackPressed()
 	{
 		if(mListBackEvent.Count > 0)
 		{
 			EventDelegate eventDel = mListBackEvent[mListBackEvent.Count-1];
 			RemoveBackEvent();
 			eventDel.Execute();
+			return true;
 		}
 		else
 		{
-			//Exit
-			Debug.Log("Quit");
+			DialogueMgr.ShowExitDialogue();
+			return false;
 		}
 	}
 

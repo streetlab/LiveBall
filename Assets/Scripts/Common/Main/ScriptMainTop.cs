@@ -143,6 +143,12 @@ public class ScriptMainTop : MonoBehaviour {
 
 	public void OpenBetting(QuizInfo quizInfo)
 	{
+		#if(UNITY_ANDROID)
+		AndroidMgr.ViberateDevice(1000l);
+		#else
+
+		#endif
+
 		if (UtilMgr.HasBackEvent ()) {
 			UtilMgr.RunAllBackEvents();
 		}

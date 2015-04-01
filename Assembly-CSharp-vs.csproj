@@ -728,6 +728,7 @@
      <Compile Include="Assets\Scripts\Common\Models\TeamInfo.cs" />
      <Compile Include="Assets\Scripts\Common\Models\UserInfo.cs" />
      <Compile Include="Assets\Scripts\Common\ScriptMainMenuLeft.cs" />
+     <Compile Include="Assets\Scripts\Common\ScriptSuperRoot.cs" />
      <Compile Include="Assets\Scripts\Common\Splash\ScriptSplash.cs" />
      <Compile Include="Assets\Scripts\Common\TeamHome\ScriptBtnImotion.cs" />
      <Compile Include="Assets\Scripts\Common\TeamHome\ScriptImgItemSelection.cs" />
@@ -754,11 +755,11 @@
      <Compile Include="Assets\Scripts\Common\UserMgr.cs" />
      <Compile Include="Assets\Scripts\Common\Utils\AndroidMgr.cs" />
      <Compile Include="Assets\Scripts\Common\Utils\AutoFade.cs" />
-     <Compile Include="Assets\Scripts\Common\Utils\CommonDialogue.cs" />
      <Compile Include="Assets\Scripts\Common\Utils\Communication.cs" />
      <Compile Include="Assets\Scripts\Common\Utils\Constants.cs" />
+     <Compile Include="Assets\Scripts\Common\Utils\DialogueMgr.cs" />
      <Compile Include="Assets\Scripts\Common\Utils\QuizMgr.cs" />
-     <Compile Include="Assets\Scripts\Common\Utils\ShowDialogue.cs" />
+     <Compile Include="Assets\Scripts\Common\Utils\ScriptCommonDialogue.cs" />
      <Compile Include="Assets\Scripts\Common\Utils\UIScrollView2.cs" />
      <Compile Include="Assets\Scripts\Common\Utils\UtilMgr.cs" />
      <Compile Include="Assets\Scripts\Common\Utils\WWWHelper.cs" />

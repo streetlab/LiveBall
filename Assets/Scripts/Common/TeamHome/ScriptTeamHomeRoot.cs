@@ -1,15 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ScriptTeamHomeRoot : MonoBehaviour {
+public class ScriptTeamHomeRoot : ScriptSuperRoot {
 
-	// Use this for initialization
-	void Start () {
-		transform.FindChild ("Camera").localPosition = new Vector3 (0, UtilMgr.GetScaledPositionY (), 0);
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 }

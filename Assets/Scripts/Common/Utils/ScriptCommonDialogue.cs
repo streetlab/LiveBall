@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ShowDialogue : MonoBehaviour {
+public class ScriptCommonDialogue : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -11,10 +11,5 @@ public class ShowDialogue : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
-	}
-
-	public void showDialogue(string str)
-	{
-
 	}
 }
