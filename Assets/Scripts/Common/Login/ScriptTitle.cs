@@ -13,6 +13,9 @@ public class ScriptTitle : MonoBehaviour {
 //		PlayerPrefs.SetString (Constants.PrefEmail, "");
 //		PlayerPrefs.SetString (Constants.PrefPwd, "");
 		Init ();
+//		transform.FindChild ("Fire Spray").GetComponent<ParticleSystem> ().renderer.material.renderQueue = 3001;
+//		transform.FindChild ("Fire Spray").FindChild("Smoke").GetComponent<ParticleSystem> ().renderer.material.renderQueue = 3002;
+//		transform.FindChild ("Fire Spray").FindChild("Sparkles").GetComponent<ParticleSystem> ().renderer.material.renderQueue = 3001;
 	}
 
 	public void Init()

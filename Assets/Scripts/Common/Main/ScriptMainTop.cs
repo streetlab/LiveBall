@@ -21,6 +21,9 @@ public class ScriptMainTop : MonoBehaviour {
 	public GameObject mLblRuby;
 	public GameObject mLblDia;
 
+	public AudioClip mSoundOpenBet;
+	public AudioClip mSoundCloseBet;
+
 	GetQuizEvent mEventQuiz;
 	GetGameSposDetailBoardEvent mBoardEvent;
 
@@ -64,6 +67,7 @@ public class ScriptMainTop : MonoBehaviour {
 
 	public void AnimateClosing()
 	{
+		transform.root.audio.PlayOneShot (mSoundCloseBet);
 		transform.GetComponent<PlayMakerFSM> ().SendEvent ("CloseBetting");
 		TweenAlpha.Begin (mBetting.transform.FindChild("SprComb").gameObject, 1f, 0f);
 	}
@@ -78,6 +82,7 @@ public class ScriptMainTop : MonoBehaviour {
 		}
 
 		Debug.Log ("GoPreState");
+
 		switch(mState)
 		{
 		case STATE.Highlight:
@@ -150,7 +155,7 @@ public class ScriptMainTop : MonoBehaviour {
 	public void OpenBetting(QuizInfo quizInfo)
 	{
 		#if(UNITY_ANDROID)
-		AndroidMgr.ViberateDevice(1000l);
+		AndroidMgr.ViberateDevice(1000L);
 		#else
 
 		#endif
@@ -164,15 +169,11 @@ public class ScriptMainTop : MonoBehaviour {
 
 		UtilMgr.SetBackEvent(new EventDelegate(this, "AnimateClosing"));
 
-//		mHighlight.SetActive (false);
-//		mLineup.SetActive (false);
-//		mBingo.SetActive (false);
-//		mLivetalk.SetActive (false);
-
 		mBetting.SetActive (true);
 		mBetting.GetComponent<ScriptTF_Betting> ().Init (quizInfo);
 
 		transform.GetComponent<PlayMakerFSM> ().SendEvent ("OpenBetting");
+		transform.root.audio.PlayOneShot (mSoundOpenBet);
 
 	}
 
@@ -244,13 +245,6 @@ public class ScriptMainTop : MonoBehaviour {
 //			Debug.Log("NeedsDetailInfo!!!!");
 			mHighlight.transform.FindChild ("MatchPlaying").GetComponent<ScriptMatchPlaying> ().InitScoreBoard(mBoardEvent);
 		}
-	}
-
-	void OnBackPressed()
-	{
-		UtilMgr.RemoveBackEvent ();
-//		GoPreState ();
-		AnimateClosing ();
 	}
 
 	public void BtnClicked(string name)

@@ -55,8 +55,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: bg_bingo_click
-    x: 1949
-    y: 847
+    x: 1182
+    y: 180
     width: 60
     height: 60
     borderLeft: 0
@@ -68,8 +68,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: bg_bingo_text
-    x: 1574
-    y: 724
+    x: 1247
+    y: 34
     width: 62
     height: 50
     borderLeft: 0
@@ -120,8 +120,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: bg_game_003
-    x: 1082
-    y: 516
+    x: 1443
+    y: 817
     width: 360
     height: 207
     borderLeft: 0
@@ -159,8 +159,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: bg_game_07
-    x: 1247
-    y: 440
+    x: 1685
+    y: 595
     width: 179
     height: 75
     borderLeft: 0
@@ -173,7 +173,7 @@ MonoBehaviour:
     paddingBottom: 0
   - name: bg_game_bg
     x: 1348
-    y: 349
+    y: 268
     width: 88
     height: 90
     borderLeft: 36
@@ -185,8 +185,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: bg_game_textbg
-    x: 2001
-    y: 805
+    x: 1199
+    y: 321
     width: 40
     height: 36
     borderLeft: 5
@@ -224,8 +224,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: bg_time
-    x: 1662
-    y: 671
+    x: 1443
+    y: 764
     width: 278
     height: 52
     borderLeft: 0
@@ -237,8 +237,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: btn_01
-    x: 1662
-    y: 618
+    x: 1685
+    y: 671
     width: 278
     height: 52
     borderLeft: 0
@@ -250,8 +250,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: btn_bet_hun_release
-    x: 1443
-    y: 489
+    x: 1247
+    y: 85
     width: 100
     height: 100
     borderLeft: 0
@@ -263,8 +263,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: btn_bet_max_release
-    x: 1941
-    y: 623
+    x: 1247
+    y: 186
     width: 100
     height: 100
     borderLeft: 0
@@ -276,8 +276,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: btn_bet_min_release
-    x: 1301
-    y: 98
+    x: 1247
+    y: 287
     width: 100
     height: 100
     borderLeft: 0
@@ -290,7 +290,7 @@ MonoBehaviour:
     paddingBottom: 0
   - name: btn_bet_ten_release
     x: 1247
-    y: 339
+    y: 489
     width: 100
     height: 100
     borderLeft: 0
@@ -302,8 +302,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: btn_bet_tho_release
-    x: 1301
-    y: 232
+    x: 1247
+    y: 388
     width: 100
     height: 100
     borderLeft: 0
@@ -329,7 +329,7 @@ MonoBehaviour:
     paddingBottom: 2
   - name: btn_hexagon_off
     x: 1082
-    y: 333
+    y: 358
     width: 164
     height: 182
     borderLeft: 0
@@ -341,8 +341,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: btn_hexagon_on
-    x: 1784
-    y: 842
+    x: 1082
+    y: 541
     width: 164
     height: 182
     borderLeft: 0
@@ -380,7 +380,7 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: card_01
-    x: 1443
+    x: 1466
     y: 590
     width: 218
     height: 133
@@ -393,8 +393,8 @@ MonoBehaviour:
     paddingTop: 1
     paddingBottom: 0
   - name: card_02
-    x: 1082
-    y: 65
+    x: 1247
+    y: 590
     width: 218
     height: 133
     borderLeft: 0
@@ -406,8 +406,8 @@ MonoBehaviour:
     paddingTop: 1
     paddingBottom: 0
   - name: card_03
-    x: 1082
-    y: 199
+    x: 1804
+    y: 730
     width: 218
     height: 133
     borderLeft: 0
@@ -458,8 +458,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: ic_bingo_off
-    x: 1301
-    y: 27
+    x: 1722
+    y: 746
     width: 70
     height: 70
     borderLeft: 0
@@ -471,8 +471,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: ic_bingo_on
-    x: 1372
-    y: 27
+    x: 1865
+    y: 600
     width: 70
     height: 70
     borderLeft: 0
@@ -497,8 +497,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: ic_menu_bingo
-    x: 1402
-    y: 271
+    x: 1310
+    y: 23
     width: 30
     height: 30
     borderLeft: 0
@@ -510,8 +510,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: ic_menu_highlight
-    x: 1402
-    y: 302
+    x: 1310
+    y: 54
     width: 30
     height: 30
     borderLeft: 0
@@ -523,8 +523,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: ic_menu_lineup
-    x: 1357
-    y: 201
+    x: 1278
+    y: 3
     width: 30
     height: 30
     borderLeft: 0
@@ -536,8 +536,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: ic_menu_statistics
-    x: 2001
-    y: 743
+    x: 1247
+    y: 3
     width: 30
     height: 30
     borderLeft: 0
@@ -549,8 +549,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: ic_menu_talk
-    x: 2001
-    y: 774
+    x: 1199
+    y: 253
     width: 30
     height: 30
     borderLeft: 0
@@ -562,8 +562,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: ic_success_02
-    x: 1544
-    y: 478
+    x: 1348
+    y: 156
     width: 67
     height: 111
     borderLeft: 0
@@ -576,7 +576,7 @@ MonoBehaviour:
     paddingBottom: 0
   - name: ic_success_off
     x: 1443
-    y: 735
+    y: 724
     width: 130
     height: 39
     borderLeft: 0
@@ -588,8 +588,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: img_bingo_click
-    x: 1784
-    y: 725
+    x: 1082
+    y: 241
     width: 116
     height: 116
     borderLeft: 0
@@ -601,8 +601,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: img_card_text 1
-    x: 1637
-    y: 740
+    x: 1574
+    y: 729
     width: 82
     height: 34
     borderLeft: 0
@@ -614,8 +614,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: img_hit_text 1
-    x: 1301
-    y: 201
+    x: 1182
+    y: 149
     width: 55
     height: 30
     borderLeft: 0
@@ -640,8 +640,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: img_out_text 1
-    x: 1720
-    y: 744
+    x: 1657
+    y: 733
     width: 57
     height: 30
     borderLeft: 0
@@ -653,8 +653,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: img_silhouette_hit_01
-    x: 1443
-    y: 269
+    x: 1964
+    y: 610
     width: 79
     height: 113
     borderLeft: 0
@@ -666,8 +666,8 @@ MonoBehaviour:
     paddingTop: 27
     paddingBottom: 42
   - name: img_silhouette_hit_02
-    x: 1443
-    y: 383
+    x: 1348
+    y: 484
     width: 95
     height: 105
     borderLeft: 0
@@ -679,8 +679,8 @@ MonoBehaviour:
     paddingTop: 34
     paddingBottom: 43
   - name: img_silhouette_hit_03
-    x: 1544
-    y: 359
+    x: 1348
+    y: 37
     width: 51
     height: 118
     borderLeft: 0
@@ -692,8 +692,8 @@ MonoBehaviour:
     paddingTop: 31
     paddingBottom: 33
   - name: img_silhouette_hit_04
-    x: 1443
-    y: 13
+    x: 1348
+    y: 359
     width: 68
     height: 124
     borderLeft: 0
@@ -705,8 +705,8 @@ MonoBehaviour:
     paddingTop: 21
     paddingBottom: 37
   - name: img_silhouette_out_01
-    x: 1901
-    y: 733
+    x: 1082
+    y: 132
     width: 99
     height: 108
     borderLeft: 0
@@ -718,8 +718,8 @@ MonoBehaviour:
     paddingTop: 32
     paddingBottom: 42
   - name: img_silhouette_out_02
-    x: 1443
-    y: 138
+    x: 1172
+    y: 1
     width: 66
     height: 130
     borderLeft: 0
@@ -731,8 +731,8 @@ MonoBehaviour:
     paddingTop: 24
     paddingBottom: 28
   - name: img_silhouette_out_03
-    x: 1949
-    y: 908
+    x: 1082
+    y: 15
     width: 89
     height: 116
     borderLeft: 0
@@ -757,8 +757,8 @@ MonoBehaviour:
     paddingTop: 43
     paddingBottom: 46
   - name: img_time
-    x: 2010
-    y: 871
+    x: 1199
+    y: 284
     width: 36
     height: 36
     borderLeft: 0
@@ -783,18 +783,18 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: vs
-    x: 1443
-    y: 775
-    width: 340
-    height: 249
+    x: 1804
+    y: 864
+    width: 234
+    height: 160
     borderLeft: 0
     borderRight: 0
     borderTop: 0
     borderBottom: 0
-    paddingLeft: 0
-    paddingRight: 0
-    paddingTop: 0
-    paddingBottom: 0
+    paddingLeft: 53
+    paddingRight: 53
+    paddingTop: 53
+    paddingBottom: 36
   mPixelSize: 1
   mReplacement: {fileID: 0}
   mCoordinates: 0

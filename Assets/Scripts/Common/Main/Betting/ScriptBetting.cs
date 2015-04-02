@@ -38,7 +38,11 @@ public class ScriptBetting : MonoBehaviour {
 	JoinQuizEvent mJoinQuizEvent;
 
 	void Start () {
-		gameObject.SetActive (false);
+
+	}
+
+	public void Init(string name)
+	{
 		Transform panel = transform.FindChild ("Panel").transform;
 		mBtnCancel = panel.FindChild ("BtnCancel").GetComponent<UIButton> ();
 		mBtnConfirm = panel.FindChild ("BtnConfirm").GetComponent<UIButton> ();
@@ -46,10 +50,7 @@ public class ScriptBetting : MonoBehaviour {
 		mLblGot = panel.FindChild ("SprBack1").FindChild("LblAmount").GetComponent<UILabel> ();
 		mLblUse = panel.FindChild ("SprBack2").FindChild("LblAmount").GetComponent<UILabel> ();
 		mLblExpect = panel.FindChild ("SprBack3").FindChild("LblAmount").GetComponent<UILabel> ();
-	}
 
-	public void Init(string name)
-	{
 		mSelectedName = name;
 		mSbi = GetBettingItem ();
 		if(mSbi.IsSelected)
@@ -60,10 +61,11 @@ public class ScriptBetting : MonoBehaviour {
 		}
 		else
 		{
-			mBtnCancel.gameObject.SetActive(false);//
+			mBtnCancel.gameObject.SetActive(false);
 			mBtnConfirm.gameObject.SetActive(false);
 			mBtnConfirm2.gameObject.SetActive(true);
 		}
+
 
 		mLblGot.text = UtilMgr.AddsThousandsSeparator (UserMgr.UserInfo.userGoldenBall);
 		mLblUse.text = UtilMgr.AddsThousandsSeparator (mAmountUse);
@@ -120,8 +122,6 @@ public class ScriptBetting : MonoBehaviour {
 //		} 
 //
 //		UtilMgr.OnBackPressed();
-
-
 	}
 
 	void SetBtnsDisable()
