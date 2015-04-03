@@ -32,14 +32,8 @@ public class ScriptTF_Betting : MonoBehaviour {
 
 	void Start()
 	{
-//		ParticleEmitter[] ArrayEmitter = 
-//			GetComponentsInChildren<ParticleEmitter>() as ParticleEmitter[]; 
-//		foreach (ParticleEmitter AEmitter in ArrayEmitter) 
-//		{ 
-//			AEmitter.minSize *= 0.5f;
-//			AEmitter.maxSize *= 0.5f;
-//		}
-		
+		transform.FindChild ("Lightning Spark").GetComponent<ScriptParticleResizer> ().ResizeRatio (0.5f);
+
 		transform.FindChild ("Lightning Spark").GetComponent<ParticleSystem> ().renderer.material.renderQueue = 3100;
 		transform.FindChild ("Lightning Spark").FindChild("Lightning").GetComponent<ParticleSystem> ().renderer.material.renderQueue = 3100;
 		transform.FindChild ("Lightning Spark").FindChild("Spakles").GetComponent<ParticleSystem> ().renderer.material.renderQueue = 3100;
@@ -253,6 +247,9 @@ public class ScriptTF_Betting : MonoBehaviour {
 
 	void SetPitcher()
 	{
+		if (ScriptMainTop.DetailBoard.player.Count < 2) {
+			Debug.Log("No Pitcher");
+		}
 		Transform tfPitcher = mSprComb.transform.FindChild ("SprPitcher");
 		string playerInfo = ScriptMainTop.DetailBoard.player [0].playerName + " No." + ScriptMainTop.DetailBoard.player [0].playerNumber;
 		tfPitcher.FindChild ("LblName").GetComponent<UILabel> ().text = playerInfo;
@@ -272,7 +269,7 @@ public class ScriptTF_Betting : MonoBehaviour {
 		Transform tfHitter = mSprComb.transform.FindChild ("SprHitter");
 		string playerInfo = QuizMgr.QuizInfo.playerName + " No." + QuizMgr.QuizInfo.playerNumber;
 		tfHitter.FindChild ("LblName").GetComponent<UILabel> ().text = playerInfo;
-		string playerAVG = ScriptMainTop.DetailBoard.player [1].AVG;
+		string playerAVG = ScriptMainTop.DetailBoard.player [ScriptMainTop.DetailBoard.player.Count-1].AVG;
 		tfHitter.FindChild("LblHit").GetComponent<UILabel>().text = playerAVG;
 		tfHitter.FindChild ("LblTeam").GetComponent<UILabel> ().text = QuizMgr.QuizInfo.teamName;
 		string strImage = QuizMgr.QuizInfo.imageName;

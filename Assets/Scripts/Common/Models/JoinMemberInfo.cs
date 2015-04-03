@@ -100,4 +100,15 @@ public class JoinMemberInfo {
 			photo = value;
 		}
 	}
+
+	string favoBB;
+
+	public string FavoBB {
+		get {
+			return favoBB;
+		}
+		set {
+			favoBB = value;
+		}
+	}
 }

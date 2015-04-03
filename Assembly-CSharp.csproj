@@ -682,8 +682,10 @@
      <Compile Include="Assets\Scripts\Common\Chat\ScriptInput.cs" />
      <Compile Include="Assets\Scripts\Common\Chat\ScriptUIMgr.cs" />
      <Compile Include="Assets\Scripts\Common\Login\ScriptBtnJoinItem.cs" />
+     <Compile Include="Assets\Scripts\Common\Login\ScriptBtnSelectTeam.cs" />
      <Compile Include="Assets\Scripts\Common\Login\ScriptJoinForm.cs" />
      <Compile Include="Assets\Scripts\Common\Login\ScriptLoginRoot.cs" />
+     <Compile Include="Assets\Scripts\Common\Login\ScriptSelectTeam.cs" />
      <Compile Include="Assets\Scripts\Common\Login\ScriptTitle.cs" />
      <Compile Include="Assets\Scripts\Common\Login\ScriptWindowEmail.cs" />
      <Compile Include="Assets\Scripts\Common\Main\Betting\ScriptBetting.cs" />
@@ -760,6 +762,7 @@
      <Compile Include="Assets\Scripts\Common\Utils\DialogueMgr.cs" />
      <Compile Include="Assets\Scripts\Common\Utils\QuizMgr.cs" />
      <Compile Include="Assets\Scripts\Common\Utils\ScriptCommonDialogue.cs" />
+     <Compile Include="Assets\Scripts\Common\Utils\ScriptParticleResizer.cs" />
      <Compile Include="Assets\Scripts\Common\Utils\UIScrollView2.cs" />
      <Compile Include="Assets\Scripts\Common\Utils\UtilMgr.cs" />
      <Compile Include="Assets\Scripts\Common\Utils\WWWHelper.cs" />
