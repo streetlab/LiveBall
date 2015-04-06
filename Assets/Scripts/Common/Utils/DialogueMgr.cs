@@ -17,6 +17,8 @@ public class DialogueMgr : MonoBehaviour {
 	GameObject mDialogueBox;
 	EventDelegate mEvent;
 
+	public static bool IsShown;
+
 	static DialogueMgr Instance
 	{
 		get
@@ -50,13 +52,11 @@ public class DialogueMgr : MonoBehaviour {
 			Instance.mDialogueBox = Instantiate (prefab, new Vector3 (0f, 0f, 0f), Quaternion.identity) as GameObject;
 		}
 
-
-
 		string strTitle = Instance.mDialogueBox.GetComponent<PlayMakerFSM> ().FsmVariables.FindFsmString ("exitTitle").Value;
 		string strBody = Instance.mDialogueBox.GetComponent<PlayMakerFSM> ().FsmVariables.FindFsmString ("exitBody").Value;
 
 		ShowDialogue (strTitle, strBody, DIALOGUE_TYPE.YesNo, null, null, null);
-		Instance.mIsExit = true;
+//		Instance.mIsExit = true;
 	}
 
 	public static void ShowDialogue(string strTitle, string strBody, DIALOGUE_TYPE type, string strBtn1, string strBtn2, string strCancel)
@@ -66,6 +66,11 @@ public class DialogueMgr : MonoBehaviour {
 			GameObject prefab = Resources.Load ("CommonDialogue") as GameObject;
 			Instance.mDialogueBox = Instantiate (prefab, new Vector3 (0f, 0f, 0f), Quaternion.identity) as GameObject;
 		}
+
+		if (IsShown) {
+			DialogueMgr.DismissDialogue();		
+		}
+
 		Instance.mDialogueBox.transform.parent = GameObject.Find ("UI Root").transform;
 		Instance.mDialogueBox.transform.localScale = new Vector3(1f, 1f, 1f);
 		Instance.mDialogueBox.transform.localPosition = new Vector3(0, 0, 0);
@@ -77,7 +82,9 @@ public class DialogueMgr : MonoBehaviour {
 			.GetComponent<UILabel> ().text = strBody;
 
 		Instance.SetTypeDialogue (type, strBtn1, strBtn2, strCancel);
-		Instance.mIsExit = false;
+//		Instance.mIsExit = false;
+//		UtilMgr.SetBackEvent(new EventDelegate(Instance.GetComponent<DialogueMgr>(), "DismissDialogue"));
+     	IsShown = true;
 	}
 
 	void SetTypeDialogue(DIALOGUE_TYPE type, string strBtn1, string strBtn2, string strCancel)
@@ -108,9 +115,6 @@ public class DialogueMgr : MonoBehaviour {
 
 			btnCancel.transform.FindChild("Label").GetComponent<UILabel>().text = strCancel;
 			btnCancel.transform.localPosition = new Vector3(0, -92f, 0);
-
-//			UtilMgr.SetBackEvent(new EventDelegate(transform.root.GetComponent<ScriptSuperRoot>(), "DismissDialogue"));
-
 		} else if(type == DIALOGUE_TYPE.YesNo){
 			btn1.SetActive(true);
 			btn2.SetActive(false);
@@ -143,6 +147,7 @@ public class DialogueMgr : MonoBehaviour {
 
 		Instance.mEvent = null;
 		Instance.mDialogueBox.SetActive (false);
+		IsShown = false;
 	}
 
 	public void Btn1Clicked()
@@ -160,14 +165,16 @@ public class DialogueMgr : MonoBehaviour {
 
 	public void BtnCancelClicked()
 	{
-		Debug.Log("CancelClicked");
+//		Debug.Log("CancelClicked");
+//		Debug.Log("Is Exit? "+Instance.mIsExit);
 //		if (mEvent == null) {
 //			UtilMgr.OnBackPressed();
 //			return;
 //		}
 		DialogueMgr.DismissDialogue ();
-		if (mIsExit)
-				UtilMgr.RemoveAllBackEvents ();
+//		UtilMgr.RemoveBackEvent ();
+//		if (Instance.mIsExit)
+//				UtilMgr.RemoveAllBackEvents ();
 	}
 
 }

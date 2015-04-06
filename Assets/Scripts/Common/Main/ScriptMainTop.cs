@@ -50,7 +50,8 @@ public class ScriptMainTop : MonoBehaviour {
 		mLivetalk.SetActive (false);
 		mBetting.SetActive (false);
 
-		#if(UNITY_ANDROID)
+		#if(UNITY_EDITOR)
+		#elif(UNITY_ANDROID)
 		QuizMgr.EnterMain(this);
 		#else
 		#endif
@@ -154,7 +155,8 @@ public class ScriptMainTop : MonoBehaviour {
 
 	public void OpenBetting(QuizInfo quizInfo)
 	{
-		#if(UNITY_ANDROID)
+		#if(UNITY_EDITOR)
+		#elif(UNITY_ANDROID)
 		AndroidMgr.ViberateDevice(1000L);
 		#else
 

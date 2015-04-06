@@ -3,6 +3,7 @@ using System.Collections;
 
 public class ScriptJoinForm : MonoBehaviour {
 
+	public GameObject mSelectTeam;
 //	GetProfileEvent mEvent;
 	JoinMemberInfo mMemInfo;
 	string mImgPath;
@@ -37,8 +38,6 @@ public class ScriptJoinForm : MonoBehaviour {
 
 	public void NextClicked()
 	{
-		//need joinInfoClass
-//		transform.FindChild("InputEmail").GetComponent<UILabel>().text
 		string value = CheckValidation ();
 		if (value == null) {
 			mMemInfo = new JoinMemberInfo();
@@ -47,33 +46,13 @@ public class ScriptJoinForm : MonoBehaviour {
 			mMemInfo.MemberPwd = transform.FindChild ("InputPwd").GetComponent<UIInput> ().value;
 			mMemInfo.MemImage = "";//preprocess
 			mMemInfo.Photo = mImgPath;
-			#if(UNITY_ANDROID)
-			mMemInfo.OsType = 1;
-			AndroidMgr.RegistGCM(new EventDelegate(this, "CompleteGCM"));
-			#else
-			memInfo.OsType = 2;
-			#endif
 
-
+			gameObject.SetActive(false);
+			mSelectTeam.GetComponent<ScriptSelectTeam>().Init(mMemInfo);
 		} else
 		{
-			Debug.Log(value);
+			DialogueMgr.ShowDialogue("join error", value, DialogueMgr.DIALOGUE_TYPE.Alert, null, null, null);
 		}
-	}
-
-	public void CompleteGCM()
-	{
-		Debug.Log ("CompleteGCM");
-		string memUID = "";
-		#if(UNITY_ANDROID)
-		memUID = AndroidMgr.GetMsg();
-		#else
-		#endif
-		mMemInfo.MemUID = memUID;
-		GetComponentInParent<ScriptTitle>().mProfileEvent = 
-			new GetProfileEvent(new EventDelegate(GetComponentInParent<ScriptTitle>(), "GotProfile"));
-
-		NetMgr.JoinMember(mMemInfo, GetComponentInParent<ScriptTitle>().mProfileEvent);
 	}
 
 //	public void JoinComplete()
@@ -107,8 +86,8 @@ public class ScriptJoinForm : MonoBehaviour {
 
 	public void OpenCamera()
 	{
-		//need commonPopup
-		#if(UNITY_ANDROID)
+		#if(UNITY_EDITOR)
+		#elif(UNITY_ANDROID)
 		AndroidMgr.OpenGallery(new EventDelegate(this, "GotImage"));
 		#else
 
@@ -117,7 +96,8 @@ public class ScriptJoinForm : MonoBehaviour {
 
 	public void GotImage()
 	{
-		#if(UNITY_ANDROID)
+		#if(UNITY_EDITOR)
+		#elif(UNITY_ANDROID)
 		mImgPath = AndroidMgr.GetMsg();
 		#else
 		

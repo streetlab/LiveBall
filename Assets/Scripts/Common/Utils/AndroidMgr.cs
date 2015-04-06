@@ -6,8 +6,9 @@ public class AndroidMgr : MonoBehaviour
 	EventDelegate mEventDelegate;
 	static AndroidMgr _instance;
 	string mMsg;
-
-	#if(UNITY_ANDROID)
+	#if(UNITY_EDITOR)
+	public static void CallJavaFunc( string strFuncName, string str){}
+	#elif(UNITY_ANDROID)
 	private AndroidJavaObject curActivity;
 
 	void Awake()

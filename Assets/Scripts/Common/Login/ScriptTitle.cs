@@ -26,6 +26,7 @@ public class ScriptTitle : MonoBehaviour {
 		transform.FindChild ("WindowEmail").gameObject.SetActive (false);
 		transform.FindChild ("FormJoin").gameObject.SetActive (false);
 		transform.FindChild ("ContainerBtns").gameObject.SetActive (false);
+		transform.FindChild ("SelectTeam").gameObject.SetActive (false);
 
 		transform.FindChild ("SprLogo").gameObject.SetActive (true);
 		
@@ -73,21 +74,29 @@ public class ScriptTitle : MonoBehaviour {
 
 	public void OpenFacebook()
 	{
+		FB.Init (SetInit, FB.OnHideUnity);
+
+	}
+
+	void SetInit()
+	{
+		Debug.Log("SetInit");
+		enabled = true;
 		if(FB.IsLoggedIn)
 		{
-			InitComplete();
+			Debug.Log("FB.IsLoggedIn");
+			OnLoggedIn();
 		}
 		else
 		{
-			FB.Init (InitComplete, "saffsg324345ddvd");
 			Debug.Log("FB.Login");
 			FB.Login ();
 		}
 	}
 
-	public void InitComplete()
+	void OnLoggedIn()
 	{
-		Debug.Log("InitComplete");
+		DialogueMgr.ShowDialogue ("", FB.UserId + "", DialogueMgr.DIALOGUE_TYPE.Alert, null, null, null);
 	}
 
 	public void OpenKakao()
@@ -135,7 +144,8 @@ public class ScriptTitle : MonoBehaviour {
 		Init ();
 		string title = gameObject.GetComponent<PlayMakerFSM>().FsmVariables.FindFsmString("loginFailedTitle").Value;
 		string body = gameObject.GetComponent<PlayMakerFSM>().FsmVariables.FindFsmString("loginFailedBody").Value;
-		DialogueMgr.ShowDialogue(title, body, DialogueMgr.DIALOGUE_TYPE.Alert, "", "", "");
+		DialogueMgr.ShowDialogue(
+		                         title, body, DialogueMgr.DIALOGUE_TYPE.Alert, "", "", "");
 		UtilMgr.SetBackEvent (new EventDelegate (transform.root.GetComponent<ScriptLoginRoot>(), "DismissDialogue"));
 	}
 
