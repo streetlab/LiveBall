@@ -121,5 +121,10 @@ public class AndroidMgr : MonoBehaviour
 		AndroidMgr.CallJavaFunc("ViberateDevice", string.Format("{0}", millSec));
 	}
 
+	public static void OpenFB(EventDelegate eventDelegate){
+		Instance.mEventDelegate = eventDelegate;
+		AndroidMgr.CallJavaFunc("OpenFB", "");
+	}
+
 
 }

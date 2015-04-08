@@ -135,21 +135,12 @@ public class ScriptMainTop : MonoBehaviour {
 
 	void OpenLivetalk()
 	{
-//		mHighlight.SetActive (false);
-//		mLineup.SetActive (false);
-//		mBingo.SetActive (false);
-//		mLivetalk.SetActive (true);
-//		mBetting.SetActive (false);
-//		mState = STATE.Livetalk;
-
-//		TcpClient client = new TcpClient ("", 21);
-//
-//		NetworkStream stream = client.GetStream();
-//		StreamWriter sw = new StreamWriter (stream);
-//		StreamReader sr = new StreamReader (stream);
-//
-//		sw.Write ("");
-//		sw.Flush ();
+		mHighlight.SetActive (false);
+		mLineup.SetActive (false);
+		mBingo.SetActive (false);
+		mLivetalk.SetActive (true);
+		mBetting.SetActive (false);
+		mState = STATE.Livetalk;
 
 	}
 

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class ScriptTitle : MonoBehaviour {
 
@@ -7,6 +8,8 @@ public class ScriptTitle : MonoBehaviour {
 	public GetProfileEvent mProfileEvent;
 	GetCardInvenEvent mCardEvent;
 	public LoginInfo mLoginInfo;
+
+	bool mFBInitialized;
 
 	void Start()
 	{
@@ -72,32 +75,93 @@ public class ScriptTitle : MonoBehaviour {
 		}
 	}
 
+	public void FBReceived(){
+		string jsonStr = AndroidMgr.GetMsg ();
+		Dictionary<string, string> dic = new Dictionary<string, string>();
+		dic = JsonFx.Json.JsonReader.Deserialize<Dictionary<string, string>> (jsonStr);
+
+		foreach (string key in dic.Keys) {
+			Debug.Log(key+" : "+dic[key]);
+		}
+	}
+
 	public void OpenFacebook()
 	{
-		FB.Init (SetInit, FB.OnHideUnity);
+		#if(UNITY_EDITOR)
 
+		#elif(UNITY_ANDROID)
+		AndroidMgr.OpenFB(new EventDelegate(this, "FBReceived"));
+		#else
+
+		#endif
+//		if (mFBInitialized) {
+//			FBLogin();
+//		} else{
+//			FB.Init (SetInit, FB.OnHideUnity);
+//		}
+			
 	}
 
 	void SetInit()
 	{
 		Debug.Log("SetInit");
 		enabled = true;
-		if(FB.IsLoggedIn)
-		{
-			Debug.Log("FB.IsLoggedIn");
-			OnLoggedIn();
-		}
-		else
-		{
-			Debug.Log("FB.Login");
-			FB.Login ();
-		}
+		mFBInitialized = true;
 	}
 
-	void OnLoggedIn()
-	{
-		DialogueMgr.ShowDialogue ("", FB.UserId + "", DialogueMgr.DIALOGUE_TYPE.Alert, null, null, null);
-	}
+//	void FBLogin()
+//	{
+//		if(FB.IsLoggedIn)
+//		{
+//			Debug.Log("FB.IsLoggedIn");
+//			OnLoggedIn();
+//		}
+//		else
+//		{
+//			Debug.Log("FB.Login");
+//			FB.Login("email,publish_actions", LoginCallback);
+//		}
+//	}
+
+//	void LoginCallback(FBResult result)
+//	{
+//		if (result.Error != null)
+//			Debug.Log ("Error Response:\n" + result.Error);
+//		else if (!FB.IsLoggedIn)
+//		{
+//			Debug.Log ("Login cancelled by Player");
+//		}
+//		else
+//		{
+//			Debug.Log ("Login was successful!");
+//		}
+//	}
+
+//	void OnLoggedIn()
+//	{
+//		DialogueMgr.ShowDialogue ("", FB.UserId + "", DialogueMgr.DIALOGUE_TYPE.Alert, null, null, null);
+//		FB.API("/me?fields=id,first_name,friends."
+//		FB.API ("/me/picture?type=large", Facebook.HttpMethod.GET, APICallback);
+//		StartCoroutine (GetPicture());
+//	}
+
+//	IEnumerator GetPicture()
+//	{
+//		WWW www = new WWW("http://graph.facebook.com/" + FB.UserId + "/picture");
+//		yield return www;
+//		Texture2D texture = new Texture2D (0, 0);
+//		www.LoadImageIntoTexture(texture);
+//		transform.FindChild ("Texture").GetComponent<UITexture> ().mainTexture = texture; 
+//	}
+
+//	void APICallback(FBResult result)
+//	{
+//		if (result.Error != null)
+//						Debug.Log ("AIP Error Response:\n" + result.Error);
+//				else
+//						transform.FindChild ("Texture").GetComponent<UITexture> ().mainTexture = result.Texture;
+//			
+//	}
 
 	public void OpenKakao()
 	{

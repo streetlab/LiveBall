@@ -1,14 +1,18 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Common/Login/ScriptTitle.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Common/TeamHome/ScriptTF_Timeline.cs">
     <Files>
-      <File FileName="Assets/Scripts/Common/Login/ScriptTitle.cs" Line="84" Column="1" />
-      <File FileName="Assets/Scripts/Common/Login/ScriptJoinForm.cs" Line="100" Column="6" />
-      <File FileName="Assets/Scripts/Common/Login/ScriptSelectTeam.cs" Line="41" Column="24" />
-      <File FileName="Assets/Scripts/Common/ScriptSuperRoot.cs" Line="9" Column="6" />
-      <File FileName="Assets/Scripts/Common/Main/ScriptMainTop.cs" Line="54" Column="6" />
-      <File FileName="Assets/Scripts/Common/Utils/AndroidMgr.cs" Line="10" Column="68" />
-      <File FileName="Assets/Facebook/Editor/android/ManifestMod.cs" Line="114" Column="1" />
+      <File FileName="Assets/Scripts/Common/Login/ScriptJoinForm.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Common/Login/ScriptSelectTeam.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Common/ScriptSuperRoot.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Common/Main/ScriptMainTop.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Common/Utils/AndroidMgr.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Common/Login/ScriptTitle.cs" Line="1" Column="1" />
+      <File FileName="Assets/Plugins/NGUI/UI/UIDraggablePanel2.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Common/Utils/Constants.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Common/Utils/UtilMgr.cs" Line="167" Column="20" />
+      <File FileName="Assets/Scripts/Common/ScriptMainMenuLeft.cs" Line="32" Column="4" />
+      <File FileName="Assets/Scripts/Common/TeamHome/ScriptTF_Timeline.cs" Line="15" Column="62" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -16,16 +20,11 @@
           <Node name="Assembly-CSharp" expanded="True">
             <Node name="Scripts" expanded="True">
               <Node name="Common" expanded="True">
-                <Node name="Login" expanded="True">
-                  <Node name="ScriptTitle.cs" selected="True" />
+                <Node name="Login" expanded="True" />
+                <Node name="TeamHome" expanded="True">
+                  <Node name="ScriptTF_Timeline.cs" selected="True" />
                 </Node>
-              </Node>
-            </Node>
-          </Node>
-          <Node name="Assembly-CSharp-Editor" expanded="True">
-            <Node name="Facebook" expanded="True">
-              <Node name="Editor" expanded="True">
-                <Node name="android" expanded="True" />
+                <Node name="Utils" expanded="True" />
               </Node>
             </Node>
           </Node>

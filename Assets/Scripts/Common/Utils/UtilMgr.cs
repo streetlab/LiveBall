@@ -164,7 +164,7 @@ public class UtilMgr : MonoBehaviour {
 		case "sports_team_baseball_lt.png":
 			return "ic_lotte";
 		case "sports_team_baseball_hh.png":
-			return "ic_hanhwa";
+			return "ic_hanwha";
 		case "sports_team_baseball_ob.png":
 			return "ic_doosan";
 		case "sports_team_baseball_ht.png":
