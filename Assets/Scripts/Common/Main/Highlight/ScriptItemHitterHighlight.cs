@@ -21,7 +21,7 @@ public class ScriptItemHitterHighlight : MonoBehaviour {
 	public float mPositionY;
 	bool isOpened;
 	bool isImgLoaded;
-	public bool needSimpleResult;
+//	public bool needSimpleResult;
 	GetSimpleResultEvent mSimpleEvent;
 
 	Vector3 mLocalPosList;
@@ -29,12 +29,12 @@ public class ScriptItemHitterHighlight : MonoBehaviour {
 
 	void Update()
 	{
-		if (needSimpleResult) {
-			needSimpleResult = false;
-			mSimpleEvent = new GetSimpleResultEvent(new EventDelegate(this, "GotSimpleResult"));
-//			Debug.Log("mQuizInfo.quizListSeq : "+mQuizInfo.quizListSeq);
-			NetMgr.GetSimpleResult (mQuizInfo.quizListSeq, mSimpleEvent);
-		}
+//		if (needSimpleResult) {
+//			needSimpleResult = false;
+//			mSimpleEvent = new GetSimpleResultEvent(new EventDelegate(this, "GotSimpleResult"));
+////			Debug.Log("mQuizInfo.quizListSeq : "+mQuizInfo.quizListSeq);
+//			NetMgr.GetSimpleResult (mQuizInfo.quizListSeq, mSimpleEvent);
+//		}
 	}
 
 	public void Init(QuizInfo quizInfo, GameObject detailView)
@@ -75,8 +75,10 @@ public class ScriptItemHitterHighlight : MonoBehaviour {
 //		SetQuizResult (mQuizInfo);
 //	}
 
-	void SetQuizResult(QuizInfo quizInfo)
+	public void SetQuizResult(QuizInfo quizInfo)
 	{
+		mQuizInfo = quizInfo;
+
 		mLblReward.SetActive (false);
 		mLblSelect1.SetActive (false);
 		mLblSelect2_1.SetActive (false);
@@ -147,27 +149,30 @@ public class ScriptItemHitterHighlight : MonoBehaviour {
 
 	}
 
-	public void GotSimpleResult(){
-		if (mSimpleEvent.Response.data == null
-		    || mSimpleEvent.Response.data.Count < 1)
-						return;
-
-		mQuizInfo.quizValue = mSimpleEvent.Response.data [0].quizValue;
-
-		mQuizInfo.resp = new List<QuizRespInfo> ();
-		QuizRespInfo tmpInfo;
-		if (mSimpleEvent.Response.data.Count > 1) {
-			tmpInfo = new QuizRespInfo();
-			tmpInfo.respValue = mSimpleEvent.Response.data[1].respValue;
-			mQuizInfo.resp.Add(tmpInfo);
-		} 
-
-		tmpInfo = new QuizRespInfo();
-		tmpInfo.respValue = mSimpleEvent.Response.data[0].respValue;
-		mQuizInfo.resp.Insert(0, tmpInfo);
-
-		SetQuizResult (mQuizInfo);
-	}
+//	public void GotSimpleResult(){
+//		if (mSimpleEvent.Response.data == null
+//		    || mSimpleEvent.Response.data.Count < 1)
+//						return;
+//
+//		mQuizInfo.quizValue = mSimpleEvent.Response.data [0].quizValue;
+//
+//		mQuizInfo.resp = new List<QuizRespInfo> ();
+//		QuizRespInfo tmpInfo;
+//		if (mSimpleEvent.Response.data.Count > 1) {
+//			//got 2 answers
+//			tmpInfo = new QuizRespInfo();
+//			tmpInfo.respValue = mSimpleEvent.Response.data[1].respValue;
+//			mQuizInfo.resp.Add(tmpInfo);
+//		} 
+//
+//		tmpInfo = new QuizRespInfo();
+//		tmpInfo.respValue = mSimpleEvent.Response.data[0].respValue;
+//		mQuizInfo.resp.Insert(0, tmpInfo);
+//
+//
+//
+//		SetQuizResult (mQuizInfo);
+//	}
 
 	public void OnClicked()
 	{

@@ -37,10 +37,6 @@ public class ScriptBetting : MonoBehaviour {
 
 	JoinQuizEvent mJoinQuizEvent;
 
-	void Start () {
-
-	}
-
 	public void Init(string name)
 	{
 		Transform panel = transform.FindChild ("Panel").transform;
@@ -86,28 +82,50 @@ public class ScriptBetting : MonoBehaviour {
 		joinInfo.Item = 1000;
 		joinInfo.SelectValue = string.Format("{0}", GetOrder ().orderSeq);
 		joinInfo.ExtendValue = "0";
-		mJoinQuizEvent = new JoinQuizEvent(new EventDelegate(this, "CompleteSending"));
-		NetMgr.JoinQuiz (joinInfo, mJoinQuizEvent);
+//		mJoinQuizEvent = new JoinQuizEvent(new EventDelegate(this, "CompleteSending"));
+//		NetMgr.JoinQuiz (joinInfo, mJoinQuizEvent);
+		transform.parent.GetComponent<ScriptTF_Betting> ().mListJoin.Add (joinInfo);
+		CompleteSending ();
 	}
 
 	public void CompleteSending()
 	{
 		mSbi.SetSelected ();
-		UpdateHitterItem (QuizMgr.QuizInfo.quizListSeq);
+//		UpdateHitterItem (QuizMgr.QuizInfo.quizListSeq);
 		SetBtnsDisable ();
-		CheckToClose ();
+//		CheckToClose ();
 		UtilMgr.OnBackPressed ();
 
 	}
 
-	public void UpdateHitterItem(int quizListSeq)
+	public void UpdateHitterItem(JoinQuizInfo quizInfo)
 	{
 		List<GameObject>list = mMatchPlaying.GetComponent<ScriptMatchPlaying>().mQuizListItems;
 		foreach (GameObject item in list) {
 			ScriptItemHitterHighlight hitterItem = item.GetComponent<ScriptItemHitterHighlight>();
 			if(hitterItem != null
-			   && hitterItem.mQuizInfo.quizListSeq == quizListSeq){
-				hitterItem.needSimpleResult = true;
+			   && hitterItem.mQuizInfo.quizListSeq == quizInfo.QuizListSeq){
+				if(hitterItem.mQuizInfo.resp == null)
+					hitterItem.mQuizInfo.resp = new List<QuizRespInfo>();
+
+				QuizRespInfo respInfo = new QuizRespInfo();
+				respInfo.respValue = quizInfo.SelectValue;
+				hitterItem.mQuizInfo.resp.Add(respInfo);
+
+				hitterItem.SetQuizResult(hitterItem.mQuizInfo);
+				break;
+			}
+		}
+	}
+
+	public void UpdateHitterItem(QuizInfo quiz)
+	{
+		List<GameObject>list = mMatchPlaying.GetComponent<ScriptMatchPlaying>().mQuizListItems;
+		foreach (GameObject item in list) {
+			ScriptItemHitterHighlight hitterItem = item.GetComponent<ScriptItemHitterHighlight>();
+			if(hitterItem != null
+			   && hitterItem.mQuizInfo.quizListSeq == quiz.quizListSeq){
+				hitterItem.SetQuizResult(quiz);
 				break;
 			}
 		}

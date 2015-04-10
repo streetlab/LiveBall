@@ -286,13 +286,13 @@ public class ScriptMatchPlaying : MonoBehaviour {
 		mList.GetComponent<UIScrollView> ().ResetPosition ();
 	}
 
-	void RefreshQuizListDatas()
-	{
-		for(int i = 0; i < QuizMgr.QuizList.Count; i++)
-		{
-			QuizInfo quizInfo = QuizMgr.QuizList[i];
-		}
-	}
+//	void RefreshQuizListDatas()
+//	{
+//		for(int i = 0; i < QuizMgr.QuizList.Count; i++)
+//		{
+//			QuizInfo quizInfo = QuizMgr.QuizList[i];
+//		}
+//	}
 
 	void RepositionItems(float size)
 	{

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 //using System.Net;
 //using System.Net.Sockets;
 using System.IO;
@@ -26,6 +27,8 @@ public class ScriptMainTop : MonoBehaviour {
 
 	GetQuizEvent mEventQuiz;
 	GetGameSposDetailBoardEvent mBoardEvent;
+	GetSimpleResultEvent mSimpleEvent;
+	JoinQuizEvent mJoinQuizEvent;
 
 	static SposDetailBoard detailBoard;
 	public static SposDetailBoard DetailBoard{
@@ -71,6 +74,23 @@ public class ScriptMainTop : MonoBehaviour {
 		transform.root.audio.PlayOneShot (mSoundCloseBet);
 		transform.GetComponent<PlayMakerFSM> ().SendEvent ("CloseBetting");
 		TweenAlpha.Begin (mBetting.transform.FindChild("SprComb").gameObject, 1f, 0f);
+
+		CheckAndJoinQuiz();
+	}
+
+	void CheckAndJoinQuiz(){
+		if (mBetting.GetComponent<ScriptTF_Betting> ().mListJoin.Count > 0) {
+			mJoinQuizEvent = new JoinQuizEvent(new EventDelegate(this, "CompleteJoinQuiz"));
+			NetMgr.JoinQuiz (mBetting.GetComponent<ScriptTF_Betting> ().mListJoin[0], mJoinQuizEvent);
+			mBetting.transform.FindChild("SprBetting")
+				.GetComponent<ScriptBetting>().UpdateHitterItem(
+					mBetting.GetComponent<ScriptTF_Betting> ().mListJoin[0]);
+		}
+	}
+
+	public void CompleteJoinQuiz(){
+		mBetting.GetComponent<ScriptTF_Betting> ().mListJoin.RemoveAt (0);
+		CheckAndJoinQuiz ();
 	}
 
 	void GoPreState()
@@ -240,6 +260,21 @@ public class ScriptMainTop : MonoBehaviour {
 		}
 	}
 
+	public void GetSimpleResult(int quizListSeq){
+		mSimpleEvent = new GetSimpleResultEvent(new EventDelegate(this, "GotSimpleResult"));
+		NetMgr.GetSimpleResult (quizListSeq, mSimpleEvent);
+	}
+
+	public void GotSimpleResult()
+	{
+//		GetSimpleResultEvent simpleEvent
+//			, ScriptBetting scriptBetting, ScriptQuizResult scriptQuizResult
+		QuizMgr.InitSimpleResult (mSimpleEvent,
+		                          mBetting.transform.FindChild("SprBetting").GetComponent<ScriptBetting>(),
+		                          transform.FindChild("QuizResultPopup").GetComponent<ScriptQuizResult>());
+	}
+
+
 	public void BtnClicked(string name)
 	{
 		switch(name)
@@ -257,21 +292,5 @@ public class ScriptMainTop : MonoBehaviour {
 			OpenLivetalk();
 			break;
 		}
-	}
-
-	public void Test()
-	{
-//		Debug.Log("favorite Clicked");
-
-		Vector3 pos = transform.FindChild ("Panel").FindChild ("BtnFavorite").localPosition;
-		pos.x += 100f;
-		iTween.MoveTo (transform.FindChild ("Panel").FindChild ("BtnFavorite").gameObject
-		              , iTween.Hash ("position", pos,
-		               "time", 3f,
-		               "easetype", "easeincubic",
-		               "islocal", true
-		               ));
-
-
 	}
 }

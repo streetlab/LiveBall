@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class ScriptTF_Betting : MonoBehaviour {
 
@@ -12,6 +13,8 @@ public class ScriptTF_Betting : MonoBehaviour {
 	public GameObject mSprLoaded;
 
 	public AudioClip mBoom;
+
+	public List<JoinQuizInfo> mListJoin = new List<JoinQuizInfo>();
 
 //	QuizInfo quizInfo;
 //	public QuizInfo QuizInfo
@@ -111,6 +114,7 @@ public class ScriptTF_Betting : MonoBehaviour {
 
 	public void Init(QuizInfo quizInfo)
 	{
+		mListJoin.Clear ();
 //		quizInfo = quizInfo;
 		SetHitter ();
 		SetPitcher ();

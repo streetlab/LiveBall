@@ -1,30 +1,48 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Common/TeamHome/ScriptTF_Timeline.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Common/Main/ScriptQuizResult.cs">
     <Files>
-      <File FileName="Assets/Scripts/Common/Login/ScriptJoinForm.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Common/Login/ScriptSelectTeam.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Common/ScriptSuperRoot.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Common/Main/ScriptMainTop.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Common/Utils/AndroidMgr.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Common/Login/ScriptTitle.cs" Line="1" Column="1" />
-      <File FileName="Assets/Plugins/NGUI/UI/UIDraggablePanel2.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Common/Utils/Constants.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Common/Utils/UtilMgr.cs" Line="167" Column="20" />
-      <File FileName="Assets/Scripts/Common/ScriptMainMenuLeft.cs" Line="32" Column="4" />
-      <File FileName="Assets/Scripts/Common/TeamHome/ScriptTF_Timeline.cs" Line="15" Column="62" />
+      <File FileName="Assets/Scripts/Common/Main/Betting/ScriptTF_Betting.cs" Line="38" Column="88" />
+      <File FileName="Assets/Scripts/Common/Main/ScriptMainTop.cs" Line="186" Column="48" />
+      <File FileName="Assets/Scripts/Common/Main/Betting/ScriptBetting.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Common/Main/Highlight/ScriptItemHitterHighlight.cs" Line="70" Column="20" />
+      <File FileName="Assets/Scripts/Common/Main/ScriptQuizResult.cs" Line="63" Column="27" />
+      <File FileName="Assets/Scripts/Common/Utils/QuizMgr.cs" Line="109" Column="72" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Assembly-CSharp" expanded="True">
+            <Node name="Extras" expanded="True">
+              <Node name="NGUI" expanded="True">
+                <Node name="Examples" expanded="True">
+                  <Node name="Scripts" expanded="True">
+                    <Node name="InventorySystem" expanded="True">
+                      <Node name="System" expanded="True" />
+                    </Node>
+                  </Node>
+                </Node>
+              </Node>
+            </Node>
             <Node name="Scripts" expanded="True">
               <Node name="Common" expanded="True">
-                <Node name="Login" expanded="True" />
-                <Node name="TeamHome" expanded="True">
-                  <Node name="ScriptTF_Timeline.cs" selected="True" />
+                <Node name="Main" expanded="True">
+                  <Node name="Betting" expanded="True" />
+                  <Node name="Highlight" expanded="True" />
+                  <Node name="ScriptQuizResult.cs" selected="True" />
                 </Node>
+                <Node name="Models" expanded="True" />
                 <Node name="Utils" expanded="True" />
+              </Node>
+              <Node name="Network" expanded="True">
+                <Node name="Responses" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
+          <Node name="Assembly-CSharp-firstpass" expanded="True">
+            <Node name="Plugins" expanded="True">
+              <Node name="NGUI" expanded="True">
+                <Node name="Internal" expanded="True" />
               </Node>
             </Node>
           </Node>

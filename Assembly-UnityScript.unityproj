@@ -19,7 +19,7 @@
 	<DebugType>full</DebugType>
 	<Optimize>false</Optimize>
 	<OutputPath>Temp\bin\Debug\</OutputPath>
-	<DefineConstants>DEBUG;TRACE;UNITY_4_5_5;UNITY_4_5;UNITY_ANDROID;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_UNITYEVENTS;ENABLE_NEW_HIERARCHY ;ENABLE_AUDIO_FMOD;ENABLE_MONO;ENABLE_TERRAIN;ENABLE_SUBSTANCE;ENABLE_GENERICS;INCLUDE_WP8SUPPORT;ENABLE_WWW;ENABLE_IMAGEEFFECTS;INCLUDE_WP_BLUE_SUPPORT;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;UNITY_ANDROID_API;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_OSX</DefineConstants>
+	<DefineConstants>DEBUG;TRACE;UNITY_4_5_5;UNITY_4_5;UNITY_ANDROID;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_UNITYEVENTS;ENABLE_NEW_HIERARCHY ;ENABLE_AUDIO_FMOD;ENABLE_MONO;ENABLE_TERRAIN;ENABLE_SUBSTANCE;ENABLE_GENERICS;INCLUDE_WP8SUPPORT;ENABLE_WWW;ENABLE_IMAGEEFFECTS;INCLUDE_WP_BLUE_SUPPORT;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;UNITY_ANDROID_API;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_OSX;UNITY_PRO_LICENSE</DefineConstants>
 	<ErrorReport>prompt</ErrorReport>
 	<WarningLevel>4</WarningLevel>
 	<NoWarn>0169</NoWarn>
@@ -46,65 +46,74 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Common\TeamHome\ScriptLink.js" />
-     <None Include="Assets\NGUI\Examples\Shaders\Unlit - Depth Cutout.shader" />
-     <None Include="Assets\NGUI\ReadMe - 3.7.6.txt" />
-     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Text 2.shader" />
-     <None Include="Assets\NGUI\Examples\Models\Orc\Orc Skin.shader" />
-     <None Include="Assets\NGUI\Examples\Atlases\Wooden\Arimo20.txt" />
-     <None Include="Assets\Playmaker NGUI Scripts\Demo\Loading Screen Demo\Fonts\Lucida Calligraphy 30 Italics\Lucida Calligraphy 30 Italics.txt" />
-     <None Include="Assets\NGUI\Examples\Atlases\Wooden\Arimo14.txt" />
-     <None Include="Assets\JSON\readme.txt" />
-     <None Include="Assets\PlayMaker\Readme.txt" />
-     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Text 1.shader" />
-     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored (TextureClip).shader" />
-     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored (Packed) (TextureClip).shader" />
-     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored 2.shader" />
-     <None Include="Assets\NGUI\Examples\Shaders\Unlit - Masked Colored.shader" />
-     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored 3.shader" />
-     <None Include="Assets\NGUI\Examples\Atlases\Wooden\Arimo18.txt" />
+     <Compile Include="Assets\Extras\KY_effects\Script\ConGUI.js" />
+     <Compile Include="Assets\Extras\KY_effects\Script\Lighting.js" />
+     <None Include="Assets\Extras\NGUI\Examples\Shaders\Unlit - Depth Cutout.shader" />
+     <None Include="Assets\Extras\NGUI\ReadMe - 3.7.6.txt" />
+     <None Include="Assets\Extras\NGUI\Resources\Shaders\Unlit - Text 2.shader" />
+     <None Include="Assets\Extras\NGUI\Examples\Models\Orc\Orc Skin.shader" />
+     <None Include="Assets\Extras\NGUI\Examples\Atlases\Wooden\Arimo20.txt" />
+     <None Include="Assets\Extras\Playmaker NGUI Scripts\Demo\Loading Screen Demo\Fonts\Lucida Calligraphy 30 Italics\Lucida Calligraphy 30 Italics.txt" />
+     <None Include="Assets\Extras\NGUI\Examples\Atlases\Wooden\Arimo14.txt" />
+     <None Include="Assets\Extras\PlayMaker\Readme.txt" />
+     <None Include="Assets\Extras\NGUI\Resources\Shaders\Unlit - Text 1.shader" />
+     <None Include="Assets\Extras\NGUI\Resources\Shaders\Unlit - Premultiplied Colored (TextureClip).shader" />
+     <None Include="Assets\Extras\NGUI\Resources\Shaders\Unlit - Transparent Colored (Packed) (TextureClip).shader" />
+     <None Include="Assets\Extras\NGUI\Resources\Shaders\Unlit - Transparent Colored 2.shader" />
+     <None Include="Assets\Extras\NGUI\Examples\Shaders\Unlit - Masked Colored.shader" />
+     <None Include="Assets\Extras\NGUI\Resources\Shaders\Unlit - Premultiplied Colored 3.shader" />
+     <None Include="Assets\Extras\NGUI\Examples\Atlases\Wooden\Arimo18.txt" />
      <None Include="Assets\Plugins\Net20\HtmlAgilityPack.xml" />
-     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored (TextureClip).shader" />
-     <None Include="Assets\NGUI\Examples\Atlases\SciFi\SciFi Font - Header.txt" />
-     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored 1.shader" />
-     <None Include="Assets\NGUI\Examples\Atlases\Fantasy\Fantasy Font - Normal.txt" />
-     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored 3.shader" />
-     <None Include="Assets\NGUI\Examples\Atlases\Refractive\Refractive Font - Normal.txt" />
-     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored 2.shader" />
-     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Text 3.shader" />
-     <None Include="Assets\Playmaker NGUI Scripts\README - Upgrading from Previous Versions.txt" />
-     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Packed 2.shader" />
-     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Packed 1.shader" />
-     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored 1.shader" />
-     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored.shader" />
-     <None Include="Assets\Elementals\!Readme.txt" />
-     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored.shader" />
-     <None Include="Assets\iTween\ReadMe!\ReadMe!.txt" />
-     <None Include="Assets\Playmaker NGUI Scripts\Demo\Loading Screen Demo\NGUI Screens\LoadBigScene\FastGUIData.xml" />
-     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Text.shader" />
-     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Packed.shader" />
-     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Packed 3.shader" />
+     <None Include="Assets\Extras\NGUI\Resources\Shaders\Unlit - Transparent Colored (TextureClip).shader" />
+     <None Include="Assets\Extras\NGUI\Examples\Atlases\SciFi\SciFi Font - Header.txt" />
+     <None Include="Assets\Extras\NGUI\Resources\Shaders\Unlit - Transparent Colored 1.shader" />
+     <None Include="Assets\Extras\NGUI\Examples\Atlases\Fantasy\Fantasy Font - Normal.txt" />
+     <None Include="Assets\Extras\NGUI\Resources\Shaders\Unlit - Transparent Colored 3.shader" />
+     <None Include="Assets\Extras\NGUI\Examples\Atlases\Refractive\Refractive Font - Normal.txt" />
+     <None Include="Assets\Extras\NGUI\Resources\Shaders\Unlit - Premultiplied Colored 2.shader" />
+     <None Include="Assets\Extras\NGUI\Resources\Shaders\Unlit - Text 3.shader" />
+     <None Include="Assets\Extras\Playmaker NGUI Scripts\README - Upgrading from Previous Versions.txt" />
+     <None Include="Assets\Extras\NGUI\Resources\Shaders\Unlit - Transparent Packed 2.shader" />
+     <None Include="Assets\Extras\KY_effects\MagicEffectsPackFree\ReadMe.txt" />
+     <None Include="Assets\Extras\NGUI\Resources\Shaders\Unlit - Transparent Packed 1.shader" />
+     <None Include="Assets\Extras\NGUI\Resources\Shaders\Unlit - Premultiplied Colored 1.shader" />
+     <None Include="Assets\Extras\NGUI\Resources\Shaders\Unlit - Premultiplied Colored.shader" />
+     <None Include="Assets\Extras\Elementals\!Readme.txt" />
+     <None Include="Assets\Extras\NGUI\Resources\Shaders\Unlit - Transparent Colored.shader" />
+     <None Include="Assets\Extras\iTween\ReadMe!\ReadMe!.txt" />
+     <None Include="Assets\Extras\Playmaker NGUI Scripts\Demo\Loading Screen Demo\NGUI Screens\LoadBigScene\FastGUIData.xml" />
+     <None Include="Assets\Extras\NGUI\Resources\Shaders\Unlit - Text.shader" />
+     <None Include="Assets\Extras\NGUI\Resources\Shaders\Unlit - Transparent Packed.shader" />
+     <None Include="Assets\Extras\NGUI\Resources\Shaders\Unlit - Transparent Packed 3.shader" />
+     <None Include="Assets\Extras\Playmaker NGUI Scripts\Demo\Loading Screen Demo\NGUI Screens\LoadingScreen\FastGUIData.xml" />
+     <None Include="Assets\Extras\PlayMaker\Resources\PlayMakerAssemblies.txt" />
+     <None Include="Assets\Extras\Playmaker NGUI Scripts\Demo\NGUI Atlases\Arimo\Arimo20.txt" />
+     <None Include="Assets\Extras\NGUI\Examples\Shaders\Unlit - Additive Colored.shader" />
+     <None Include="Assets\Extras\NGUI\Examples\Atlases\Refractive\Refractive Font - Header.txt" />
+     <None Include="Assets\Extras\NGUI\Examples\Shaders\Refractive.shader" />
      <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
-     <None Include="Assets\Playmaker NGUI Scripts\Demo\Loading Screen Demo\NGUI Screens\LoadingScreen\FastGUIData.xml" />
-     <None Include="Assets\PlayMaker\Resources\PlayMakerAssemblies.txt" />
-     <None Include="Assets\Playmaker NGUI Scripts\Demo\NGUI Atlases\Arimo\Arimo20.txt" />
-     <None Include="Assets\NGUI\Examples\Shaders\Unlit - Additive Colored.shader" />
-     <None Include="Assets\NGUI\Examples\Atlases\Refractive\Refractive Font - Header.txt" />
-     <None Include="Assets\NGUI\Examples\Shaders\Refractive.shader" />
-     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Text (TextureClip).shader" />
-     <None Include="Assets\Playmaker NGUI Scripts\Demo\NGUI Atlases\Arimo\Large.txt" />
-     <None Include="Assets\NGUI\Examples\Shaders\Unlit - Depth.shader" />
-     <None Include="Assets\NGUI\Examples\Atlases\SciFi\SciFi Font - Normal.txt" />
-     <None Include="Assets\Playmaker NGUI Scripts\Demo\NGUI Atlases\Playmaker NGUI UI\FastGUIData.xml" />
-     <None Include="Assets\NGUI\Examples\Models\Orc Armor\Orc Armor.shader" />
-     <None Include="Assets\PlayMaker\Versions\readme.txt" />
-     <None Include="Assets\NGUI\Examples\Resources\Localization.txt" />
+     <None Include="Assets\Extras\NGUI\Resources\Shaders\Unlit - Text (TextureClip).shader" />
+     <None Include="Assets\Extras\Playmaker NGUI Scripts\Demo\NGUI Atlases\Arimo\Large.txt" />
+     <None Include="Assets\Extras\NGUI\Examples\Shaders\Unlit - Depth.shader" />
+     <None Include="Assets\Extras\NGUI\Examples\Atlases\SciFi\SciFi Font - Normal.txt" />
+     <None Include="Assets\Extras\Playmaker NGUI Scripts\Demo\NGUI Atlases\Playmaker NGUI UI\FastGUIData.xml" />
+     <None Include="Assets\Extras\NGUI\Examples\Models\Orc Armor\Orc Armor.shader" />
+     <None Include="Assets\Extras\PlayMaker\Versions\readme.txt" />
+     <None Include="Assets\Extras\NGUI\Examples\Resources\Localization.txt" />
+     <None Include="Assets\Extras\Activity Indicators\ReadMe_txt.txt" />
  <Reference Include="PlayMaker">
- <HintPath>/Users/sunken/projects/Tuby_Unity/Assets/PlayMaker/PlayMaker.dll</HintPath>
+ <HintPath>/Users/sunken/projects/Tuby_Unity/Assets/Extras/PlayMaker/PlayMaker.dll</HintPath>
+ </Reference>
+ <Reference Include="JsonFx.Json">
+ <HintPath>/Users/sunken/projects/Tuby_Unity/Assets/Plugins/JsonFX/JsonFx.Json.dll</HintPath>
  </Reference>
  <Reference Include="HtmlAgilityPack">
  <HintPath>/Users/sunken/projects/Tuby_Unity/Assets/Plugins/Net20/HtmlAgilityPack.dll</HintPath>
  </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{30A0E17F-310F-2F28-C31A-2A86D23ACC96}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

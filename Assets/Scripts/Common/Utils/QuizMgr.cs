@@ -97,12 +97,58 @@ public class QuizMgr : MonoBehaviour {
 
 	public static void SetQuizList(List<QuizInfo> quizList)
 	{
-		Instance.quizList = quizList;
+		QuizMgr.QuizList = quizList;
 	}
 
 	public static void AddQuizList(QuizInfo quiz)
 	{
-		Instance.quizList.Insert(0, quiz);
+		QuizMgr.QuizList.Insert(0, quiz);
+	}
+
+	public static void InitSimpleResult(GetSimpleResultEvent simpleEvent
+	                                    , ScriptBetting scriptBetting, ScriptQuizResult scriptQuizResult){
+		if (simpleEvent.Response.data == null
+		    || simpleEvent.Response.data.Count < 1)
+			return;
+		
+		QuizInfo quiz = null;
+		foreach (QuizInfo quizInfo in QuizMgr.QuizList) {
+			if(quizInfo.quizListSeq == simpleEvent.Response.data [0].quizListSeq){
+				quiz = quizInfo;
+				break;
+			}
+		}
+		if (quiz == null)
+			return;
+		
+		quiz.quizValue = simpleEvent.Response.data [0].quizValue;
+		
+		quiz.resp = new List<QuizRespInfo> ();
+		QuizRespInfo tmpInfo;
+		if (simpleEvent.Response.data.Count > 1) {
+			//got 2 answers
+			tmpInfo = new QuizRespInfo();
+			tmpInfo.respValue = simpleEvent.Response.data[1].respValue;
+			tmpInfo.expectRewardPoint = int.Parse(simpleEvent.Response.data[1].rewardPoint);
+			quiz.resp.Add(tmpInfo);
+		} 
+		
+		tmpInfo = new QuizRespInfo();
+		tmpInfo.respValue = simpleEvent.Response.data[0].respValue;
+		tmpInfo.expectRewardPoint = int.Parse(simpleEvent.Response.data[0].rewardPoint);
+		quiz.resp.Insert(0, tmpInfo);
+		
+		if (ShowQuizResult (quiz, simpleEvent, scriptQuizResult)) {
+			scriptQuizResult.InitParticle();
+		}
+		
+		scriptBetting.UpdateHitterItem(quiz);
+	}
+
+	static bool ShowQuizResult(QuizInfo quiz, GetSimpleResultEvent simpleEvent, ScriptQuizResult scriptQuizResult)
+	{
+		scriptQuizResult.GetComponent<PlayMakerFSM>().SendEvent("OpenResultEvent");
+		return scriptQuizResult.GetComponent<ScriptQuizResult> ().Init (simpleEvent.Response.data);
 	}
 
 	public static void NotiReceived(string msg)
@@ -143,8 +189,10 @@ public class QuizMgr : MonoBehaviour {
 			}
 		} else if(msgInfo.type.Equals(Constants.POST_QUIZ_RESULT)){
 			if(Instance.mMainTop != null){
-				Instance.mMainTop.mBetting.transform.FindChild("SprBetting")
-					.GetComponent<ScriptBetting>().UpdateHitterItem(int.Parse(msgInfo.info.quizListSeq));
+				Instance.mMainTop.GetComponent<ScriptMainTop>().GetSimpleResult(int.Parse(msgInfo.info.quizListSeq));
+
+//				Instance.mMainTop.mBetting.transform.FindChild("SprBetting")
+//					.GetComponent<ScriptBetting>().UpdateHitterItem(int.Parse(msgInfo.info.quizListSeq));
 			}
 		}
 	}
