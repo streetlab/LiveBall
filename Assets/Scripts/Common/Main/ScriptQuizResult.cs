@@ -86,7 +86,7 @@ public class ScriptQuizResult : MonoBehaviour {
 			firework.GetComponent<ParticleSystem>().startColor = COLORS_FIREWORK[color];
 
 			firework.GetComponent<ScriptParticleResizer> ().ResizeRatio (0.5f);
-			firework.GetComponent<ParticleSystem> ().renderer.material.renderQueue = 3100;
+			firework.GetComponent<ParticleSystem> ().GetComponent<Renderer>().material.renderQueue = 3100;
 			mListParticles.Add (firework);
 
 			firework.GetComponent<ParticleSystem> ().Play();

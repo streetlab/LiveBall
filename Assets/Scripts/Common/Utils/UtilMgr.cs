@@ -10,6 +10,8 @@ public class UtilMgr : MonoBehaviour {
 	static List<EventDelegate> mListBackEvent = new List<EventDelegate>();
 	GameObject mProgressCircle;
 
+	public static bool IsUntouchable;
+
 	static UtilMgr Instance
 	{
 		get
@@ -73,6 +75,9 @@ public class UtilMgr : MonoBehaviour {
 
 	public static bool OnBackPressed()
 	{
+		if (UtilMgr.IsUntouchable)
+			return false;
+
 		if(mListBackEvent.Count > 0)
 		{
 			EventDelegate eventDel = mListBackEvent[mListBackEvent.Count-1];
@@ -259,11 +264,16 @@ public class UtilMgr : MonoBehaviour {
 
 		Instance.mProgressCircle.transform.parent = GameObject.Find ("UI Root").transform;
 		Instance.mProgressCircle.SetActive (true);
+
+
+		UtilMgr.IsUntouchable = unTouchable;
 	}
 
 	public static void DismissLoading()
 	{
 		if(Instance.mProgressCircle != null)
 			Instance.mProgressCircle.SetActive (false);
+
+		UtilMgr.IsUntouchable = false;
 	}
 }

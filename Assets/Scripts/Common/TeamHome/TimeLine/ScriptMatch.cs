@@ -26,7 +26,7 @@ public class ScriptMatch : MonoBehaviour {
 	{
 		mScheduleEvent = new GetScheduleMoreEvent (new EventDelegate (this, "GotSchedule"));
 		NetMgr.GetScheduleMore (mScheduleEvent);
-		UtilMgr.ShowLoading (true);
+//		UtilMgr.ShowLoading (true);
 	}
 
 	void GotSchedule()

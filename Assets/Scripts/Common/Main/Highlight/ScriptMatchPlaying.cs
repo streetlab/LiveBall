@@ -66,7 +66,7 @@ public class ScriptMatchPlaying : MonoBehaviour {
 		
 		if (mFirstLoading) {
 			SetProgQuiz (0);
-			UtilMgr.ShowLoading (true);
+//			UtilMgr.ShowLoading (true);
 		}
 
 		mTop.GetComponent<ScriptMainTop> ().SetBoardInfo ();

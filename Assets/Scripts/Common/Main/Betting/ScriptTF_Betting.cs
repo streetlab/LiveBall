@@ -37,11 +37,11 @@ public class ScriptTF_Betting : MonoBehaviour {
 	{
 		transform.FindChild ("Lightning Spark").GetComponent<ScriptParticleResizer> ().ResizeRatio (0.5f);
 
-		transform.FindChild ("Lightning Spark").GetComponent<ParticleSystem> ().renderer.material.renderQueue = 3100;
-		transform.FindChild ("Lightning Spark").FindChild("Lightning").GetComponent<ParticleSystem> ().renderer.material.renderQueue = 3100;
-		transform.FindChild ("Lightning Spark").FindChild("Spakles").GetComponent<ParticleSystem> ().renderer.material.renderQueue = 3100;
-		transform.FindChild ("Lightning Spark").FindChild("Ring").GetComponent<ParticleSystem> ().renderer.material.renderQueue = 3100;
-		transform.FindChild ("Lightning Spark").FindChild("Ray").GetComponent<ParticleSystem> ().renderer.material.renderQueue = 3100;
+		transform.FindChild ("Lightning Spark").GetComponent<ParticleSystem> ().GetComponent<Renderer>().material.renderQueue = 3100;
+		transform.FindChild ("Lightning Spark").FindChild("Lightning").GetComponent<ParticleSystem> ().GetComponent<Renderer>().material.renderQueue = 3100;
+		transform.FindChild ("Lightning Spark").FindChild("Spakles").GetComponent<ParticleSystem> ().GetComponent<Renderer>().material.renderQueue = 3100;
+		transform.FindChild ("Lightning Spark").FindChild("Ring").GetComponent<ParticleSystem> ().GetComponent<Renderer>().material.renderQueue = 3100;
+		transform.FindChild ("Lightning Spark").FindChild("Ray").GetComponent<ParticleSystem> ().GetComponent<Renderer>().material.renderQueue = 3100;
 	}
 
 	void Update()
@@ -320,7 +320,7 @@ public class ScriptTF_Betting : MonoBehaviour {
 
 		transform.FindChild ("Lightning Spark").gameObject.SetActive (true);
 		transform.FindChild ("Lightning Spark").GetComponent<ParticleSystem> ().Play ();
-		transform.root.audio.PlayOneShot (mBoom);
+		transform.root.GetComponent<AudioSource>().PlayOneShot (mBoom);
 
 		GameObject go = transform.FindChild("SprComb").FindChild("Panel").FindChild("SprVS").gameObject;
 		TweenAlpha.Begin (go, 0f, 0f);

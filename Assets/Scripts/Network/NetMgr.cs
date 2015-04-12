@@ -26,6 +26,8 @@ public class NetMgr : MonoBehaviour{
 
 	IEnumerator webAPIProcess(WWW www, BaseEvent baseEvent)
 	{
+		UtilMgr.ShowLoading (true);
+
 		yield return www;
 		
 		if(www.error == null)
@@ -38,6 +40,8 @@ public class NetMgr : MonoBehaviour{
 		{
 			Debug.Log(www.error);
 		}
+
+		UtilMgr.DismissLoading ();
 	}
 
 	private void webAPIUploadProcessEvent(BaseUploadRequest request, BaseEvent baseEvent)

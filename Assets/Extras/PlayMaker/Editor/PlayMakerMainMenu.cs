@@ -212,6 +212,12 @@ static class PlayMakerMainMenu
 		EditorWindow.GetWindow<PlayMakerDocHelpers>(true);
 	}
 
+    [MenuItem(MenuRoot + "Tools/Run AutoUpdater", false, 30)]
+    public static void RunAutoUpdater()
+    {
+        PlayMakerAutoUpdater.RunAutoUpdate();
+    }
+
 
 	#endregion
 
@@ -278,10 +284,18 @@ static class PlayMakerMainMenu
 		AssetStore.Open("1z");
 	}*/
 
-	[MenuItem(MenuRoot + "About PlayMaker...", false, 46)]
-	public static void OpenAboutWindow()
-	{
-		EditorWindow.GetWindow<AboutWindow>(true);
+
+
+    [MenuItem(MenuRoot + "Upgrade Guide", false, 46)]
+    public static void OpenUpgradeGuide()
+    {
+        PlayMakerUpgradeGuide.Open();
+    }
+
+    [MenuItem(MenuRoot + "About PlayMaker...", false, 47)]
+    public static void OpenAboutWindow()
+    {
+        EditorWindow.GetWindow<AboutWindow>(true);
     }
 
 

@@ -71,7 +71,7 @@ public class ScriptMainTop : MonoBehaviour {
 
 	public void AnimateClosing()
 	{
-		transform.root.audio.PlayOneShot (mSoundCloseBet);
+		transform.root.GetComponent<AudioSource>().PlayOneShot (mSoundCloseBet);
 		transform.GetComponent<PlayMakerFSM> ().SendEvent ("CloseBetting");
 		TweenAlpha.Begin (mBetting.transform.FindChild("SprComb").gameObject, 1f, 0f);
 
@@ -186,7 +186,7 @@ public class ScriptMainTop : MonoBehaviour {
 		mBetting.GetComponent<ScriptTF_Betting> ().Init (quizInfo);
 
 		transform.GetComponent<PlayMakerFSM> ().SendEvent ("OpenBetting");
-		transform.root.audio.PlayOneShot (mSoundOpenBet);
+		transform.root.GetComponent<AudioSource>().PlayOneShot (mSoundOpenBet);
 
 	}
 

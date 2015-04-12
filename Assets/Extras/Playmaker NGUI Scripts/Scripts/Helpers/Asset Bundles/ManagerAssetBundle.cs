@@ -114,7 +114,7 @@ public class ManagerAssetBundle : MonoBehaviour
             if (string.IsNullOrEmpty(BundleItem.AssetName))
                 Instantiate(bundle.mainAsset);
             else
-                Instantiate(bundle.Load(BundleItem.AssetName));
+                Instantiate(bundle.LoadAsset(BundleItem.AssetName));
         }
 
         // exit coroutine
