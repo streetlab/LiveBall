@@ -678,6 +678,7 @@
      <Compile Include="Assets\Scripts\Common\Login\ScriptTitle.cs" />
      <Compile Include="Assets\Scripts\Common\Login\ScriptWindowEmail.cs" />
      <Compile Include="Assets\Scripts\Common\Main\Betting\ScriptBetting.cs" />
+     <Compile Include="Assets\Scripts\Common\Main\Betting\ScriptBettingCard.cs" />
      <Compile Include="Assets\Scripts\Common\Main\Betting\ScriptBettingItem.cs" />
      <Compile Include="Assets\Scripts\Common\Main\Betting\ScriptTF_Betting.cs" />
      <Compile Include="Assets\Scripts\Common\Main\Highlight\ScriptDetailHighlight.cs" />

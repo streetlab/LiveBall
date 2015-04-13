@@ -1,20 +1,30 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Common/Main/Betting/ScriptTF_Betting.cs">
+    <Files>
+      <File FileName="Assets/Scripts/Common/Main/Betting/ScriptBetting.cs" Line="325" Column="18" />
+      <File FileName="Assets/Scripts/Common/Main/Betting/ScriptTF_Betting.cs" Line="194" Column="2" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Assembly-CSharp" expanded="True">
-            <Node name="Extras" expanded="True">
-              <Node name="NGUI" expanded="True" />
-              <Node name="PlayMaker" expanded="True">
-                <Node name="Actions" expanded="True">
-                  <Node name="AddComponent.cs" selected="True" />
+            <Node name="Scripts" expanded="True">
+              <Node name="Common" expanded="True">
+                <Node name="Login" expanded="True" />
+                <Node name="Main" expanded="True">
+                  <Node name="Betting" expanded="True">
+                    <Node name="ScriptTF_Betting.cs" selected="True" />
+                  </Node>
+                  <Node name="Highlight" expanded="True" />
                 </Node>
-                <Node name="Resources" expanded="True" />
+                <Node name="TeamHome" expanded="True">
+                  <Node name="TimeLine" expanded="True" />
+                </Node>
+                <Node name="Utils" expanded="True" />
               </Node>
+              <Node name="Network" expanded="True" />
             </Node>
-            <Node name="iTween" expanded="True" />
           </Node>
         </State>
       </Pad>

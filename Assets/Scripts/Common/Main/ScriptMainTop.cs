@@ -167,8 +167,9 @@ public class ScriptMainTop : MonoBehaviour {
 	public void OpenBetting(QuizInfo quizInfo)
 	{
 		#if(UNITY_EDITOR)
+
 		#elif(UNITY_ANDROID)
-		AndroidMgr.ViberateDevice(1000L);
+
 		#else
 
 		#endif
