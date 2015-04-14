@@ -19,3 +19,7 @@ EditorBuildSettings:
     path: Assets/Scenes/SceneTeamHome.unity
   - enabled: 1
     path: Assets/Scenes/SceneGame.unity
+  - enabled: 1
+    path: Assets/Scenes/SceneRanking.unity
+  - enabled: 1
+    path: Assets/Scenes/SceneProfile.unity

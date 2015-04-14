@@ -10,7 +10,7 @@ public class ScriptTF_Timeline : MonoBehaviour {
 		transform.FindChild("Selection").gameObject.SetActive(false);
 		transform.FindChild("Link").gameObject.SetActive(false);
 
-		transform.FindChild("Search").gameObject.SetActive(true);
+//		transform.FindChild("Search").gameObject.SetActive(true);
 		transform.FindChild("Match").gameObject.SetActive(true);
 		transform.FindChild("Timeline").gameObject.SetActive(true);
 	}

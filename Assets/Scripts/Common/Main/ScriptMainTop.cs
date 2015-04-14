@@ -164,6 +164,18 @@ public class ScriptMainTop : MonoBehaviour {
 
 	}
 
+	public void OpenBettingForSample(){
+		QuizInfo quizInfo = new QuizInfoSample ();
+
+		ScriptMainTop.DetailBoard.player.Clear ();
+		PlayerInfo player = new PlayerInfoSample (0);
+		ScriptMainTop.DetailBoard.player.Add(player);
+		player = new PlayerInfoSample (1);
+		ScriptMainTop.DetailBoard.player.Add(player);
+
+		OpenBetting (quizInfo);
+	}
+
 	public void OpenBetting(QuizInfo quizInfo)
 	{
 		#if(UNITY_EDITOR)

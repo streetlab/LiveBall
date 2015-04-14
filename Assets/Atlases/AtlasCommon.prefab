@@ -42,8 +42,8 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 1fbdec03c94774c188be95e1c15d79e5, type: 2}
   mSprites:
   - name: bg_circle
-    x: 122
-    y: 176
+    x: 57
+    y: 51
     width: 20
     height: 20
     borderLeft: 0
@@ -120,8 +120,8 @@ MonoBehaviour:
     paddingTop: 1
     paddingBottom: 0
   - name: bg_photo
-    x: 400
-    y: 269
+    x: 319
+    y: 178
     width: 80
     height: 90
     borderLeft: 0
@@ -172,8 +172,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: btn_arrow_left_press
-    x: 122
-    y: 8
+    x: 539
+    y: 159
     width: 24
     height: 40
     borderLeft: 0
@@ -185,8 +185,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: btn_arrow_left_release
-    x: 993
-    y: 424
+    x: 564
+    y: 200
     width: 24
     height: 40
     borderLeft: 0
@@ -199,7 +199,7 @@ MonoBehaviour:
     paddingBottom: 0
   - name: btn_arrow_right_press
     x: 539
-    y: 339
+    y: 200
     width: 24
     height: 40
     borderLeft: 0
@@ -211,8 +211,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: btn_arrow_right_release
-    x: 539
-    y: 298
+    x: 993
+    y: 424
     width: 24
     height: 40
     borderLeft: 0
@@ -224,8 +224,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: btn_close_press
-    x: 0
-    y: 15
+    x: 539
+    y: 323
     width: 56
     height: 56
     borderLeft: 0
@@ -237,8 +237,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: btn_close_release
-    x: 81
-    y: 106
+    x: 936
+    y: 408
     width: 56
     height: 56
     borderLeft: 0
@@ -250,8 +250,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: btn_close02_press
-    x: 81
-    y: 49
+    x: 879
+    y: 408
     width: 56
     height: 56
     borderLeft: 0
@@ -263,7 +263,7 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: btn_close02_release
-    x: 157
+    x: 238
     y: 30
     width: 56
     height: 56
@@ -315,7 +315,7 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: btn_main_event_release
-    x: 238
+    x: 157
     y: 30
     width: 56
     height: 56
@@ -328,8 +328,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: btn_main_menu_press
-    x: 879
-    y: 408
+    x: 81
+    y: 49
     width: 56
     height: 56
     borderLeft: 0
@@ -341,8 +341,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: btn_main_menu_release
-    x: 936
-    y: 408
+    x: 81
+    y: 106
     width: 56
     height: 56
     borderLeft: 0
@@ -358,10 +358,10 @@ MonoBehaviour:
     y: 254
     width: 156
     height: 64
-    borderLeft: 0
-    borderRight: 0
-    borderTop: 0
-    borderBottom: 0
+    borderLeft: 10
+    borderRight: 10
+    borderTop: 10
+    borderBottom: 10
     paddingLeft: 0
     paddingRight: 0
     paddingTop: 0
@@ -371,6 +371,19 @@ MonoBehaviour:
     y: 319
     width: 156
     height: 64
+    borderLeft: 10
+    borderRight: 10
+    borderTop: 10
+    borderBottom: 10
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: btn_team_check_on
+    x: 0
+    y: 15
+    width: 56
+    height: 56
     borderLeft: 0
     borderRight: 0
     borderTop: 0
@@ -379,7 +392,7 @@ MonoBehaviour:
     paddingRight: 0
     paddingTop: 0
     paddingBottom: 0
-  - name: btn_team_check_on
+  - name: btn_vs
     x: 81
     y: 197
     width: 56
@@ -393,8 +406,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: default_white
-    x: 122
-    y: 163
+    x: 0
+    y: 2
     width: 12
     height: 12
     borderLeft: 1
@@ -406,8 +419,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: ic_arrow_more
-    x: 539
-    y: 257
+    x: 122
+    y: 8
     width: 24
     height: 40
     borderLeft: 0
@@ -419,8 +432,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: ic_dia
-    x: 138
-    y: 235
+    x: 57
+    y: 32
     width: 18
     height: 18
     borderLeft: 0
@@ -432,85 +445,7 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: ic_doosan
-    x: 0
-    y: 163
-    width: 80
-    height: 90
-    borderLeft: 0
-    borderRight: 0
-    borderTop: 0
-    borderBottom: 0
-    paddingLeft: 0
-    paddingRight: 0
-    paddingTop: 0
-    paddingBottom: 0
-  - name: ic_gold
-    x: 57
-    y: 53
-    width: 18
-    height: 18
-    borderLeft: 0
-    borderRight: 0
-    borderTop: 0
-    borderBottom: 0
-    paddingLeft: 0
-    paddingRight: 0
-    paddingTop: 0
-    paddingBottom: 0
-  - name: ic_hanwha
-    x: 0
-    y: 72
-    width: 80
-    height: 90
-    borderLeft: 0
-    borderRight: 0
-    borderTop: 0
-    borderBottom: 0
-    paddingLeft: 0
-    paddingRight: 0
-    paddingTop: 0
-    paddingBottom: 0
-  - name: ic_kbo
-    x: 485
-    y: 179
-    width: 36
-    height: 40
-    borderLeft: 0
-    borderRight: 0
-    borderTop: 0
-    borderBottom: 0
-    paddingLeft: 0
-    paddingRight: 0
-    paddingTop: 0
-    paddingBottom: 0
-  - name: ic_kia
-    x: 157
-    y: 269
-    width: 80
-    height: 90
-    borderLeft: 0
-    borderRight: 0
-    borderTop: 0
-    borderBottom: 0
-    paddingLeft: 0
-    paddingRight: 0
-    paddingTop: 0
-    paddingBottom: 0
-  - name: ic_kt
-    x: 157
-    y: 178
-    width: 80
-    height: 90
-    borderLeft: 0
-    borderRight: 0
-    borderTop: 0
-    borderBottom: 0
-    paddingLeft: 0
-    paddingRight: 0
-    paddingTop: 0
-    paddingBottom: 0
-  - name: ic_lg
-    x: 157
+    x: 238
     y: 87
     width: 80
     height: 90
@@ -522,176 +457,7 @@ MonoBehaviour:
     paddingRight: 0
     paddingTop: 0
     paddingBottom: 0
-  - name: ic_lotte
-    x: 238
-    y: 269
-    width: 80
-    height: 90
-    borderLeft: 0
-    borderRight: 0
-    borderTop: 0
-    borderBottom: 0
-    paddingLeft: 0
-    paddingRight: 0
-    paddingTop: 0
-    paddingBottom: 0
-  - name: ic_main_menu_card
-    x: 709
-    y: 404
-    width: 84
-    height: 84
-    borderLeft: 0
-    borderRight: 0
-    borderTop: 0
-    borderBottom: 0
-    paddingLeft: 0
-    paddingRight: 0
-    paddingTop: 0
-    paddingBottom: 0
-  - name: ic_main_menu_club
-    x: 624
-    y: 404
-    width: 84
-    height: 84
-    borderLeft: 0
-    borderRight: 0
-    borderTop: 0
-    borderBottom: 0
-    paddingLeft: 0
-    paddingRight: 0
-    paddingTop: 0
-    paddingBottom: 0
-  - name: ic_main_menu_game
-    x: 539
-    y: 404
-    width: 84
-    height: 84
-    borderLeft: 0
-    borderRight: 0
-    borderTop: 0
-    borderBottom: 0
-    paddingLeft: 0
-    paddingRight: 0
-    paddingTop: 0
-    paddingBottom: 0
-  - name: ic_main_menu_iam
-    x: 404
-    y: 8
-    width: 84
-    height: 84
-    borderLeft: 0
-    borderRight: 0
-    borderTop: 0
-    borderBottom: 0
-    paddingLeft: 0
-    paddingRight: 0
-    paddingTop: 0
-    paddingBottom: 0
-  - name: ic_main_menu_item
-    x: 404
-    y: 93
-    width: 84
-    height: 84
-    borderLeft: 0
-    borderRight: 0
-    borderTop: 0
-    borderBottom: 0
-    paddingLeft: 0
-    paddingRight: 0
-    paddingTop: 0
-    paddingBottom: 0
-  - name: ic_main_menu_notice
-    x: 319
-    y: 8
-    width: 84
-    height: 84
-    borderLeft: 0
-    borderRight: 0
-    borderTop: 0
-    borderBottom: 0
-    paddingLeft: 0
-    paddingRight: 0
-    paddingTop: 0
-    paddingBottom: 0
-  - name: ic_main_menu_profile
-    x: 319
-    y: 93
-    width: 84
-    height: 84
-    borderLeft: 0
-    borderRight: 0
-    borderTop: 0
-    borderBottom: 0
-    paddingLeft: 0
-    paddingRight: 0
-    paddingTop: 0
-    paddingBottom: 0
-  - name: ic_main_menu_ranking
-    x: 400
-    y: 184
-    width: 84
-    height: 84
-    borderLeft: 0
-    borderRight: 0
-    borderTop: 0
-    borderBottom: 0
-    paddingLeft: 0
-    paddingRight: 0
-    paddingTop: 0
-    paddingBottom: 0
-  - name: ic_main_menu_setting
-    x: 794
-    y: 404
-    width: 84
-    height: 84
-    borderLeft: 0
-    borderRight: 0
-    borderTop: 0
-    borderBottom: 0
-    paddingLeft: 0
-    paddingRight: 0
-    paddingTop: 0
-    paddingBottom: 0
-  - name: ic_nc
-    x: 319
-    y: 269
-    width: 80
-    height: 90
-    borderLeft: 0
-    borderRight: 0
-    borderTop: 0
-    borderBottom: 0
-    paddingLeft: 0
-    paddingRight: 0
-    paddingTop: 0
-    paddingBottom: 0
-  - name: ic_nexen
-    x: 238
-    y: 178
-    width: 80
-    height: 90
-    borderLeft: 0
-    borderRight: 0
-    borderTop: 0
-    borderBottom: 0
-    paddingLeft: 0
-    paddingRight: 0
-    paddingTop: 0
-    paddingBottom: 0
-  - name: ic_plus
-    x: 138
-    y: 216
-    width: 18
-    height: 18
-    borderLeft: 0
-    borderRight: 0
-    borderTop: 0
-    borderBottom: 0
-    paddingLeft: 0
-    paddingRight: 0
-    paddingTop: 0
-    paddingBottom: 0
-  - name: ic_ruby
+  - name: ic_gold
     x: 138
     y: 197
     width: 18
@@ -704,9 +470,321 @@ MonoBehaviour:
     paddingRight: 0
     paddingTop: 0
     paddingBottom: 0
-  - name: ic_samsung
+  - name: ic_hanwha
     x: 238
+    y: 178
+    width: 80
+    height: 90
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: ic_kbo
+    x: 539
+    y: 241
+    width: 36
+    height: 40
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: ic_kia
+    x: 400
+    y: 269
+    width: 80
+    height: 90
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: ic_kt
+    x: 319
+    y: 269
+    width: 80
+    height: 90
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: ic_lg
+    x: 238
+    y: 269
+    width: 80
+    height: 90
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: ic_lotte
+    x: 157
     y: 87
+    width: 80
+    height: 90
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: ic_lv
+    x: 485
+    y: 179
+    width: 40
+    height: 40
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: ic_main_menu_card
+    x: 400
+    y: 184
+    width: 84
+    height: 84
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: ic_main_menu_club
+    x: 319
+    y: 93
+    width: 84
+    height: 84
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: ic_main_menu_game
+    x: 319
+    y: 8
+    width: 84
+    height: 84
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: ic_main_menu_iam
+    x: 404
+    y: 93
+    width: 84
+    height: 84
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: ic_main_menu_item
+    x: 794
+    y: 404
+    width: 84
+    height: 84
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: ic_main_menu_notice
+    x: 709
+    y: 404
+    width: 84
+    height: 84
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: ic_main_menu_profile
+    x: 624
+    y: 404
+    width: 84
+    height: 84
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: ic_main_menu_ranking
+    x: 539
+    y: 404
+    width: 84
+    height: 84
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: ic_main_menu_setting
+    x: 404
+    y: 8
+    width: 84
+    height: 84
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: ic_nc
+    x: 157
+    y: 178
+    width: 80
+    height: 90
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: ic_nexen
+    x: 157
+    y: 269
+    width: 80
+    height: 90
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: ic_plus
+    x: 138
+    y: 235
+    width: 18
+    height: 18
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: ic_power
+    x: 539
+    y: 282
+    width: 40
+    height: 40
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: ic_profile_fallow
+    x: 122
+    y: 166
+    width: 30
+    height: 30
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: ic_profile_following
+    x: 489
+    y: 5
+    width: 30
+    height: 30
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: ic_profile_whisper
+    x: 481
+    y: 272
+    width: 30
+    height: 30
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: ic_ruby
+    x: 138
+    y: 216
+    width: 18
+    height: 18
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: ic_samsung
+    x: 0
+    y: 72
     width: 80
     height: 90
     borderLeft: 0
@@ -731,8 +809,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: ic_sk
-    x: 319
-    y: 178
+    x: 0
+    y: 163
     width: 80
     height: 90
     borderLeft: 0
@@ -758,4 +836,3 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100000}
   m_IsPrefabParent: 1
-  m_IsExploded: 1

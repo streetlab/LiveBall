@@ -708,7 +708,9 @@
      <Compile Include="Assets\Scripts\Common\Models\OrderInfo.cs" />
      <Compile Include="Assets\Scripts\Common\Models\PlayInfo.cs" />
      <Compile Include="Assets\Scripts\Common\Models\PlayerInfo.cs" />
+     <Compile Include="Assets\Scripts\Common\Models\PlayerInfoSample.cs" />
      <Compile Include="Assets\Scripts\Common\Models\QuizInfo.cs" />
+     <Compile Include="Assets\Scripts\Common\Models\QuizInfoSample.cs" />
      <Compile Include="Assets\Scripts\Common\Models\QuizListInfo.cs" />
      <Compile Include="Assets\Scripts\Common\Models\QuizRespInfo.cs" />
      <Compile Include="Assets\Scripts\Common\Models\QuizResultGlobal.cs" />
@@ -720,6 +722,7 @@
      <Compile Include="Assets\Scripts\Common\Models\SposDetailBoard.cs" />
      <Compile Include="Assets\Scripts\Common\Models\TeamInfo.cs" />
      <Compile Include="Assets\Scripts\Common\Models\UserInfo.cs" />
+     <Compile Include="Assets\Scripts\Common\Ranking\ScriptRankingTop.cs" />
      <Compile Include="Assets\Scripts\Common\ScriptMainMenuLeft.cs" />
      <Compile Include="Assets\Scripts\Common\ScriptSuperRoot.cs" />
      <Compile Include="Assets\Scripts\Common\Splash\ScriptSplash.cs" />

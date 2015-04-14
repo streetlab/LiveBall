@@ -1,9 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Common/Main/Betting/ScriptTF_Betting.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Common/Main/ScriptMainTop.cs">
     <Files>
-      <File FileName="Assets/Scripts/Common/Main/Betting/ScriptBetting.cs" Line="325" Column="18" />
-      <File FileName="Assets/Scripts/Common/Main/Betting/ScriptTF_Betting.cs" Line="194" Column="2" />
+      <File FileName="Assets/Scripts/Common/Main/ScriptMainTop.cs" Line="170" Column="45" />
+      <File FileName="Assets/Scripts/Network/Requests/JoinGameRequest.cs" Line="9" Column="1" />
+      <File FileName="Assets/Scripts/Common/Main/Betting/ScriptTF_Betting.cs" Line="276" Column="2" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -11,19 +12,16 @@
           <Node name="Assembly-CSharp" expanded="True">
             <Node name="Scripts" expanded="True">
               <Node name="Common" expanded="True">
-                <Node name="Login" expanded="True" />
                 <Node name="Main" expanded="True">
-                  <Node name="Betting" expanded="True">
-                    <Node name="ScriptTF_Betting.cs" selected="True" />
-                  </Node>
+                  <Node name="Betting" expanded="True" />
                   <Node name="Highlight" expanded="True" />
+                  <Node name="ScriptMainTop.cs" selected="True" />
                 </Node>
-                <Node name="TeamHome" expanded="True">
-                  <Node name="TimeLine" expanded="True" />
-                </Node>
-                <Node name="Utils" expanded="True" />
+                <Node name="Models" expanded="True" />
               </Node>
-              <Node name="Network" expanded="True" />
+              <Node name="Network" expanded="True">
+                <Node name="Requests" expanded="True" />
+              </Node>
             </Node>
           </Node>
         </State>

@@ -71,16 +71,13 @@ public class ScriptTimeline : MonoBehaviour {
 		switch(name)
 		{
 		case "BtnPlus":
-			OpenMenu();
-			//			transform.FindChild ("LblTest").gameObject.GetComponent<UILabel> ().text = AndroidMgr.Instance.strLog;
-			//			transform.FindChild ("LblTest").gameObject.renderer.material.SetTexture("tex", AndroidMgr.Instance.texTmp);
-			//			transform.FindChild ("Texture").gameObject.GetComponent<UITexture>().mainTexture = AndroidMgr.Instance.texTmp;
+//			OpenMenu();
 			break;
 		case "BtnClose":
 			CloseMenu();
 			break;
 		case "BtnWrite":
-			OpenWriteWindow();
+//			OpenWriteWindow();
 			break;
 		case "BtnCamera":
 			

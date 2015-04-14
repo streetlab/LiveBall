@@ -114,12 +114,17 @@ public class ScriptTF_Betting : MonoBehaviour {
 
 	public void Init(QuizInfo quizInfo)
 	{
+		Debug.Log("Init");
 		mListJoin.Clear ();
 //		quizInfo = quizInfo;
 		SetHitter ();
+		Debug.Log("Hitter");
 		SetPitcher ();
+		Debug.Log("Pitcher");
 		SetBases ();
+		Debug.Log("Bases");
 		SetBtns ();
+		Debug.Log("Btns");
 		mSprBetting.SetActive (false);
 
 		mStartTime = System.DateTime.Now.ToFileTime ();

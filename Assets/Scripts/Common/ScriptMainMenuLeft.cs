@@ -3,16 +3,48 @@ using System.Collections;
 
 public class ScriptMainMenuLeft : MonoBehaviour {
 
-//	string _state;
-//
-//	public string State
-//	{
-//		get{return _state;}
-//		set{_state = value;}
-//	}
+	public GameObject mBtnTeamHome;
+	public GameObject mBtnGameHome;
+	public GameObject mBtnCards;
+	public GameObject mBtnIamPlayer;
+	public GameObject mBtnRanking;
+	public GameObject mBtnProfile;
+	public GameObject mBtnItem;
+	public GameObject mBtnNotice;
+	public GameObject mBtnSettings;
+
+	void Start(){
+		SetBtnDisable ();
+	}
+
+	void SetBtnsEnable(){
+		mBtnTeamHome.GetComponent<UIButton> ().isEnabled = true;
+		mBtnGameHome.GetComponent<UIButton> ().isEnabled = true;
+		mBtnCards.GetComponent<UIButton> ().isEnabled = true;
+		mBtnIamPlayer.GetComponent<UIButton> ().isEnabled = true;
+		mBtnRanking.GetComponent<UIButton> ().isEnabled = true;
+		mBtnProfile.GetComponent<UIButton> ().isEnabled = true;
+		mBtnItem.GetComponent<UIButton> ().isEnabled = true;
+		mBtnNotice.GetComponent<UIButton> ().isEnabled = true;
+		mBtnSettings.GetComponent<UIButton> ().isEnabled = true;
+	}
+
+	void SetBtnDisable(){
+		if(Application.loadedLevelName.Equals("SceneTeamHome"))
+		   mBtnTeamHome.GetComponent<UIButton> ().isEnabled = false;
+		else if(Application.loadedLevelName.Equals("SceneGame"))
+			mBtnGameHome.GetComponent<UIButton> ().isEnabled = false;
+		else if(Application.loadedLevelName.Equals("SceneCards"))
+			mBtnCards.GetComponent<UIButton> ().isEnabled = false;
+		else if(Application.loadedLevelName.Equals("SceneRanking"))
+			mBtnRanking.GetComponent<UIButton> ().isEnabled = false;
+		else if(Application.loadedLevelName.Equals("SceneProfile"))
+			mBtnProfile.GetComponent<UIButton> ().isEnabled = false;
+	}
 
 	public void BtnClicked(string name)
 	{
+		SetBtnsEnable ();
 		Debug.Log (Application.loadedLevelName);
 		switch(name)
 		{
@@ -32,10 +64,12 @@ public class ScriptMainMenuLeft : MonoBehaviour {
 
 			break;
 		case "BtnRanking":
-
+			if(!Application.loadedLevelName.Equals("SceneRanking"))
+				AutoFade.LoadLevel("SceneRanking", 0f, 1f);
 			break;
 		case "BtnProfile":
-
+			if(!Application.loadedLevelName.Equals("SceneProfile"))
+				AutoFade.LoadLevel("SceneProfile", 0f, 1f);
 			break;
 		case "BtnItem":
 
