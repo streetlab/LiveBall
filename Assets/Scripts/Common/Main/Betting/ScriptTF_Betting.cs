@@ -35,7 +35,7 @@ public class ScriptTF_Betting : MonoBehaviour {
 
 	void Start()
 	{
-		transform.FindChild ("Lightning Spark").GetComponent<ScriptParticleResizer> ().ResizeRatio (0.5f);
+//		transform.FindChild ("Lightning Spark").GetComponent<ScriptParticleResizer> ().ResizeRatio (0.5f);
 
 		transform.FindChild ("Lightning Spark").GetComponent<ParticleSystem> ().GetComponent<Renderer>().material.renderQueue = 3100;
 		transform.FindChild ("Lightning Spark").FindChild("Lightning").GetComponent<ParticleSystem> ().GetComponent<Renderer>().material.renderQueue = 3100;
@@ -46,6 +46,13 @@ public class ScriptTF_Betting : MonoBehaviour {
 
 	void Update()
 	{
+		if (mTimeOut) {
+//			if(UtilMgr.HasBackEvent)
+//				UtilMgr.OnBackPressed ();
+			UtilMgr.RunAllBackEvents();
+			return;
+		}
+
 		CalcTime ();
 	}
 
@@ -56,13 +63,8 @@ public class ScriptTF_Betting : MonoBehaviour {
 		int sec = (int)(diff / 10000000L);
 		int milSec = (int)(diff % 10000000L);
 		
-		if (sec < -15 && !mTimeOut) {
-			UtilMgr.OnBackPressed();
+		if (sec < -15) {
 			mTimeOut = true;
-//			return;
-			sec = 0;
-			milSec = 0;
-		} else if(mTimeOut){
 			sec = 0;
 			milSec = 0;
 		} else{

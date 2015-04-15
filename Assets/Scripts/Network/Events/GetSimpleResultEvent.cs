@@ -23,6 +23,7 @@ public class GetSimpleResultEvent : BaseEvent {
 	public GetSimpleResultResponse Response
 	{
 		get{return response as GetSimpleResultResponse;}
+		set{response = value;}
 	}
 
 }

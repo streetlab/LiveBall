@@ -113,7 +113,9 @@ public class ScriptItemHitterHighlight : MonoBehaviour {
 			mLblSelect1.GetComponent<UILabel> ().text = "X";
 		}
 
-		if(quizInfo.resp != null && quizInfo.resp.Count == 1){
+		if (quizInfo.resp == null) {
+		
+		} else if(quizInfo.resp.Count == 1){
 			mLblSelect1.SetActive (true);
 			int respValue = int.Parse(quizInfo.resp[0].respValue) -1;
 			mLblSelect1.GetComponent<UILabel>().text = quizInfo.order[respValue].description;

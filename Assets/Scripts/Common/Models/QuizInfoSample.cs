@@ -4,13 +4,13 @@ using System.Collections.Generic;
 
 public class QuizInfoSample : QuizInfo{
 
-	public QuizInfoSample(){
+	public QuizInfoSample(int quizListSeq){
 		gameSeq= 1285;
-		quizListSeq= 0;
+		quizListSeq= quizListSeq;
 		templateQuizSeq= 4206;
 		quizResultSeq= 7;
-		gameRound= 2;
-		inningType= 1;
+		gameRound= 1;
+		inningType= 0;
 		quizType= 1203;
 		countValue= 30;
 		subTitle= "";

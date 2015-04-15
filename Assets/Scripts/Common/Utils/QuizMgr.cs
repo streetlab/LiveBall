@@ -107,6 +107,7 @@ public class QuizMgr : MonoBehaviour {
 
 	public static void InitSimpleResult(GetSimpleResultEvent simpleEvent
 	                                    , ScriptBetting scriptBetting, ScriptQuizResult scriptQuizResult){
+
 		if (simpleEvent.Response.data == null
 		    || simpleEvent.Response.data.Count < 1)
 			return;
@@ -120,7 +121,8 @@ public class QuizMgr : MonoBehaviour {
 		}
 		if (quiz == null)
 			return;
-		
+
+		Debug.Log ("InitSimpleResult2");
 		quiz.quizValue = simpleEvent.Response.data [0].quizValue;
 		
 		quiz.resp = new List<QuizRespInfo> ();

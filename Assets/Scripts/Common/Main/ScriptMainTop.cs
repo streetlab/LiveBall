@@ -58,7 +58,9 @@ public class ScriptMainTop : MonoBehaviour {
 		QuizMgr.EnterMain(this);
 		#else
 		#endif
+	}
 
+	void Update(){
 		SetTopInfo ();
 	}
 
@@ -165,7 +167,8 @@ public class ScriptMainTop : MonoBehaviour {
 	}
 
 	public void OpenBettingForSample(){
-		QuizInfo quizInfo = new QuizInfoSample ();
+
+		QuizInfo quizInfo = new QuizInfoSample (QuizMgr.SequenceQuiz+1);
 
 		ScriptMainTop.DetailBoard.player.Clear ();
 		PlayerInfo player = new PlayerInfoSample (0);
@@ -173,7 +176,25 @@ public class ScriptMainTop : MonoBehaviour {
 		player = new PlayerInfoSample (1);
 		ScriptMainTop.DetailBoard.player.Add(player);
 
+		mHighlight.transform.FindChild ("MatchPlaying").GetComponent<ScriptMatchPlaying> ()
+			.AddQuizList (quizInfo);
+
 		OpenBetting (quizInfo);
+
+		StartCoroutine (SampleResult ());
+	}
+
+	IEnumerator SampleResult(){
+		yield return new WaitForSeconds (16f);
+
+		GetSimpleResultEvent simpleEvent = new GetSimpleResultEvent (null);
+		simpleEvent.Response = new GetSimpleResultResponse ();
+		simpleEvent.Response.data = new List<SimpleResultInfo> ();
+		simpleEvent.Response.data.Add(new SimpleResultInfoSample (QuizMgr.SequenceQuiz));
+
+		QuizMgr.InitSimpleResult (simpleEvent,
+		                          mBetting.transform.FindChild("SprBetting").GetComponent<ScriptBetting>(),
+		                          transform.FindChild("QuizResultPopup").GetComponent<ScriptQuizResult>());
 	}
 
 	public void OpenBetting(QuizInfo quizInfo)
@@ -257,7 +278,8 @@ public class ScriptMainTop : MonoBehaviour {
 
 	void AddQuizIntoList()
 	{
-		mHighlight.transform.FindChild ("MatchPlaying").GetComponent<ScriptMatchPlaying> ().AddQuizList (mEventQuiz);
+		mHighlight.transform.FindChild ("MatchPlaying").GetComponent<ScriptMatchPlaying> ()
+			.AddQuizList (mEventQuiz.Response.data.quiz[mEventQuiz.Response.data.quiz.Count-1]);
 //		mHighlight.transform.FindChild ("MatchPlaying").GetComponent<ScriptMatchPlaying> ().InitQuizList (mEventQuiz);
 	}
 

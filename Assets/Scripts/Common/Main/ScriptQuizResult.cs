@@ -21,10 +21,10 @@ public class ScriptQuizResult : MonoBehaviour {
 		new Color (0f, 255f, 255f)};
 
 	public bool Init(List<SimpleResultInfo> listResult){
-		int rewardPoint = 0;
+		double rewardPoint = 0;
 		int betPoint = 0;
 		foreach (SimpleResultInfo resultInfo in listResult) {
-			rewardPoint += int.Parse(resultInfo.rewardPoint);
+			rewardPoint += double.Parse(resultInfo.rewardPoint);
 			betPoint += int.Parse(resultInfo.betPoint);
 		}
 
@@ -51,6 +51,8 @@ public class ScriptQuizResult : MonoBehaviour {
 				transform.GetComponent<PlayMakerFSM>().FsmVariables.FindFsmString("Correct"+rand).Value;
 			mLblBtmRight.GetComponent<UILabel>().text = ""+rewardPoint;
 
+			double userGoldenBall = double.Parse (UserMgr.UserInfo.userGoldenBall) + rewardPoint;
+			UserMgr.UserInfo.userGoldenBall = ""+userGoldenBall;
 			return true;
 		} else{
 			mSprLeft.GetComponent<UISprite>().color = COLOR_WRONG;
@@ -76,17 +78,21 @@ public class ScriptQuizResult : MonoBehaviour {
 			firework.transform.localScale = new Vector3 (1f, 1f, 1f);
 
 			float posX = UnityEngine.Random.Range(-200f, 200f);
-			float posY = UnityEngine.Random.Range(-90f, 90f);
+			float posY = UnityEngine.Random.Range(-90f, -180f);
 			firework.transform.localPosition = new Vector3 (posX, posY, 0);
 
 			float delay = UnityEngine.Random.Range(0f, 1f);
 			firework.GetComponent<ParticleSystem>().startDelay = delay;
+			firework.transform.FindChild("Ring").GetComponent<ParticleSystem>().startDelay = delay;
 
 			int color = UnityEngine.Random.Range(0, COLORS_FIREWORK.Length-1);
 			firework.GetComponent<ParticleSystem>().startColor = COLORS_FIREWORK[color];
+			firework.transform.FindChild("Ring").GetComponent<ParticleSystem>().startColor = COLORS_FIREWORK[color];
 
-			firework.GetComponent<ScriptParticleResizer> ().ResizeRatio (0.5f);
+//			firework.GetComponent<ScriptParticleResizer> ().ResizeRatio (0.5f);
 			firework.GetComponent<ParticleSystem> ().GetComponent<Renderer>().material.renderQueue = 3100;
+			firework.transform.FindChild("Ring").GetComponent<ParticleSystem>()
+				.GetComponent<Renderer>().material.renderQueue = 3100;
 			mListParticles.Add (firework);
 
 			firework.GetComponent<ParticleSystem> ().Play();

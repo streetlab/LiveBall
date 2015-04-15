@@ -27,14 +27,13 @@ public class ScriptBettingItem : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Reset ();
+		Init ();
 	}
 
-	public void Reset()
-	{
+	void Init(){
 		mSb = mBetting.GetComponent<ScriptTF_Betting> ();
 		mSprSelected = transform.FindChild ("SprSelected").gameObject;
-
+		
 		if(mType == TYPE.Batter)
 		{
 			mSprSilhouette = transform.FindChild ("SprSilhouette").GetComponent<UISprite>();
@@ -46,8 +45,20 @@ public class ScriptBettingItem : MonoBehaviour {
 			mSprCombos [1].color = ColorComboDisable;
 			mSprCombos [2].color = ColorComboDisable;
 		}
-		
+
 		SetUnselected ();
+	}
+
+	public void Reset()
+	{
+		Init ();
+
+		int index = mSprBetting.GetComponent<ScriptBetting> ().GetIndex (transform.name);
+		transform.FindChild ("LblBody").GetComponent<UILabel> ().text = QuizMgr.QuizInfo.order [index].description;
+		
+
+
+
 	}
 
 	public bool IsSelected{

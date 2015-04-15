@@ -719,6 +719,7 @@
      <Compile Include="Assets\Scripts\Common\Models\ScheduleInfo.cs" />
      <Compile Include="Assets\Scripts\Common\Models\ScoreInfo.cs" />
      <Compile Include="Assets\Scripts\Common\Models\SimpleResultInfo.cs" />
+     <Compile Include="Assets\Scripts\Common\Models\SimpleResultInfoSample.cs" />
      <Compile Include="Assets\Scripts\Common\Models\SposDetailBoard.cs" />
      <Compile Include="Assets\Scripts\Common\Models\TeamInfo.cs" />
      <Compile Include="Assets\Scripts\Common\Models\UserInfo.cs" />

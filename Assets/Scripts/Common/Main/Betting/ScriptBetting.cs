@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class ScriptBetting : MonoBehaviour {
 
-	string mSelectedName;
+	string mNameSelectedBtn;
 	ScriptBettingItem mSbi;
 	
 	public GameObject mBtnHit1;
@@ -20,6 +20,16 @@ public class ScriptBetting : MonoBehaviour {
 	public GameObject mBtnLoaded3;
 	public GameObject mBtnLoaded4;
 
+	public GameObject mLblReward1_1;
+	public GameObject mLblReward1_2;
+	public GameObject mLblReward2_1;
+	public GameObject mLblReward2_2;
+	public GameObject mLblReward3_2;
+
+	public GameObject mLblGold1;
+	public GameObject mLblGold2;
+	public GameObject mLblGold3;
+
 	public GameObject mMatchPlaying;
 
 	UIButton mBtnCancel;
@@ -28,6 +38,11 @@ public class ScriptBetting : MonoBehaviour {
 	UILabel mLblGot;
 	UILabel mLblUse;
 	UILabel mLblExpect;
+	UILabel mLblSelectedBase;
+	UILabel mLblSelectedRatio;
+	UILabel mLblCardName;
+	UILabel mLblCardRatio;
+	UILabel mLblTotalRatio;
 
 	const double BET_MIN = 100d;
 	const double BET_MAX = 100000d;
@@ -37,17 +52,23 @@ public class ScriptBetting : MonoBehaviour {
 
 	JoinQuizEvent mJoinQuizEvent;
 
-	public void Init(string name)
+	public void Init(string btnName)
 	{
 		Transform panel = transform.FindChild ("Panel").transform;
-		mBtnCancel = panel.FindChild ("BtnCancel").GetComponent<UIButton> ();
-		mBtnConfirm = panel.FindChild ("BtnConfirm").GetComponent<UIButton> ();
-		mBtnConfirm2 = panel.FindChild ("BtnConfirm2").GetComponent<UIButton> ();
-		mLblGot = panel.FindChild ("SprBack1").FindChild("LblAmount").GetComponent<UILabel> ();
-		mLblUse = panel.FindChild ("SprBack2").FindChild("LblAmount").GetComponent<UILabel> ();
-		mLblExpect = panel.FindChild ("SprBack3").FindChild("LblAmount").GetComponent<UILabel> ();
+		mBtnCancel = panel.FindChild ("Btns").FindChild ("BtnCancel").GetComponent<UIButton> ();
+		mBtnConfirm = panel.FindChild ("Btns").FindChild ("BtnConfirm").GetComponent<UIButton> ();
+		mBtnConfirm2 = panel.FindChild ("Btns").FindChild ("BtnConfirm2").GetComponent<UIButton> ();
+		mLblGot = mLblGold1.GetComponent<UILabel> ();
+		mLblUse = mLblGold2.GetComponent<UILabel> ();
+		mLblExpect = mLblGold3.GetComponent<UILabel> ();
+		mLblSelectedBase = mLblReward1_1.GetComponent<UILabel> ();
+		mLblSelectedRatio = mLblReward1_2.GetComponent<UILabel> ();
+		mLblCardName = mLblReward2_1.GetComponent<UILabel> ();
+		mLblCardRatio = mLblReward2_2.GetComponent<UILabel> ();
+		mLblTotalRatio = mLblReward3_2.GetComponent<UILabel> ();
 
-		mSelectedName = name;
+		mNameSelectedBtn = btnName;
+
 		mSbi = GetBettingItem ();
 		if(mSbi.IsSelected)
 		{
@@ -65,7 +86,14 @@ public class ScriptBetting : MonoBehaviour {
 
 		mLblGot.text = UtilMgr.AddsThousandsSeparator (UserMgr.UserInfo.userGoldenBall);
 		mLblUse.text = UtilMgr.AddsThousandsSeparator (mAmountUse);
-		mLblExpect.text = UtilMgr.AddsThousandsSeparator (mAmountUse * float.Parse(GetOrder().ratio));
+		mLblExpect.text = UtilMgr.AddsThousandsSeparator (mAmountUse * float.Parse(QuizMgr.QuizInfo.order [GetIndex(mNameSelectedBtn)].ratio));
+
+		mLblSelectedBase.text = QuizMgr.QuizInfo.order [GetIndex (mNameSelectedBtn)].description;
+		mLblSelectedRatio.text = QuizMgr.QuizInfo.order [GetIndex (mNameSelectedBtn)].ratio+"x";
+		mLblCardName.text = "-";
+		mLblCardRatio.text = "1x";
+		float total = float.Parse (QuizMgr.QuizInfo.order [GetIndex (mNameSelectedBtn)].ratio) * 1f;
+		mLblTotalRatio.text = total+"x";
 	}
 
 	void SetConfirm()
@@ -78,18 +106,24 @@ public class ScriptBetting : MonoBehaviour {
 		joinInfo.QuizListSeq = QuizMgr.QuizInfo.quizListSeq;
 		joinInfo.QzType = GetQzType ();
 		joinInfo.UseCardNo = 0;
-		joinInfo.BetPoint = string.Format ("{0}", double.Parse (mLblUse.text));
+		joinInfo.BetPoint = mLblUse.text;
 		joinInfo.Item = 1000;
-		joinInfo.SelectValue = string.Format("{0}", GetOrder ().orderSeq);
+		joinInfo.SelectValue = "" + QuizMgr.QuizInfo.order [GetIndex(mNameSelectedBtn)].orderSeq;
 		joinInfo.ExtendValue = "0";
 //		mJoinQuizEvent = new JoinQuizEvent(new EventDelegate(this, "CompleteSending"));
 //		NetMgr.JoinQuiz (joinInfo, mJoinQuizEvent);
 		transform.parent.GetComponent<ScriptTF_Betting> ().mListJoin.Add (joinInfo);
+		double userGoldenBall = double.Parse (UserMgr.UserInfo.userGoldenBall)
+						- double.Parse (joinInfo.BetPoint);
+		UserMgr.UserInfo.userGoldenBall = "" + userGoldenBall;
+
 		CompleteSending ();
 	}
 
 	public void CompleteSending()
 	{
+
+
 		mSbi.SetSelected ();
 //		UpdateHitterItem (QuizMgr.QuizInfo.quizListSeq);
 		SetBtnsDisable ();
@@ -144,7 +178,7 @@ public class ScriptBetting : MonoBehaviour {
 
 	void SetBtnsDisable()
 	{
-		switch(mSelectedName)
+		switch(mNameSelectedBtn)
 		{
 		case "BtnHit1":
 		case "BtnHit2":
@@ -178,7 +212,7 @@ public class ScriptBetting : MonoBehaviour {
 
 	int GetQzType()
 	{
-		switch (mSelectedName) {
+		switch (mNameSelectedBtn) {
 		case "BtnOut1":
 			return 2;
 		case "BtnOut2":
@@ -193,40 +227,70 @@ public class ScriptBetting : MonoBehaviour {
 		return 1;
 	}
 
-	OrderInfo GetOrder()
-	{
-		switch (mSelectedName) {
+	public int GetIndex(string name){
+		switch (name) {
 		case "BtnHit1":
-			return QuizMgr.QuizInfo.order [0];
+			return 0;
 		case "BtnHit2":
-			return QuizMgr.QuizInfo.order [1];
+			return 1;
 		case "BtnHit3":
-			return QuizMgr.QuizInfo.order [2];
+			return 2;
 		case "BtnHit4":
-			return QuizMgr.QuizInfo.order [3];
+			return 3;
 		case "BtnOut1":
-			return QuizMgr.QuizInfo.order [4];
+			return 4;
 		case "BtnOut2":
-			return QuizMgr.QuizInfo.order [5];
+			return 5;
 		case "BtnOut3":
-			return QuizMgr.QuizInfo.order [6];
+			return 6;
 		case "BtnOut4":
-			return QuizMgr.QuizInfo.order [7];
+			return 7;
 		case "BtnLoaded1":
-			return QuizMgr.QuizInfo.order [0];
+			return 0;
 		case "BtnLoaded2":
-			return QuizMgr.QuizInfo.order [1];
+			return 1;
 		case "BtnLoaded3":
-			return QuizMgr.QuizInfo.order [2];
+			return 2;
 		case "BtnLoaded4":
-			return QuizMgr.QuizInfo.order [3];
+			return 3;
 		}
-		return null;
+		return 0;
 	}
+
+//	OrderInfo GetOrder()
+//	{
+//		switch (mNameSelectedBtn) {
+//		case "BtnHit1":
+//			return QuizMgr.QuizInfo.order [0];
+//		case "BtnHit2":
+//			return QuizMgr.QuizInfo.order [1];
+//		case "BtnHit3":
+//			return QuizMgr.QuizInfo.order [2];
+//		case "BtnHit4":
+//			return QuizMgr.QuizInfo.order [3];
+//		case "BtnOut1":
+//			return QuizMgr.QuizInfo.order [4];
+//		case "BtnOut2":
+//			return QuizMgr.QuizInfo.order [5];
+//		case "BtnOut3":
+//			return QuizMgr.QuizInfo.order [6];
+//		case "BtnOut4":
+//			return QuizMgr.QuizInfo.order [7];
+//		case "BtnLoaded1":
+//			return QuizMgr.QuizInfo.order [0];
+//		case "BtnLoaded2":
+//			return QuizMgr.QuizInfo.order [1];
+//		case "BtnLoaded3":
+//			return QuizMgr.QuizInfo.order [2];
+//		case "BtnLoaded4":
+//			return QuizMgr.QuizInfo.order [3];
+//		}
+//		return null;
+//	}
 
 	ScriptBettingItem GetBettingItem()
 	{
-		switch(mSelectedName)
+		switch(mNameSelectedBtn)
 		{
 		case "BtnHit1":
 			return mBtnHit1.GetComponent<ScriptBettingItem>();
@@ -278,7 +342,7 @@ public class ScriptBetting : MonoBehaviour {
 
 
 		mLblUse.text = UtilMgr.AddsThousandsSeparator (mAmountUse);
-		mLblExpect.text = UtilMgr.AddsThousandsSeparator (mAmountUse * float.Parse(GetOrder().ratio));
+		mLblExpect.text = UtilMgr.AddsThousandsSeparator (mAmountUse * float.Parse(QuizMgr.QuizInfo.order [GetIndex(mNameSelectedBtn)].ratio));
 
 	}
 
@@ -292,14 +356,14 @@ public class ScriptBetting : MonoBehaviour {
 		}
 
 		mLblUse.text = UtilMgr.AddsThousandsSeparator (mAmountUse);
-		mLblExpect.text = UtilMgr.AddsThousandsSeparator (mAmountUse * float.Parse(GetOrder().ratio));
+		mLblExpect.text = UtilMgr.AddsThousandsSeparator (mAmountUse * float.Parse(QuizMgr.QuizInfo.order [GetIndex(mNameSelectedBtn)].ratio));
 	}
 
 	void BetMin()
 	{
 		mAmountUse = BET_MIN;
 		mLblUse.text = UtilMgr.AddsThousandsSeparator (mAmountUse);
-		mLblExpect.text = UtilMgr.AddsThousandsSeparator (mAmountUse * float.Parse(GetOrder().ratio));
+		mLblExpect.text = UtilMgr.AddsThousandsSeparator (mAmountUse * float.Parse(QuizMgr.QuizInfo.order [GetIndex(mNameSelectedBtn)].ratio));
 	}
 
 	public void BtnClicked(string name)

@@ -243,7 +243,7 @@ public class ScriptMatchPlaying : MonoBehaviour {
 		mFirstLoading = false;
 	}
 
-	public void AddQuizList(GetQuizEvent quizEvent)
+	public void AddQuizList(QuizInfo quizInfo)
 	{
 
 
@@ -252,8 +252,8 @@ public class ScriptMatchPlaying : MonoBehaviour {
 		mPosGuide = (122 - 30f) / 2f;
 		mPreItemSize = 122f;
 
-		QuizMgr.AddQuizList (quizEvent.Response.data.quiz [quizEvent.Response.data.quiz.Count - 1]);
-		QuizInfo quizInfo = quizEvent.Response.data.quiz[quizEvent.Response.data.quiz.Count-1];
+		QuizMgr.AddQuizList (quizInfo);
+//		QuizInfo quizInfo = quizEvent.Response.data.quiz[quizEvent.Response.data.quiz.Count-1];
 		if(quizInfo.gameRound == mGameRound
 		   && quizInfo.inningType == mInningType){
 			GameObject go = mQuizListItems [0];
@@ -261,8 +261,8 @@ public class ScriptMatchPlaying : MonoBehaviour {
 			mQuizListItems.RemoveAt (0);
 			NGUITools.Destroy (go);
 		}
-		Debug.Log ("quizInfo.gameRound : " + quizInfo.gameRound + ", mGameRound : " + mGameRound);
-		Debug.Log ("quizInfo.inningType : " + quizInfo.inningType + ", mInningType : " + mInningType);
+//		Debug.Log ("quizInfo.gameRound : " + quizInfo.gameRound + ", mGameRound : " + mGameRound);
+//		Debug.Log ("quizInfo.inningType : " + quizInfo.inningType + ", mInningType : " + mInningType);
 
 		AddQuizIntoList(quizInfo);
 
