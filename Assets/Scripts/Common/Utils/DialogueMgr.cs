@@ -114,7 +114,7 @@ public class DialogueMgr : MonoBehaviour {
 			strCancel = fsmVariables.FindFsmString ("strAlert").Value;
 
 			btnCancel.transform.FindChild("Label").GetComponent<UILabel>().text = strCancel;
-			btnCancel.transform.localPosition = new Vector3(0, -92f, 0);
+			btnCancel.transform.localPosition = new Vector3(0, -100f, 0);
 		} else if(type == DIALOGUE_TYPE.YesNo){
 			btn1.SetActive(true);
 			btn2.SetActive(false);
@@ -123,8 +123,8 @@ public class DialogueMgr : MonoBehaviour {
 			btn1.transform.FindChild("Label").GetComponent<UILabel>().text = strBtn1;
 			btnCancel.transform.FindChild("Label").GetComponent<UILabel>().text = strCancel;
 
-			btn1.transform.localPosition = new Vector3(-82, -92f, 0);
-			btnCancel.transform.localPosition = new Vector3(82, -92f, 0);
+			btn1.transform.localPosition = new Vector3(-110f, -100f, 0);
+			btnCancel.transform.localPosition = new Vector3(110f, -100f, 0);
 		} else if(type == DIALOGUE_TYPE.Choose){
 			btn1.SetActive(true);
 			btn2.SetActive(true);
@@ -134,9 +134,9 @@ public class DialogueMgr : MonoBehaviour {
 			btn2.transform.FindChild("Label").GetComponent<UILabel>().text = strBtn2;
 			btnCancel.transform.FindChild("Label").GetComponent<UILabel>().text = strCancel;
 
-			btn2.transform.localPosition = new Vector3(0, -92f, 0);
-			btn1.transform.localPosition = new Vector3(-164f, -92f, 0);
-			btnCancel.transform.localPosition = new Vector3(164f, -92f, 0);
+			btn2.transform.localPosition = new Vector3(0, -100f, 0);
+			btn1.transform.localPosition = new Vector3(-190f, -100f, 0);
+			btnCancel.transform.localPosition = new Vector3(190f, -100f, 0);
 		}
 	}
 

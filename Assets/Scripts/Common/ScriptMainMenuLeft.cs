@@ -40,6 +40,8 @@ public class ScriptMainMenuLeft : MonoBehaviour {
 			mBtnRanking.GetComponent<UIButton> ().isEnabled = false;
 		else if(Application.loadedLevelName.Equals("SceneProfile"))
 			mBtnProfile.GetComponent<UIButton> ().isEnabled = false;
+		else if(Application.loadedLevelName.Equals("SceneItems"))
+			mBtnItem.GetComponent<UIButton> ().isEnabled = false;
 	}
 
 	public void BtnClicked(string name)
@@ -72,7 +74,8 @@ public class ScriptMainMenuLeft : MonoBehaviour {
 				AutoFade.LoadLevel("SceneProfile", 0f, 1f);
 			break;
 		case "BtnItem":
-
+			if(!Application.loadedLevelName.Equals("SceneItems"))
+				AutoFade.LoadLevel("SceneItems", 0f, 1f);
 			break;
 		case "BtnNotice":
 
