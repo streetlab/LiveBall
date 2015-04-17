@@ -161,6 +161,7 @@
      <None Include="Assets\Extras\NGUI\Examples\Shaders\Unlit - Depth Cutout.shader" />
      <None Include="Assets\Extras\NGUI\ReadMe - 3.7.6.txt" />
      <None Include="Assets\Extras\NGUI\Resources\Shaders\Unlit - Text 2.shader" />
+     <None Include="Assets\Extras\UniWebView\ChangeLog.txt" />
      <None Include="Assets\Extras\NGUI\Examples\Models\Orc\Orc Skin.shader" />
      <None Include="Assets\Extras\NGUI\Examples\Atlases\Wooden\Arimo20.txt" />
      <None Include="Assets\Extras\Playmaker NGUI Scripts\Demo\Loading Screen Demo\Fonts\Lucida Calligraphy 30 Italics\Lucida Calligraphy 30 Italics.txt" />
@@ -174,6 +175,7 @@
      <None Include="Assets\Extras\NGUI\Resources\Shaders\Unlit - Premultiplied Colored 3.shader" />
      <None Include="Assets\Extras\NGUI\Examples\Atlases\Wooden\Arimo18.txt" />
      <None Include="Assets\Extras\iTween\ReadMe!\ReadMe!.txt" />
+     <None Include="Assets\Plugins\JIVER\README.txt" />
      <None Include="Assets\Plugins\Net20\HtmlAgilityPack.xml" />
      <None Include="Assets\Extras\NGUI\Resources\Shaders\Unlit - Transparent Colored (TextureClip).shader" />
      <None Include="Assets\Extras\NGUI\Examples\Atlases\SciFi\SciFi Font - Header.txt" />
@@ -189,6 +191,7 @@
      <None Include="Assets\Extras\NGUI\Resources\Shaders\Unlit - Transparent Packed 1.shader" />
      <None Include="Assets\Extras\NGUI\Resources\Shaders\Unlit - Premultiplied Colored 1.shader" />
      <None Include="Assets\Extras\NGUI\Resources\Shaders\Unlit - Premultiplied Colored.shader" />
+     <None Include="Assets\Extras\UniWebView\Readme.txt" />
      <None Include="Assets\Extras\Elementals\!Readme.txt" />
      <None Include="Assets\Extras\NGUI\Resources\Shaders\Unlit - Transparent Colored.shader" />
      <None Include="Assets\Extras\Playmaker NGUI Scripts\Demo\Loading Screen Demo\NGUI Screens\LoadBigScene\FastGUIData.xml" />
@@ -209,6 +212,7 @@
      <None Include="Assets\Extras\Playmaker NGUI Scripts\Demo\NGUI Atlases\Playmaker NGUI UI\FastGUIData.xml" />
      <None Include="Assets\Extras\NGUI\Examples\Models\Orc Armor\Orc Armor.shader" />
      <None Include="Assets\Extras\NGUI\Examples\Resources\Localization.txt" />
+     <None Include="Assets\Plugins\Android\AndroidManifest 1.xml" />
      <None Include="Assets\Extras\Activity Indicators\ReadMe_txt.txt" />
  <Reference Include="Assembly-UnityScript">
  <HintPath>/Users/sunken/projects/Tuby_Unity/Library/ScriptAssemblies/Assembly-UnityScript.dll</HintPath>

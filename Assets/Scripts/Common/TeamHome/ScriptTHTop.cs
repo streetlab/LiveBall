@@ -61,6 +61,7 @@ public class ScriptTHTop : MonoBehaviour {
 		mBtnSquad.GetComponent<UIButton> ().isEnabled = true;
 
 		mAlbum.SetActive (true);
+		mAlbum.GetComponent<ScriptTF_Album> ().OpenWebView ();
 		
 		mTimeline.SetActive (false);
 		mSeason.SetActive (false);

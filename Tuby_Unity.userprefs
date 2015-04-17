@@ -1,55 +1,50 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Common/Profile/ScriptTFProfile.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Common/TeamHome/ScriptTF_Album.cs">
     <Files>
-      <File FileName="Assets/Scripts/Common/Main/ScriptMainTop.cs" Line="220" Column="47" />
-      <File FileName="Assets/Scripts/Network/Requests/JoinGameRequest.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Common/Utils/QuizMgr.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Common/Models/SimpleResultInfoSample.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Common/Models/SimpleResultInfo.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Network/Events/GetSimpleResultEvent.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Network/Responses/GetSimpleResultResponse.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Network/Responses/BaseResponse.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Common/Main/Highlight/ScriptMatchPlaying.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Common/Models/QuizInfoSample.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Common/Utils/ScriptParticleResizer.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Common/Main/ScriptQuizResult.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Common/Main/Betting/ScriptBetting.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Common/Main/Highlight/ScriptItemHitterHighlight.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Common/Main/Betting/ScriptBettingItem.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Common/Main/Betting/ScriptTF_Betting.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Common/TeamHome/TimeLine/ScriptMatch.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Common/Utils/UtilMgr.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Common/Utils/DialogueMgr.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Common/ScriptMainMenuLeft.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Common/Items/ScriptTFItems.cs" Line="10" Column="71" />
-      <File FileName="Assets/Scripts/Common/Profile/ScriptTFProfile.cs" Line="22" Column="43" />
+      <File FileName="Assets/Scripts/Common/Login/ScriptTitle.cs" Line="24" Column="3" />
+      <File FileName="Assets/Scripts/Common/TeamHome/ScriptUpload.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Common/TeamHome/ScriptTF_Album.cs" Line="33" Column="26" />
+      <File FileName="Assets/Scripts/Common/TeamHome/ScriptTHTop.cs" Line="1" Column="1" />
+      <File FileName="Assets/Extras/UniWebView/Demo/UniWebDemo.cs" Line="80" Column="4" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Assembly-CSharp" expanded="True">
+            <Node name="Extras" expanded="True">
+              <Node name="UniWebView" expanded="True">
+                <Node name="Demo" expanded="True" />
+              </Node>
+            </Node>
             <Node name="Scripts" expanded="True">
               <Node name="Common" expanded="True">
                 <Node name="Items" expanded="True" />
+                <Node name="Login" expanded="True" />
                 <Node name="Main" expanded="True">
                   <Node name="Betting" expanded="True" />
                   <Node name="Highlight" expanded="True" />
                 </Node>
                 <Node name="Models" expanded="True" />
-                <Node name="Profile" expanded="True">
-                  <Node name="ScriptTFProfile.cs" selected="True" />
-                </Node>
+                <Node name="Profile" expanded="True" />
                 <Node name="TeamHome" expanded="True">
                   <Node name="TimeLine" expanded="True" />
+                  <Node name="ScriptTF_Album.cs" selected="True" />
                 </Node>
                 <Node name="Utils" expanded="True" />
               </Node>
               <Node name="Network" expanded="True">
                 <Node name="Events" expanded="True" />
+                <Node name="Requests" expanded="True" />
                 <Node name="Responses" expanded="True" />
               </Node>
             </Node>
+          </Node>
+          <Node name="Assembly-CSharp-firstpass" expanded="True">
+            <Node name="Plugins" expanded="True" />
+          </Node>
+          <Node name="Assembly-UnityScript" expanded="True">
+            <Node name="Extras" expanded="True" />
           </Node>
         </State>
       </Pad>

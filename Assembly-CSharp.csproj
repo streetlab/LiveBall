@@ -663,6 +663,13 @@
      <Compile Include="Assets\Extras\Playmaker NGUI Scripts\Scripts\Playmaker Actions\StringCompareMulti.cs" />
      <Compile Include="Assets\Extras\Playmaker NGUI Scripts\Scripts\Playmaker Actions\UnloadAssetBundle.cs" />
      <Compile Include="Assets\Extras\Playmaker NGUI Scripts\Scripts\Playmaker Actions\UnloadAssetBundleCompressedContents.cs" />
+     <Compile Include="Assets\Extras\UniWebView\Demo\UniWebDemo.cs" />
+     <Compile Include="Assets\Extras\UniWebView\Demo\UniWebViewCube.cs" />
+     <Compile Include="Assets\Extras\UniWebView\Script\Helper\UniWebViewHelper.cs" />
+     <Compile Include="Assets\Extras\UniWebView\Script\UniWebView.cs" />
+     <Compile Include="Assets\Extras\UniWebView\Script\UniWebViewEdgeInsets.cs" />
+     <Compile Include="Assets\Extras\UniWebView\Script\UniWebViewMessage.cs" />
+     <Compile Include="Assets\Extras\UniWebView\Script\UniWebViewOrientation.cs" />
      <Compile Include="Assets\Extras\iTween\iTween.cs" />
      <Compile Include="Assets\Scripts\Common\Cards\ScriptCardsMiddle.cs" />
      <Compile Include="Assets\Scripts\Common\Chat\Labels.cs" />
@@ -741,6 +748,7 @@
      <Compile Include="Assets\Scripts\Common\TeamHome\ScriptLink.cs" />
      <Compile Include="Assets\Scripts\Common\TeamHome\ScriptOnKeyTop.cs" />
      <Compile Include="Assets\Scripts\Common\TeamHome\ScriptSelection.cs" />
+     <Compile Include="Assets\Scripts\Common\TeamHome\ScriptTF_Album.cs" />
      <Compile Include="Assets\Scripts\Common\TeamHome\ScriptTF_Timeline.cs" />
      <Compile Include="Assets\Scripts\Common\TeamHome\ScriptTHTop.cs" />
      <Compile Include="Assets\Scripts\Common\TeamHome\ScriptTeamHomeRoot.cs" />
@@ -802,6 +810,7 @@
      <None Include="Assets\Extras\NGUI\Examples\Shaders\Unlit - Depth Cutout.shader" />
      <None Include="Assets\Extras\NGUI\ReadMe - 3.7.6.txt" />
      <None Include="Assets\Extras\NGUI\Resources\Shaders\Unlit - Text 2.shader" />
+     <None Include="Assets\Extras\UniWebView\ChangeLog.txt" />
      <None Include="Assets\Extras\NGUI\Examples\Models\Orc\Orc Skin.shader" />
      <None Include="Assets\Extras\NGUI\Examples\Atlases\Wooden\Arimo20.txt" />
      <None Include="Assets\Extras\Playmaker NGUI Scripts\Demo\Loading Screen Demo\Fonts\Lucida Calligraphy 30 Italics\Lucida Calligraphy 30 Italics.txt" />
@@ -815,6 +824,7 @@
      <None Include="Assets\Extras\NGUI\Resources\Shaders\Unlit - Premultiplied Colored 3.shader" />
      <None Include="Assets\Extras\NGUI\Examples\Atlases\Wooden\Arimo18.txt" />
      <None Include="Assets\Extras\iTween\ReadMe!\ReadMe!.txt" />
+     <None Include="Assets\Plugins\JIVER\README.txt" />
      <None Include="Assets\Plugins\Net20\HtmlAgilityPack.xml" />
      <None Include="Assets\Extras\NGUI\Resources\Shaders\Unlit - Transparent Colored (TextureClip).shader" />
      <None Include="Assets\Extras\NGUI\Examples\Atlases\SciFi\SciFi Font - Header.txt" />
@@ -830,6 +840,7 @@
      <None Include="Assets\Extras\NGUI\Resources\Shaders\Unlit - Transparent Packed 1.shader" />
      <None Include="Assets\Extras\NGUI\Resources\Shaders\Unlit - Premultiplied Colored 1.shader" />
      <None Include="Assets\Extras\NGUI\Resources\Shaders\Unlit - Premultiplied Colored.shader" />
+     <None Include="Assets\Extras\UniWebView\Readme.txt" />
      <None Include="Assets\Extras\Elementals\!Readme.txt" />
      <None Include="Assets\Extras\NGUI\Resources\Shaders\Unlit - Transparent Colored.shader" />
      <None Include="Assets\Extras\Playmaker NGUI Scripts\Demo\Loading Screen Demo\NGUI Screens\LoadBigScene\FastGUIData.xml" />
@@ -850,6 +861,7 @@
      <None Include="Assets\Extras\Playmaker NGUI Scripts\Demo\NGUI Atlases\Playmaker NGUI UI\FastGUIData.xml" />
      <None Include="Assets\Extras\NGUI\Examples\Models\Orc Armor\Orc Armor.shader" />
      <None Include="Assets\Extras\NGUI\Examples\Resources\Localization.txt" />
+     <None Include="Assets\Plugins\Android\AndroidManifest 1.xml" />
      <None Include="Assets\Extras\Activity Indicators\ReadMe_txt.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
