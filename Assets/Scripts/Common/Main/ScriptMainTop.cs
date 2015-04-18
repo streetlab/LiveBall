@@ -41,7 +41,7 @@ public class ScriptMainTop : MonoBehaviour {
 		Lineup,
 		Bingo,
 		Livetalk,
-		Betting,jjjj
+		Betting
 	};
 
 	STATE mState = STATE.Highlight;

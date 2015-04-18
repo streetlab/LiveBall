@@ -41,6 +41,9 @@ public class Jiver : MonoBehaviour {
 			Channel channel = new Channel(arg);
 			jiverResponder.OnConnect(channel);
 		}
+
+		Debug.Log ("QueryChannelList!!!!!!!!");
+		QueryChannelList (false);
 	}
 	
 	void _OnError(string arg) {

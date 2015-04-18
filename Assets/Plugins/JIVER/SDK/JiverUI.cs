@@ -136,8 +136,8 @@ public class JiverUI : JiverResponder {
 		GUI.skin.verticalScrollbar.fixedWidth = scrollBarWidth;
 		GUI.skin.verticalScrollbarThumb.fixedWidth = scrollBarWidth;
 
-		TOP = (int)(Screen.height * scale.y);
-		LEFT = (int)(Screen.width * scale.x);
+		TOP = (int)scale.y;//(int)(Screen.height * scale.y);
+		LEFT = (int)scale.x;//(int)(Screen.width * scale.x);
 		WIDTH = (int)(Screen.width * scale.width);
 		HEIGHT = (int)(Screen.height * scale.height); 
 
